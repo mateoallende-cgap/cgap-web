@@ -2,20 +2,6 @@
    CGAP · app.js  (lógica compartida de todo el sitio)
    ============================================================ */
 
-/* ---------- Navbar transparente sobre hero ---------- */
-(function(){
-  const navbar = document.querySelector('.navbar');
-  if (!navbar) return;
-  const heroSlider = document.querySelector('.hero-slider');
-  if (!heroSlider) { navbar.classList.add('scrolled'); return; }
-  function updateNav() {
-    if (window.scrollY > 40) navbar.classList.add('scrolled');
-    else navbar.classList.remove('scrolled');
-  }
-  window.addEventListener('scroll', updateNav, { passive: true });
-  updateNav();
-})();
-
 /* ---------- Menú mobile ---------- */
 const burger = document.getElementById("burger");
 const navLinks = document.getElementById("navLinks");
