@@ -250,9 +250,13 @@ if (profGrid && window.PROFESIONALES) {
   let timer;
 
   function goTo(n) {
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
+    const prev = current;
     current = (n + slides.length) % slides.length;
+    if (prev === current) return;
+    slides[prev].classList.remove('active');
+    slides[prev].classList.add('leaving');
+    dots[prev].classList.remove('active');
+    setTimeout(() => slides[prev].classList.remove('leaving'), 950);
     slides[current].classList.add('active');
     dots[current].classList.add('active');
   }
