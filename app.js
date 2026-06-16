@@ -99,7 +99,7 @@ if (pracGrid && window.PRACTICAS) {
       return okEsp && okTipo && okQ;
     });
     if (!fEsp && !fTipo && !q) {
-      titulo.textContent = "Prácticas más buscadas";
+      titulo.textContent = "Más buscadas";
       const dest = res.filter(p => p.masBuscada);
       if (dest.length) res = dest;
     } else {
@@ -202,3 +202,69 @@ if (profGrid && window.PROFESIONALES) {
   clear.addEventListener("click", () => { buscar.value = ""; q = ""; clear.classList.remove("show"); render(); });
   render();
 }
+
+
+/* ---------- FAQ tabs + acordeón ---------- */
+(function(){
+  /* tabs */
+  const tabs = document.querySelectorAll('.faq-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.faq-panel').forEach(p => p.classList.remove('active'));
+      const panel = document.getElementById('faq-' + tab.dataset.tab);
+      panel.classList.add('active');
+      panel.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    });
+  });
+
+  /* acordeón */
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const inner = answer.querySelector('div') || answer;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      /* cerrar todos los abiertos en el mismo panel */
+      btn.closest('.faq-list').querySelectorAll('.faq-q[aria-expanded="true"]').forEach(other => {
+        if (other === btn) return;
+        other.setAttribute('aria-expanded', 'false');
+        other.closest('.faq-item').querySelector('.faq-a').classList.remove('open');
+      });
+
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      answer.classList.toggle('open', !isOpen);
+    });
+  });
+})();
+
+/* ---------- Hero Slider ---------- */
+(function(){
+  const slides = document.querySelectorAll('.hs-slide');
+  const dots   = document.querySelectorAll('.hs-dot');
+  if (!slides.length) return;
+
+  let current = 0;
+  let timer;
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 6000);
+  }
+
+  document.querySelector('.hs-next')?.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+  document.querySelector('.hs-prev')?.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+  dots.forEach(dot => dot.addEventListener('click', () => { goTo(+dot.dataset.slide); startAuto(); }));
+
+  startAuto();
+})();
