@@ -121,7 +121,7 @@ a.prest-item:hover .prest-more{gap:.6rem}
 .prest-item .ico{width:50px;height:50px;border-radius:13px;background:var(--blush);color:var(--magenta);display:grid;place-items:center;margin-bottom:1rem}
 /* Card con foto de fondo */
 .prest-item--photo{background-size:cover;background-position:center;position:relative;color:#fff;border-color:transparent}
-.prest-photo-overlay{position:absolute;inset:0;border-radius:var(--radius);background:rgba(15,8,25,.62)}
+.prest-photo-overlay{position:absolute;inset:0;border-radius:var(--radius);background:rgba(15,8,25,.38)}
 .prest-item--photo .ico{background:rgba(255,255,255,.18);color:#fff;position:relative;z-index:1}
 .prest-item--photo h3{color:#fff;position:relative;z-index:1}
 .prest-item--photo p{color:#fff !important;position:relative;z-index:1;text-shadow:0 1px 6px rgba(0,0,0,.9),0 0 20px rgba(0,0,0,.8)}
