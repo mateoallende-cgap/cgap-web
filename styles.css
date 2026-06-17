@@ -124,7 +124,7 @@ a.prest-item:hover .prest-more{gap:.6rem}
 .prest-photo-overlay{position:absolute;inset:0;border-radius:var(--radius);background:rgba(15,8,25,.62)}
 .prest-item--photo .ico{background:rgba(255,255,255,.18);color:#fff;position:relative;z-index:1}
 .prest-item--photo h3{color:#fff;position:relative;z-index:1}
-.prest-item--photo p{color:#fff;position:relative;z-index:1;text-shadow:0 1px 6px rgba(0,0,0,.9),0 0 20px rgba(0,0,0,.8)}
+.prest-item--photo p{color:#fff !important;position:relative;z-index:1;text-shadow:0 1px 6px rgba(0,0,0,.9),0 0 20px rgba(0,0,0,.8)}
 .prest-item--photo .prest-more{color:#fff;position:relative;z-index:1}
 .prest-item--photo:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
 .prest-item .ico svg{width:26px;height:26px}
