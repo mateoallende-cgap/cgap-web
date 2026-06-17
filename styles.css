@@ -120,13 +120,11 @@ a.prest-item{cursor:pointer;display:flex;flex-direction:column}
 a.prest-item:hover .prest-more{gap:.6rem}
 .prest-item .ico{width:50px;height:50px;border-radius:13px;background:var(--blush);color:var(--magenta);display:grid;place-items:center;margin-bottom:1rem}
 /* Card con foto de fondo */
-.prest-item--photo{background-size:cover;background-position:center;position:relative;color:#fff;border-color:transparent;overflow:hidden}
-.prest-photo-overlay{position:absolute;inset:0;background:rgba(15,8,25,.38)}
-.prest-item--photo .ico{background:rgba(255,255,255,.18);color:#fff;position:relative;z-index:1}
-.prest-item--photo h3{color:#fff;position:relative;z-index:1}
-.prest-item--photo p{color:#fff !important;position:relative;z-index:1;text-shadow:0 1px 6px rgba(0,0,0,.9),0 0 20px rgba(0,0,0,.8)}
-.prest-item--photo .prest-more{color:#fff;position:relative;z-index:1}
-.prest-item--photo:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.prest-item--photo{padding:0;overflow:hidden}
+.prest-img{height:160px;background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:1.2rem;position:relative}
+.prest-img::after{content:'';position:absolute;inset:0;background:rgba(15,8,25,.38)}
+.prest-img .ico{position:relative;z-index:1;background:rgba(255,255,255,.22);color:#fff;flex-shrink:0}
+.prest-body{padding:1.2rem 1.7rem 1.7rem}
 .prest-item .ico svg{width:26px;height:26px}
 .prest-item h3{font-size:1.1rem;margin-bottom:.4rem}
 .prest-item p{font-size:.9rem;color:var(--muted)}
