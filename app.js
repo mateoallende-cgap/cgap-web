@@ -88,7 +88,7 @@ if (pracGrid && window.PRACTICAS) {
   const espTexto = {
     ginecologia: "Ginecología", obstetricia: "Obstetricia", ecografia: "Ecografía",
     laboratorio: "Laboratorio", endocrinologia: "Endocrinología", nutricion: "Nutrición",
-    dermatologia: "Dermatología", cardiologia: "Cardiología"
+    dermatologia: "Dermatología", cardiologia: "Cardiología", flebologia: "Flebología"
   };
 
   function render() {

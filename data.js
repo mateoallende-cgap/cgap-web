@@ -1088,5 +1088,35 @@ window.PRACTICAS = [
   "preparacion": "Consultar indicaciones previas.",
   "orden": "Requiere indicación médica.",
   "duracion": "Duración aproximada de 10 a 15 minutos."
+ },
+ {
+  "nombre": "Consulta en flebología",
+  "descripcion": "Evaluación médica especializada en enfermedades venosas: várices, insuficiencia venosa y trombosis.",
+  "especialidad": "flebologia",
+  "tipo": "consulta",
+  "masBuscada": true,
+  "preparacion": "No requiere preparación especial.",
+  "orden": "No requiere orden médica.",
+  "duracion": "Duración aproximada de 30 minutos."
+ },
+ {
+  "nombre": "Eco-Doppler venoso de miembros inferiores",
+  "descripcion": "Estudio por imágenes para evaluar el flujo venoso y detectar várices o trombosis en piernas.",
+  "especialidad": "flebologia",
+  "tipo": "diagnostico",
+  "masBuscada": true,
+  "preparacion": "No requiere preparación especial.",
+  "orden": "Requiere indicación médica.",
+  "duracion": "Duración aproximada de 30 a 45 minutos."
+ },
+ {
+  "nombre": "Escleroterapia",
+  "descripcion": "Tratamiento mínimamente invasivo para eliminar várices y arañas vasculares mediante inyección.",
+  "especialidad": "flebologia",
+  "tipo": "procedimiento",
+  "masBuscada": false,
+  "preparacion": "Evitar cremas en la zona el día del procedimiento.",
+  "orden": "Requiere indicación médica.",
+  "duracion": "Duración aproximada de 30 minutos."
  }
 ];
