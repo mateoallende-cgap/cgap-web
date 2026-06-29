@@ -449,3 +449,12 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 .blog-card:hover .blog-more{gap:.6rem}
 @media(max-width:860px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:540px){.blog-grid{grid-template-columns:1fr}}
+
+/* Blog — ajustes para contenido real */
+.blog-banner p{color:var(--muted);font-size:1.05rem;max-width:600px;margin-top:.6rem}
+.blog-disclaimer{font-size:.84rem !important;color:var(--muted);border-left:3px solid var(--line);padding-left:.8rem;margin-top:1.2rem !important;font-style:italic}
+.blog-banner-btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem}
+.blog-body h3{font-size:1.05rem;line-height:1.35;margin-bottom:.5rem;color:var(--plum)}
+.blog-what{font-size:.82rem;font-weight:700;color:var(--magenta);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
+.blog-quick{font-size:.91rem;color:var(--muted);line-height:1.65;flex:1}
+.blog-body .btn{margin-top:1.2rem;font-size:.85rem;padding:.6rem 1.2rem;align-self:flex-start}
