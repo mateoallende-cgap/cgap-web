@@ -515,6 +515,9 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
   .est-treat--rev{direction:ltr}
   .est-treat-body{padding:48px 32px}
   .est-treat-img{min-height:300px}
+  /* En mobile: cuando la foto viene primero en DOM, poner el texto antes */
+  .est-treat .est-treat-img:first-child{order:2}
+  .est-treat .est-treat-body:last-child{order:1}
   .est-intro-nums{flex-direction:row;flex-wrap:wrap;gap:24px}
 }
 @media(max-width:540px){
