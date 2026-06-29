@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=26">
+<link rel="stylesheet" href="styles.css?v=27">
 </head>
 <body>
 
@@ -46,9 +46,10 @@
       <button class="blog-chip active" data-cat="all">Todos</button>
       <button class="blog-chip" data-cat="ginecologia">Ginecología</button>
       <button class="blog-chip" data-cat="dermatologia">Dermatología</button>
-      <button class="blog-chip" data-cat="ginecologia">Estética</button>
+      <button class="blog-chip" data-cat="estetica">Estética</button>
       <button class="blog-chip" data-cat="nutricion">Nutrición</button>
       <button class="blog-chip" data-cat="endocrinologia">Endocrinología</button>
+      <button class="blog-chip" data-cat="mas">Más</button>
     </div>
 
     <div class="blog-grid" id="blogGrid">
@@ -187,8 +188,9 @@
     <p class="copy">© CGAP · Centro Ginecológico Allende Pinto — Buenos Aires 855, Córdoba, Argentina</p>
   </div>
 </footer>
-<script src="app.js?v=26"></script>
+<script src="app.js?v=27"></script>
 <script>
+  const mainCats = ['ginecologia','dermatologia','estetica','nutricion','endocrinologia'];
   const chips = document.querySelectorAll('.blog-chip');
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
@@ -196,7 +198,10 @@
       chip.classList.add('active');
       const cat = chip.dataset.cat;
       document.querySelectorAll('.blog-card').forEach(card => {
-        const show = cat === 'all' || card.dataset.cat === cat;
+        let show;
+        if (cat === 'all') show = true;
+        else if (cat === 'mas') show = !mainCats.includes(card.dataset.cat);
+        else show = card.dataset.cat === cat;
         card.style.display = show ? '' : 'none';
       });
     });
