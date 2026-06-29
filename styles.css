@@ -405,3 +405,22 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 .treat-cat .chips{display:flex;flex-wrap:wrap;gap:9px}
 .treat-chip{background:var(--blush-soft);border:1px solid var(--line);color:var(--plum);font-weight:600;font-size:.86rem;padding:.45rem .9rem;border-radius:100px;transition:background .2s,color .2s,border-color .2s}
 .treat-chip:hover{background:var(--magenta);color:#fff;border-color:var(--magenta)}
+
+/* ===== CIRCUITO GINECOLÓGICO ===== */
+.circ-steps{background:var(--cream)}
+.circ-track{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:16px}
+.circ-step{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:2rem 1.6rem;position:relative;box-shadow:var(--shadow-sm);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.circ-step:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.circ-num{position:absolute;top:-18px;left:1.6rem;width:36px;height:36px;border-radius:50%;background:var(--magenta);color:#fff;font-weight:700;font-size:1rem;display:grid;place-items:center;box-shadow:0 4px 12px rgba(173,30,119,.35)}
+.circ-icon{width:56px;height:56px;border-radius:14px;background:var(--blush);color:var(--magenta);display:grid;place-items:center;margin-bottom:1rem;margin-top:.4rem}
+.circ-icon svg{width:28px;height:28px}
+.circ-step h3{font-size:1.1rem;margin-bottom:.5rem;color:var(--plum)}
+.circ-step p{font-size:.92rem;color:var(--muted);line-height:1.7}
+/* CTA banner */
+.circ-cta{background:var(--blush-soft);padding:48px 0}
+.circ-cta-inner{display:flex;align-items:center;gap:24px;background:var(--white);border-radius:var(--radius);padding:2rem 2.4rem;box-shadow:var(--shadow-sm);border:1px solid var(--line)}
+.circ-cta-ico{flex-shrink:0;width:54px;height:54px;border-radius:50%;background:var(--blush);color:var(--magenta);display:grid;place-items:center}
+.circ-cta-inner p{flex:1;font-size:1rem;color:var(--text);line-height:1.6}
+.circ-cta-inner strong{color:var(--magenta)}
+@media(max-width:860px){.circ-track{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.circ-track{grid-template-columns:1fr}.circ-cta-inner{flex-direction:column;text-align:center}}
