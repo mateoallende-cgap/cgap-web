@@ -253,8 +253,18 @@ if (profGrid && window.PROFESIONALES) {
   const dots   = document.querySelectorAll('.hs-dot');
   if (!slides.length) return;
 
+  // Colores del ticker según slide (deben coincidir con los gradientes)
+  const tickerColors = ['#f5cde8', '#c8dff7', '#f5cde8'];
+  const ticker = document.querySelector('.ticker-wrap');
+
   let current = 0;
   let timer;
+
+  function updateTicker(idx) {
+    if (!ticker) return;
+    ticker.style.transition = 'background .9s ease';
+    ticker.style.background = tickerColors[idx] || tickerColors[0];
+  }
 
   function goTo(n) {
     const prev = current;
@@ -266,6 +276,7 @@ if (profGrid && window.PROFESIONALES) {
     setTimeout(() => slides[prev].classList.remove('leaving'), 950);
     slides[current].classList.add('active');
     dots[current].classList.add('active');
+    updateTicker(current);
   }
 
   function startAuto() {
@@ -277,5 +288,6 @@ if (profGrid && window.PROFESIONALES) {
   document.querySelector('.hs-prev')?.addEventListener('click', () => { goTo(current - 1); startAuto(); });
   dots.forEach(dot => dot.addEventListener('click', () => { goTo(+dot.dataset.slide); startAuto(); }));
 
+  updateTicker(0);
   startAuto();
 })();
