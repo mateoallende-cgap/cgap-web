@@ -483,10 +483,10 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 .est-num span{font-size:.9rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
 /* Tratamientos alternados */
 .est-treats{background:var(--white)}
-.est-treat{display:grid;grid-template-columns:1fr 1fr;min-height:380px;border-bottom:1px solid var(--line)}
+.est-treat{display:grid;grid-template-columns:1fr 1fr;min-height:260px;border-bottom:1px solid var(--line)}
 .est-treat--rev{direction:rtl}.est-treat--rev>*{direction:ltr}
 .est-treat-img{position:relative;overflow:hidden}
-.est-treat-body{padding:80px 72px;display:flex;flex-direction:column;justify-content:center;gap:0}
+.est-treat-body{padding:40px 52px;display:flex;flex-direction:column;justify-content:center;gap:0}
 .est-treat-body .eyebrow{margin-bottom:1.2rem}
 .est-treat-body h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;margin-bottom:1.2rem}
 .est-treat-body h2 em{color:var(--magenta);font-style:italic}
