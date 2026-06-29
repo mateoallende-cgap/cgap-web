@@ -556,3 +556,10 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
   .est-treat-right-col .est-treat-img{min-height:240px}
   .est-treat-body--sm{padding:32px 24px}
 }
+
+/* ===== CIRCUITO · hero editorial rosa pastel ===== */
+.circ-new-hero{min-height:calc(88vh - 92px);background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
+.circ-new-hero-inner{max-width:780px}
+.circ-new-hero h1{font-size:clamp(3.5rem,8vw,7rem);line-height:1;letter-spacing:-.03em;color:var(--plum);margin:.8rem 0 1.4rem}
+.circ-new-hero h1 em{color:var(--magenta);font-style:italic}
+.circ-new-hero p{font-size:1.15rem;color:var(--muted);max-width:50ch;margin:0 auto 2rem;line-height:1.65}
