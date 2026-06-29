@@ -45,7 +45,7 @@ img{max-width:100%;display:block}
 .nav-links a:hover,.nav-links a.active{color:var(--magenta)}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%}
 .nav-portal-m{display:none}
-.nav-cta{margin-left:.2rem}.nav-cta-wa{margin-left:.4rem}
+.nav-cta-wa{margin-left:auto}.nav-cta{margin-left:.5rem}
 .burger{display:none;margin-left:auto;background:none;border:none;cursor:pointer;color:var(--magenta)}
 
 /* ===== SECTION SHELL ===== */
