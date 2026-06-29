@@ -458,3 +458,9 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 .blog-what{font-size:.82rem;font-weight:700;color:var(--magenta);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
 .blog-quick{font-size:.91rem;color:var(--muted);line-height:1.65;flex:1}
 .blog-body .btn{margin-top:1.2rem;font-size:.85rem;padding:.6rem 1.2rem;align-self:flex-start}
+
+/* Medicina estética — banner celeste pastel */
+.page-banner--estetica{background:linear-gradient(135deg,#dceeff 0%,#c8dff7 60%,#d4e8f9 100%)}
+.page-banner--estetica h1{color:var(--plum)}
+.page-banner--estetica p{color:var(--muted)}
+.page-banner--estetica::after{border-color:rgba(58,31,48,.08)}
