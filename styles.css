@@ -529,3 +529,13 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 .prac-hero h1 em{color:var(--magenta);font-style:italic}
 .prac-hero p{font-size:1.1rem;color:var(--muted);max-width:46ch;margin:0 auto;line-height:1.65}
 .prac-section{background:var(--cream);padding:60px 0 100px}
+
+/* Medicina estética — lista de tratamientos */
+.est-list-section{background:var(--blush-soft);padding:80px 0}
+.est-treat-list{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:0}
+.est-treat-group h3{font-size:1rem;color:var(--plum);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:2px solid var(--magenta)}
+.est-treat-group ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.est-treat-group ul li{font-size:.92rem;color:var(--muted);padding-left:1.2rem;position:relative}
+.est-treat-group ul li::before{content:'✦';position:absolute;left:0;color:var(--magenta);font-size:.55rem;top:.35rem}
+@media(max-width:860px){.est-treat-list{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.est-treat-list{grid-template-columns:1fr}}
