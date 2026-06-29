@@ -467,7 +467,7 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 
 /* ===== MEDICINA ESTÉTICA · rediseño editorial ===== */
 /* Hero */
-.est-hero{min-height:calc(100vh - 92px);background:linear-gradient(135deg,#dceeff 0%,#c8dff7 60%,#d4e8f9 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
+.est-hero{min-height:calc(88vh - 92px);background:linear-gradient(135deg,#dceeff 0%,#c8dff7 60%,#d4e8f9 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
 .est-hero-inner{max-width:780px}
 .est-hero h1{font-size:clamp(3.5rem,8vw,7rem);line-height:1;letter-spacing:-.03em;color:var(--plum);margin:.8rem 0 1.4rem}
 .est-hero h1 em{color:var(--magenta);font-style:italic}
