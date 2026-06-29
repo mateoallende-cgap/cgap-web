@@ -483,7 +483,7 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 .est-num span{font-size:.9rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
 /* Tratamientos alternados */
 .est-treats{background:var(--white)}
-.est-treat{display:grid;grid-template-columns:1fr 1fr;min-height:580px;border-bottom:1px solid var(--line)}
+.est-treat{display:grid;grid-template-columns:1fr 1fr;min-height:380px;border-bottom:1px solid var(--line)}
 .est-treat--rev{direction:rtl}.est-treat--rev>*{direction:ltr}
 .est-treat-img{position:relative;overflow:hidden}
 .est-treat-body{padding:80px 72px;display:flex;flex-direction:column;justify-content:center;gap:0}
@@ -541,7 +541,7 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 @media(max-width:540px){.est-treat-list{grid-template-columns:1fr}}
 
 /* Medicina estética — layout combo CO₂ + Luz Pulsada */
-.est-treat-combo{display:grid;grid-template-columns:1fr 1fr;min-height:580px;border-bottom:1px solid var(--line)}
+.est-treat-combo{display:grid;grid-template-columns:1fr 1fr;min-height:380px;border-bottom:1px solid var(--line)}
 .est-treat-right-col{display:flex;flex-direction:column}
 .est-treat-right-col .est-treat-img{flex:1}
 .est-treat-body--sm{padding:40px 48px;background:var(--blush-soft)}
