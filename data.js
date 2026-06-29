@@ -1090,6 +1090,46 @@ window.PRACTICAS = [
   "duracion": "Duración aproximada de 10 a 15 minutos."
  },
  {
+  "nombre": "Circuito ginecológico completo",
+  "descripcion": "Control integral en una sola visita: consulta ginecológica, ecografía, PAP y solicitud de laboratorio.",
+  "especialidad": "circuito",
+  "tipo": "control",
+  "masBuscada": true,
+  "preparacion": "Venir con vejiga semicargada para la ecografía. No tener relaciones 48 hs antes del PAP.",
+  "orden": "No requiere orden médica.",
+  "duracion": "Duración aproximada de 1.5 a 2 horas."
+ },
+ {
+  "nombre": "Consulta ginecológica + PAP",
+  "descripcion": "Examen ginecológico completo con toma de PAP para detección temprana de lesiones cervicales.",
+  "especialidad": "circuito",
+  "tipo": "control",
+  "masBuscada": true,
+  "preparacion": "No tener relaciones sexuales 48 hs antes. No usar óvulos ni cremas vaginales.",
+  "orden": "No requiere orden médica.",
+  "duracion": "Duración aproximada de 30 a 45 minutos."
+ },
+ {
+  "nombre": "Consulta ginecológica + ecografía",
+  "descripcion": "Evaluación ginecológica combinada con ecografía transvaginal o abdominal según indicación.",
+  "especialidad": "circuito",
+  "tipo": "control",
+  "masBuscada": false,
+  "preparacion": "Venir con vejiga semicargada para ecografía abdominal.",
+  "orden": "No requiere orden médica.",
+  "duracion": "Duración aproximada de 45 minutos."
+ },
+ {
+  "nombre": "Control mamario + ecografía mamaria",
+  "descripcion": "Examen clínico de mamas con ecografía para detección precoz de alteraciones mamarias.",
+  "especialidad": "circuito",
+  "tipo": "control",
+  "masBuscada": false,
+  "preparacion": "No requiere preparación especial.",
+  "orden": "No requiere orden médica.",
+  "duracion": "Duración aproximada de 30 minutos."
+ },
+ {
   "nombre": "Consulta en flebología",
   "descripcion": "Evaluación médica especializada en enfermedades venosas: várices, insuficiencia venosa y trombosis.",
   "especialidad": "flebologia",

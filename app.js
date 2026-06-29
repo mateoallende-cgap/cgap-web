@@ -86,7 +86,7 @@ if (pracGrid && window.PRACTICAS) {
   let fEsp = "", fTipo = "", q = "";
 
   const espTexto = {
-    ginecologia: "Ginecología", obstetricia: "Obstetricia", ecografia: "Ecografía",
+    circuito: "Circuito Ginecológico", ginecologia: "Ginecología", obstetricia: "Obstetricia", ecografia: "Ecografía",
     laboratorio: "Laboratorio", endocrinologia: "Endocrinología", nutricion: "Nutrición",
     dermatologia: "Dermatología", cardiologia: "Cardiología", flebologia: "Flebología"
   };
@@ -148,6 +148,13 @@ if (pracGrid && window.PRACTICAS) {
     q = norm(buscar.value); clear.classList.toggle("show", !!buscar.value); render();
   });
   clear.addEventListener("click", () => { buscar.value = ""; q = ""; clear.classList.remove("show"); render(); });
+
+  /* Activar filtro desde URL (?esp=circuito) */
+  const espParam = new URLSearchParams(window.location.search).get("esp");
+  if (espParam) {
+    const chip = document.querySelector(`#pracFiltros .chip[data-grupo="especialidad"][data-filter="${espParam}"]`);
+    if (chip) { chip.classList.add("active"); fEsp = espParam; }
+  }
   render();
 }
 
