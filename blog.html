@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=29">
+<link rel="stylesheet" href="styles.css?v=55">
 </head>
 <body>
 
@@ -31,284 +31,310 @@
   </div>
 </header>
 
+
 <main>
 
-<!-- BANNER -->
-<section class="blog-banner">
-  <div class="wrap">
-    <span class="eyebrow">Aprendé con CGAP</span>
-    <h1>Información simple, clara<br><em>y confiable.</em></h1>
-    <p>Guías breves sobre ginecología, dermatología, estética, nutrición y endocrinología, elaboradas por nuestro equipo. Porque entender tu cuerpo también es parte del cuidado.</p>
-    <p class="blog-disclaimer">Esta información es orientativa y no reemplaza una consulta médica. Si tenés síntomas o necesitás indicación personalizada, consultá con un profesional.</p>
-    <div class="blog-banner-btns">
-      <a class="btn" href="practicas.html">Ver especialidades</a>
-      <a class="btn btn-ghost" href="https://wa.me/5493515079642" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+  <!-- HERO -->
+  <section class="blog2-hero">
+    <div class="wrap">
+      <p class="blog2-hero-label">Blog & Tips</p>
+      <h1 class="blog2-hero-title">Información simple para cuidar tu salud<br>y saber cuándo consultar</h1>
+      <p class="blog2-hero-sub">Artículos escritos y revisados por profesionales del equipo CGAP. Sin tecnicismos, sin alarmar, con respaldo.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ARTÍCULOS -->
-<section class="blog-section">
-  <div class="wrap">
-    <div class="blog-filters" role="tablist" aria-label="Filtrar por especialidad">
-      <button class="blog-chip active" data-cat="all">Todos</button>
-      <button class="blog-chip" data-cat="ginecologia">Ginecología</button>
-      <button class="blog-chip" data-cat="dermatologia">Dermatología</button>
-      <button class="blog-chip" data-cat="estetica">Estética & Láser</button>
-      <button class="blog-chip" data-cat="nutricion">Nutrición</button>
-      <button class="blog-chip" data-cat="endocrinologia">Endocrinología</button>
-      <button class="blog-chip" data-cat="mas">Más</button>
+  <!-- APRENDE CON CGAP -->
+  <section class="blog2-inst">
+    <div class="wrap blog2-inst-inner">
+      <div class="blog2-inst-badge">🩺</div>
+      <div>
+        <h2 class="blog2-inst-title">Aprendé con CGAP</h2>
+        <p class="blog2-inst-text">Toda la información de este blog fue elaborada por el equipo del Centro Ginecológico Allende Pinto. Nuestro objetivo es que llegues a la consulta con preguntas claras, no con dudas que generan angustia.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="blog-grid" id="blogGrid">
+  <!-- MAS CONSULTADO -->
+  <section class="blog2-featured">
+    <div class="wrap">
+      <h2 class="blog2-section-title">Más consultado por nuestras pacientes</h2>
+      <div class="blog2-featured-grid">
 
-      <article class="blog-card reveal" data-cat="ginecologia" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Ginecología</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">¿Cada cuánto hacer un control ginecológico?</h3>
-          <p class="blog-what">Cuándo ir al ginecólogo, qué se evalúa en la consulta y por qué es importante aunque no tengas síntomas.</p>
-          <p class="blog-quick">El control ginecológico es una instancia clave para prevenir, detectar cambios a tiempo y resolver dudas sobre tu salud íntima. La frecuencia puede variar según edad, antecedentes, síntomas y criterio médico.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20un%20turno%20de%20control%20ginecol%C3%B3gico." target="_blank" rel="noopener">Solicitar turno</a>
-        </div>
-      </article>
+        <article class="blog2-fcard" data-cat="ginecologia">
+          <div class="blog2-fcard-tag">Ginecología</div>
+          <h3 class="blog2-fcard-title">¿Cada cuánto hacer un control ginecológico?</h3>
+          <p class="blog2-fcard-what">Cuándo ir al ginecólogo, qué se evalúa en la consulta y por qué es importante aunque no tengas síntomas.</p>
+          <p class="blog2-fcard-quick">El control ginecológico es una instancia clave para prevenir, detectar cambios a tiempo y resolver dudas sobre tu salud íntima. La frecuencia puede variar según edad, antecedentes, síntomas y criterio médico.</p>
+          <a class="btn blog2-fcard-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20un%20turno%20de%20control%20ginecol%C3%B3gico." target="_blank" rel="noopener">Solicitar turno</a>
+        </article>
 
-      <article class="blog-card reveal" data-cat="ginecologia" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Ginecología</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">PAP y colposcopía: diferencias y cuándo hacerlos</h3>
-          <p class="blog-what">Qué diferencia al PAP de la colposcopía, para qué sirve cada estudio y por qué pueden complementarse.</p>
-          <p class="blog-quick">El PAP analiza células del cuello uterino, mientras que la colposcopía permite observarlo con aumento para detectar posibles alteraciones. Ambos son simples y muy importantes.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20un%20turno%20para%20PAP%20o%20colposcop%C3%ADa." target="_blank" rel="noopener">Solicitar turno</a>
-        </div>
-      </article>
+        <article class="blog2-fcard" data-cat="ginecologia">
+          <div class="blog2-fcard-tag">Ginecología</div>
+          <h3 class="blog2-fcard-title">PAP y videocolposcopía: diferencias y cuándo hacerlos</h3>
+          <p class="blog2-fcard-what">Qué diferencia al PAP de la videocolposcopía, para qué sirve cada estudio y por qué pueden complementarse.</p>
+          <p class="blog2-fcard-quick">El PAP analiza células del cuello uterino, mientras que la videocolposcopía permite observarlo con aumento para detectar posibles alteraciones. Ambos son simples y muy importantes.</p>
+          <a class="btn blog2-fcard-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20un%20turno%20para%20PAP%20o%20videocolposcop%C3%ADa." target="_blank" rel="noopener">Solicitar turno</a>
+        </article>
 
-      <article class="blog-card reveal" data-cat="ginecologia" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Ginecología</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">HPV: síntomas, controles y cuándo consultar</h3>
-          <p class="blog-what">Qué es el HPV, por qué puede no dar síntomas y qué controles ayudan a detectarlo y hacer seguimiento.</p>
-          <p class="blog-quick">El HPV es muy frecuente y muchas veces no presenta síntomas. Los controles ginecológicos regulares son fundamentales para la prevención y el seguimiento.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20sobre%20HPV%20y%20controles." target="_blank" rel="noopener">Pedir consulta</a>
-        </div>
-      </article>
+        <article class="blog2-fcard" data-cat="ginecologia">
+          <div class="blog2-fcard-tag">Ginecología</div>
+          <h3 class="blog2-fcard-title">HPV: síntomas, controles y cuándo consultar</h3>
+          <p class="blog2-fcard-what">Qué es el HPV, por qué puede no dar síntomas y qué controles ayudan a detectarlo y hacer seguimiento.</p>
+          <p class="blog2-fcard-quick">El HPV es muy frecuente y muchas veces no presenta síntomas. Los controles ginecológicos regulares son fundamentales para la prevención y el seguimiento.</p>
+          <a class="btn blog2-fcard-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20sobre%20HPV%20y%20controles." target="_blank" rel="noopener">Pedir consulta</a>
+        </article>
 
-      <article class="blog-card reveal" data-cat="ginecologia" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Ginecología</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Flujo vaginal: cuándo es normal y cuándo consultar</h3>
-          <p class="blog-what">Qué cambios en el flujo conviene observar y en qué situaciones es recomendable una consulta ginecológica.</p>
-          <p class="blog-quick">El flujo vaginal puede variar durante el ciclo, pero si aparece olor fuerte, picazón, ardor, dolor o cambio marcado de color, conviene consultar.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20una%20consulta%20ginecol%C3%B3gica." target="_blank" rel="noopener">Solicitar turno</a>
-        </div>
-      </article>
+      </div>
+    </div>
+  </section>
 
-      <article class="blog-card reveal" data-cat="ginecologia" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Ginecología</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Dolor menstrual fuerte: causas y señales de alerta</h3>
-          <p class="blog-what">Cuándo el dolor menstrual puede ser esperable, cuándo deja de ser normal y qué señales indican consultar.</p>
-          <p class="blog-quick">Un poco de molestia menstrual puede ser frecuente, pero el dolor intenso, incapacitante o que empeora con el tiempo no debería naturalizarse.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20por%20dolor%20menstrual." target="_blank" rel="noopener">Pedir consulta</a>
-        </div>
-      </article>
+  <!-- FILTROS + CARDS -->
+  <section class="blog2-catalog" id="catalogo">
+    <div class="wrap">
 
-      <article class="blog-card reveal" data-cat="ginecologia" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Ginecología</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Circuito ginecológico: qué estudios incluye y cómo funciona</h3>
-          <p class="blog-what">Qué es un circuito ginecológico, qué estudios puede incluir y por qué permite un control más organizado.</p>
-          <p class="blog-quick">El circuito ginecológico es una forma práctica de realizar consulta, estudios y seguimiento dentro de un recorrido coordinado, según la indicación médica de cada paciente.</p>
-          <a class="blog-more btn" href="circuito.html" target="_blank" rel="noopener">Conocer el circuito</a>
-        </div>
-      </article>
+      <!-- Filtros -->
+      <div class="blog2-filters" role="tablist">
+        <button class="blog2-chip active" data-cat="all">Todos</button>
+        <button class="blog2-chip" data-cat="ginecologia">Ginecología</button>
+        <button class="blog2-chip" data-cat="dermatologia">Dermatología</button>
+        <button class="blog2-chip" data-cat="estetica">Estética</button>
+        <button class="blog2-chip" data-cat="nutricion">Nutrición</button>
+        <button class="blog2-chip" data-cat="endocrinologia">Endocrinología</button>
+      </div>
 
-      <article class="blog-card reveal" data-cat="dermatologia" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Dermatología</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Control de lunares: cuándo consultar con dermatología</h3>
-          <p class="blog-what">Qué cambios en los lunares conviene observar y por qué el control periódico de la piel es importante.</p>
-          <p class="blog-quick">Si un lunar cambia de forma, color, tamaño, bordes, pica, sangra o aparece una lesión nueva que te llama la atención, conviene hacer una consulta dermatológica.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20un%20turno%20de%20dermatolog%C3%ADa." target="_blank" rel="noopener">Solicitar turno</a>
-        </div>
-      </article>
+      <!-- Ginecología -->
+      <div class="blog2-block" id="block-ginecologia">
+        <h2 class="blog2-block-title"><span class="blog2-block-dot" style="background:#AD1E77"></span>Ginecología</h2>
+        <div class="blog2-grid">
 
-      <article class="blog-card reveal" data-cat="dermatologia" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Dermatología</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Manchas en la cara: causas y tratamientos posibles</h3>
-          <p class="blog-what">Por qué pueden aparecer manchas en la cara, qué factores las empeoran y por qué evaluarlas antes de tratar.</p>
-          <p class="blog-quick">Las manchas pueden aparecer por sol, cambios hormonales, acné, embarazo o anticonceptivos. No todos los tratamientos sirven para todos los tipos de manchas.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20por%20manchas%20en%20la%20piel." target="_blank" rel="noopener">Consultar por manchas</a>
-        </div>
-      </article>
+          <article class="blog2-card reveal" data-cat="ginecologia">
+            <div class="blog2-card-tag">Ginecología</div>
+            <h3 class="blog2-card-title">¿Cada cuánto hacer un control ginecológico?</h3>
+            <p class="blog2-card-what">Cuándo ir al ginecólogo, qué se evalúa en la consulta y por qué es importante aunque no tengas síntomas.</p>
+            <p class="blog2-card-quick">El control ginecológico es una instancia clave para prevenir, detectar cambios a tiempo y resolver dudas sobre tu salud íntima. La frecuencia puede variar según edad, antecedentes, síntomas y criterio médico.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20un%20turno%20de%20control%20ginecol%C3%B3gico." target="_blank" rel="noopener">Solicitar turno</a>
+          </article>
 
-      <article class="blog-card reveal" data-cat="dermatologia" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Dermatología</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Acné adulto: por qué aparece después de los 25</h3>
-          <p class="blog-what">Por qué puede aparecer acné en adultos, qué factores influyen y cuándo consultar con dermatología.</p>
-          <p class="blog-quick">El acné adulto es frecuente y puede estar relacionado con hormonas, estrés, cosméticos, genética, alimentación, ciclo menstrual u otras condiciones médicas.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20por%20acn%C3%A9." target="_blank" rel="noopener">Pedir consulta</a>
-        </div>
-      </article>
+          <article class="blog2-card reveal" data-cat="ginecologia">
+            <div class="blog2-card-tag">Ginecología</div>
+            <h3 class="blog2-card-title">PAP y videocolposcopía: diferencias y cuándo hacerlos</h3>
+            <p class="blog2-card-what">Qué diferencia al PAP de la videocolposcopía, para qué sirve cada estudio y por qué pueden complementarse.</p>
+            <p class="blog2-card-quick">El PAP analiza células del cuello uterino, mientras que la videocolposcopía permite observarlo con aumento para detectar posibles alteraciones. Ambos son simples y muy importantes.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20un%20turno%20para%20PAP%20o%20videocolposcop%C3%ADa." target="_blank" rel="noopener">Solicitar turno</a>
+          </article>
 
-      <article class="blog-card reveal" data-cat="dermatologia" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Dermatología</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Piel sensible: cuidados básicos y cuándo consultar</h3>
-          <p class="blog-what">Cómo cuidar una piel sensible, qué hábitos pueden irritarla y cuándo conviene consultar un profesional.</p>
-          <p class="blog-quick">La piel sensible puede reaccionar con ardor, enrojecimiento, picazón o tirantez. Una rutina simple y bien indicada puede ayudar más que usar muchos productos.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20por%20piel%20sensible." target="_blank" rel="noopener">Consultar por mi piel</a>
-        </div>
-      </article>
+          <article class="blog2-card reveal" data-cat="ginecologia">
+            <div class="blog2-card-tag">Ginecología</div>
+            <h3 class="blog2-card-title">HPV: síntomas, controles y cuándo consultar</h3>
+            <p class="blog2-card-what">Qué es el HPV, por qué puede no dar síntomas y qué controles ayudan a detectarlo y hacer seguimiento.</p>
+            <p class="blog2-card-quick">El HPV es muy frecuente y muchas veces no presenta síntomas. Los controles ginecológicos regulares son fundamentales para la prevención y el seguimiento.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20sobre%20HPV%20y%20controles." target="_blank" rel="noopener">Pedir consulta</a>
+          </article>
 
-      <article class="blog-card reveal" data-cat="estetica" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Estética & Láser</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Depilación definitiva: cómo prepararte para tu sesión</h3>
-          <p class="blog-what">Cómo prepararte para una sesión de depilación definitiva y qué cuidados tener antes del tratamiento.</p>
-          <p class="blog-quick">Antes de una sesión de depilación definitiva, suele recomendarse evitar el sol, no arrancar el pelo de raíz y seguir las indicaciones del equipo profesional.</p>
-          <a class="blog-more btn" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">Consultar por depilación</a>
-        </div>
-      </article>
+          <article class="blog2-card reveal" data-cat="ginecologia">
+            <div class="blog2-card-tag">Ginecología</div>
+            <h3 class="blog2-card-title">Flujo vaginal: cuándo es normal y cuándo consultar</h3>
+            <p class="blog2-card-what">Qué cambios en el flujo conviene observar y en qué situaciones es recomendable una consulta ginecológica.</p>
+            <p class="blog2-card-quick">El flujo vaginal puede variar durante el ciclo, pero si aparece olor fuerte, picazón, ardor, dolor o cambio marcado de color, conviene consultar.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20una%20consulta%20ginecol%C3%B3gica." target="_blank" rel="noopener">Solicitar turno</a>
+          </article>
 
-      <article class="blog-card reveal" data-cat="estetica" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Estética & Láser</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">¿Cuántas sesiones de depilación definitiva necesito?</h3>
-          <p class="blog-what">Cuántas sesiones suelen necesitarse, qué factores influyen en los resultados y por qué importa la constancia.</p>
-          <p class="blog-quick">La cantidad de sesiones varía según la zona, el tipo de piel, el tipo de pelo, factores hormonales y la respuesta individual al tratamiento.</p>
-          <a class="blog-more btn" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">Evaluar mi caso</a>
-        </div>
-      </article>
+          <article class="blog2-card reveal" data-cat="ginecologia">
+            <div class="blog2-card-tag">Ginecología</div>
+            <h3 class="blog2-card-title">Dolor menstrual fuerte: causas y señales de alerta</h3>
+            <p class="blog2-card-what">Cuándo el dolor menstrual puede ser esperable, cuándo deja de ser normal y qué señales indican consultar.</p>
+            <p class="blog2-card-quick">Un poco de molestia menstrual puede ser frecuente, pero el dolor intenso, incapacitante o que empeora con el tiempo no debería naturalizarse.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20por%20dolor%20menstrual." target="_blank" rel="noopener">Pedir consulta</a>
+          </article>
 
-      <article class="blog-card reveal" data-cat="estetica" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Estética & Láser</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Luz pulsada: para qué sirve y cuándo puede ayudar</h3>
-          <p class="blog-what">Qué es la luz pulsada, en qué casos puede indicarse y por qué es importante una evaluación previa.</p>
-          <p class="blog-quick">La luz pulsada (IPL) puede utilizarse para manchas, rojeces, textura irregular o signos de fotoenvejecimiento, según evaluación profesional.</p>
-          <a class="blog-more btn" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">Consultar por luz pulsada</a>
-        </div>
-      </article>
+          <article class="blog2-card reveal" data-cat="ginecologia">
+            <div class="blog2-card-tag">Ginecología</div>
+            <h3 class="blog2-card-title">Circuito ginecológico: qué estudios incluye y cómo funciona</h3>
+            <p class="blog2-card-what">Qué es un circuito ginecológico, qué estudios puede incluir y por qué permite un control más organizado.</p>
+            <p class="blog2-card-quick">El circuito ginecológico es una forma práctica de realizar consulta, estudios y seguimiento dentro de un recorrido coordinado, según la indicación médica de cada paciente.</p>
+            <a class="btn-outline blog2-card-btn" href="circuito.html">Conocer el circuito</a>
+          </article>
 
-      <article class="blog-card reveal" data-cat="estetica" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Estética & Láser</span>
         </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Láser CO₂: qué es, para qué sirve y cuidados posteriores</h3>
-          <p class="blog-what">Qué es el láser CO₂, en qué casos puede utilizarse y qué cuidados requiere antes y después del procedimiento.</p>
-          <p class="blog-quick">El láser CO₂ puede indicarse en casos de cicatrices, textura irregular, lesiones específicas o rejuvenecimiento cutáneo, siempre según evaluación profesional.</p>
-          <a class="blog-more btn" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">Consultar por láser CO₂</a>
-        </div>
-      </article>
+      </div>
 
-      <article class="blog-card reveal" data-cat="nutricion" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Nutrición</span>
+      <!-- CTA Circuito -->
+      <div class="blog2-cta-mid">
+        <div class="blog2-cta-mid-inner">
+          <p class="blog2-cta-mid-text">¿Querés hacer tu control ginecológico completo en un solo lugar?</p>
+          <a class="btn" href="circuito.html">Ver el Circuito Ginecológico</a>
         </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Comer mejor sin hacer una dieta extrema</h3>
-          <p class="blog-what">Cómo empezar a mejorar la alimentación sin restricciones extremas y qué hábitos simples pueden ayudarte.</p>
-          <p class="blog-quick">Comer mejor no tiene que ser sinónimo de pasar hambre o prohibirse todo. Muchas veces, el primer paso es ordenar hábitos y armar un plan posible para tu rutina.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20un%20turno%20con%20nutrici%C3%B3n." target="_blank" rel="noopener">Solicitar turno</a>
-        </div>
-      </article>
+      </div>
 
-      <article class="blog-card reveal" data-cat="nutricion" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Nutrición</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Hambre constante: posibles causas y cómo abordarla</h3>
-          <p class="blog-what">Por qué podés sentir hambre todo el día, qué hábitos pueden influir y cuándo consultar con un profesional.</p>
-          <p class="blog-quick">Tener hambre todo el día no siempre es falta de voluntad. Puede relacionarse con comidas poco completas, mal descanso, estrés, ansiedad, hábitos desordenados o factores hormonales.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20con%20nutrici%C3%B3n%20por%20hambre%20constante." target="_blank" rel="noopener">Ordenar mi alimentación</a>
-        </div>
-      </article>
+      <!-- Dermatología -->
+      <div class="blog2-block" id="block-dermatologia">
+        <h2 class="blog2-block-title"><span class="blog2-block-dot" style="background:#2e86ab"></span>Dermatología</h2>
+        <div class="blog2-grid">
 
-      <article class="blog-card reveal" data-cat="nutricion" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Nutrición</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Cómo organizar tus comidas si tenés poco tiempo</h3>
-          <p class="blog-what">Estrategias prácticas para comer mejor cuando la rutina está llena y el tiempo es escaso.</p>
-          <p class="blog-quick">La clave no siempre es cocinar más, sino decidir mejor antes de tener hambre. Una mínima organización puede ayudarte a comer mejor durante la semana.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20un%20turno%20con%20nutrici%C3%B3n." target="_blank" rel="noopener">Solicitar turno con nutrición</a>
-        </div>
-      </article>
+          <article class="blog2-card reveal" data-cat="dermatologia">
+            <div class="blog2-card-tag" style="--tag-color:#2e86ab">Dermatología</div>
+            <h3 class="blog2-card-title">Control de lunares: cuándo consultar con dermatología</h3>
+            <p class="blog2-card-what">Qué cambios en los lunares conviene observar y por qué el control periódico de la piel es importante.</p>
+            <p class="blog2-card-quick">Si un lunar cambia de forma, color, tamaño, bordes, pica, sangra o aparece una lesión nueva que te llama la atención, conviene hacer una consulta dermatológica.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20un%20turno%20dermatol%C3%B3gico%20para%20control%20de%20lunares." target="_blank" rel="noopener">Solicitar turno</a>
+          </article>
 
-      <article class="blog-card reveal" data-cat="endocrinologia" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Endocrinología</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Tiroides: síntomas frecuentes y cuándo consultar</h3>
-          <p class="blog-what">Qué síntomas pueden estar relacionados con la tiroides y por qué es importante evaluar el cuadro completo.</p>
-          <p class="blog-quick">La tiroides puede influir en energía, peso, piel, pelo, ánimo, ciclo menstrual y metabolismo. Si hay síntomas persistentes, conviene consultar.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20con%20endocrinolog%C3%ADa%20sobre%20tiroides." target="_blank" rel="noopener">Consultar con endocrinología</a>
-        </div>
-      </article>
+          <article class="blog2-card reveal" data-cat="dermatologia">
+            <div class="blog2-card-tag" style="--tag-color:#2e86ab">Dermatología</div>
+            <h3 class="blog2-card-title">Manchas en la cara: causas y tratamientos posibles</h3>
+            <p class="blog2-card-what">Por qué pueden aparecer manchas en la cara, qué factores las empeoran y por qué evaluarlas antes de tratar.</p>
+            <p class="blog2-card-quick">Las manchas pueden aparecer por sol, cambios hormonales, acné, embarazo o anticonceptivos. No todos los tratamientos sirven para todos los tipos de manchas.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20por%20manchas%20en%20la%20cara." target="_blank" rel="noopener">Consultar por manchas</a>
+          </article>
 
-      <article class="blog-card reveal" data-cat="endocrinologia" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Endocrinología</span>
-        </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Resistencia a la insulina: qué significa y cuándo evaluarla</h3>
-          <p class="blog-what">Qué es la resistencia a la insulina, qué señales pueden aparecer y cómo puede abordarse de forma integral.</p>
-          <p class="blog-quick">La resistencia a la insulina ocurre cuando el cuerpo necesita producir más insulina para lograr el mismo efecto. Detectarla a tiempo puede ayudar a prevenir complicaciones.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20sobre%20resistencia%20a%20la%20insulina." target="_blank" rel="noopener">Evaluar mi metabolismo</a>
-        </div>
-      </article>
+          <article class="blog2-card reveal" data-cat="dermatologia">
+            <div class="blog2-card-tag" style="--tag-color:#2e86ab">Dermatología</div>
+            <h3 class="blog2-card-title">Acné adulto: por qué aparece después de los 25</h3>
+            <p class="blog2-card-what">Por qué puede aparecer acné en adultos, qué factores influyen y cuándo consultar con dermatología.</p>
+            <p class="blog2-card-quick">El acné adulto es frecuente y puede estar relacionado con hormonas, estrés, cosméticos, genética, alimentación, ciclo menstrual u otras condiciones médicas.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20por%20acn%C3%A9%20adulto." target="_blank" rel="noopener">Pedir consulta</a>
+          </article>
 
-      <article class="blog-card reveal" data-cat="endocrinologia" itemscope itemtype="https://schema.org/Article">
-        <div class="blog-img blog-img--placeholder">
-          <span class="blog-tag">Endocrinología</span>
+          <article class="blog2-card reveal" data-cat="dermatologia">
+            <div class="blog2-card-tag" style="--tag-color:#2e86ab">Dermatología</div>
+            <h3 class="blog2-card-title">Piel sensible: cuidados básicos y cuándo consultar</h3>
+            <p class="blog2-card-what">Cómo cuidar una piel sensible, qué hábitos pueden irritarla y cuándo conviene consultar un profesional.</p>
+            <p class="blog2-card-quick">La piel sensible puede reaccionar con ardor, enrojecimiento, picazón o tirantez. Una rutina simple y bien indicada puede ayudar más que usar muchos productos.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20por%20piel%20sensible." target="_blank" rel="noopener">Consultar por mi piel</a>
+          </article>
+
         </div>
-        <div class="blog-body">
-          <h3 itemprop="headline">Síndrome de ovario poliquístico: síntomas y seguimiento</h3>
-          <p class="blog-what">Qué es el SOP, qué síntomas puede generar y por qué muchas veces requiere un abordaje integral.</p>
-          <p class="blog-quick">El síndrome de ovario poliquístico puede afectar el ciclo menstrual, la piel, el metabolismo y las hormonas. No todas las personas presentan los mismos síntomas.</p>
-          <a class="blog-more btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20sobre%20SOP." target="_blank" rel="noopener">Reservar consulta</a>
+      </div>
+
+      <!-- Estética -->
+      <div class="blog2-block" id="block-estetica">
+        <h2 class="blog2-block-title"><span class="blog2-block-dot" style="background:#8a1560"></span>Estética & Láser</h2>
+        <div class="blog2-grid">
+
+          <article class="blog2-card reveal" data-cat="estetica">
+            <div class="blog2-card-tag" style="--tag-color:#8a1560">Estética</div>
+            <h3 class="blog2-card-title">Depilación definitiva: cómo prepararte para tu sesión</h3>
+            <p class="blog2-card-what">Cómo prepararte para una sesión de depilación definitiva y qué cuidados tener antes del tratamiento.</p>
+            <p class="blog2-card-quick">Antes de una sesión de depilación definitiva, suele recomendarse evitar el sol, no arrancar el pelo de raíz y seguir las indicaciones del equipo profesional.</p>
+            <a class="btn-outline blog2-card-btn" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">Consultar por depilación</a>
+          </article>
+
+          <article class="blog2-card reveal" data-cat="estetica">
+            <div class="blog2-card-tag" style="--tag-color:#8a1560">Estética</div>
+            <h3 class="blog2-card-title">¿Cuántas sesiones de depilación definitiva necesito?</h3>
+            <p class="blog2-card-what">Cuántas sesiones suelen necesitarse, qué factores influyen en los resultados y por qué importa la constancia.</p>
+            <p class="blog2-card-quick">La cantidad de sesiones varía según la zona, el tipo de piel, el tipo de pelo, factores hormonales y la respuesta individual al tratamiento.</p>
+            <a class="btn-outline blog2-card-btn" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">Evaluar mi caso</a>
+          </article>
+
+          <article class="blog2-card reveal" data-cat="estetica">
+            <div class="blog2-card-tag" style="--tag-color:#8a1560">Estética</div>
+            <h3 class="blog2-card-title">Luz pulsada: para qué sirve y cuándo puede ayudar</h3>
+            <p class="blog2-card-what">Qué es la luz pulsada, en qué casos puede indicarse y por qué es importante una evaluación previa.</p>
+            <p class="blog2-card-quick">La luz pulsada (IPL) puede utilizarse para manchas, rojeces, textura irregular o signos de fotoenvejecimiento, según evaluación profesional.</p>
+            <a class="btn-outline blog2-card-btn" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">Consultar por luz pulsada</a>
+          </article>
+
+          <article class="blog2-card reveal" data-cat="estetica">
+            <div class="blog2-card-tag" style="--tag-color:#8a1560">Estética</div>
+            <h3 class="blog2-card-title">Láser CO₂: qué es, para qué sirve y cuidados posteriores</h3>
+            <p class="blog2-card-what">Qué es el láser CO₂, en qué casos puede utilizarse y qué cuidados requiere antes y después del procedimiento.</p>
+            <p class="blog2-card-quick">El láser CO₂ puede indicarse en casos de cicatrices, textura irregular, lesiones específicas o rejuvenecimiento cutáneo, siempre según evaluación profesional.</p>
+            <a class="btn-outline blog2-card-btn" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">Consultar por láser CO₂</a>
+          </article>
+
         </div>
-      </article>
+      </div>
+
+      <!-- Nutrición -->
+      <div class="blog2-block" id="block-nutricion">
+        <h2 class="blog2-block-title"><span class="blog2-block-dot" style="background:#4a8c3f"></span>Nutrición</h2>
+        <div class="blog2-grid">
+
+          <article class="blog2-card reveal" data-cat="nutricion">
+            <div class="blog2-card-tag" style="--tag-color:#4a8c3f">Nutrición</div>
+            <h3 class="blog2-card-title">Comer mejor sin hacer una dieta extrema</h3>
+            <p class="blog2-card-what">Cómo empezar a mejorar la alimentación sin restricciones extremas y qué hábitos simples pueden ayudarte.</p>
+            <p class="blog2-card-quick">Comer mejor no tiene que ser sinónimo de pasar hambre o prohibirse todo. Muchas veces, el primer paso es ordenar hábitos y armar un plan posible para tu rutina.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20un%20turno%20con%20nutrici%C3%B3n." target="_blank" rel="noopener">Solicitar turno</a>
+          </article>
+
+          <article class="blog2-card reveal" data-cat="nutricion">
+            <div class="blog2-card-tag" style="--tag-color:#4a8c3f">Nutrición</div>
+            <h3 class="blog2-card-title">Hambre constante: posibles causas y cómo abordarla</h3>
+            <p class="blog2-card-what">Por qué podés sentir hambre todo el día, qué hábitos pueden influir y cuándo consultar con un profesional.</p>
+            <p class="blog2-card-quick">Tener hambre todo el día no siempre es falta de voluntad. Puede relacionarse con comidas poco completas, mal descanso, estrés, ansiedad, hábitos desordenados o factores hormonales.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20con%20nutrici%C3%B3n." target="_blank" rel="noopener">Ordenar mi alimentación</a>
+          </article>
+
+          <article class="blog2-card reveal" data-cat="nutricion">
+            <div class="blog2-card-tag" style="--tag-color:#4a8c3f">Nutrición</div>
+            <h3 class="blog2-card-title">Cómo organizar tus comidas si tenés poco tiempo</h3>
+            <p class="blog2-card-what">Estrategias prácticas para comer mejor cuando la rutina está llena y el tiempo es escaso.</p>
+            <p class="blog2-card-quick">La clave no siempre es cocinar más, sino decidir mejor antes de tener hambre. Una mínima organización puede ayudarte a comer mejor durante la semana.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20un%20turno%20con%20nutrici%C3%B3n." target="_blank" rel="noopener">Solicitar turno con nutrición</a>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Endocrinología -->
+      <div class="blog2-block" id="block-endocrinologia">
+        <h2 class="blog2-block-title"><span class="blog2-block-dot" style="background:#e07b39"></span>Endocrinología</h2>
+        <div class="blog2-grid">
+
+          <article class="blog2-card reveal" data-cat="endocrinologia">
+            <div class="blog2-card-tag" style="--tag-color:#e07b39">Endocrinología</div>
+            <h3 class="blog2-card-title">Tiroides: síntomas frecuentes y cuándo consultar</h3>
+            <p class="blog2-card-what">Qué síntomas pueden estar relacionados con la tiroides y por qué es importante evaluar el cuadro completo.</p>
+            <p class="blog2-card-quick">La tiroides puede influir en energía, peso, piel, pelo, ánimo, ciclo menstrual y metabolismo. Si hay síntomas persistentes, conviene consultar.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20con%20endocrinolog%C3%ADa." target="_blank" rel="noopener">Consultar con endocrinología</a>
+          </article>
+
+          <article class="blog2-card reveal" data-cat="endocrinologia">
+            <div class="blog2-card-tag" style="--tag-color:#e07b39">Endocrinología</div>
+            <h3 class="blog2-card-title">Resistencia a la insulina: qué significa y cuándo evaluarla</h3>
+            <p class="blog2-card-what">Qué es la resistencia a la insulina, qué señales pueden aparecer y cómo puede abordarse de forma integral.</p>
+            <p class="blog2-card-quick">La resistencia a la insulina ocurre cuando el cuerpo necesita producir más insulina para lograr el mismo efecto. Detectarla a tiempo puede ayudar a prevenir complicaciones.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20sobre%20resistencia%20a%20la%20insulina." target="_blank" rel="noopener">Evaluar mi metabolismo</a>
+          </article>
+
+          <article class="blog2-card reveal" data-cat="endocrinologia">
+            <div class="blog2-card-tag" style="--tag-color:#e07b39">Endocrinología</div>
+            <h3 class="blog2-card-title">Síndrome de ovario poliquístico: síntomas y seguimiento</h3>
+            <p class="blog2-card-what">Qué es el SOP, qué síntomas puede generar y por qué muchas veces requiere un abordaje integral.</p>
+            <p class="blog2-card-quick">El síndrome de ovario poliquístico puede afectar el ciclo menstrual, la piel, el metabolismo y las hormonas. No todas las personas presentan los mismos síntomas.</p>
+            <a class="btn-outline blog2-card-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20sobre%20SOP." target="_blank" rel="noopener">Reservar consulta</a>
+          </article>
+
+        </div>
+      </div>
 
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="blog2-cta-final">
+    <div class="wrap blog2-cta-final-inner">
+      <h2 class="blog2-cta-final-title">¿Tenés dudas o querés consultar con un profesional?</h2>
+      <p class="blog2-cta-final-sub">El equipo de CGAP está disponible para orientarte, responder preguntas y ayudarte a encontrar el profesional adecuado para tu caso.</p>
+      <div class="blog2-cta-final-btns">
+        <a class="btn" href="https://wa.me/5493515079642?text=Hola%2C%20vi%20el%20blog%20y%20quisiera%20consultar." target="_blank" rel="noopener">Escribirnos por WhatsApp</a>
+        <a class="btn-ghost" href="circuito.html">Ver el Circuito Ginecológico</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section class="blog2-disclaimer">
+    <div class="wrap">
+      <p><strong>Aviso informativo:</strong> El contenido de este blog tiene carácter exclusivamente informativo y no reemplaza la consulta médica profesional. Ante cualquier síntoma o duda, consultá con un profesional de la salud.</p>
+    </div>
+  </section>
 
 </main>
 
-<a class="wa-float" href="https://wa.me/5493515079642" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1.1 2.7s1.9 2.9 4.6 4c1.7.7 2.3.8 3.1.7.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1z"/></svg></a>
+
 <footer>
   <div class="wrap">
     <a class="logo" href="index.html"><img src="data:image/png;base64,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" alt="CGAP · Centro Integral para la Mujer"></a>
@@ -321,22 +347,32 @@
 </footer>
 <script src="app.js?v=39"></script>
 <script>
-  const mainCats = ['ginecologia','dermatologia','estetica','nutricion','endocrinologia'];
-  const chips = document.querySelectorAll('.blog-chip');
-  chips.forEach(chip => {
+  // Filter chips
+  const chips2 = document.querySelectorAll('.blog2-chip');
+  const blocks = document.querySelectorAll('.blog2-block');
+  const ctaMid = document.querySelector('.blog2-cta-mid');
+
+  chips2.forEach(chip => {
     chip.addEventListener('click', () => {
-      chips.forEach(c => c.classList.remove('active'));
+      chips2.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       const cat = chip.dataset.cat;
-      document.querySelectorAll('.blog-card').forEach(card => {
-        let show;
-        if (cat === 'all') show = true;
-        else if (cat === 'mas') show = !mainCats.includes(card.dataset.cat);
-        else show = card.dataset.cat === cat;
+
+      document.querySelectorAll('.blog2-card').forEach(card => {
+        const show = cat === 'all' || card.dataset.cat === cat;
         card.style.display = show ? '' : 'none';
       });
+
+      blocks.forEach(block => {
+        const blockCat = block.id.replace('block-', '');
+        const visible = cat === 'all' || blockCat === cat;
+        block.style.display = visible ? '' : 'none';
+      });
+
+      if (ctaMid) ctaMid.style.display = (cat === 'all' || cat === 'ginecologia') ? '' : 'none';
     });
   });
 </script>
+
 </body>
 </html>
