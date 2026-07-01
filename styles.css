@@ -772,3 +772,77 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 .circ-new-hero h1{font-size:clamp(3.5rem,8vw,7rem);line-height:1;letter-spacing:-.03em;color:var(--plum);margin:.8rem 0 1.4rem}
 .circ-new-hero h1 em{color:var(--magenta);font-style:italic}
 .circ-new-hero p{font-size:1.15rem;color:var(--muted);max-width:50ch;margin:0 auto 2rem;line-height:1.65}
+
+/* ══════════════════════════════
+   CIRCUITO v2
+══════════════════════════════ */
+
+/* Hero */
+.circ2-hero{
+  min-height:calc(88vh - 92px);
+  background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%);
+  display:flex;align-items:center;padding:80px 24px;
+}
+.circ2-hero-inner{text-align:center;display:flex;flex-direction:column;align-items:center;gap:0}
+.circ2-hero-inner .eyebrow{margin-bottom:1.2rem}
+.circ2-hero-inner h1{font-size:clamp(2.4rem,6vw,5.5rem);line-height:1.05;letter-spacing:-.03em;color:var(--plum);margin:0 0 1.4rem}
+.circ2-hero-inner h1 em{color:var(--magenta);font-style:italic}
+.circ2-hero-sub{font-size:1.05rem;color:var(--muted);line-height:1.7;max-width:660px;margin:0 0 2rem}
+.circ2-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.circ2-disclaimer{margin-top:1.6rem;font-size:.8rem;color:var(--muted);opacity:.75;max-width:520px;line-height:1.5}
+
+/* ghost button para circuito */
+.circ2-hero .btn-ghost,.circ2-cta-final .btn-ghost{
+  background:transparent;border:1.5px solid var(--magenta);color:var(--magenta);box-shadow:none;
+}
+.circ2-hero .btn-ghost:hover,.circ2-cta-final .btn-ghost:hover{background:rgba(173,30,119,.06)}
+
+/* Qué incluye */
+.circ2-include{background:#fff;padding:88px 24px}
+.circ2-cards{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:48px;
+}
+.circ2-card{
+  background:var(--blush-soft);border-radius:16px;padding:28px 20px 24px;
+  text-align:center;border:1px solid var(--line);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.circ2-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(173,30,119,.1)}
+.circ2-card-icon{font-size:2rem;margin-bottom:14px;line-height:1}
+.circ2-card h3{font-family:'Fraunces',serif;font-size:1rem;color:var(--plum);margin:0 0 8px;line-height:1.3}
+.circ2-card p{font-size:.83rem;color:var(--muted);line-height:1.6;margin:0}
+@media(max-width:900px){.circ2-cards{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:580px){.circ2-cards{grid-template-columns:1fr 1fr}}
+
+/* Cómo funciona */
+.circ2-how{background:var(--cream);padding:88px 24px}
+.circ2-steps{display:flex;flex-direction:column;gap:0;max-width:680px;margin:48px auto 0}
+.circ2-step{display:flex;gap:24px;align-items:flex-start}
+.circ2-step-num{
+  flex-shrink:0;width:44px;height:44px;border-radius:50%;
+  background:var(--magenta);color:#fff;
+  font-family:'Fraunces',serif;font-size:1.2rem;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 12px rgba(173,30,119,.25);
+}
+.circ2-step-body{padding-top:8px}
+.circ2-step-body h3{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--plum);margin:0 0 6px}
+.circ2-step-body p{font-size:.9rem;color:var(--muted);line-height:1.7;margin:0}
+.circ2-step-divider{
+  width:2px;height:36px;
+  background:linear-gradient(to bottom,var(--magenta),rgba(173,30,119,.2));
+  margin:8px 0 8px 21px;
+}
+
+/* Confianza */
+.circ2-trust{background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%);padding:88px 24px}
+.circ2-trust-inner{max-width:640px;margin:0 auto;text-align:center}
+.circ2-trust-icon{font-size:1.8rem;color:var(--magenta);margin-bottom:20px;display:block}
+.circ2-trust-inner h2{font-size:clamp(1.6rem,3.5vw,2.6rem);color:var(--plum);margin:0 0 1.2rem;line-height:1.2}
+.circ2-trust-inner p{font-size:.97rem;color:var(--muted);line-height:1.8;margin:0}
+
+/* CTA final */
+.circ2-cta-final{background:#fff;padding:88px 24px;border-top:1px solid var(--line)}
+.circ2-cta-final-inner{max-width:580px;margin:0 auto;text-align:center}
+.circ2-cta-final-inner h2{font-size:clamp(1.6rem,3vw,2.4rem);color:var(--plum);margin:0 0 1rem;line-height:1.2}
+.circ2-cta-final-inner p{font-size:.95rem;color:var(--muted);line-height:1.7;margin:0 0 2rem}
