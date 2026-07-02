@@ -1325,9 +1325,9 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 .nos2-hero{padding:72px 24px 64px;background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%)}
 .nos2-hero-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:56px;align-items:center;
-  max-width:1080px;margin:0 auto;
+  grid-template-columns:1fr 1.3fr;
+  gap:48px;align-items:center;
+  max-width:1100px;margin:0 auto;
 }
 .nos2-hero-text h1{
   font-family:'Fraunces',serif;
