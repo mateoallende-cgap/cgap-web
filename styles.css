@@ -391,7 +391,7 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 .os-chip{background:#fff;border:1px solid var(--line);color:var(--plum);font-weight:600;font-size:.95rem;padding:.6rem 1.2rem;border-radius:100px;box-shadow:var(--shadow-sm);transition:transform .2s,border-color .2s,color .2s}
 .os-chip:hover{transform:translateY(-2px);border-color:var(--magenta);color:var(--magenta)}
 .os-chip-logo{padding:.8rem 1.2rem;display:inline-flex;align-items:center;justify-content:center;border-radius:18px}
-.os-chip-logo img{height:64px;width:auto;display:block}
+.os-chip-logo img{height:52px;width:auto;display:block}
 /* ===== FAQ ===== */
 #faq{background:var(--cream);position:relative;overflow:hidden}
 .faq-blob{position:absolute;border-radius:50%;pointer-events:none}
