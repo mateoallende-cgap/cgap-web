@@ -132,7 +132,7 @@ section{padding:80px 0}
 .ticker-track span{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--plum);white-space:nowrap;padding:0 1.8rem}
 .ticker-dot{color:var(--magenta) !important;padding:0 !important;font-size:.6rem !important;letter-spacing:0 !important}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.ticker-estetica{background:#F5E6D8;border-top:none}
+.ticker-estetica{background:#f5cde8;border-top:none}
 .ticker-estetica .ticker-track span{color:var(--plum)}
 .ticker-estetica .ticker-dot{color:var(--magenta) !important}
 
