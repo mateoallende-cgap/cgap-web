@@ -1322,7 +1322,7 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
    ================================================ */
 
 /* Hero */
-.nos2-hero{padding:40px 0 0;background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%)}
+.nos2-hero{padding:40px 0;background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%)}
 .nos2-hero-grid{
   display:grid;
   grid-template-columns:1fr 1.3fr;
