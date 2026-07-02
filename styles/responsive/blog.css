@@ -1,8 +1,0 @@
-/* ============================================================
-   CGAP · Responsive Blog & Tips (blog.html)
-   ============================================================ */
-@media(max-width:768px){
-  .blog2-featured-grid{grid-template-columns:1fr}
-  .blog2-cta-mid-inner{flex-direction:column;text-align:center}
-  .blog2-inst-inner{flex-direction:column;gap:12px}
-}

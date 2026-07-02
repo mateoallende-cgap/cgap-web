@@ -1,5 +1,0 @@
-/* ============================================================
-   CGAP · Responsive Circuito Ginecológico (circuito.html)
-   ============================================================ */
-@media(max-width:900px){.circ2-cards{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:580px){.circ2-cards{grid-template-columns:1fr 1fr}}

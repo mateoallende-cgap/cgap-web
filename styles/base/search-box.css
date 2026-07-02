@@ -1,6 +1,0 @@
-/* ===== BUSCADOR (prácticas/profesionales) ===== */
-.search-box{display:flex;align-items:center;gap:.6rem;background:#fff;border:1px solid var(--line);border-radius:100px;padding:.55rem 1.1rem;max-width:520px;margin-top:1.4rem;box-shadow:var(--shadow-sm)}
-.search-box svg{width:20px;height:20px;color:var(--muted);flex:none}
-.search-box input{flex:1;border:none;outline:none;font-family:inherit;font-size:.98rem;color:var(--text);background:transparent}
-.search-box .clear{border:none;background:none;color:var(--muted);font-size:1.3rem;cursor:pointer;line-height:1;display:none}
-.search-box .clear.show{display:block}
