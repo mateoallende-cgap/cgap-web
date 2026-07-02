@@ -1,0 +1,8 @@
+/* ===== FILTROS (chips) ===== */
+.filtros{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:8px}
+.filtros .lbl{font-size:.82rem;font-weight:700;color:var(--muted);margin-right:.3rem}
+.chip{border:1.5px solid var(--line);background:#fff;color:var(--text);font-family:inherit;font-weight:600;font-size:.85rem;padding:.45rem 1rem;border-radius:100px;cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--magenta);color:var(--magenta)}
+.chip.active{background:var(--magenta);border-color:var(--magenta);color:#fff}
+
+.result-count{font-size:.9rem;color:var(--muted);margin:18px 0}

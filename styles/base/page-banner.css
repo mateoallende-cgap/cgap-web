@@ -1,0 +1,8 @@
+/* ===== PAGE BANNER (páginas internas) ===== */
+.page-banner{position:relative;background:linear-gradient(135deg,var(--magenta),var(--magenta-dark));color:#fff;padding:64px 0 58px;overflow:hidden}
+.page-banner::after{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border:1.5px solid rgba(255,255,255,.16);border-radius:50%}
+.page-banner .wrap{position:relative;z-index:1}
+.page-banner h1{color:#fff;font-size:clamp(2.2rem,5vw,3.4rem)}
+.page-banner p{color:rgba(255,255,255,.9);margin-top:.6rem;max-width:60ch;font-size:1.05rem}
+.crumbs{font-size:.82rem;color:rgba(255,255,255,.75);margin-bottom:1rem;font-weight:600;letter-spacing:.04em}
+.crumbs a:hover{color:#fff;text-decoration:underline}

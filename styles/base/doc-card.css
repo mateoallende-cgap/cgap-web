@@ -1,0 +1,9 @@
+/* ===== TARJETA PROFESIONAL (doc-card) ===== */
+.doc-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-align:center;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.doc-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.doc-photo{height:170px;background:linear-gradient(160deg,var(--blush),#f7d4e8);display:grid;place-items:center}
+.doc-photo span{font-family:'Fraunces',serif;font-size:2.4rem;color:var(--magenta);font-weight:600}
+.doc-card h3{font-size:1.05rem;margin:1rem 1rem .15rem}
+.doc-card .esp{color:var(--magenta);font-weight:700;font-size:.85rem}
+.doc-card .hor{display:inline-block;font-size:.78rem;color:var(--muted);margin:.5rem 0 1.2rem;text-transform:capitalize}
+.car-track .doc-card{scroll-snap-align:start;flex:0 0 240px}

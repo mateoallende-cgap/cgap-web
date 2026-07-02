@@ -1,0 +1,159 @@
+/* ============================================================
+   CGAP · Especialidades / Prácticas (practicas.html)
+   ============================================================ */
+
+/* grilla de prácticas (contenido inyectado por js/practicas.js) */
+.prac-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.prac-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem 1.5rem;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .2s;display:flex;flex-direction:column;gap:.5rem}
+.prac-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--blush)}
+.prac-card .tag{align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--magenta);background:var(--blush);padding:.25rem .7rem;border-radius:100px}
+.prac-card h3{font-size:1.12rem}
+.prac-card p{font-size:.9rem;color:var(--muted);flex:1}
+.prac-card .ver{font-size:.82rem;font-weight:700;color:var(--magenta)}
+
+/* ================================================
+   PRÁCTICAS v2 (prac2-*)
+   ================================================ */
+
+/* Hero */
+.prac2-hero{
+  background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 55%,#f0d4f5 100%);
+  padding:88px 24px 80px;
+}
+.prac2-hero-inner{max-width:780px;margin:0 auto;text-align:center}
+.prac2-hero-label{
+  display:inline-block;
+  background:rgba(173,30,119,.12);color:var(--magenta);
+  font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:6px 16px;border-radius:100px;margin-bottom:20px;
+}
+.prac2-hero-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2.2rem,5.5vw,3.6rem);
+  color:var(--plum);line-height:1.1;margin:0 0 1.1rem;
+}
+.prac2-hero-sub{font-size:1rem;color:var(--muted);line-height:1.7;margin:0 auto 2rem;max-width:520px}
+.prac2-hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+/* Sección genérica */
+.prac2-section-title{
+  font-family:'Fraunces',serif;font-size:clamp(1.5rem,3vw,2.2rem);
+  color:var(--plum);text-align:center;margin:0 0 12px;
+}
+.prac2-section-sub{
+  text-align:center;color:var(--muted);font-size:.9rem;
+  line-height:1.6;max-width:520px;margin:0 auto 40px;
+}
+
+/* Featured (Más buscadas) */
+.prac2-featured{background:var(--cream);padding:72px 24px}
+.prac2-featured-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:20px;max-width:1100px;margin:0 auto;
+}
+.prac2-fcard{
+  background:#fff;border-radius:20px;
+  border:1px solid var(--line);padding:28px 22px;
+  display:flex;flex-direction:column;gap:10px;
+  transition:box-shadow .2s,transform .2s;
+}
+.prac2-fcard:hover{box-shadow:0 8px 28px rgba(173,30,119,.1);transform:translateY(-3px)}
+.prac2-fcard--highlight{
+  border-color:var(--magenta);
+  background:linear-gradient(145deg,#fff9fd,#fff);
+  box-shadow:0 4px 20px rgba(173,30,119,.1);
+}
+.prac2-fcard-tag{
+  font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--magenta);
+}
+.prac2-fcard-title{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--plum);margin:0;line-height:1.3}
+.prac2-fcard-desc{font-size:.83rem;color:var(--muted);line-height:1.6;margin:0;flex:1}
+.prac2-fcard-tipo{
+  font-size:.72rem;color:#888;font-weight:600;
+  background:var(--blush-soft);border-radius:8px;padding:4px 10px;
+  align-self:flex-start;
+}
+.prac2-fcard-btn{margin-top:6px;align-self:flex-start;font-size:.83rem;padding:10px 20px}
+
+/* ¿No sabés? (mid) */
+.prac2-nosabe{
+  background:var(--plum);padding:52px 24px;
+}
+.prac2-nosabe-inner{
+  max-width:860px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:32px;flex-wrap:wrap;
+}
+.prac2-nosabe-title{
+  font-family:'Fraunces',serif;font-size:clamp(1.4rem,3vw,2rem);
+  color:#fff;margin:0 0 8px;
+}
+.prac2-nosabe-sub{font-size:.92rem;color:rgba(255,255,255,.75);line-height:1.6;margin:0}
+.prac2-nosabe-btn{
+  flex-shrink:0;background:#fff;color:var(--plum);
+  border-radius:100px;padding:14px 28px;
+  font-weight:700;font-size:.9rem;text-decoration:none;
+  transition:all .2s;white-space:nowrap;
+}
+.prac2-nosabe-btn:hover{background:var(--blush);color:var(--plum)}
+
+/* Especialidades */
+.prac2-esp{background:#fff;padding:72px 24px}
+.prac2-esp-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:20px;max-width:1100px;margin:0 auto;
+}
+.prac2-esp-card{
+  background:var(--blush-soft);border:1px solid var(--line);
+  border-radius:18px;padding:28px 22px;
+  display:flex;flex-direction:column;gap:10px;
+  transition:box-shadow .2s,transform .2s;
+}
+.prac2-esp-card:hover{box-shadow:0 6px 20px rgba(173,30,119,.09);transform:translateY(-2px)}
+.prac2-esp-icon{font-size:1.6rem}
+.prac2-esp-card h3{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--plum);margin:0}
+.prac2-esp-card p{font-size:.83rem;color:var(--muted);line-height:1.65;margin:0;flex:1}
+.prac2-esp-tipo{
+  font-size:.72rem;color:#888;font-weight:600;
+  background:#fff;border-radius:8px;padding:4px 10px;
+  align-self:flex-start;border:1px solid var(--line);
+}
+.prac2-esp-btn{margin-top:6px;align-self:flex-start;font-size:.8rem;padding:9px 18px}
+
+/* Catálogo dinámico */
+.prac2-catalog{background:var(--cream);padding:72px 24px}
+.prac2-filter-wrap{margin-bottom:32px}
+.prac2-filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.prac2-chip{
+  padding:9px 20px;border-radius:100px;
+  border:1.5px solid var(--line);background:#fff;
+  font-size:.83rem;font-weight:600;color:var(--muted);
+  cursor:pointer;transition:all .18s;
+}
+.prac2-chip:hover{border-color:var(--magenta);color:var(--magenta)}
+.prac2-chip.active{background:var(--magenta);color:#fff;border-color:var(--magenta)}
+.prac2-catalog-header{
+  display:flex;align-items:baseline;justify-content:space-between;
+  flex-wrap:wrap;gap:8px;margin-bottom:24px;
+}
+.prac2-catalog-title{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--plum);margin:0}
+.prac2-catalog-count{font-size:.85rem;color:var(--muted)}
+.prac2-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:18px;
+}
+
+/* CTA final */
+.prac2-cta-final{background:#fff;padding:64px 24px;border-top:1px solid var(--line);text-align:center;display:flex;justify-content:center}
+.prac2-cta-final-inner{max-width:580px;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center}
+.prac2-cta-final-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(1.6rem,3.5vw,2.6rem);
+  color:var(--plum);margin:0 0 1rem;line-height:1.2;
+}
+.prac2-cta-final-sub{font-size:.95rem;color:var(--muted);line-height:1.7;margin:0 0 2rem}
+.prac2-cta-final-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:2rem}
