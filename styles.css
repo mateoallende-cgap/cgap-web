@@ -58,8 +58,8 @@ img{max-width:100%;display:block}
 .navbar2-nav{background:var(--magenta)}
 .navbar2-nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;justify-content:center}
 .nav-links2{display:flex;gap:0;font-weight:700;font-size:.88rem;letter-spacing:.04em}
-.nav-links2 a{color:rgba(255,255,255,.82);padding:.9rem 1.2rem;display:inline-block;transition:background .2s,color .2s;white-space:nowrap}
-.nav-links2 a:hover,.nav-links2 a.active{color:#fff;background:rgba(255,255,255,.15)}
+.nav-links2 a{color:var(--nav2-color,rgba(255,255,255,.82));padding:.9rem 1.2rem;display:inline-block;transition:background .2s,color .2s;white-space:nowrap}
+.nav-links2 a:hover,.nav-links2 a.active{color:var(--nav2-color-active,#fff);background:var(--nav2-hover-bg,rgba(255,255,255,.15))}
 @media(max-width:768px){
   .navbar2-top-inner{padding:0 20px;height:78px}
   .navbar2-logo img{height:62px}
