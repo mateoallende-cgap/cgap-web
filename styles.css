@@ -1322,12 +1322,12 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
    ================================================ */
 
 /* Hero */
-.nos2-hero{padding:72px 24px 64px;background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%)}
+.nos2-hero{padding:40px 0 0;background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%)}
 .nos2-hero-grid{
   display:grid;
   grid-template-columns:1fr 1.3fr;
-  gap:48px;align-items:center;
-  max-width:1100px;margin:0 auto;
+  gap:40px;align-items:center;
+  max-width:1200px;margin:0 auto;padding:0 24px;
 }
 .nos2-hero-text h1{
   font-family:'Fraunces',serif;
