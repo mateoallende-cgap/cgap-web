@@ -1217,11 +1217,11 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 .est-hero-wa{
   display:inline-flex;align-items:center;
   padding:.8rem 1.5rem;border-radius:100px;
-  border:2px solid rgba(255,255,255,.6);
+  background:rgba(255,255,255,.18);border:2px solid #fff;
   color:#fff;font-weight:700;font-size:.9rem;
   text-decoration:none;transition:all .2s;
 }
-.est-hero-wa:hover{background:rgba(255,255,255,.15);border-color:#fff}
+.est-hero-wa:hover{background:rgba(255,255,255,.32)}
 
 /* ¿Qué querés mejorar? */
 .est2-mejorar{background:#fff;padding:72px 24px;border-top:1px solid var(--line)}
