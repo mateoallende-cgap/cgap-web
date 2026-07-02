@@ -1,0 +1,94 @@
+/* ================================================
+   CGAP · Nosotros v2 (nos2-*) (nosotros.html)
+   ================================================ */
+
+/* Hero */
+.nos2-hero{padding:40px 0;background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%)}
+.nos2-hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1.3fr;
+  gap:40px;align-items:center;
+  max-width:1200px;margin:0 auto;padding:0 24px;
+}
+.nos2-hero-text h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2rem,4vw,3rem);
+  color:var(--plum);line-height:1.15;margin:0 0 1rem;
+}
+.nos2-hero-text p{font-size:.97rem;color:var(--muted);line-height:1.75;margin:0 0 2rem}
+.nos2-hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.nos2-hero-img-wrap{
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 20px 48px rgba(0,0,0,.12);
+}
+.nos2-hero-img{
+  width:100%;height:auto;
+  display:block;
+  border-radius:20px;
+}
+
+/* Quiénes somos */
+.nos2-quienes{background:#fff;padding:72px 24px}
+.nos2-quienes-inner{
+  max-width:860px;margin:0 auto;
+  display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:flex-start;
+}
+.nos2-quienes-label{display:flex;flex-direction:column;gap:8px;padding-top:6px}
+.nos2-line{display:block;width:2px;height:40px;background:var(--magenta);border-radius:2px}
+.nos2-quienes-title{
+  font-family:'Fraunces',serif;font-size:clamp(1.4rem,3vw,2rem);
+  color:var(--plum);margin:0 0 16px;line-height:1.25;
+}
+.nos2-quienes-text{font-size:.95rem;color:var(--muted);line-height:1.75;margin:0}
+
+/* Stats */
+.nos2-stats{background:var(--plum);padding:56px 24px}
+.nos2-stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:24px;max-width:860px;margin:0 auto;text-align:center;
+}
+.nos2-stat{display:flex;flex-direction:column;gap:6px}
+.nos2-stat-num{
+  font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3rem);
+  color:#fff;font-weight:700;line-height:1;
+}
+.nos2-stat-label{font-size:.82rem;color:rgba(255,255,255,.7);font-weight:500}
+
+/* Historia */
+.nos2-historia{background:var(--cream);padding:72px 24px}
+.nos2-historia-inner{
+  max-width:740px;margin:0 auto;
+  display:flex;gap:24px;align-items:flex-start;
+}
+.nos2-historia-deco{font-size:2rem;flex-shrink:0;margin-top:4px}
+.nos2-historia-title{
+  font-family:'Fraunces',serif;font-size:1.5rem;
+  color:var(--plum);margin:0 0 14px;
+}
+.nos2-historia-text{font-size:.95rem;color:var(--muted);line-height:1.75;margin:0}
+
+/* Lo que nos define */
+.nos2-valores{background:#fff;padding:72px 24px}
+.nos2-valores-title{
+  font-family:'Fraunces',serif;font-size:clamp(1.5rem,3vw,2.2rem);
+  color:var(--plum);text-align:center;margin:0 0 40px;
+}
+.nos2-valores-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:20px;max-width:1040px;margin:0 auto;
+}
+.nos2-val{
+  background:var(--blush-soft);border:1px solid var(--line);
+  border-radius:18px;padding:28px 22px;
+}
+.nos2-val-icon{font-size:1.6rem;margin-bottom:14px}
+.nos2-val h3{font-family:'Fraunces',serif;font-size:1rem;color:var(--plum);margin:0 0 8px}
+.nos2-val p{font-size:.83rem;color:var(--muted);line-height:1.65;margin:0}
+
+/* CTA final */
+.nos2-cta{background:var(--blush-soft);border-top:1px solid var(--line);padding:80px 24px;text-align:center}
+.nos2-cta-title{
+  font-family:'Fraunces',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);
+  color:var(--plum);margin:0 0 .8rem;line-height:1.2;
+}
+.nos2-cta-sub{font-size:.95rem;color:var(--muted);line-height:1.7;margin:0}

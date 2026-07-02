@@ -1,0 +1,26 @@
+/* ============================================================
+   CGAP · Responsive Medicina estética (medicina-estetica.html)
+   ============================================================ */
+@media(max-width:860px){
+  .est-treat{grid-template-columns:1fr;min-height:auto}
+  .est-treat-body{padding:48px 32px}
+  .est-treat-img{min-height:300px}
+  /* En mobile: cuando la foto viene primero en DOM, poner el texto antes */
+  .est-treat .est-treat-img:first-child{order:2}
+  .est-treat .est-treat-body:last-child{order:1}
+}
+@media(max-width:540px){
+  .est-hero h1{font-size:clamp(3rem,12vw,4rem)}
+  .est-treat-body{padding:36px 24px}
+}
+@media(max-width:860px){.est-treat-list{grid-template-columns:1fr}.est-treat-group{border-right:none;border-bottom:1px dashed #e0d4c8;padding:20px 28px}.est-treat-group:last-child{border-bottom:none}}
+@media(max-width:540px){.est-treat-group{padding:16px 20px}}
+@media(max-width:768px){
+  .est2-mejorar-grid{grid-template-columns:repeat(2,1fr)}
+  .est2-mejorar-card--wide{grid-column:1/-1}
+  .est-hero-btns{flex-direction:column;align-items:flex-start}
+  .est2-confianza-inner{flex-direction:column;gap:14px}
+}
+@media(max-width:480px){
+  .est2-mejorar-grid{grid-template-columns:1fr}
+}

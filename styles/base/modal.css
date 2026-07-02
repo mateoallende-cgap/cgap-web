@@ -1,0 +1,12 @@
+/* ===== MODAL ===== */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(58,31,48,.55);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:24px}
+.modal.open{display:flex}
+.modal-card{background:#fff;border-radius:22px;max-width:520px;width:100%;padding:2rem 2.2rem;position:relative;box-shadow:0 30px 70px -30px rgba(0,0,0,.5);animation:pop .3s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.modal-card .tag{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--magenta);background:var(--blush);padding:.25rem .7rem;border-radius:100px;margin-bottom:.7rem}
+.modal-card h3{font-size:1.5rem;margin-bottom:.5rem}
+.modal-card .desc{color:var(--muted);margin-bottom:1.2rem}
+.modal-row{display:flex;gap:.7rem;padding:.7rem 0;border-top:1px solid var(--line);font-size:.92rem}
+.modal-row b{color:var(--plum);min-width:120px;font-weight:700}
+.modal-card .close{position:absolute;top:14px;right:18px;border:none;background:none;font-size:1.8rem;line-height:1;color:var(--muted);cursor:pointer}
+.modal-card .btn{margin-top:1.4rem;width:100%;justify-content:center}
