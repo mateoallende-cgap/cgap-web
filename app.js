@@ -254,7 +254,7 @@ if (profGrid && window.PROFESIONALES) {
   if (!slides.length) return;
 
   // Colores del ticker según slide (deben coincidir con los gradientes)
-  const tickerColors = ['#f5cde8', '#f5cde8', '#c8dff7'];
+  const tickerColors = ['#f5cde8', '#f5cde8', '#f5cde8'];
   const ticker = document.querySelector('.ticker-wrap');
 
   let current = 0;
