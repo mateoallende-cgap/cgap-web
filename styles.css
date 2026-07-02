@@ -31,22 +31,35 @@ img{max-width:100%;display:block}
 .btn:hover{background:var(--magenta-dark);transform:translateY(-2px);box-shadow:var(--shadow);color:#fff}
 .btn-ghost{background:transparent;color:var(--magenta);border:1.5px solid var(--line);box-shadow:none}
 .btn-ghost:hover{background:var(--blush);color:var(--magenta-dark);transform:translateY(-2px)}
-.nav-cta-wa{color:#fff;background:var(--magenta);border-color:var(--magenta)}
-.nav-cta-wa:hover{background:var(--magenta-dark);border-color:var(--magenta-dark)}
+/* Turnos (WhatsApp): botón secundario, menos prominente que Portal de Pacientes */
+.nav-cta-wa{background:transparent;color:var(--magenta);border:1.5px solid var(--magenta)}
+.nav-cta-wa:hover{background:var(--blush);color:var(--magenta-dark);border-color:var(--magenta-dark)}
 
 /* ===== NAVBAR ===== */
-.navbar{position:sticky;top:0;z-index:50;background:#fdfaf7;border-bottom:1px solid var(--line)}
-.navbar .wrap{display:flex;align-items:center;gap:2rem;height:92px;max-width:100%;padding:0 32px}
-.logo{display:flex;align-items:center}
-.logo img{height:66px;width:auto;display:block}
-.nav-links{display:flex;gap:1.7rem;margin-left:auto;font-weight:700;font-size:.92rem}
-.nav-links a{position:relative;color:var(--plum);padding:.2rem 0;transition:color .2s}
-.nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--magenta);transition:width .25s var(--ease)}
-.nav-links a:hover,.nav-links a.active{color:var(--magenta)}
-.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.navbar{position:sticky;top:0;z-index:50;background:#fdfaf7;overflow-anchor:none;--nav-progress:0}
+.navbar::before{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line)}
+.navbar::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--magenta);transform:scaleX(var(--nav-progress));transform-origin:left;transition:transform .1s linear}
+.navbar .wrap{display:flex;align-items:center;gap:2rem;height:122px;max-width:100%;padding:0 32px;position:relative;transition:height .3s var(--ease)}
+.logo{display:flex;align-items:center;margin-left:50px}
+.logo img{height:80px;width:auto;display:block;transition:height .3s var(--ease)}
+.nav-links{display:flex;gap:.3rem;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-weight:700;font-size:1.1rem;transition:font-size .3s var(--ease)}
+.nav-links a{position:relative;color:var(--plum);padding:.5rem 1rem;border-radius:100px;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--magenta);background:var(--blush-soft)}
+.nav-links a.active{color:var(--magenta)}
+.nav-links a.active::after{content:"";position:absolute;left:1rem;right:1rem;bottom:.2rem;height:2px;background:var(--magenta);border-radius:2px}
 .nav-portal-m{display:none}
 .nav-cta-wa{margin-left:auto}.nav-cta{margin-left:.5rem}
+/* Botones del navbar, más chicos que los del resto del sitio */
+.navbar .btn{font-size:1.1rem;padding:.73rem 1.52rem;transition:font-size .3s var(--ease),padding .3s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease),background .25s}
+/* Portal de Pacientes: botón principal, se mantiene sólido y prominente */
+.nav-cta{font-weight:800}
 .burger{display:none;margin-left:auto;background:none;border:none;cursor:pointer;color:var(--magenta)}
+
+/* ===== navbar compacta al scrollear (-20% respecto al tamaño base de arriba) ===== */
+.navbar.scrolled .wrap{height:100px}
+.navbar.scrolled .logo img{height:80px}
+.navbar.scrolled .nav-links{font-size:1rem}
+.navbar.scrolled .btn{font-size:1rem;padding:.68rem 1.42rem}
 
 /* ===== SECTION SHELL ===== */
 section{padding:80px 0}
@@ -57,7 +70,7 @@ section{padding:80px 0}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);background:var(--blush);padding:.4rem .9rem;border-radius:100px;margin-bottom:1.2rem}
 
 /* ===== HERO SLIDER ===== */
-.hero-slider{position:relative;overflow:hidden;background:#f9e0f0;height:calc(88vh - 92px);min-height:500px;padding:0}
+.hero-slider{position:relative;overflow:hidden;background:#f9e0f0;height:calc(88vh - 112px);min-height:500px;padding:0}
 .hs-track{position:relative;width:100%;height:100%}
 .hs-slide{position:absolute;inset:0;background:var(--slide-bg);opacity:1;z-index:1;pointer-events:none;display:flex;align-items:center;transition:opacity .9s var(--ease)}
 .hs-slide.active{opacity:1;z-index:2;pointer-events:auto}
@@ -82,7 +95,7 @@ section{padding:80px 0}
 .hs-dots{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:8px;align-items:center}
 .hs-dot{width:8px;height:8px;border-radius:100px;border:none;background:rgba(58,31,48,.2);cursor:pointer;transition:width .3s var(--ease),background .3s;padding:0}
 .hs-dot.active{width:28px;background:var(--magenta)}
-@media(max-width:600px){.hero-slider{height:calc(88svh - 92px);min-height:460px}.hs-arrow{display:none}.hs-content h1{font-size:clamp(2rem,7vw,3rem)}}
+@media(max-width:600px){.hero-slider{height:calc(88svh - 112px);min-height:460px}.hs-arrow{display:none}.hs-content h1{font-size:clamp(2rem,7vw,3rem)}}
 /* barra de servicios */
 .hs-cards-bar{background:var(--white);border-bottom:1px solid var(--line);box-shadow:0 4px 24px -8px rgba(133,20,91,.1)}
 .hs-cards-bar-inner{max-width:var(--maxw);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
@@ -350,7 +363,7 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
   .stats{grid-template-columns:repeat(2,1fr);gap:28px}
   .nav-links,.nav-cta{display:none}
   .burger{display:grid;place-items:center}
-  .nav-links.open{display:flex;position:absolute;top:92px;left:0;right:0;flex-direction:column;background:var(--cream);border-bottom:1px solid var(--line);padding:1.2rem 24px;gap:1rem;z-index:49}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;transform:none;flex-direction:column;background:var(--cream);border-bottom:1px solid var(--line);padding:1.2rem 24px;gap:1rem;z-index:49}
   .nav-links.open .nav-portal-m{display:inline-flex;align-items:center;justify-content:center;background:var(--magenta);color:#fff;padding:.75rem 1.3rem;border-radius:100px;margin-top:.4rem;box-shadow:var(--shadow-sm)}
   .nav-links.open .nav-portal-m::after{display:none}
   .nav-links.open .nav-portal-m:hover{color:#fff;background:var(--magenta-dark)}
@@ -468,7 +481,7 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 
 /* ===== MEDICINA ESTÉTICA · rediseño editorial ===== */
 /* Hero */
-.est-hero{min-height:calc(88vh - 92px);background:#F5E6D8;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
+.est-hero{min-height:calc(88vh - 112px);background:#F5E6D8;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
 .est-hero-inner{max-width:780px}
 .est-hero-rotating{transition:opacity 1.2s ease;}
 .est-hero h1{font-size:clamp(3.5rem,8vw,7rem);line-height:1;letter-spacing:-.03em;color:var(--plum);margin:.8rem 0 1.4rem}
@@ -768,7 +781,7 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 }
 
 /* ===== CIRCUITO · hero editorial rosa pastel ===== */
-.circ-new-hero{min-height:calc(88vh - 92px);background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
+.circ-new-hero{min-height:calc(88vh - 112px);background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
 .circ-new-hero-inner{max-width:780px}
 .circ-new-hero h1{font-size:clamp(3.5rem,8vw,7rem);line-height:1;letter-spacing:-.03em;color:var(--plum);margin:.8rem 0 1.4rem}
 .circ-new-hero h1 em{color:var(--magenta);font-style:italic}
@@ -780,7 +793,7 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 
 /* Hero */
 .circ2-hero{
-  min-height:calc(88vh - 92px);
+  min-height:calc(88vh - 112px);
   background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%);
   display:flex;align-items:center;padding:80px 24px;
 }
