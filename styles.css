@@ -654,14 +654,14 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 /* Medicina estética — lista de tratamientos */
 /* Skeuomorphic "carpeta médica" */
 .est-list-section{
-  background: #c9a8b8;
-  background-image: repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(0,0,0,.06) 28px),
-                    repeating-linear-gradient(90deg,transparent,transparent 27px,rgba(0,0,0,.03) 28px);
+  background: #f0e8dc;
+  background-image: repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(0,0,0,.04) 28px),
+                    repeating-linear-gradient(90deg,transparent,transparent 27px,rgba(0,0,0,.02) 28px);
   padding:80px 24px;
 }
 .est-list-section .sec-head{margin-bottom:48px}
-.est-list-section .sec-head h2{color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.2)}
-.est-list-section .sec-head p{color:rgba(255,255,255,.8)}
+.est-list-section .sec-head h2{color:var(--plum);text-shadow:none}
+.est-list-section .sec-head p{color:var(--muted)}
 
 /* La "hoja" */
 .circ-clipboard{
