@@ -1252,7 +1252,7 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 
 /* Tratamientos destacados */
 .est2-destacados{padding-top:72px}
-.est2-destacados-header{max-width:640px;margin:0 auto 0;text-align:center;padding:0 24px}
+.est2-destacados-header{max-width:640px;margin:0 auto;text-align:center;padding:0 24px 48px}
 .est2-destacados-title{
   font-family:'Fraunces',serif;font-size:clamp(1.5rem,3vw,2rem);
   color:var(--plum);margin:0 0 10px;
