@@ -137,6 +137,7 @@ a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(
 .prest-full .ico svg{width:30px;height:30px}
 .prest-full h3{color:#fff;font-size:1.25rem;margin-bottom:.2rem}
 .prest-full p{color:rgba(255,255,255,.85);font-size:.95rem}
+.prest-full .prest-more{color:#fff}
 
 /* carrusel */
 .carousel{position:relative}
