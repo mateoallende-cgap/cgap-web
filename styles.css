@@ -460,14 +460,14 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 .blog-body .btn{margin-top:1.2rem;font-size:.85rem;padding:.6rem 1.2rem;align-self:flex-start}
 
 /* Medicina estética — banner celeste pastel */
-.page-banner--estetica{background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%)}
+.page-banner--estetica{background:linear-gradient(135deg,#faf5ee 0%,#f5ede0 60%,#f0e8d8 100%)}
 .page-banner--estetica h1{color:var(--plum)}
 .page-banner--estetica p{color:var(--muted)}
 .page-banner--estetica::after{border-color:rgba(58,31,48,.08)}
 
 /* ===== MEDICINA ESTÉTICA · rediseño editorial ===== */
 /* Hero */
-.est-hero{min-height:calc(88vh - 92px);background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
+.est-hero{min-height:calc(88vh - 92px);background:linear-gradient(135deg,#faf5ee 0%,#f5ede0 60%,#f0e8d8 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
 .est-hero-inner{max-width:780px}
 .est-hero-rotating{transition:opacity 1.2s ease;}
 .est-hero h1{font-size:clamp(3.5rem,8vw,7rem);line-height:1;letter-spacing:-.03em;color:var(--plum);margin:.8rem 0 1.4rem}
