@@ -1017,7 +1017,7 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
   background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 55%,#f0d4f5 100%);
   padding:88px 24px 80px;
 }
-.prac2-hero-inner{max-width:780px;margin:0 auto}
+.prac2-hero-inner{max-width:780px;margin:0 auto;text-align:center}
 .prac2-hero-label{
   display:inline-block;
   background:rgba(173,30,119,.12);color:var(--magenta);
@@ -1029,8 +1029,8 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
   font-size:clamp(2.2rem,5.5vw,3.6rem);
   color:var(--plum);line-height:1.1;margin:0 0 1.1rem;
 }
-.prac2-hero-sub{font-size:1rem;color:var(--muted);line-height:1.7;margin:0 0 2rem;max-width:520px}
-.prac2-hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.prac2-hero-sub{font-size:1rem;color:var(--muted);line-height:1.7;margin:0 auto 2rem;max-width:520px}
+.prac2-hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 .btn-outline-plum{
   padding:14px 28px;border-radius:100px;
   border:2px solid var(--plum);color:var(--plum);
@@ -1197,7 +1197,7 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
   color:var(--plum);margin:0 0 1rem;line-height:1.2;
 }
 .prac2-cta-final-sub{font-size:.95rem;color:var(--muted);line-height:1.7;margin:0 0 2rem}
-.prac2-cta-final-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.prac2-cta-final-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:2rem}
 
 /* Mobile */
 @media(max-width:768px){
