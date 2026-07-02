@@ -1190,7 +1190,7 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 
 /* CTA final */
 .prac2-cta-final{background:#fff;padding:88px 24px;border-top:1px solid var(--line);text-align:center}
-.prac2-cta-final-inner{max-width:580px;margin:0 auto}
+.prac2-cta-final-inner{max-width:580px;margin:0 auto;text-align:center}
 .prac2-cta-final-title{
   font-family:'Fraunces',serif;
   font-size:clamp(1.6rem,3.5vw,2.6rem);
