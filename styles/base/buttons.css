@@ -3,8 +3,9 @@
 .btn:hover{background:var(--magenta-dark);transform:translateY(-2px);box-shadow:var(--shadow);color:#fff}
 .btn-ghost{background:transparent;color:var(--magenta);border:1.5px solid var(--line);box-shadow:none}
 .btn-ghost:hover{background:var(--blush);color:var(--magenta-dark);transform:translateY(-2px)}
-.nav-cta-wa{color:#fff;background:var(--magenta);border-color:var(--magenta)}
-.nav-cta-wa:hover{background:var(--magenta-dark);border-color:var(--magenta-dark)}
+/* Turnos (WhatsApp): botón secundario, menos prominente que Portal de Pacientes */
+.nav-cta-wa{background:transparent;color:var(--magenta);border:1.5px solid var(--magenta)}
+.nav-cta-wa:hover{background:var(--blush);color:var(--magenta-dark);border-color:var(--magenta-dark)}
 
 .btn-outline-plum{
   padding:14px 28px;border-radius:100px;

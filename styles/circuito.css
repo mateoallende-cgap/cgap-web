@@ -4,7 +4,7 @@
 
 /* Hero */
 .circ2-hero{
-  min-height:calc(88vh - 92px);
+  min-height:calc(88vh - 112px);
   background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%);
   display:flex;align-items:center;padding:80px 24px;
 }

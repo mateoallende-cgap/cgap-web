@@ -12,6 +12,36 @@ if (burger && navLinks) {
   );
 }
 
+/* ---------- Navbar: compacta al scrollear + línea de progreso de scroll ---------- */
+const navbar = document.querySelector(".navbar");
+if (navbar) {
+  /* Umbrales separados (histéresis) para entrar/salir del estado compacto:
+     con un solo valor, el propio cambio de alto del navbar puede mover el
+     scroll justo alrededor del umbral y generar un parpadeo en bucle. */
+  const NAV_SCROLL_ENTER = 50, NAV_SCROLL_EXIT = 20;
+  let navScrolled = false;
+
+  const onNavScroll = () => {
+    const y = window.scrollY;
+
+    if (!navScrolled && y > NAV_SCROLL_ENTER) {
+      navScrolled = true;
+      navbar.classList.add("scrolled");
+    } else if (navScrolled && y < NAV_SCROLL_EXIT) {
+      navScrolled = false;
+      navbar.classList.remove("scrolled");
+    }
+
+    /* línea debajo del navbar: su ancho refleja cuánto se scrolleó la página */
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = scrollable > 0 ? Math.min(y / scrollable, 1) : 0;
+    navbar.style.setProperty("--nav-progress", pct);
+  };
+  onNavScroll();
+  window.addEventListener("scroll", onNavScroll, { passive: true });
+  window.addEventListener("resize", onNavScroll);
+}
+
 /* ---------- Animación al hacer scroll ---------- */
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {

@@ -1,13 +1,25 @@
 /* ===== NAVBAR ===== */
-.navbar{position:sticky;top:0;z-index:50;background:#fdfaf7;border-bottom:1px solid var(--line)}
-.navbar .wrap{display:flex;align-items:center;gap:2rem;height:92px;max-width:100%;padding:0 32px}
-.logo{display:flex;align-items:center}
-.logo img{height:66px;width:auto;display:block}
-.nav-links{display:flex;gap:1.7rem;margin-left:auto;font-weight:700;font-size:.92rem}
-.nav-links a{position:relative;color:var(--plum);padding:.2rem 0;transition:color .2s}
-.nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--magenta);transition:width .25s var(--ease)}
-.nav-links a:hover,.nav-links a.active{color:var(--magenta)}
-.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.navbar{position:sticky;top:0;z-index:50;background:#fdfaf7;overflow-anchor:none;--nav-progress:0}
+.navbar::before{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line)}
+.navbar::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--magenta);transform:scaleX(var(--nav-progress));transform-origin:left;transition:transform .1s linear}
+.navbar .wrap{display:flex;align-items:center;gap:2rem;height:122px;max-width:100%;padding:0 32px;position:relative;transition:height .3s var(--ease)}
+.logo{display:flex;align-items:center;margin-left:50px}
+.logo img{height:80px;width:auto;display:block;transition:height .3s var(--ease)}
+.nav-links{display:flex;gap:.3rem;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-weight:700;font-size:1.1rem;transition:font-size .3s var(--ease)}
+.nav-links a{position:relative;color:var(--plum);padding:.5rem 1rem;border-radius:100px;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--magenta);background:var(--blush-soft)}
+.nav-links a.active{color:var(--magenta)}
+.nav-links a.active::after{content:"";position:absolute;left:1rem;right:1rem;bottom:.2rem;height:2px;background:var(--magenta);border-radius:2px}
 .nav-portal-m{display:none}
 .nav-cta-wa{margin-left:auto}.nav-cta{margin-left:.5rem}
+/* Botones del navbar, más chicos que los del resto del sitio */
+.navbar .btn{font-size:1.1rem;padding:.73rem 1.52rem;transition:font-size .3s var(--ease),padding .3s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease),background .25s}
+/* Portal de Pacientes: botón principal, se mantiene sólido y prominente */
+.nav-cta{font-weight:800}
 .burger{display:none;margin-left:auto;background:none;border:none;cursor:pointer;color:var(--magenta)}
+
+/* ===== navbar compacta al scrollear (-20% respecto al tamaño base de arriba) ===== */
+.navbar.scrolled .wrap{height:100px}
+.navbar.scrolled .logo img{height:80px}
+.navbar.scrolled .nav-links{font-size:1rem}
+.navbar.scrolled .btn{font-size:1rem;padding:.68rem 1.42rem}
