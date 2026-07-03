@@ -1,7 +1,7 @@
 /* ============================================================
    CGAP · Responsive Home (index.html)
    ============================================================ */
-@media(max-width:600px){.hero-slider{height:calc(88svh - 112px);min-height:460px}.hs-arrow{display:none}.hs-content h1{font-size:clamp(2rem,7vw,3rem)}}
+@media(max-width:760px){.hero-static-row{flex-direction:column;gap:32px}.hero-static-divider{display:none}.hero-static-left,.hero-static-right{align-items:flex-start}}
 @media(max-width:900px){.hs-cards-bar-inner{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:500px){.hs-cards-bar-inner{grid-template-columns:1fr 1fr}}
 @media(max-width:400px){.hs-cards-bar-inner{grid-template-columns:1fr}}
