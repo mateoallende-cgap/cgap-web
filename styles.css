@@ -1013,13 +1013,13 @@ footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:14
 }
 .blog2-cta-final-sub{font-size:.95rem;color:rgba(255,255,255,.75);line-height:1.7;margin:0 0 2.4rem}
 .blog2-cta-final-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn-ghost{
+.blog2-btn-ghost{
   padding:14px 32px;border-radius:100px;
   border:2px solid rgba(255,255,255,.5);
   color:#fff;font-weight:700;font-size:.9rem;
   text-decoration:none;transition:all .2s;
 }
-.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.blog2-btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
 
 /* Disclaimer */
 .blog2-disclaimer{
