@@ -58,7 +58,7 @@ if (docTrack && window.PROFESIONALES) {
 const novTrack = document.getElementById("novTrack");
 if (novTrack) {
   const novedades = [
-    { tag: "Prevención", txt: "La importancia del control ginecológico anual.", link: null, img: null },
+    { tag: "Prevención", txt: "La importancia del control ginecológico anual.", link: "https://www.instagram.com/p/DZ-hfuHEo0T/", img: "assets/prevencionginecologia.png" },
     { tag: "Salud", txt: "Todo sobre el circuito ginecológico en un solo día.", link: "https://www.instagram.com/p/DaVdck8lXn9/", img: "assets/circuito.png" },
     { tag: "Estética", txt: "Cuidados de la piel en cada etapa de la mujer.", link: null, img: null },
     { tag: "Tips", txt: "Cómo prepararte para tu ecografía.", link: null, img: null }
