@@ -114,7 +114,7 @@ if (pracGrid && window.PRACTICAS) {
         <span class="ver">Ver detalle →</span>
       </article>`).join("");
     pracGrid.querySelectorAll(".prac-card").forEach(c => {
-      requestAnimationFrame(() => c.classList.add("in"));
+      c.classList.add("in");
       c.addEventListener("click", () => abrir(data[c.dataset.i]));
     });
     if (!res.length) pracGrid.innerHTML = `<p style="color:var(--muted)">No encontramos prácticas con esos criterios.</p>`;
