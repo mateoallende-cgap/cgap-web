@@ -58,17 +58,21 @@ if (docTrack && window.PROFESIONALES) {
 const novTrack = document.getElementById("novTrack");
 if (novTrack) {
   const novedades = [
-    { tag: "Prevención", txt: "La importancia del control ginecológico anual." },
-    { tag: "Salud", txt: "Todo sobre el circuito ginecológico en un solo día." },
-    { tag: "Estética", txt: "Cuidados de la piel en cada etapa de la mujer." },
-    { tag: "Tips", txt: "Cómo prepararte para tu ecografía." }
+    { tag: "Prevención", txt: "La importancia del control ginecológico anual.", link: null, img: null },
+    { tag: "Salud", txt: "Todo sobre el circuito ginecológico en un solo día.", link: "https://www.instagram.com/p/DaVdck8lXn9/", img: "https://www.instagram.com/p/DaVdck8lXn9/media/?size=m" },
+    { tag: "Estética", txt: "Cuidados de la piel en cada etapa de la mujer.", link: null, img: null },
+    { tag: "Tips", txt: "Cómo prepararte para tu ecografía.", link: null, img: null }
   ];
   const igIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>`;
-  novTrack.innerHTML = novedades.map(n => `
-    <article class="nov-card">
-      <div class="nov-img">${igIcon}</div>
-      <div class="nov-body"><small>${n.tag}</small><p>${n.txt}</p></div>
-    </article>`).join("");
+  novTrack.innerHTML = novedades.map(n => {
+    const imgHtml = n.img
+      ? `<div class="nov-img nov-img-photo" style="background-image:url('${n.img}')"></div>`
+      : `<div class="nov-img">${igIcon}</div>`;
+    const inner = `${imgHtml}<div class="nov-body"><small>${n.tag}</small><p>${n.txt}</p></div>`;
+    return n.link
+      ? `<a class="nov-card" href="${n.link}" target="_blank" rel="noopener">${inner}</a>`
+      : `<article class="nov-card">${inner}</article>`;
+  }).join("");
 }
 
 /* ============================================================
