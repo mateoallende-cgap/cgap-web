@@ -211,7 +211,7 @@ a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(
 .nov-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
 .nov-img{height:180px;background:linear-gradient(150deg,var(--magenta),var(--magenta-dark));display:grid;place-items:center;color:#fff}
 .nov-img svg{width:40px;height:40px;opacity:.9}
-.nov-img-photo{background-size:cover;background-position:center;background-repeat:no-repeat}
+.nov-img-photo{background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#fdf0f7;height:260px!important}
 a.nov-card{text-decoration:none;color:inherit;display:block}
 .nov-body{padding:1.1rem 1.2rem 1.3rem}
 .nov-body small{color:var(--magenta);font-weight:700;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase}
