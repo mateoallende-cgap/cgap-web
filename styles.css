@@ -52,7 +52,7 @@ img{max-width:100%;display:block}
 .navbar2{position:sticky;top:0;z-index:50}
 .navbar2-top{background:var(--cream);border-bottom:1px solid var(--line)}
 .navbar2-top-inner{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 40px;height:96px;box-sizing:border-box}
-.navbar2-logo img{height:78px;width:auto;display:block}
+.navbar2-logo img{height:100px;width:auto;display:block}
 .navbar2-actions{display:flex;align-items:center;gap:.75rem}
 .navbar2-burger{display:none;background:none;border:none;cursor:pointer;color:var(--magenta)}
 .navbar2-nav{background:var(--magenta)}
