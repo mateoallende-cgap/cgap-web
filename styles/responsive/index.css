@@ -15,6 +15,7 @@
 @media(max-width:560px){
   .prest-grid{grid-template-columns:1fr}
   .prest-half{grid-column:1/-1}
+  .prest-item--photo{grid-column:1/-1}
 }
 @media(max-width:600px){.faq-tab{padding:.55rem .9rem;font-size:.84rem}.faq-q>span:first-child{font-size:.94rem}}
 @media(max-width:480px){.faq-tabs{flex-wrap:wrap;border-radius:var(--radius);width:100%;box-sizing:border-box}.faq-tab{flex:1;justify-content:center;text-align:center}}

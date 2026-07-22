@@ -10,3 +10,7 @@
 .modal-row b{color:var(--plum);min-width:120px;font-weight:700}
 .modal-card .close{position:absolute;top:14px;right:18px;border:none;background:none;font-size:1.8rem;line-height:1;color:var(--muted);cursor:pointer}
 .modal-card .btn{margin-top:1.4rem;width:100%;justify-content:center}
+.modal-info{border-top:1px solid var(--line);padding-top:1rem}
+.modal-info p{color:var(--text);font-size:1.02rem;line-height:1.55;margin:0 0 .8rem}
+.modal-info a{color:var(--magenta);font-weight:700;text-decoration:underline}
+.modal-info b{color:var(--plum)}

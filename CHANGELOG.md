@@ -1,9 +1,7 @@
 # Changelog — CGAP Web
 
 Registro de cambios y motivos, para trazabilidad del proceso de optimización.
-
-## [Sin publicar]
-16:42 2/7/2026
+v0.1
 ### Cambiado
 - **Estructura de assets (CSS/JS):** se dividieron `styles.css` y 
   `app.js` monolíticos en archivos separados por página/uso, 
@@ -15,8 +13,7 @@ Registro de cambios y motivos, para trazabilidad del proceso de optimización.
   
   Impacto esperado: mejora en tiempos de carga y Core Web Vitals 
   (especialmente LCP), con beneficio indirecto en SEO.
-
-17:42 2/7/2026
+v0.2
 ### Cambiado
 - **Distribución de los elementos del navbar:** se reordenaron los 
   links (Inicio, Circuito, Especialidades, Medicina estética, 
@@ -41,3 +38,18 @@ Registro de cambios y motivos, para trazabilidad del proceso de optimización.
 
   Motivo: mejorar el SEO (semántica de navegación) y ayudar a la 
   orientación del usuario dentro de la página.
+v0.3
+### Agregado
+- **Interactividad en "Servicios principales":** las 6 cards ahora 
+  revelan descripción y CTA con hover (efecto breathe coordinado), 
+  y al hacer click abren un modal con información operativa 
+  (cómo reservar cada tipo de turno, links a especialidades y 
+  obras sociales).
+
+  Motivo: dar una experiencia más dinámica tipo "galería" sin perder 
+  contenido indexable — el texto principal de cada servicio 
+  permanece en el HTML desde el inicio, independiente de la 
+  interacción.
+
+  Pendiente: definir comportamiento específico para mobile (sin 
+  hover disponible), a resolver en una iteración aparte.
