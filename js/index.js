@@ -18,6 +18,54 @@ document.querySelectorAll(".car-btn").forEach(btn => {
 const iniciales = n => n.split(" ").filter(Boolean).slice(0, 2).map(w => w[0]).join("").toUpperCase();
 const esc = s => (s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+/* ---------- Formulario de contacto: envío por AJAX, confirmación sin salir de la página,
+   máximo 1 consulta por día por navegador (guardado en localStorage) ---------- */
+const contactoForm = document.getElementById("contactoForm");
+if (contactoForm) {
+  const okMsg = document.getElementById("contactoFormOk");
+  const okText = document.getElementById("contactoFormOkText");
+  const errMsg = document.getElementById("contactoFormErr");
+  const submitBtn = contactoForm.querySelector("button[type=submit]");
+  const submitTexto = submitBtn.textContent;
+  const STORAGE_KEY = "cgapContactoEnviado";
+  const UN_DIA_MS = 24 * 60 * 60 * 1000;
+  const MSG_ENVIADO = "¡Gracias! Tu consulta se envió correctamente. Te vamos a contactar a la brevedad.";
+  const MSG_BLOQUEADO = 'Ya enviaste una consulta hoy. Te vamos a responder a la brevedad — si es urgente, escribinos por <a href="https://wa.me/5493515079642" target="_blank" rel="noopener">WhatsApp</a>.';
+
+  function bloquearFormulario(mensaje) {
+    contactoForm.hidden = true;
+    okText.innerHTML = mensaje;
+    okMsg.hidden = false;
+  }
+
+  const ultimoEnvio = Number(localStorage.getItem(STORAGE_KEY));
+  if (ultimoEnvio && Date.now() - ultimoEnvio < UN_DIA_MS) {
+    bloquearFormulario(MSG_BLOQUEADO);
+  }
+
+  contactoForm.addEventListener("submit", e => {
+    e.preventDefault();
+    errMsg.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Enviando…";
+    fetch(contactoForm.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: new FormData(contactoForm)
+    })
+      .then(res => { if (!res.ok) throw new Error("formsubmit error"); })
+      .then(() => {
+        localStorage.setItem(STORAGE_KEY, String(Date.now()));
+        bloquearFormulario(MSG_ENVIADO);
+      })
+      .catch(() => { errMsg.hidden = false; })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = submitTexto;
+      });
+  });
+}
+
 /* ============================================================
    HOME · especialistas destacados + novedades
    ============================================================ */

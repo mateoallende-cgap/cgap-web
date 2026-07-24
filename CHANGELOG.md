@@ -120,3 +120,23 @@ v0.5
   Motivo: ayuda a la navegación entre preguntas frecuentes, y 
   mejora la estructuración y la optimización de SEO al poder 
   gestionar la información de forma más fácil.
+v0.6
+### Cambiado
+- **Sección Contacto (index):** el mapa pasó a ocupar todo el ancho 
+  de pantalla (rompe el `.wrap`) y se redujo su alto. Las 6 cards de 
+  información se reorganizaron en un grid de 3 columnas: Horarios y 
+  Ubicación apiladas a la izquierda, Teléfono y WhatsApp en fila en 
+  el centro (con el formulario debajo), e Instagram y YouTube 
+  apiladas a la derecha.
+
+- **Formulario de contacto:** cambió el destino de 
+  `zalazarmisael7@gmail.com` a `soporte@cgap.com.ar`. El envío pasó 
+  de ser un POST tradicional (redirigía a una página de formsubmit.co) 
+  a un envío por AJAX con confirmación inline en la misma sección — 
+  muestra un mensaje de éxito o de error sin salir de la página, y 
+  ante un error ofrece un link directo a WhatsApp como alternativa.
+
+  Se agregó un límite de una consulta por día por navegador, 
+  guardado en `localStorage`: si ya se envió una consulta en las 
+  últimas 24 hs, el formulario se oculta automáticamente y se 
+  muestra el mensaje de confirmación en su lugar.
