@@ -48,13 +48,13 @@ Sitio estático, sin build ni dependencias.
 ## Pendientes / placeholders
 - **Nosotros:** reemplazar reseña, misión y valores reales (marcados con `[editar]` y badge "Texto de ejemplo").
 - **Medicina estética:** reemplazar las tarjetas de tratamiento por los servicios reales del centro.
-- **Formulario de contacto:** hoy envía a `formsubmit.co/zalazarmisael7@gmail.com` (en `index.html`). Cambiar por el mail de CGAP si corresponde.
 - **Fotos de profesionales:** hoy se muestran las iniciales. Para usar fotos reales, agregar un campo `foto` en `data.js` y ajustar el render en `app.js`.
 - **FAQ institucional:** varias respuestas en `js/faq-data.js` (área `institucional`) todavía tienen placeholders `<mark>[completar...]</mark>` (número de WhatsApp, obras sociales, dirección, horarios, políticas). Completar con la info real de CGAP.
 
 ## Enlaces clave
 - Portal de pacientes (botón nav + tarjetas del home): `https://pacientes.cgap.com.ar/Login`
 - WhatsApp turnos: `https://wa.me/5493515079642`
+- Formulario de contacto (index): `soporte@cgap.com.ar`, vía `formsubmit.co`. Requiere que alguien con acceso a esa casilla confirme el mail de activación de formsubmit.co la primera vez que llegue una consulta.
 
 ## Cómo ver el sitio
 Abrir `index.html` en el navegador (doble clic). No requiere servidor.

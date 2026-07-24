@@ -8,7 +8,11 @@
 @media(max-width:980px){
   .prest-grid{grid-template-columns:repeat(2,1fr)}
   .prest-full{flex-direction:column;text-align:center}
-  .contacto-grid{grid-template-columns:1fr}
+  .contacto-grid{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "left1" "left2" "midA" "midB" "form" "right1" "right2";
+  }
 }
 @media(max-width:560px){
   .prest-grid{grid-template-columns:1fr}

@@ -120,9 +120,27 @@ a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(
 .nov-cta{text-align:center;margin-top:34px}
 
 /* ===== CONTACTO ===== */
-.contacto-map .map-wrapper{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--line);margin-bottom:34px}
-.contacto-map iframe{width:100%;height:320px;border:0;display:block}
-.contacto-grid{display:grid;grid-template-columns:1.3fr .85fr;gap:24px}
+/* el mapa rompe el .wrap y ocupa todo el ancho de pantalla (full-bleed) */
+.contacto-map{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+.contacto-map .map-wrapper{overflow:hidden;box-shadow:var(--shadow-sm);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:34px}
+.contacto-map iframe{width:100%;height:260px;border:0;display:block}
+/* grid: col izquierda (2 cards apiladas) | 2 cols del medio (cards en fila arriba, form abajo) | col derecha (2 cards apiladas) */
+.contacto-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "left1 midA midB right1"
+    "left2 form form right2";
+  gap:20px;
+  align-items:start;
+}
+.gc-left1{grid-area:left1}
+.gc-left2{grid-area:left2}
+.gc-midA{grid-area:midA}
+.gc-midB{grid-area:midB}
+.gc-right1{grid-area:right1}
+.gc-right2{grid-area:right2}
+.gc-form{grid-area:form}
 .form-box{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow-sm)}
 .form-box h3{font-size:1.5rem;margin-bottom:.3rem}
 .form-box>p{color:var(--muted);font-size:.95rem;margin-bottom:1.4rem}
@@ -131,7 +149,12 @@ a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(
 .fg input,.fg textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:.7rem .9rem;font-family:inherit;font-size:.95rem;color:var(--text);background:var(--cream);transition:border-color .2s,box-shadow .2s}
 .fg input:focus,.fg textarea:focus{outline:none;border-color:var(--magenta);box-shadow:0 0 0 3px var(--blush)}
 .form-box button{width:100%;margin-top:.4rem}
-.info-col{display:flex;flex-direction:column;gap:16px}
+.form-msg{text-align:center;padding:1.4rem .5rem}
+.form-msg--ok svg{width:44px;height:44px;color:#1f8a4c;margin-bottom:.8rem}
+.form-msg--ok p{color:var(--text);font-size:1rem;margin-bottom:1.2rem}
+.form-msg--err{padding:1rem;background:var(--blush);border-radius:var(--radius)}
+.form-msg--err p{color:var(--plum);font-size:.92rem}
+.form-msg--err a{color:var(--magenta);font-weight:700;text-decoration:underline}
 .info-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.3rem 1.5rem;box-shadow:var(--shadow-sm)}
 .info-card h3{display:flex;align-items:center;gap:.6rem;font-size:1.05rem;margin-bottom:.5rem}
 .info-card h3 svg{width:20px;height:20px;color:var(--magenta)}
