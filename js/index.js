@@ -16,6 +16,7 @@ document.querySelectorAll(".car-btn").forEach(btn => {
 
 /* ---------- Helpers ---------- */
 const iniciales = n => n.split(" ").filter(Boolean).slice(0, 2).map(w => w[0]).join("").toUpperCase();
+const esc = s => (s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 /* ============================================================
    HOME · especialistas destacados + novedades
@@ -47,6 +48,67 @@ if (novTrack) {
       <div class="nov-img">${igIcon}</div>
       <div class="nov-body"><small>${n.tag}</small><p>${n.txt}</p></div>
     </article>`).join("");
+}
+
+/* ============================================================
+   HOME · carrusel de reseñas (selección aleatoria)
+   ============================================================ */
+const revTrack = document.getElementById("revTrack");
+if (revTrack && window.GOOGLE_REVIEWS) {
+  const conTexto = window.GOOGLE_REVIEWS.filter(r => r.text && r.text.trim());
+  const shuffled = conTexto.slice();
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  const elegidas = shuffled;
+  const cardsHtml = elegidas.map(r => `
+    <article class="rev-card">
+      <div class="rev-head">
+        <div class="rev-avatar-wrap">
+          <span class="rev-avatar-fallback">${iniciales(r.name)}</span>
+          <img class="rev-avatar" src="${r.photoUrl || ""}" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <span class="rev-name">${esc(r.name)}</span>
+          <span class="rev-date">${esc(r.date)}${r.isLocalGuide ? " · Local Guide" : ""}</span>
+        </div>
+      </div>
+      <p class="rev-text">${esc(r.text)}</p>
+      <div class="rev-stars">${"★".repeat(r.stars)}${"☆".repeat(5 - r.stars)}</div>
+      <a class="rev-link" href="${r.reviewUrl}" target="_blank" rel="noopener">Ver en Google →</a>
+    </article>`).join("");
+  /* se duplica el set de cards para poder loopear el scroll de forma continua y sin costuras */
+  revTrack.innerHTML = cardsHtml + cardsHtml;
+
+  let mitad = revTrack.scrollWidth / 2;
+  window.addEventListener("resize", () => { mitad = revTrack.scrollWidth / 2; });
+
+  const VELOCIDAD = 0.55; // px por frame (~33px/s) — lento y continuo
+  let pausadoHasta = 0;
+  (function autoSlide() {
+    if (Date.now() > pausadoHasta) {
+      revTrack.scrollLeft += VELOCIDAD;
+      if (revTrack.scrollLeft >= mitad) revTrack.scrollLeft -= mitad;
+    }
+    requestAnimationFrame(autoSlide);
+  })();
+
+  revTrack.closest(".carousel").querySelectorAll(".car-btn").forEach(btn => {
+    btn.addEventListener("click", () => { pausadoHasta = Date.now() + 7000; });
+  });
+}
+
+/* ---------- Dejar reseña en Google: ventana emergente chica sobre el sitio ---------- */
+const revGoogleWriteBtn = document.getElementById("revGoogleWriteBtn");
+if (revGoogleWriteBtn) {
+  revGoogleWriteBtn.addEventListener("click", e => {
+    e.preventDefault();
+    const w = 480, h = 680;
+    const left = window.screenX + (window.outerWidth - w) / 2;
+    const top = window.screenY + (window.outerHeight - h) / 2;
+    window.open(revGoogleWriteBtn.href, "cgapReview", `width=${w},height=${h},left=${left},top=${top},resizable=yes,scrollbars=yes`);
+  });
 }
 
 /* ---------- FAQ tabs + acordeón ---------- */
