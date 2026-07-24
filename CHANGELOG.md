@@ -140,3 +140,24 @@ v0.6
   guardado en `localStorage`: si ya se envió una consulta en las 
   últimas 24 hs, el formulario se oculta automáticamente y se 
   muestra el mensaje de confirmación en su lugar.
+v0.7
+### Cambiado
+- **Orden de secciones (index):** se reordenó la página a Hero → 
+  Prestaciones → Obras sociales → FAQ → Reseñas → Novedades → 
+  Contacto (antes: Hero → Prestaciones → Novedades → Reseñas → 
+  Obras sociales → FAQ → Contacto).
+
+- **Modales de "Servicios principales":** se agregaron mensajes de 
+  WhatsApp prearmados específicos por servicio (consulta, ecografía, 
+  estética) en vez de un texto genérico. El modal de "Diagnóstico 
+  por imágenes" ahora enlaza "gran variedad de ecografías" y 
+  "requerimientos y la preparación" a la página de especialidades. 
+  El botón de WhatsApp del modal de "Medicina estética" pasa a usar 
+  el número específico de estética en vez del número general de 
+  ginecología.
+
+- **Contacto:** el número de WhatsApp de Estética se actualizó a 
+  +54 9 351 507-9519 (antes usaba el mismo número que Ginecología 
+  como placeholder). Los links de Instagram del sitio (card de 
+  contacto y CTA de Novedades) pasan a apuntar a la cuenta real 
+  `@cgap.ginecoestetica`.

@@ -335,6 +335,7 @@ if (revGoogleWriteBtn) {
   const card = modal.querySelector('.modal-card');
 
   const waTexto = t => `https://wa.me/5493515079642?text=${encodeURIComponent(t)}`;
+  const waTextoEstetica = t => `https://wa.me/5493515079519?text=${encodeURIComponent(t)}`;
   const waIcon = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1.1 2.7s1.9 2.9 4.6 4c1.7.7 2.3.8 3.1.7.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1z"/></svg>';
   const portalIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.5 4 5.7 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.7-4-9s1.5-6.5 4-9z"/></svg>';
 
@@ -344,11 +345,11 @@ if (revGoogleWriteBtn) {
       desc: 'Atención médica especializada para controles, diagnóstico y seguimiento de distintas especialidades, acompañándote en cada etapa.',
       extra: `<div class="modal-info">
         <p>Para turnos de <b>consulta</b> podés reservar a través del <a href="https://pacientes.cgap.com.ar/Login" target="_blank" rel="noopener">portal de pacientes</a> o por <b>WhatsApp</b>.</p>
-        <p>Para <b>estudios o prácticas</b>, los turnos se coordinan únicamente por WhatsApp.</p>
+        <p>Para <b>estudios o prácticas</b>, los turnos se coordinan únicamente por <b>WhatsApp</b>.</p>
         <p>Conocé todas nuestras <a href="pages/practicas.html">especialidades</a> y las <a href="#obras-sociales" data-scroll-close>obras sociales</a> con las que trabajamos.</p>
       </div>`,
       ctaText: 'Solicitar turno por WhatsApp',
-      ctaHref: waTexto('Hola, quisiera solicitar un turno ginecológico.'),
+      ctaHref: waTexto('Hola, buen día. Me gustaría sacar un turno.'),
       blank: true,
       wa: true
     },
@@ -356,11 +357,11 @@ if (revGoogleWriteBtn) {
       title: 'Diagnóstico por imágenes',
       desc: 'Ecografías y estudios especializados según indicación médica, con equipamiento de alta precisión.',
       extra: `<div class="modal-info">
-        <p>Ofrecemos una <b>gran variedad de ecografías</b>. Podés ver todas las opciones, junto con los <b>requerimientos y la preparación</b> de cada una, en el apartado de <a href="pages/practicas.html">especialidades</a>.</p>
+        <p>Ofrecemos una <a href="pages/practicas.html"><b>gran variedad de ecografías</b></a>. Podés ver todas las opciones, junto con los <a href="pages/practicas.html"><b>requerimientos y la preparación</b></a> de cada una, en el apartado de especialidades.</p>
         <p>Los turnos para estos estudios se pueden sacar desde el <a href="https://pacientes.cgap.com.ar/Login" target="_blank" rel="noopener">portal de pacientes</a> o por <b>WhatsApp</b>.</p>
       </div>`,
       ctaText: 'Consultar por WhatsApp',
-      ctaHref: waTexto('Hola, quisiera consultar sobre una ecografía.'),
+      ctaHref: waTexto('Hola, buen día. Quiero sacar un turno para realizarme una ecografía.'),
       blank: true,
       wa: true
     },
@@ -384,7 +385,7 @@ if (revGoogleWriteBtn) {
         <p>Todos los turnos para estética se realizan a través de <b>WhatsApp</b>, comunicate con nosotros.</p>
       </div>`,
       ctaText: 'Consultar por WhatsApp',
-      ctaHref: waTexto('Hola, quisiera más información sobre medicina estética.'),
+      ctaHref: waTextoEstetica('Hola buen día. Quisiera sacar un turno para estética.'),
       blank: true,
       wa: true
     },
