@@ -85,22 +85,28 @@ a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(
 
 /* ===== RESEÑAS ===== */
 .resenas{background:var(--blush-soft)}
-.resenas-hero{text-align:center;max-width:720px;margin:0 auto 56px;padding:48px 40px;background:var(--white);border-radius:24px;box-shadow:var(--shadow-sm);border:1px solid var(--line)}
-.resenas-stars{color:#f5a623;font-size:1.5rem;letter-spacing:4px;margin-bottom:1.2rem}
-.resenas-hero blockquote{font-family:'Fraunces',serif;font-size:clamp(1.3rem,2.5vw,1.75rem);color:var(--plum);line-height:1.4;font-weight:500;margin-bottom:1.8rem}
-.resenas-autor{display:flex;align-items:center;gap:.9rem;justify-content:center}
-.resenas-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--magenta),var(--magenta-dark));color:#fff;font-family:'Fraunces',serif;font-size:1.2rem;display:grid;place-items:center;flex:none}
-.resenas-autor strong{display:block;font-size:.97rem;color:var(--plum)}
-.resenas-autor span{font-size:.82rem;color:var(--muted)}
-.resenas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}
-.resena-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:.8rem;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-.resena-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.resena-stars{color:#f5a623;font-size:.95rem;letter-spacing:2px}
-.resena-card p{font-size:.93rem;color:var(--text);line-height:1.65;flex:1;font-style:italic}
-.resena-autor{display:flex;align-items:center;gap:.7rem;margin-top:.4rem}
-.resena-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blush),#f7d4e8);color:var(--magenta);font-family:'Fraunces',serif;font-size:1rem;font-weight:700;display:grid;place-items:center;flex:none}
-.resena-autor strong{display:block;font-size:.88rem;color:var(--plum)}
-.resena-autor span{display:block;font-size:.76rem;color:var(--muted)}
+/* el título, el carrusel y el track de reseñas rompen el .wrap y ocupan todo el ancho de pantalla;
+   el padding del track mantiene un respiro para que las cards no queden pegadas al borde */
+.resenas .sec-head{max-width:100vw;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:0 24px;box-sizing:border-box}
+.resenas .carousel{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+.resenas .car-track{padding-left:24px;padding-right:24px;scroll-snap-type:none}
+.resenas .car-btn.prev{left:14px}
+.resenas .car-btn.next{right:14px}
+.rev-card{scroll-snap-align:start;flex:0 0 300px;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:.8rem;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.rev-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.rev-head{display:flex;align-items:center;gap:.7rem}
+.rev-avatar-wrap{position:relative;width:44px;height:44px;flex:none}
+.rev-avatar-fallback{position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,var(--magenta),var(--magenta-dark));color:#fff;font-family:'Fraunces',serif;font-size:1rem;font-weight:700;display:grid;place-items:center}
+.rev-avatar{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;object-fit:cover}
+.rev-name{display:block;font-size:.92rem;color:var(--plum);font-weight:700}
+.rev-date{display:block;font-size:.76rem;color:var(--muted);font-weight:400}
+.rev-text{font-size:.93rem;color:var(--text);line-height:1.6;flex:1;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rev-stars{color:#f5a623;font-size:1.3rem;letter-spacing:3px}
+.rev-link{font-size:.82rem;font-weight:700;color:var(--magenta);display:inline-flex;align-items:center;gap:.3rem;transition:gap .25s}
+.rev-card:hover .rev-link{gap:.6rem}
+.resenas .nov-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.rev-google-btn{background:var(--white);color:var(--magenta);border-color:var(--white);box-shadow:var(--shadow)}
+.rev-google-btn:hover{background:var(--white);color:var(--magenta-dark);box-shadow:0 26px 54px -24px rgba(133,20,91,.6);transform:translateY(-3px)}
 
 /* novedades */
 .novedades{background:var(--blush-soft)}

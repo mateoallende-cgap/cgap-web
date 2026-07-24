@@ -53,3 +53,47 @@ v0.3
 
   Pendiente: definir comportamiento específico para mobile (sin 
   hover disponible), a resolver en una iteración aparte.
+v0.4
+### Cambiado
+- **Sección de reseñas (index):** se reemplazó el bloque estático 
+  de reseñas curadas (4 reseñas fijas, editadas a mano en el HTML) 
+  por un carrusel dinámico armado desde `js/reviews-data.js` — 184 
+  reseñas reales de Google scrapeadas, con nombre, estrellas, texto, 
+  fecha, foto de perfil y link de verificación a la reseña original.
+
+  Filtros usados: se descartan las reseñas sin texto (85 de 184, 
+  solo puntuación sin comentario) y se muestran las 99 restantes — 
+  todas, no una selección — mezcladas al azar (Fisher-Yates) en cada 
+  carga de página, sin ordenar ni filtrar por calificación.
+
+  Motivo: la sección anterior mostraba únicamente 4 reseñas 
+  elegidas a mano, lo que reintroducía el mismo riesgo de 
+  transparencia que motivó a eliminarla en una iteración previa. 
+  Mostrar el conjunto completo, en orden aleatorio, evita esa 
+  percepción de curaduría.
+
+  Comportamiento del carrusel: ocupa el ancho completo de la 
+  pantalla (rompe el `.wrap` central) para aprovechar el espacio en 
+  pantallas anchas. Tiene auto-scroll continuo a velocidad baja 
+  (~33px/s) con loop infinito (el set de cards se duplica en el DOM 
+  para que el reinicio del scroll sea imperceptible). Las flechas 
+  de navegación manual siguen disponibles y pausan el auto-scroll 
+  por 7 segundos al usarse.
+
+  Cada card muestra: foto de perfil (con fallback a iniciales si la 
+  imagen de Google no carga), nombre, fecha, texto truncado a 3 
+  líneas, estrellas y un link "Ver en Google →" a la reseña 
+  original — nada se trunca, resume o reescribe.
+
+- **Botón "Dejá tu reseña":** se sacó el formulario propio (posteaba 
+  por email a través de formsubmit.co, no publicaba nada en Google 
+  ni en el sitio) y se reemplazó por un link directo al cuadro 
+  oficial de reseña de Google (`g.page/r/.../review`), que abre en 
+  una ventana emergente chica centrada sobre el sitio.
+
+  Motivo: Google no permite publicar reseñas de terceros vía 
+  formulario propio — la única forma legítima de que una reseña 
+  quede publicada es que el usuario la escriba directamente en 
+  Google. El formulario anterior generaba la falsa impresión de que 
+  la reseña se publicaba, cuando en realidad solo llegaba como 
+  email privado.

@@ -121,55 +121,20 @@
 
 <section id="resenas" class="resenas">
   <div class="wrap">
-    <div class="resenas-hero reveal">
-      <div class="resenas-stars">★★★★★</div>
-      <blockquote>"Definitivamente es el mejor lugar que pude elegir para atenderme, me siento súper contenta y cuidada ✨"</blockquote>
-      <div class="resenas-autor">
-        <div class="resenas-avatar">M</div>
-        <div>
-          <strong>Merlina</strong>
-          <span>Reseña de Google</span>
-        </div>
-      </div>
-    </div>
+    <div class="sec-head reveal"><h2>Lo que dicen nuestras pacientes</h2></div>
 
-    <div class="resenas-grid">
-      <div class="resena-card reveal">
-        <div class="resena-stars">★★★★★</div>
-        <p>"Siempre me atienden excelente, ya es el tercer año que asisto y muy lindo ambiente tanto las doctoras como las secretarias."</p>
-        <div class="resena-autor">
-          <div class="resena-av">C</div>
-          <div><strong>Candi Cuffia</strong><span>Reseña de Google · 3 semanas atrás</span></div>
-        </div>
-      </div>
-      <div class="resena-card reveal">
-        <div class="resena-stars">★★★★★</div>
-        <p>"Los turnos son próximos, las secres te agilizan todo. Muy buena atención por parte de los profesionales."</p>
-        <div class="resena-autor">
-          <div class="resena-av">T</div>
-          <div><strong>Tami Da Luz</strong><span>Local Guide · Reseña de Google · una semana atrás</span></div>
-        </div>
-      </div>
-      <div class="resena-card reveal">
-        <div class="resena-stars">★★★★★</div>
-        <p>"Una atención increíble tanto los médicos como las chicas de recepción. Se toman todo el tiempo del mundo para evacuar dudas."</p>
-        <div class="resena-autor">
-          <div class="resena-av">M</div>
-          <div><strong>Merlina</strong><span>Reseña de Google · hace un mes</span></div>
-        </div>
-      </div>
-      <div class="resena-card reveal">
-        <div class="resena-stars">★★★★★</div>
-        <p>"Tienen una dinámica que hace que cualquier trámite para el paciente sea simple y ágil. Lo recomiendo 100%."</p>
-        <div class="resena-autor">
-          <div class="resena-av">R</div>
-          <div><strong>Romina Alonso</strong><span>Reseña de Google · hace 2 meses</span></div>
-        </div>
-      </div>
+    <div class="carousel reveal">
+      <button class="car-btn prev" data-target="revTrack" aria-label="Anterior">‹</button>
+      <div class="car-track" id="revTrack"></div>
+      <button class="car-btn next" data-target="revTrack" aria-label="Siguiente">›</button>
     </div>
 
     <div class="nov-cta reveal">
-      <a class="btn btn-ghost" href="https://www.google.com/search?sca_esv=ec2bff8bd1e2ef21&sxsrf=ANbL-n4PHVFTXF985HVXu7VOVtr8FHHwtQ:1781625509045&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOSb-1YMrGeWptLLQ96IYzJGw1j7MxhIyuo22Z-H_CeZHPzn7eQKjzMP6QYO6T1cFOvWd1dw86uKXdMs27WI0faHXCJE6&q=CGAP+Opiniones&sa=X&ved=2ahUKEwjXkNuckIyVAxXoHLkGHWsoBwoQ0bkNegQIJRAI&biw=1470&bih=801&dpr=2" target="_blank" rel="noopener">
+      <a class="btn" id="revGoogleWriteBtn" href="https://g.page/r/CQogdG7T_P6LEBM/review" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        Dejá tu reseña en Google
+      </a>
+      <a class="btn btn-ghost rev-google-btn" href="https://www.google.com/search?sca_esv=ec2bff8bd1e2ef21&sxsrf=ANbL-n4PHVFTXF985HVXu7VOVtr8FHHwtQ:1781625509045&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOSb-1YMrGeWptLLQ96IYzJGw1j7MxhIyuo22Z-H_CeZHPzn7eQKjzMP6QYO6T1cFOvWd1dw86uKXdMs27WI0faHXCJE6&q=CGAP+Opiniones&sa=X&ved=2ahUKEwjXkNuckIyVAxXoHLkGHWsoBwoQ0bkNegQIJRAI&biw=1470&bih=801&dpr=2" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10.5c0 5.25-9 12-9 12S3 15.75 3 10.5a9 9 0 0 1 18 0z"/><circle cx="12" cy="10.5" r="3"/></svg>
         Ver todas las reseñas en Google
       </a>
@@ -310,6 +275,7 @@
 <div id="prestModal" class="modal"><div class="modal-card"></div></div>
 
 <script src="data.js"></script>
+<script src="js/reviews-data.js"></script>
 <script src="js/global.js"></script>
 <script src="js/index.js"></script>
 </body>
