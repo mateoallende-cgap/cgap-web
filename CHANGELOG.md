@@ -97,3 +97,26 @@ v0.4
   Google. El formulario anterior generaba la falsa impresión de que 
   la reseña se publicaba, cuando en realidad solo llegaba como 
   email privado.
+v0.5
+### Cambiado
+- **Sección FAQ (index):** se reemplazaron las tabs 
+  "Institucionales"/"Médicas" con acordeón estático por un buscador 
+  general (busca por área, título y contenido, y devuelve resultados 
+  por título que abren un modal con la respuesta completa) y 6 
+  mosaicos por área — Ginecología, Institucional, Diagnóstico por 
+  imágenes, Laboratorio, Portal de pacientes y Otras especialidades 
+  — cada uno con su propio modal, acordeón y buscador acotado a esa 
+  área.
+
+  Las preguntas se migraron de HTML estático a `js/faq-data.js` como 
+  lista de `{area, titulo, contenido}` (34 preguntas: las 29 
+  originales reclasificadas por área más 5 nuevas para cubrir 
+  Diagnóstico por imágenes y Portal de pacientes).
+
+  Los modales de categoría tienen alto máximo (85vh) con scroll 
+  interno para las áreas con más preguntas, con indicador visual 
+  (flecha + degradé) de que hay más contenido para scrollear.
+
+  Motivo: ayuda a la navegación entre preguntas frecuentes, y 
+  mejora la estructuración y la optimización de SEO al poder 
+  gestionar la información de forma más fácil.

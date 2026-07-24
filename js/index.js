@@ -111,40 +111,171 @@ if (revGoogleWriteBtn) {
   });
 }
 
-/* ---------- FAQ tabs + acordeón ---------- */
+/* ============================================================
+   FAQ · buscador global (área + título + contenido) + 6 mosaicos
+   por área, cada uno con su propio buscador acotado
+   ============================================================ */
 (function(){
-  /* tabs */
-  const tabs = document.querySelectorAll('.faq-tab');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      document.querySelectorAll('.faq-panel').forEach(p => p.classList.remove('active'));
-      const panel = document.getElementById('faq-' + tab.dataset.tab);
-      panel.classList.add('active');
-      panel.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
-    });
+  if (!window.FAQ_DATA) return;
+
+  const DIACRITICOS_FAQ = new RegExp("[" + String.fromCharCode(0x300) + "-" + String.fromCharCode(0x36f) + "]", "g");
+  const normFaq = s => (s || "").toString().toLowerCase().normalize("NFD").replace(DIACRITICOS_FAQ, "");
+
+  const AREA_LABELS = {
+    ginecologia: "Ginecología",
+    institucional: "Institucional",
+    diagnostico: "Diagnóstico por imágenes",
+    laboratorio: "Laboratorio",
+    portal: "Portal de pacientes",
+    otras: "Otras especialidades"
+  };
+
+  function abrirModal(modal) { modal.classList.add("open"); document.body.style.overflow = "hidden"; }
+  function cerrarModal(modal) { modal.classList.remove("open"); document.body.style.overflow = ""; }
+  document.addEventListener("keydown", e => {
+    if (e.key !== "Escape") return;
+    document.querySelectorAll(".modal.open").forEach(cerrarModal);
   });
 
-  /* acordeón */
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      const answer = item.querySelector('.faq-a');
-      const inner = answer.querySelector('div') || answer;
-      const isOpen = btn.getAttribute('aria-expanded') === 'true';
-
-      /* cerrar todos los abiertos en el mismo panel */
-      btn.closest('.faq-list').querySelectorAll('.faq-q[aria-expanded="true"]').forEach(other => {
-        if (other === btn) return;
-        other.setAttribute('aria-expanded', 'false');
-        other.closest('.faq-item').querySelector('.faq-a').classList.remove('open');
+  /* ---------- acordeón reutilizable (dentro del modal de categoría) ---------- */
+  function renderAccordion(items) {
+    if (!items.length) return `<p style="color:var(--muted);padding:.5rem 0 1rem">No encontramos preguntas con esos criterios.</p>`;
+    return `<div class="faq-list">${items.map(it => `
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>${it.titulo}</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="faq-a"><div><p>${it.contenido}</p></div></div>
+      </div>`).join("")}</div>`;
+  }
+  const faqScrollHintHtml = '<span class="faq-scroll-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span>';
+  /* El alto máximo de la card (.modal-card--wide{max-height:85vh}) + que
+     .faq-cat-body sea flex:1 con overflow-y:auto es lo que garantiza el
+     recorte y el scroll — es CSS puro, no depende de medir nada por JS.
+     Acá solo prendemos/apagamos la flecha de "hay más" según el scroll. */
+  function setupFaqScroll(cardEl) {
+    const body = cardEl.querySelector(".faq-cat-body");
+    if (!body) { cardEl.classList.remove("has-more", "at-bottom"); return; }
+    const actualizar = () => {
+      const hayMas = body.scrollHeight > body.clientHeight + 2;
+      const alFinal = body.scrollTop + body.clientHeight >= body.scrollHeight - 2;
+      cardEl.classList.toggle("has-more", hayMas);
+      cardEl.classList.toggle("at-bottom", hayMas && alFinal);
+    };
+    body.addEventListener("scroll", actualizar);
+    actualizar();
+  }
+  function wireAccordion(container) {
+    container.querySelectorAll(".faq-q").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const answer = btn.closest(".faq-item").querySelector(".faq-a");
+        const isOpen = btn.getAttribute("aria-expanded") === "true";
+        container.querySelectorAll('.faq-q[aria-expanded="true"]').forEach(other => {
+          if (other === btn) return;
+          other.setAttribute("aria-expanded", "false");
+          other.closest(".faq-item").querySelector(".faq-a").classList.remove("open");
+        });
+        btn.setAttribute("aria-expanded", String(!isOpen));
+        answer.classList.toggle("open", !isOpen);
       });
+    });
+  }
 
-      btn.setAttribute('aria-expanded', String(!isOpen));
-      answer.classList.toggle('open', !isOpen);
+  /* ---------- modal de una sola respuesta (resultado del buscador general) ---------- */
+  const faqAnswerModal = document.getElementById("faqAnswerModal");
+  const faqAnswerCard = faqAnswerModal ? faqAnswerModal.querySelector(".modal-card") : null;
+  function abrirRespuesta(item) {
+    if (!faqAnswerCard) return;
+    faqAnswerCard.innerHTML = `
+      <button class="close" aria-label="Cerrar">×</button>
+      <span class="tag">${AREA_LABELS[item.area] || item.area}</span>
+      <h3>${item.titulo}</h3>
+      <p class="desc">${item.contenido}</p>`;
+    faqAnswerCard.querySelector(".close").addEventListener("click", () => cerrarModal(faqAnswerModal));
+    abrirModal(faqAnswerModal);
+  }
+  if (faqAnswerModal) {
+    faqAnswerModal.addEventListener("click", e => { if (e.target === faqAnswerModal) cerrarModal(faqAnswerModal); });
+  }
+
+  /* ---------- buscador general ---------- */
+  const faqSearch = document.getElementById("faqSearch");
+  const faqSearchClear = document.getElementById("faqSearchClear");
+  const faqSearchResults = document.getElementById("faqSearchResults");
+  if (faqSearch && faqSearchResults && faqSearchClear) {
+    function buscarGlobal() {
+      const q = normFaq(faqSearch.value);
+      faqSearchClear.classList.toggle("show", !!faqSearch.value);
+      if (!q) { faqSearchResults.classList.remove("show"); faqSearchResults.innerHTML = ""; return; }
+      const res = window.FAQ_DATA.filter(it =>
+        normFaq(it.area).includes(q) || normFaq(it.titulo).includes(q) || normFaq(it.contenido).includes(q)
+      ).slice(0, 8);
+      faqSearchResults.innerHTML = res.length
+        ? res.map(it => `<button type="button" data-i="${window.FAQ_DATA.indexOf(it)}">${it.titulo}<span class="area-tag">${AREA_LABELS[it.area] || it.area}</span></button>`).join("")
+        : `<div class="empty">No encontramos preguntas con esos criterios.</div>`;
+      faqSearchResults.querySelectorAll("button[data-i]").forEach(b => {
+        b.addEventListener("click", () => {
+          abrirRespuesta(window.FAQ_DATA[b.dataset.i]);
+          faqSearchResults.classList.remove("show");
+        });
+      });
+      faqSearchResults.classList.add("show");
+    }
+    faqSearch.addEventListener("input", buscarGlobal);
+    faqSearch.addEventListener("focus", () => { if (faqSearch.value) faqSearchResults.classList.add("show"); });
+    faqSearchClear.addEventListener("click", () => { faqSearch.value = ""; buscarGlobal(); faqSearch.focus(); });
+    document.addEventListener("click", e => {
+      if (!e.target.closest(".faq-search-wrap")) faqSearchResults.classList.remove("show");
+    });
+  }
+
+  /* ---------- mosaicos por área ---------- */
+  const faqCategoryModal = document.getElementById("faqCategoryModal");
+  const faqCategoryCard = faqCategoryModal ? faqCategoryModal.querySelector(".modal-card") : null;
+  document.querySelectorAll(".faq-tile").forEach(tile => {
+    tile.addEventListener("click", () => {
+      if (!faqCategoryCard) return;
+      const area = tile.dataset.area;
+      const label = AREA_LABELS[area] || area;
+      const items = window.FAQ_DATA.filter(it => it.area === area);
+
+      faqCategoryCard.innerHTML = `
+        <button class="close" aria-label="Cerrar">×</button>
+        <h3>${label}</h3>
+        <div class="faq-cat-body">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input type="text" placeholder="Buscar dentro de ${label}…" aria-label="Buscar en ${label}">
+            <button class="clear" type="button" aria-label="Limpiar">×</button>
+          </div>
+          <div class="faq-cat-list">${renderAccordion(items)}</div>
+        </div>
+        ${faqScrollHintHtml}`;
+
+      faqCategoryCard.querySelector(".close").addEventListener("click", () => cerrarModal(faqCategoryModal));
+      wireAccordion(faqCategoryCard.querySelector(".faq-cat-list"));
+
+      const catInput = faqCategoryCard.querySelector(".search-box input");
+      const catClear = faqCategoryCard.querySelector(".search-box .clear");
+      catInput.addEventListener("input", () => {
+        const q = normFaq(catInput.value);
+        catClear.classList.toggle("show", !!catInput.value);
+        const filtrados = items.filter(it => normFaq(it.titulo).includes(q) || normFaq(it.contenido).includes(q));
+        const catList = faqCategoryCard.querySelector(".faq-cat-list");
+        catList.innerHTML = renderAccordion(filtrados);
+        wireAccordion(catList);
+        setupFaqScroll(faqCategoryCard);
+      });
+      catClear.addEventListener("click", () => { catInput.value = ""; catInput.dispatchEvent(new Event("input")); });
+
+      abrirModal(faqCategoryModal);
+      setupFaqScroll(faqCategoryCard);
     });
   });
+  if (faqCategoryModal) {
+    faqCategoryModal.addEventListener("click", e => { if (e.target === faqCategoryModal) cerrarModal(faqCategoryModal); });
+  }
 })();
 
 /* ============================================================

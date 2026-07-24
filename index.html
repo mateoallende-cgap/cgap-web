@@ -14,8 +14,9 @@
 <link rel="stylesheet" href="styles/base/wa-float.css">
 <link rel="stylesheet" href="styles/base/ticker.css">
 <link rel="stylesheet" href="styles/base/doc-card.css">
-<link rel="stylesheet" href="styles/base/modal.css">
-<link rel="stylesheet" href="styles/index.css">
+<link rel="stylesheet" href="styles/base/modal.css?v=2">
+<link rel="stylesheet" href="styles/base/search-box.css">
+<link rel="stylesheet" href="styles/index.css?v=4">
 <link rel="stylesheet" href="styles/responsive/base.css">
 <link rel="stylesheet" href="styles/responsive/index.css">
 </head>
@@ -175,57 +176,49 @@
     <div class="sec-head reveal">
       <span class="eyebrow">Centro de ayuda</span>
       <h2>Preguntas frecuentes</h2>
-      <p>Todo lo que necesitás saber antes de tu visita, en un solo lugar.</p>
+      <p>Buscá tu duda o elegí un área para ver todas las preguntas relacionadas.</p>
     </div>
-    <div class="faq-tabs reveal">
-      <button class="faq-tab active" data-tab="inst">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        Institucionales
-      </button>
-      <button class="faq-tab" data-tab="med">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        Médicas
-      </button>
-    </div>
-    <div class="faq-panel active" id="faq-inst">
-      <div class="faq-list">
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Cómo saco un turno?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Podés sacar turno por WhatsApp: <mark>[completar número]</mark>, por nuestro sistema de turnos online: <mark>[completar]</mark> o llamando al teléfono: <mark>[completar]</mark>. Te confirmamos día y horario en el momento.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Qué obras sociales y prepagas atienden?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Trabajamos con <mark>[listar obras sociales y prepagas]</mark>. Si no ves la tuya, escribinos y te confirmamos al instante.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Atienden de forma particular, sin obra social?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Sí, también atendemos en forma particular. Consultá los valores actualizados por <mark>[WhatsApp / completar]</mark>.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Cuánto tardan los resultados de laboratorio?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Los análisis de rutina suelen estar listos en <mark>[24 a 72 hs / completar]</mark>. Los estudios especiales pueden demorar más. Al dejar tu muestra te informamos la fecha estimada de entrega.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Cómo accedo a mis resultados?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Podés acceder <mark>[vía portal online / por email / de forma presencial — completar]</mark>. Te avisamos cuando estén disponibles.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Necesito orden médica para hacerme análisis?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Para la mayoría de los estudios sí necesitás una orden. <mark>[Aclarar excepciones / chequeos del circuito]</mark>. Ante dudas, escribinos antes de tu turno.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Qué tengo que llevar a mi turno?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>DNI, credencial de tu obra social o prepaga, la orden médica si corresponde y, si los tenés, estudios previos relacionados con la consulta.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Dónde están y qué horarios tienen?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Estamos en <mark>[dirección: completar]</mark>. Atendemos <mark>[días y horarios: completar]</mark>.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Puedo reprogramar o cancelar un turno?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Sí. Te pedimos avisarnos con <mark>[X horas / completar]</mark> de anticipación así podemos liberar el turno para otra paciente.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Atienden el mismo día o urgencias?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p><mark>[Completar según política de la clínica]</mark>. Para una consulta que no puede esperar, escribinos y vemos la disponibilidad más cercana.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Atienden a adolescentes?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Sí. <mark>[Completar política]</mark>: en general las menores deben venir acompañadas por madre, padre o tutor/a según el tipo de consulta.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Qué formas de pago aceptan?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p><mark>[Efectivo, débito, crédito, transferencia, cuotas — completar]</mark>.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Tienen estacionamiento y acceso para movilidad reducida?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p><mark>[Completar: estacionamiento, rampa, ascensor, accesibilidad]</mark>.</p></div></div></div>
+
+    <div class="faq-search-wrap reveal">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="faqSearch" placeholder="Buscar una pregunta o tema (ej: turno, laboratorio, PAP)…" aria-label="Buscar en preguntas frecuentes">
+        <button class="clear" id="faqSearchClear" type="button" aria-label="Limpiar">×</button>
       </div>
+      <div class="faq-search-results" id="faqSearchResults"></div>
     </div>
-    <div class="faq-panel" id="faq-med">
-      <div class="faq-list">
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Cada cuánto debo hacerme un PAP?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>En general se recomienda un control ginecológico anual. La frecuencia exacta del PAP la define tu médico/a según tu edad e historia. Lo importante es no dejar pasar el control de cada año.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿A qué edad empiezo los controles ginecológicos?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Suelen iniciarse en la adolescencia o al comenzar la vida sexual, pero cada caso es particular. Ante cualquier síntoma o duda, no hace falta esperar una edad determinada para consultar.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿El PAP duele?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Suele ser una molestia breve más que un dolor, y dura pocos minutos. Si te genera ansiedad, contale a tu profesional: hay formas de hacerlo más cómodo.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Puedo hacerme el PAP si estoy menstruando?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Lo ideal es hacerlo fuera de los días de sangrado. Si tenés el turno y te vino la menstruación, escribinos para reprogramar.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Es normal el dolor menstrual fuerte?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Un cólico leve puede ser normal, pero un dolor que te incapacita o te hace faltar a tus actividades no debería naturalizarse: merece una consulta para estudiar la causa.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Cada cuánto debo controlarme las mamas?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Depende de tu edad y antecedentes. El autoexamen mensual es un buen hábito, y la frecuencia de los estudios la indica tu médico/a en la consulta.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Qué es el HPV y cómo se previene?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Es un virus muy frecuente: la mayoría de las personas tiene contacto con él en algún momento. El control ginecológico regular y la vacuna son las mejores herramientas de prevención.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Necesito ayuno para los análisis de sangre?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Algunos estudios requieren ayuno (en general de 8 a 12 hs) y otros no. Al sacar el turno te indicamos la preparación exacta según los análisis pedidos.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Cuándo conviene consultar por ciclos irregulares?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Si tus ciclos son muy irregulares de forma sostenida, conviene consultar para descartar causas como alteraciones hormonales o síndrome de ovario poliquístico (SOP).</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Qué incluye el circuito ginecológico?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Es un control integral que puede combinar examen ginecológico, control mamario, ecografía si corresponde y solicitud de análisis, resolviendo varias cosas en una misma visita.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿La depilación definitiva es para siempre?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Logra una reducción muy importante y duradera del vello. Suele requerir varias sesiones y, según cada persona, algún mantenimiento posterior. El profesional te orienta en la evaluación inicial.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Cuántas sesiones de depilación definitiva necesito?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Varía según la zona, el tipo de piel y de vello. En general son varias sesiones espaciadas en el tiempo; el número se define en la consulta inicial.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Los tratamientos estéticos tienen tiempo de recuperación?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Depende del tratamiento: algunos no requieren reposo y otros, como ciertos láseres, tienen unos días de cuidados. Te explicamos todo antes de empezar.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Qué es el PRP (plasma rico en plaquetas)?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Es un tratamiento que utiliza componentes de tu propia sangre para estimular la regeneración de la piel. El profesional evalúa en la consulta si es adecuado para vos.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Puedo hacerme tratamientos estéticos si estoy embarazada o amamantando?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Muchos tratamientos no se recomiendan durante el embarazo o la lactancia. Avisá siempre tu situación en la consulta para que el profesional te indique qué es seguro.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>¿Cada cuánto debo controlar mis lunares?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="faq-a"><div><p>Un control dermatológico anual es una buena pauta general, y antes si notás cambios de color, tamaño, forma o bordes en algún lunar.</p></div></div></div>
-      </div>
+
+    <div class="faq-tiles reveal" id="faqTiles">
+      <button class="faq-tile" data-area="ginecologia" type="button">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9.5-8.5C.9 9.6 2.2 6 5.5 6 7.5 6 9 7.5 12 10c3-2.5 4.5-4 6.5-4 3.3 0 4.6 3.6 3 6.5C19 16.65 12 21 12 21z"/></svg></span>
+        Ginecología
+      </button>
+      <button class="faq-tile" data-area="institucional" type="button">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+        Institucional
+      </button>
+      <button class="faq-tile" data-area="diagnostico" type="button">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 21h10M12 17v4M7 9h2l1.5 3L13 7l1.5 3H17"/></svg></span>
+        Diagnóstico por imágenes
+      </button>
+      <button class="faq-tile" data-area="laboratorio" type="button">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7 14h10"/></svg></span>
+        Laboratorio
+      </button>
+      <button class="faq-tile" data-area="portal" type="button">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.5 4 5.7 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.7-4-9s1.5-6.5 4-9z"/></svg></span>
+        Portal de pacientes
+      </button>
+      <button class="faq-tile" data-area="otras" type="button">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10z"/><path d="M18.5 14.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg></span>
+        Otras especialidades
+      </button>
     </div>
   </div>
 </section>
+
+<div id="faqAnswerModal" class="modal"><div class="modal-card"></div></div>
+<div id="faqCategoryModal" class="modal"><div class="modal-card modal-card--wide"></div></div>
 
 <section id="contacto">
   <div class="wrap">
@@ -276,7 +269,8 @@
 
 <script src="data.js"></script>
 <script src="js/reviews-data.js"></script>
+<script src="js/faq-data.js"></script>
 <script src="js/global.js"></script>
-<script src="js/index.js"></script>
+<script src="js/index.js?v=4"></script>
 </body>
 </html>
