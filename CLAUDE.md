@@ -10,7 +10,7 @@ Sitio del **Centro Ginecológico Allende Pinto (CGAP)** — centro integral para
 
 ## Estructura
 Sitio estático, sin build ni dependencias.
-- `index.html` — Home (hero, prestaciones, especialistas, novedades, contacto). Es la única página en la raíz.
+- `index.html` — Home (hero, prestaciones con modales, especialistas, novedades, reseñas de Google, FAQ con buscador y mosaicos por área, contacto). Es la única página en la raíz.
 - `pages/` — el resto de las páginas, todas un nivel abajo de la raíz (por eso sus rutas a `styles/`, `js/`, `data.js` y `assets/` llevan `../`):
   - `nosotros.html` — rediseño `nos2-*`.
   - `practicas.html` — Catálogo de prácticas (`prac2-*`) con filtros, catálogo dinámico y modal de detalle.
@@ -25,13 +25,15 @@ Sitio estático, sin build ni dependencias.
   - Cada HTML carga varios `<link rel="stylesheet">` (base/ que usa + su hoja de página + responsive), en ese orden.
 - `js/` — lógica del sitio, dividida igual que `styles/` (cada página carga solo lo que usa):
   - `js/global.js` — menú mobile + animación `.reveal`. Se carga en las 7 páginas.
-  - `js/index.js` — carrusel de especialistas/novedades, render de destacados, FAQ, hero slider. Solo home (incluye su propio helper `iniciales`).
+  - `js/index.js` — carrusel de especialistas/novedades, render de destacados, modales de "Servicios principales", carrusel infinito de reseñas de Google (auto-scroll + pausa al navegar), y el buscador + 6 mosaicos por área de la sección FAQ (cada mosaico abre un modal con acordeón y buscador propio). Solo home (incluye sus propios helpers `iniciales`, `esc`, `norm`-equivalente `normFaq`).
   - `js/practicas.js` — filtros, catálogo y modal de detalle. Incluye su propio helper `norm` y el handler de los "hint tags" del buscador (hoy inerte: la sección de buscador se quitó del HTML pero el listener sigue definido). Solo `pages/practicas.html`.
   - `js/profesionales.js` — buscador y filtros. Incluye sus propios helpers `iniciales`/`norm`. Solo `pages/profesionales.html`.
   - `js/medicina-estetica.js` — rotación del texto del hero. Solo `pages/medicina-estetica.html`.
   - `js/blog.js` — filtro de tips por categoría. Solo `pages/blog.html`.
   - `nosotros.html` y `circuito.html` solo cargan `js/global.js` (no tienen lógica propia).
 - `data.js` — Datos reales: `window.PROFESIONALES` (57) y `window.PRACTICAS` (63). Se carga antes que los scripts de página en las páginas que lo necesitan (home, prácticas, profesionales).
+- `js/reviews-data.js` — `window.GOOGLE_REVIEWS`: 184 reseñas reales de Google scrapeadas (nombre, estrellas, texto, fecha, foto, link de verificación). Solo home.
+- `js/faq-data.js` — `window.FAQ_DATA`: preguntas frecuentes como lista de `{area, titulo, contenido}`. `area` es uno de `ginecologia | institucional | diagnostico | laboratorio | portal | otras`, y coincide con los `data-area` de los 6 mosaicos del FAQ. Solo home.
 - `assets/` — Logos e imágenes de contenido (fotos de tratamientos, fondo institucional, etc).
 
 ## Nota conocida
@@ -48,6 +50,7 @@ Sitio estático, sin build ni dependencias.
 - **Medicina estética:** reemplazar las tarjetas de tratamiento por los servicios reales del centro.
 - **Formulario de contacto:** hoy envía a `formsubmit.co/zalazarmisael7@gmail.com` (en `index.html`). Cambiar por el mail de CGAP si corresponde.
 - **Fotos de profesionales:** hoy se muestran las iniciales. Para usar fotos reales, agregar un campo `foto` en `data.js` y ajustar el render en `app.js`.
+- **FAQ institucional:** varias respuestas en `js/faq-data.js` (área `institucional`) todavía tienen placeholders `<mark>[completar...]</mark>` (número de WhatsApp, obras sociales, dirección, horarios, políticas). Completar con la info real de CGAP.
 
 ## Enlaces clave
 - Portal de pacientes (botón nav + tarjetas del home): `https://pacientes.cgap.com.ar/Login`
