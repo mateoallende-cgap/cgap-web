@@ -13,7 +13,7 @@ Sitio estático, sin build ni dependencias.
 - `index.html` — Home (hero, prestaciones con modales, especialistas, novedades, reseñas de Google, FAQ con buscador y mosaicos por área, contacto). Es la única página en la raíz.
 - `pages/` — el resto de las páginas, todas un nivel abajo de la raíz (por eso sus rutas a `styles/`, `js/`, `data.js` y `assets/` llevan `../`):
   - `nosotros.html` — rediseño `nos2-*`.
-  - `practicas.html` — Catálogo de prácticas (`prac2-*`) con filtros, catálogo dinámico y modal de detalle.
+  - `practicas.html` — Catálogo de prácticas (`prac2-*`) con buscador y filtros debajo del hero, catálogo dinámico y modal de detalle.
   - `profesionales.html` — Listado de profesionales con buscador y filtros.
   - `medicina-estetica.html` — hero + tratamientos alternados + listado (`est-*`) y secciones `est2-*`.
   - `circuito.html` — rediseño `circ2-*`.
@@ -26,7 +26,7 @@ Sitio estático, sin build ni dependencias.
 - `js/` — lógica del sitio, dividida igual que `styles/` (cada página carga solo lo que usa):
   - `js/global.js` — menú mobile + animación `.reveal`. Se carga en las 7 páginas.
   - `js/index.js` — carrusel de especialistas/novedades, render de destacados, modales de "Servicios principales", carrusel infinito de reseñas de Google (auto-scroll + pausa al navegar), y el buscador + 6 mosaicos por área de la sección FAQ (cada mosaico abre un modal con acordeón y buscador propio). Solo home (incluye sus propios helpers `iniciales`, `esc`, `norm`-equivalente `normFaq`).
-  - `js/practicas.js` — filtros, catálogo y modal de detalle. Incluye su propio helper `norm` y el handler de los "hint tags" del buscador (hoy inerte: la sección de buscador se quitó del HTML pero el listener sigue definido). Solo `pages/practicas.html`.
+  - `js/practicas.js` — buscador, filtros, catálogo y modal de detalle. Incluye su propio helper `norm` y el handler de los "hint tags" del buscador (inerte: no hay elementos `.prac2-search-hints span` en el HTML, pero el listener no rompe nada si no encuentra ninguno). Solo `pages/practicas.html`.
   - `js/profesionales.js` — buscador y filtros. Incluye sus propios helpers `iniciales`/`norm`. Solo `pages/profesionales.html`.
   - `js/medicina-estetica.js` — rotación del texto del hero. Solo `pages/medicina-estetica.html`.
   - `js/blog.js` — filtro de tips por categoría. Solo `pages/blog.html`.
@@ -36,13 +36,10 @@ Sitio estático, sin build ni dependencias.
 - `js/faq-data.js` — `window.FAQ_DATA`: preguntas frecuentes como lista de `{area, titulo, contenido}`. `area` es uno de `ginecologia | institucional | diagnostico | laboratorio | portal | otras`, y coincide con los `data-area` de los 6 mosaicos del FAQ. Solo home.
 - `assets/` — Logos e imágenes de contenido (fotos de tratamientos, fondo institucional, etc).
 
-## Nota conocida
-- `pages/practicas.html` no tiene actualmente el input de búsqueda en el HTML (se quitó del diseño), pero `js/practicas.js` sigue haciendo `document.getElementById("pracBuscar")` sin chequeo de null antes de `addEventListener`. Si en algún momento el elemento vuelve a faltar del todo (hoy tampoco existe), esa línea corta la ejecución del resto del script — ya pasó antes y se identificó como bug preexistente, no introducido por esta reorganización.
-
 ## Datos
 - Para agregar/editar profesionales o prácticas, modificar `data.js`.
 - Cada profesional: `nombre, apellido, especialidad (slug), especialidadTexto, horario, destacado`.
-- Cada práctica: `nombre, descripcion, especialidad, tipo, masBuscada, preparacion, orden, duracion`.
+- Cada práctica: `nombre, descripcion, especialidad, tipo, masBuscada, preparacion, orden, duracion`, y opcionalmente `turnoWeb: true` para las que se pueden reservar desde el portal de pacientes (hoy: las 7 consultas y 12 ecografías puntuales). El modal de detalle (`js/practicas.js`) usa ese flag para decidir si el botón principal va al portal o a WhatsApp, y si muestra la fila "Disponibilidad" con ambos links.
 - Los marcados como `destacado: true` / `masBuscada: true` aparecen primero (en home y en los listados sin filtro).
 
 ## Pendientes / placeholders

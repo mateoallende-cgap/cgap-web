@@ -21,12 +21,6 @@
   padding:88px 24px 80px;
 }
 .prac2-hero-inner{max-width:780px;margin:0 auto;text-align:center}
-.prac2-hero-label{
-  display:inline-block;
-  background:rgba(173,30,119,.12);color:var(--magenta);
-  font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  padding:6px 16px;border-radius:100px;margin-bottom:20px;
-}
 .prac2-hero-title{
   font-family:'Fraunces',serif;
   font-size:clamp(2.2rem,5.5vw,3.6rem);
@@ -34,6 +28,21 @@
 }
 .prac2-hero-sub{font-size:1rem;color:var(--muted);line-height:1.7;margin:0 auto 2rem;max-width:520px}
 .prac2-hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+/* Buscador + filtros (debajo del hero)
+   Queda pegado (sticky) justo debajo del navbar compacto (100px) al scrollear,
+   para que el paciente siempre vea qué escribió / qué filtros tiene activos. */
+.prac2-search-filter{
+  background:var(--cream);
+  padding:24px 24px 14px;
+  position:sticky;
+  top:100px;
+  z-index:40;
+  box-shadow:var(--shadow-sm);
+}
+.prac2-search-box{max-width:640px;margin:0 auto 18px;padding:.95rem 1.5rem}
+.prac2-search-box svg{width:24px;height:24px}
+.prac2-search-box input{font-size:1.08rem}
 
 /* Sección genérica */
 .prac2-section-title{
@@ -44,38 +53,6 @@
   text-align:center;color:var(--muted);font-size:.9rem;
   line-height:1.6;max-width:520px;margin:0 auto 40px;
 }
-
-/* Featured (Más buscadas) */
-.prac2-featured{background:var(--cream);padding:72px 24px}
-.prac2-featured-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:20px;max-width:1100px;margin:0 auto;
-}
-.prac2-fcard{
-  background:#fff;border-radius:20px;
-  border:1px solid var(--line);padding:28px 22px;
-  display:flex;flex-direction:column;gap:10px;
-  transition:box-shadow .2s,transform .2s;
-}
-.prac2-fcard:hover{box-shadow:0 8px 28px rgba(173,30,119,.1);transform:translateY(-3px)}
-.prac2-fcard--highlight{
-  border-color:var(--magenta);
-  background:linear-gradient(145deg,#fff9fd,#fff);
-  box-shadow:0 4px 20px rgba(173,30,119,.1);
-}
-.prac2-fcard-tag{
-  font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-  color:var(--magenta);
-}
-.prac2-fcard-title{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--plum);margin:0;line-height:1.3}
-.prac2-fcard-desc{font-size:.83rem;color:var(--muted);line-height:1.6;margin:0;flex:1}
-.prac2-fcard-tipo{
-  font-size:.72rem;color:#888;font-weight:600;
-  background:var(--blush-soft);border-radius:8px;padding:4px 10px;
-  align-self:flex-start;
-}
-.prac2-fcard-btn{margin-top:6px;align-self:flex-start;font-size:.83rem;padding:10px 20px}
 
 /* ¿No sabés? (mid) */
 .prac2-nosabe{
@@ -124,8 +101,18 @@
 .prac2-esp-btn{margin-top:6px;align-self:flex-start;font-size:.8rem;padding:9px 18px}
 
 /* Catálogo dinámico */
-.prac2-catalog{background:var(--cream);padding:72px 24px}
-.prac2-filter-wrap{margin-bottom:32px}
+.prac2-catalog{background:var(--cream);padding:28px 0 72px}
+/* el título, el header "Más buscadas" y el grid comparten el mismo ancho
+   full-bleed y el mismo padding lateral, así quedan alineados entre sí */
+.prac2-catalog > .wrap{
+  width:100vw;
+  max-width:none;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  padding:0 40px;
+  box-sizing:border-box;
+}
+.prac2-filter-wrap{margin-bottom:0}
 .prac2-filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
 .prac2-chip{
   padding:9px 20px;border-radius:100px;
@@ -133,6 +120,10 @@
   font-size:.83rem;font-weight:600;color:var(--muted);
   cursor:pointer;transition:all .18s;
 }
+/* Al quedar pegada (sticky), la barra solo muestra los chips activos —así
+   el buscador siempre queda visible sin que los filtros ocupen alto extra. */
+.prac2-search-filter.is-stuck .prac2-chip:not(.active){display:none}
+.prac2-search-filter.is-stuck .prac2-filter-wrap:not(:has(.prac2-chip.active)){display:none}
 .prac2-chip:hover{border-color:var(--magenta);color:var(--magenta)}
 .prac2-chip.active{background:var(--magenta);color:#fff;border-color:var(--magenta)}
 .prac2-catalog-header{
@@ -143,7 +134,7 @@
 .prac2-catalog-count{font-size:.85rem;color:var(--muted)}
 .prac2-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  grid-template-columns:repeat(6,1fr);
   gap:18px;
 }
 

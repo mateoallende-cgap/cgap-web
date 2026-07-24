@@ -8,6 +8,8 @@
 .modal-card .desc{color:var(--muted);margin-bottom:1.2rem}
 .modal-row{display:flex;gap:.7rem;padding:.7rem 0;border-top:1px solid var(--line);font-size:.92rem}
 .modal-row b{color:var(--plum);min-width:120px;font-weight:700}
+.modal-row span{font-weight:700;color:var(--text)}
+.modal-row a{color:var(--magenta);font-weight:700;text-decoration:underline}
 .modal-card .close{position:absolute;top:14px;right:18px;border:none;background:none;font-size:1.8rem;line-height:1;color:var(--muted);cursor:pointer}
 .modal-card .btn{margin-top:1.4rem;width:100%;justify-content:center}
 .modal-info{border-top:1px solid var(--line);padding-top:1rem}

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Especialidades · CGAP Córdoba</title>
-<meta name="description" content="Conocé todas las especialidades médicas de CGAP: ginecología, obstetricia, ecografía, laboratorio, endocrinología, nutrición, dermatología, cardiología, flebología y más.">
+<meta name="description" content="Conocé todas las especialidades médicas de CGAP: ginecología, obstetricia, ecografía, laboratorio, endocrinología, nutrición, dermatología, cardiología, flebología, clínica médica, oncología y más.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,9 +13,10 @@
 <link rel="stylesheet" href="../styles/base/navbar.css">
 <link rel="stylesheet" href="../styles/base/footer.css">
 <link rel="stylesheet" href="../styles/base/wa-float.css">
-<link rel="stylesheet" href="../styles/base/modal.css">
+<link rel="stylesheet" href="../styles/base/modal.css?v=3">
 <link rel="stylesheet" href="../styles/base/filtros.css">
-<link rel="stylesheet" href="../styles/practicas.css">
+<link rel="stylesheet" href="../styles/base/search-box.css">
+<link rel="stylesheet" href="../styles/practicas.css?v=8">
 <link rel="stylesheet" href="../styles/responsive/base.css">
 <link rel="stylesheet" href="../styles/responsive/practicas.css">
 </head>
@@ -46,8 +47,7 @@
   <section class="prac2-hero">
     <div class="wrap prac2-hero-inner">
       <div class="prac2-hero-text">
-        <p class="prac2-hero-label">Especialidades · CGAP</p>
-        <h1 class="prac2-hero-title">Encontrá la especialidad<br>o práctica que necesitás</h1>
+        <h1 class="prac2-hero-title">Encontrá tu especialidad<br>o práctica</h1>
         <p class="prac2-hero-sub">En CGAP podés realizar consultas, estudios y procedimientos en un mismo lugar. Buscá por especialidad, práctica o síntoma.</p>
         <div class="prac2-hero-btns">
           <a class="btn-outline-plum" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20pedir%20ayuda%20para%20saber%20qu%C3%A9%20turno%20sacar." target="_blank" rel="noopener">Pedir ayuda por WhatsApp</a>
@@ -56,53 +56,47 @@
     </div>
   </section>
 
-  <!-- ====== MÁS BUSCADAS ====== -->
-  <section class="prac2-featured">
+  <!-- ====== BUSCADOR + FILTROS ====== -->
+  <section class="prac2-search-filter">
     <div class="wrap">
-      <h2 class="prac2-section-title">Más buscadas</h2>
-      <div class="prac2-featured-grid">
-
-        <div class="prac2-fcard prac2-fcard--highlight">
-          <div class="prac2-fcard-tag">Circuito</div>
-          <h3 class="prac2-fcard-title">Circuito ginecológico</h3>
-          <p class="prac2-fcard-desc">Consulta, PAP, videocolposcopía, ecografía y laboratorio según indicación médica, en un circuito organizado.</p>
-          <span class="prac2-fcard-tipo">Consulta + estudios</span>
-          <a class="btn prac2-fcard-btn" href="circuito.html">Ver circuito</a>
-        </div>
-
-        <div class="prac2-fcard">
-          <div class="prac2-fcard-tag">Ginecología</div>
-          <h3 class="prac2-fcard-title">PAP y videocolposcopía</h3>
-          <p class="prac2-fcard-desc">Estudios de control del cuello uterino indicados según criterio profesional.</p>
-          <span class="prac2-fcard-tipo">Estudio ginecológico</span>
-          <a class="btn prac2-fcard-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20solicitar%20un%20turno%20para%20PAP%20o%20videocolposcop%C3%ADa." target="_blank" rel="noopener">Solicitar turno</a>
-        </div>
-
-        <div class="prac2-fcard">
-          <div class="prac2-fcard-tag">Ecografía</div>
-          <h3 class="prac2-fcard-title">Ecografías</h3>
-          <p class="prac2-fcard-desc">Ecografías ginecológicas, mamarias y obstétricas según indicación médica.</p>
-          <span class="prac2-fcard-tipo">Estudio por imágenes</span>
-          <a class="btn prac2-fcard-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20sobre%20ecograf%C3%ADas." target="_blank" rel="noopener">Consultar ecografía</a>
-        </div>
-
-        <div class="prac2-fcard">
-          <div class="prac2-fcard-tag">Dermatología</div>
-          <h3 class="prac2-fcard-title">Dermatología</h3>
-          <p class="prac2-fcard-desc">Consultas por manchas, acné, lunares, rosácea, controles de piel y tratamientos dermatológicos.</p>
-          <span class="prac2-fcard-tipo">Consulta médica</span>
-          <a class="btn prac2-fcard-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20con%20dermatolog%C3%ADa." target="_blank" rel="noopener">Consultar dermatología</a>
-        </div>
-
-        <div class="prac2-fcard">
-          <div class="prac2-fcard-tag">Laboratorio</div>
-          <h3 class="prac2-fcard-title">Laboratorio</h3>
-          <p class="prac2-fcard-desc">Análisis clínicos con indicación médica, integrados al circuito de atención cuando corresponde.</p>
-          <span class="prac2-fcard-tipo">Estudio complementario</span>
-          <a class="btn prac2-fcard-btn" href="https://wa.me/5493515079642?text=Hola%2C%20quisiera%20consultar%20sobre%20laboratorio." target="_blank" rel="noopener">Ver información</a>
-        </div>
-
+      <div class="search-box prac2-search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="pracBuscar" placeholder="Buscá por especialidad, práctica o síntoma…" aria-label="Buscar práctica">
+        <button class="clear" id="pracClear" type="button" aria-label="Limpiar">×</button>
       </div>
+      <div id="pracFiltros" class="prac2-filter-wrap">
+        <div class="prac2-filters">
+          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="circuito">Circuito</button>
+          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="ginecologia">Ginecología</button>
+          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="ecografia">Ecografías</button>
+          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="dermatologia">Dermatología</button>
+          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="endocrinologia">Endocrinología</button>
+          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="nutricion">Nutrición</button>
+          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="laboratorio">Laboratorio</button>
+          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="flebologia">Flebología</button>
+          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="cardiologia">Cardiología</button>
+          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="clinica-medica">Clínica médica</button>
+          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="oncologia">Oncología</button>
+          <button class="chip prac2-chip" data-grupo="tipo" data-filter="consulta">Consultas</button>
+          <button class="chip prac2-chip" data-grupo="tipo" data-filter="diagnostico">Diagnóstico</button>
+          <button class="chip prac2-chip" data-grupo="tipo" data-filter="control">Control</button>
+          <button class="chip prac2-chip" data-grupo="tipo" data-filter="procedimiento">Procedimientos</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CATÁLOGO DINÁMICO ====== -->
+  <section class="prac2-catalog" id="catalogo">
+    <div class="wrap">
+      <h2 class="prac2-section-title">Prácticas y estudios</h2>
+      <p class="prac2-section-sub">Filtrá por especialidad o tipo de atención para encontrar lo que necesitás.</p>
+
+      <div class="prac2-catalog-header">
+        <h3 id="pracTitulo" class="prac2-catalog-title">Más buscadas</h3>
+        <span class="prac2-catalog-count" id="pracCount"></span>
+      </div>
+      <div class="prac-grid prac2-grid" id="pracGrid"></div>
     </div>
   </section>
 
@@ -184,35 +178,6 @@
     </div>
   </section>
 
-  <!-- ====== CATÁLOGO DINÁMICO ====== -->
-  <section class="prac2-catalog" id="catalogo">
-    <div class="wrap">
-      <h2 class="prac2-section-title">Prácticas y estudios</h2>
-      <p class="prac2-section-sub">Filtrá por especialidad o tipo de atención para encontrar lo que necesitás.</p>
-
-      <div id="pracFiltros" class="prac2-filter-wrap">
-        <div class="prac2-filters">
-<button class="chip prac2-chip" data-grupo="especialidad" data-filter="circuito">Circuito</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="ginecologia">Ginecología</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="ecografia">Ecografías</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="dermatologia">Dermatología</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="endocrinologia">Endocrinología</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="nutricion">Nutrición</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="laboratorio">Laboratorio</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="flebologia">Flebología</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="cardiologia">Cardiología</button>
-          <button class="chip prac2-chip" data-grupo="tipo" data-filter="procedimiento">Procedimientos</button>
-        </div>
-      </div>
-
-      <div class="prac2-catalog-header">
-        <h3 id="pracTitulo" class="prac2-catalog-title">Más buscadas</h3>
-        <span class="prac2-catalog-count" id="pracCount"></span>
-      </div>
-      <div class="prac-grid prac2-grid" id="pracGrid"></div>
-    </div>
-  </section>
-
   <!-- ====== CTA FINAL ====== -->
   <section style="background:#fff;padding:64px 24px;border-top:1px solid #eee;text-align:center">
     <div style="max-width:560px;margin:0 auto">
@@ -239,9 +204,8 @@
     <p class="copy">© CGAP · Centro Ginecológico Allende Pinto — Buenos Aires 855, Córdoba, Argentina</p>
   </div>
 </footer>
-<script src="../data.js"></script>
+<script src="../data.js?v=6"></script>
 <script src="../js/global.js"></script>
-<script src="../js/practicas.js"></script>
+<script src="../js/practicas.js?v=7"></script>
 
 </body>
-</html>

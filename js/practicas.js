@@ -17,19 +17,27 @@ if (pracGrid && window.PRACTICAS) {
   const titulo = document.getElementById("pracTitulo");
   const chips = document.querySelectorAll("#pracFiltros .chip");
   const modal = document.getElementById("pracModal");
+  const searchFilterBar = document.querySelector(".prac2-search-filter");
+  const STICKY_TOP = 100; /* debe coincidir con el "top" sticky de .prac2-search-filter en practicas.css */
   let fEsp = "", fTipo = "", q = "";
 
   const espTexto = {
     circuito: "Circuito Ginecológico", ginecologia: "Ginecología", obstetricia: "Obstetricia", ecografia: "Ecografía",
     laboratorio: "Laboratorio", endocrinologia: "Endocrinología", nutricion: "Nutrición",
-    dermatologia: "Dermatología", cardiologia: "Cardiología", flebologia: "Flebología"
+    dermatologia: "Dermatología", cardiologia: "Cardiología", flebologia: "Flebología",
+    "clinica-medica": "Clínica médica", oncologia: "Oncología"
   };
+  const tipoTexto = { consulta: "Consulta", diagnostico: "Diagnóstico", procedimiento: "Procedimiento", control: "Control" };
 
   function render() {
     let res = data.filter(p => {
       const okEsp = !fEsp || p.especialidad === fEsp;
       const okTipo = !fTipo || p.tipo === fTipo;
-      const okQ = !q || norm(p.nombre).includes(q) || norm(p.descripcion).includes(q);
+      const okQ = !q
+        || norm(p.nombre).includes(q)
+        || norm(p.descripcion).includes(q)
+        || norm(espTexto[p.especialidad] || p.especialidad).includes(q)
+        || norm(tipoTexto[p.tipo] || p.tipo).includes(q);
       return okEsp && okTipo && okQ;
     });
     if (!fEsp && !fTipo && !q) {
@@ -56,6 +64,12 @@ if (pracGrid && window.PRACTICAS) {
 
   function abrir(p) {
     const waText = encodeURIComponent(`Hola, quisiera gestionar un turno para: ${p.nombre}.`);
+    const waHref = `https://wa.me/5493515079642?text=${waText}`;
+    const portalHref = "https://pacientes.cgap.com.ar/Login";
+    const turnoWeb = p.turnoWeb === true;
+    const disponibilidad = turnoWeb
+      ? `<div class="modal-row"><b>Disponibilidad</b><span>Podés sacar el turno desde el <a href="${portalHref}" target="_blank" rel="noopener">portal web</a> o por <a href="${waHref}" target="_blank" rel="noopener">WhatsApp</a>.</span></div>`
+      : "";
     modal.querySelector(".modal-card").innerHTML = `
       <button class="close" aria-label="Cerrar">×</button>
       <span class="tag">${espTexto[p.especialidad] || p.especialidad}</span>
@@ -64,7 +78,8 @@ if (pracGrid && window.PRACTICAS) {
       <div class="modal-row"><b>Preparación</b><span>${p.preparacion || "—"}</span></div>
       <div class="modal-row"><b>Orden médica</b><span>${p.orden || "—"}</span></div>
       <div class="modal-row"><b>Duración</b><span>${p.duracion || "—"}</span></div>
-      <a class="btn" target="_blank" rel="noopener" href="https://wa.me/5493515079642?text=${waText}">Gestionar turno</a>`;
+      ${disponibilidad}
+      <a class="btn" target="_blank" rel="noopener" href="${turnoWeb ? portalHref : waHref}">${turnoWeb ? "Solicitar turno" : "Gestionar turno"}</a>`;
     modal.classList.add("open");
     modal.querySelector(".close").onclick = () => modal.classList.remove("open");
   }
@@ -78,10 +93,45 @@ if (pracGrid && window.PRACTICAS) {
     else { if (grupo === "especialidad") fEsp = ""; else fTipo = ""; }
     render();
   }));
+  /* al escribir en el buscador, baja la pantalla hasta los resultados para
+     que el paciente vea los estudios que va encontrando el filtro. El
+     destino se calcula para que el título quede pegado justo debajo de la
+     barra sticky de buscador+filtros (no debajo del navbar solo), midiendo
+     la altura que la barra va a tener ya "pegada" (con los chips inactivos
+     ocultos), que es la que tendrá en el momento del scroll. */
+  let scrollBusquedaTimer;
+  function bajarAResultados() {
+    if (!titulo) return;
+    let barH = 0;
+    if (searchFilterBar) {
+      const wasStuck = searchFilterBar.classList.contains("is-stuck");
+      searchFilterBar.classList.add("is-stuck");
+      barH = searchFilterBar.offsetHeight;
+      if (!wasStuck) searchFilterBar.classList.remove("is-stuck");
+    }
+    const destino = titulo.getBoundingClientRect().top + window.scrollY - STICKY_TOP - barH - 16;
+    if (Math.abs(window.scrollY - destino) < 40) return;
+    window.scrollTo({ top: destino, behavior: "smooth" });
+  }
   buscar.addEventListener("input", () => {
     q = norm(buscar.value); clear.classList.toggle("show", !!buscar.value); render();
+    clearTimeout(scrollBusquedaTimer);
+    if (q) scrollBusquedaTimer = setTimeout(bajarAResultados, 400);
   });
   clear.addEventListener("click", () => { buscar.value = ""; q = ""; clear.classList.remove("show"); render(); });
+
+  /* Barra sticky de buscador+filtros: al quedar pegada arriba, la clase
+     is-stuck hace que la hoja de estilos oculte los chips inactivos (y todo
+     el bloque de filtros si no hay ninguno activo), para que el buscador
+     siempre esté visible sin que la barra ocupe demasiado alto. */
+  if (searchFilterBar) {
+    const actualizarSticky = () => {
+      const stuck = searchFilterBar.getBoundingClientRect().top <= STICKY_TOP + 1;
+      searchFilterBar.classList.toggle("is-stuck", stuck);
+    };
+    window.addEventListener("scroll", actualizarSticky, { passive: true });
+    actualizarSticky();
+  }
 
   /* Activar filtro desde URL (?esp=circuito) */
   const espParam = new URLSearchParams(window.location.search).get("esp");
