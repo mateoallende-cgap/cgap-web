@@ -2,9 +2,13 @@
    CGAP · Especialidades / Prácticas (practicas.html)
    ============================================================ */
 
-/* grilla de prácticas (contenido inyectado por js/practicas.js) */
-.prac-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
-.prac-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem 1.5rem;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .2s;display:flex;flex-direction:column;gap:.5rem}
+/* grilla de prácticas (contenido inyectado por js/practicas.js). Columnas de
+   ancho fijo (no 1fr) + justify-content:center: cuando hay pocas cards no se
+   estiran para llenar el ancho, quedan centradas a su tamaño normal. */
+.prac-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,280px));gap:18px;justify-content:center}
+/* .prac-card ahora es un <a> real (link a la página propia de la práctica,
+   indexable) — se resetea el subrayado/color de link por defecto */
+.prac-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem 1.5rem;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .2s;display:flex;flex-direction:column;gap:.5rem;text-decoration:none;color:inherit}
 .prac-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--blush)}
 .prac-card .tag{align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--magenta);background:var(--blush);padding:.25rem .7rem;border-radius:100px}
 .prac-card h3{font-size:1.12rem}
@@ -21,12 +25,6 @@
   padding:88px 24px 80px;
 }
 .prac2-hero-inner{max-width:780px;margin:0 auto;text-align:center}
-.prac2-hero-label{
-  display:inline-block;
-  background:rgba(173,30,119,.12);color:var(--magenta);
-  font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  padding:6px 16px;border-radius:100px;margin-bottom:20px;
-}
 .prac2-hero-title{
   font-family:'Fraunces',serif;
   font-size:clamp(2.2rem,5.5vw,3.6rem);
@@ -34,6 +32,25 @@
 }
 .prac2-hero-sub{font-size:1rem;color:var(--muted);line-height:1.7;margin:0 auto 2rem;max-width:520px}
 .prac2-hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+/* Título de la sección "Prácticas y estudios" (va antes del buscador, que es
+   sticky, para que el título no quede pegado también al scrollear) */
+.prac2-practicas-intro{background:var(--cream);padding:56px 24px 0}
+
+/* Buscador + filtros (debajo del hero)
+   Queda pegado (sticky) justo debajo del navbar compacto (100px) al scrollear,
+   para que el paciente siempre vea qué escribió / qué filtros tiene activos. */
+.prac2-search-filter{
+  background:var(--cream);
+  padding:24px 24px 14px;
+  position:sticky;
+  top:100px;
+  z-index:40;
+}
+.prac2-search-filter.is-stuck{box-shadow:var(--shadow-sm)}
+.prac2-search-box{max-width:640px;margin:0 auto 18px;padding:.95rem 1.5rem}
+.prac2-search-box svg{width:24px;height:24px}
+.prac2-search-box input{font-size:1.08rem}
 
 /* Sección genérica */
 .prac2-section-title{
@@ -44,38 +61,6 @@
   text-align:center;color:var(--muted);font-size:.9rem;
   line-height:1.6;max-width:520px;margin:0 auto 40px;
 }
-
-/* Featured (Más buscadas) */
-.prac2-featured{background:var(--cream);padding:72px 24px}
-.prac2-featured-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:20px;max-width:1100px;margin:0 auto;
-}
-.prac2-fcard{
-  background:#fff;border-radius:20px;
-  border:1px solid var(--line);padding:28px 22px;
-  display:flex;flex-direction:column;gap:10px;
-  transition:box-shadow .2s,transform .2s;
-}
-.prac2-fcard:hover{box-shadow:0 8px 28px rgba(173,30,119,.1);transform:translateY(-3px)}
-.prac2-fcard--highlight{
-  border-color:var(--magenta);
-  background:linear-gradient(145deg,#fff9fd,#fff);
-  box-shadow:0 4px 20px rgba(173,30,119,.1);
-}
-.prac2-fcard-tag{
-  font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-  color:var(--magenta);
-}
-.prac2-fcard-title{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--plum);margin:0;line-height:1.3}
-.prac2-fcard-desc{font-size:.83rem;color:var(--muted);line-height:1.6;margin:0;flex:1}
-.prac2-fcard-tipo{
-  font-size:.72rem;color:#888;font-weight:600;
-  background:var(--blush-soft);border-radius:8px;padding:4px 10px;
-  align-self:flex-start;
-}
-.prac2-fcard-btn{margin-top:6px;align-self:flex-start;font-size:.83rem;padding:10px 20px}
 
 /* ¿No sabés? (mid) */
 .prac2-nosabe{
@@ -99,33 +84,63 @@
 }
 .prac2-nosabe-btn:hover{background:var(--blush);color:var(--plum)}
 
-/* Especialidades */
-.prac2-esp{background:#fff;padding:72px 24px}
+/* Los botones del hero saltan a estos anchors; scroll-margin-top evita que
+   el navbar (sticky, ~100-122px) tape el comienzo de la sección al saltar. */
+#especialidades,#buscador{scroll-margin-top:120px}
+
+/* Especialidades — el wrap va full-bleed (mismo criterio que el catálogo)
+   para aprovechar todo el ancho de pantalla; el grid usa auto-fill así que
+   ya se acomoda solo en distintos anchos (el detalle fino de breakpoints
+   queda para cuando trabajemos el responsive). */
+.prac2-esp{background:#fff;padding:72px 0}
+.prac2-esp > .wrap{
+  width:100vw;
+  max-width:none;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  padding:0 40px;
+  box-sizing:border-box;
+}
 .prac2-esp-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:20px;max-width:1100px;margin:0 auto;
+  /* auto-fit (no auto-fill): las columnas "fantasma" vacías colapsan y las
+     cards existentes se estiran para ocupar todo el ancho, en vez de quedar
+     pegadas a la izquierda con un hueco vacío a la derecha */
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
 }
 .prac2-esp-card{
   background:var(--blush-soft);border:1px solid var(--line);
-  border-radius:18px;padding:28px 22px;
-  display:flex;flex-direction:column;gap:10px;
+  border-radius:18px;padding:20px 20px 18px;
+  display:flex;flex-direction:column;gap:8px;
   transition:box-shadow .2s,transform .2s;
 }
 .prac2-esp-card:hover{box-shadow:0 6px 20px rgba(173,30,119,.09);transform:translateY(-2px)}
-.prac2-esp-icon{font-size:1.6rem}
-.prac2-esp-card h3{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--plum);margin:0}
-.prac2-esp-card p{font-size:.83rem;color:var(--muted);line-height:1.65;margin:0;flex:1}
-.prac2-esp-tipo{
-  font-size:.72rem;color:#888;font-weight:600;
-  background:#fff;border-radius:8px;padding:4px 10px;
-  align-self:flex-start;border:1px solid var(--line);
-}
-.prac2-esp-btn{margin-top:6px;align-self:flex-start;font-size:.8rem;padding:9px 18px}
+/* icono y título en la misma línea para que la card no crezca tanto en alto */
+.prac2-esp-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.prac2-esp-icon{font-size:2rem;line-height:1}
+.prac2-esp-card h3{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--plum);margin:0}
+.prac2-esp-card p{font-size:.83rem;color:var(--muted);line-height:1.6;margin:0;flex:1}
+.prac2-esp-btns{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+/* .btn/.btn-outline-plum son inline-flex sin justify-content, así que al
+   estirarse a lo ancho de la card (flex-direction:column los stretchea) el
+   texto quedaba pegado a la izquierda; justify-content lo centra en el botón */
+.prac2-esp-btn-ver{font-size:.78rem;padding:8px 16px;text-align:center;justify-content:center;background:var(--plum);color:#fff}
+.prac2-esp-btn-ver:hover{background:var(--magenta-dark);border-color:var(--magenta-dark);color:#fff}
 
 /* Catálogo dinámico */
-.prac2-catalog{background:var(--cream);padding:72px 24px}
-.prac2-filter-wrap{margin-bottom:32px}
+.prac2-catalog{background:var(--cream);padding:28px 0 72px}
+/* el título, el header "Más buscadas" y el grid comparten el mismo ancho
+   full-bleed y el mismo padding lateral, así quedan alineados entre sí */
+.prac2-catalog > .wrap{
+  width:100vw;
+  max-width:none;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  padding:0 40px;
+  box-sizing:border-box;
+}
+.prac2-filter-wrap{margin-bottom:0}
 .prac2-filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
 .prac2-chip{
   padding:9px 20px;border-radius:100px;
@@ -133,6 +148,10 @@
   font-size:.83rem;font-weight:600;color:var(--muted);
   cursor:pointer;transition:all .18s;
 }
+/* Al quedar pegada (sticky), la barra solo muestra los chips activos —así
+   el buscador siempre queda visible sin que los filtros ocupen alto extra. */
+.prac2-search-filter.is-stuck .prac2-chip:not(.active){display:none}
+.prac2-search-filter.is-stuck .prac2-filter-wrap:not(:has(.prac2-chip.active)){display:none}
 .prac2-chip:hover{border-color:var(--magenta);color:var(--magenta)}
 .prac2-chip.active{background:var(--magenta);color:#fff;border-color:var(--magenta)}
 .prac2-catalog-header{
@@ -143,17 +162,11 @@
 .prac2-catalog-count{font-size:.85rem;color:var(--muted)}
 .prac2-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  grid-template-columns:repeat(6,1fr);
   gap:18px;
 }
-
-/* CTA final */
-.prac2-cta-final{background:#fff;padding:64px 24px;border-top:1px solid var(--line);text-align:center;display:flex;justify-content:center}
-.prac2-cta-final-inner{max-width:580px;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center}
-.prac2-cta-final-title{
-  font-family:'Fraunces',serif;
-  font-size:clamp(1.6rem,3.5vw,2.6rem);
-  color:var(--plum);margin:0 0 1rem;line-height:1.2;
-}
-.prac2-cta-final-sub{font-size:.95rem;color:var(--muted);line-height:1.7;margin:0 0 2rem}
-.prac2-cta-final-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.prac2-vermas-wrap{display:flex;justify-content:center;margin-top:32px}
+/* Efecto invertido respecto al resto de los .btn-outline-plum: acá el
+   relleno plum es el estado permanente y al hacer hover se vacía. */
+.prac2-vermas{padding:12px 28px;background:var(--plum);color:#fff}
+.prac2-vermas:hover{background:transparent;color:var(--plum)}

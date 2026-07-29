@@ -346,7 +346,7 @@ if (revGoogleWriteBtn) {
       extra: `<div class="modal-info">
         <p>Para turnos de <b>consulta</b> podés reservar a través del <a href="https://pacientes.cgap.com.ar/Login" target="_blank" rel="noopener">portal de pacientes</a> o por <b>WhatsApp</b>.</p>
         <p>Para <b>estudios o prácticas</b>, los turnos se coordinan únicamente por <b>WhatsApp</b>.</p>
-        <p>Conocé todas nuestras <a href="pages/practicas.html">especialidades</a> y las <a href="#obras-sociales" data-scroll-close>obras sociales</a> con las que trabajamos.</p>
+        <p>Conocé todas nuestras <a href="pages/especialidades.html">especialidades</a> y las <a href="#obras-sociales" data-scroll-close>obras sociales</a> con las que trabajamos.</p>
       </div>`,
       ctaText: 'Solicitar turno por WhatsApp',
       ctaHref: waTexto('Hola, buen día. Me gustaría sacar un turno.'),
@@ -357,7 +357,7 @@ if (revGoogleWriteBtn) {
       title: 'Diagnóstico por imágenes',
       desc: 'Ecografías y estudios especializados según indicación médica, con equipamiento de alta precisión.',
       extra: `<div class="modal-info">
-        <p>Ofrecemos una <a href="pages/practicas.html"><b>gran variedad de ecografías</b></a>. Podés ver todas las opciones, junto con los <a href="pages/practicas.html"><b>requerimientos y la preparación</b></a> de cada una, en el apartado de especialidades.</p>
+        <p>Ofrecemos una <a href="pages/especialidades.html"><b>gran variedad de ecografías</b></a>. Podés ver todas las opciones, junto con los <a href="pages/especialidades.html"><b>requerimientos y la preparación</b></a> de cada una, en el apartado de especialidades.</p>
         <p>Los turnos para estos estudios se pueden sacar desde el <a href="https://pacientes.cgap.com.ar/Login" target="_blank" rel="noopener">portal de pacientes</a> o por <b>WhatsApp</b>.</p>
       </div>`,
       ctaText: 'Consultar por WhatsApp',
