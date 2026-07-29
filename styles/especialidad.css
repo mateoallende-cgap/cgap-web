@@ -1,0 +1,72 @@
+/* ============================================================
+   CGAP · Página de especialidad (pages/especialidad-*.html)
+   Reutiliza .prac-grid/.prac-card (practicas.css) y .doc-card
+   (base/doc-card.css); acá solo va el layout propio de esta página.
+   ============================================================ */
+
+/* banda angosta con el degradé de marca, solo para el link de volver */
+.esp-navband{
+  background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 55%,#f0d4f5 100%);
+  padding:18px 24px;
+}
+.esp-navband .esp-back{margin-bottom:0}
+.esp-back{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.85rem;font-weight:700;color:var(--plum);
+  text-decoration:underline;
+  transition:color .2s;
+}
+.esp-back:hover{color:var(--magenta)}
+/* la flecha va sin subrayado, el texto conserva el suyo */
+.esp-back-arrow{text-decoration:none}
+
+/* título + botón en la misma línea, separados por una línea divisora;
+   fondo blanco, sin ícono, alineados a la izquierda y con poco alto, a
+   una altura similar a la de la banda de navegación */
+.esp-hero{
+  background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 55%,#f0d4f5 100%);
+  padding:24px 24px 32px;
+}
+.esp-hero-row{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap}
+.esp-hero-title{
+  font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3rem);
+  color:var(--plum);margin:0;line-height:1.1;
+}
+.esp-hero-sub{font-size:1rem;color:var(--muted);line-height:1.7;margin:1rem 0 2rem;max-width:560px}
+.esp-hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-start}
+
+.esp-section{background:#fff;padding:72px 0}
+.esp-section--alt{background:var(--cream)}
+/* títulos/textos de "Profesionales de X" y "Prácticas de X" a la izquierda
+   (el wrap ya es full-bleed con 40px de padding, así queda separado del
+   borde de la pantalla en vez de pegado) */
+.esp-section .prac2-section-title,
+.esp-section .prac2-section-sub{
+  text-align:left;margin-left:0;margin-right:0;
+}
+.esp-section .prac2-section-title{font-size:1.6rem}
+/* menos aire entre la fila de profesionales y el título de la sección
+   siguiente (prácticas), que quedan una debajo de la otra */
+.esp-section:has(+ .esp-section){padding-top:32px;padding-bottom:16px}
+.esp-section + .esp-section{padding-top:24px}
+/* wrap full-bleed, mismo criterio que el resto de practicas.css */
+.esp-section > .wrap{
+  width:100vw;max-width:none;
+  margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+  padding:0 40px;box-sizing:border-box;
+}
+/* columnas de ancho fijo (no 1fr): cuando hay pocos profesionales no se
+   estiran para llenar el ancho; arrancan del borde izquierdo, igual que
+   el título de la sección */
+.esp-doc-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,220px));gap:18px;
+  justify-content:start;
+}
+/* el grid de prácticas (.prac-grid, de practicas.css) por defecto centra
+   las cards cuando sobra espacio; acá arranca del borde izquierdo, igual
+   que el título de la sección */
+.esp-section .prac-grid{justify-content:start}
+.esp-empty{color:var(--muted)}
+.esp-vermas-wrap{display:flex;justify-content:center;margin-top:12px}
+.esp-vermas{padding:12px 28px;display:none;background:var(--plum);color:#fff}
+.esp-vermas:hover{background:transparent;color:var(--plum)}

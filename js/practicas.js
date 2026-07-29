@@ -2,7 +2,6 @@
    CGAP · practicas.js
    Requiere: global.js, data.js (window.PRACTICAS)
    ============================================================ */
-
 /* Rango Unicode de marcas diacríticas combinantes (0300-036f), construido
    con String.fromCharCode para evitar ambigüedades de escape en el archivo. */
 const DIACRITICOS_PRAC = new RegExp("[" + String.fromCharCode(0x300) + "-" + String.fromCharCode(0x36f) + "]", "g");
@@ -17,9 +16,12 @@ if (pracGrid && window.PRACTICAS) {
   const titulo = document.getElementById("pracTitulo");
   const chips = document.querySelectorAll("#pracFiltros .chip");
   const modal = document.getElementById("pracModal");
+  const verMasBtn = document.getElementById("pracVerMas");
   const searchFilterBar = document.querySelector(".prac2-search-filter");
   const STICKY_TOP = 100; /* debe coincidir con el "top" sticky de .prac2-search-filter en practicas.css */
+  const PAGE_SIZE = 12; /* ~2 filas de 6 columnas en desktop */
   let fEsp = "", fTipo = "", q = "";
+  let resActual = [], visibleCount = PAGE_SIZE;
 
   const espTexto = {
     circuito: "Circuito Ginecológico", ginecologia: "Ginecología", obstetricia: "Obstetricia", ecografia: "Ecografía",
@@ -48,22 +50,53 @@ if (pracGrid && window.PRACTICAS) {
       titulo.textContent = "Resultados";
     }
     count.textContent = `${res.length} práctica${res.length === 1 ? "" : "s"}`;
-    pracGrid.innerHTML = res.map((p, i) => `
-      <article class="prac-card reveal" data-i="${data.indexOf(p)}">
+    resActual = res;
+    visibleCount = PAGE_SIZE;
+    renderGrid();
+  }
+
+  /* Muestra de a PAGE_SIZE resultados (~2 filas) con un botón "Ver más" para
+     no tirar todo el catálogo de una vez; se resetea en cada búsqueda/filtro
+     nuevo desde render(). */
+  function renderGrid() {
+    const mostrar = resActual.slice(0, visibleCount);
+    /* Cada card es un <a> real a su página propia (practica-<slug>.html,
+       indexable por buscadores); si hay JS, el click abre el modal en vez
+       de navegar, para no perder la interacción rápida en el catálogo. */
+    pracGrid.innerHTML = mostrar.map((p, i) => `
+      <a class="prac-card reveal" href="${p.slug ? `practica-${p.slug}.html` : "#"}" data-i="${data.indexOf(p)}">
         <span class="tag">${espTexto[p.especialidad] || p.especialidad}</span>
         <h3>${p.nombre}</h3>
         <p>${p.descripcion}</p>
         <span class="ver">Ver detalle →</span>
-      </article>`).join("");
+      </a>`).join("");
     pracGrid.querySelectorAll(".prac-card").forEach(c => {
       requestAnimationFrame(() => c.classList.add("in"));
-      c.addEventListener("click", () => abrir(data[c.dataset.i]));
+      c.addEventListener("click", e => {
+        e.preventDefault();
+        abrir(data[c.dataset.i]);
+      });
     });
-    if (!res.length) pracGrid.innerHTML = `<p style="color:var(--muted)">No encontramos prácticas con esos criterios.</p>`;
+    if (!resActual.length) pracGrid.innerHTML = `<p style="color:var(--muted)">No encontramos prácticas con esos criterios.</p>`;
+
+    if (verMasBtn) {
+      const quedan = resActual.length - visibleCount;
+      if (quedan > 0) {
+        verMasBtn.style.display = "inline-flex";
+        verMasBtn.textContent = `Ver más (${quedan})`;
+      } else if (resActual.length > PAGE_SIZE) {
+        verMasBtn.style.display = "inline-flex";
+        verMasBtn.textContent = "Ver menos";
+      } else {
+        verMasBtn.style.display = "none";
+      }
+    }
   }
 
+  const WA_ICON = `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1.1 2.7s1.9 2.9 4.6 4c1.7.7 2.3.8 3.1.7.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1z"/></svg>`;
+
   function abrir(p) {
-    const waText = encodeURIComponent(`Hola, quisiera gestionar un turno para: ${p.nombre}.`);
+    const waText = encodeURIComponent(`Hola, buen día. Quería solicitar un turno para ${p.nombre}, ¿me darían información?`);
     const waHref = `https://wa.me/5493515079642?text=${waText}`;
     const portalHref = "https://pacientes.cgap.com.ar/Login";
     const turnoWeb = p.turnoWeb === true;
@@ -79,7 +112,8 @@ if (pracGrid && window.PRACTICAS) {
       <div class="modal-row"><b>Orden médica</b><span>${p.orden || "—"}</span></div>
       <div class="modal-row"><b>Duración</b><span>${p.duracion || "—"}</span></div>
       ${disponibilidad}
-      <a class="btn" target="_blank" rel="noopener" href="${turnoWeb ? portalHref : waHref}">${turnoWeb ? "Solicitar turno" : "Gestionar turno"}</a>`;
+      <a class="btn${turnoWeb ? "" : " btn-whatsapp"}" target="_blank" rel="noopener" href="${turnoWeb ? portalHref : waHref}">${turnoWeb ? "Solicitar turno" : WA_ICON + "Gestionar turno"}</a>
+      ${p.slug ? `<a class="modal-ficha-link" href="practica-${p.slug}.html">Ver ficha completa</a>` : ""}`;
     modal.classList.add("open");
     modal.querySelector(".close").onclick = () => modal.classList.remove("open");
   }
@@ -119,6 +153,17 @@ if (pracGrid && window.PRACTICAS) {
     if (q) scrollBusquedaTimer = setTimeout(bajarAResultados, 400);
   });
   clear.addEventListener("click", () => { buscar.value = ""; q = ""; clear.classList.remove("show"); render(); });
+
+  if (verMasBtn) verMasBtn.addEventListener("click", () => {
+    if (visibleCount >= resActual.length) {
+      visibleCount = PAGE_SIZE;
+      renderGrid();
+      document.getElementById("catalogo")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      visibleCount += PAGE_SIZE;
+      renderGrid();
+    }
+  });
 
   /* Barra sticky de buscador+filtros: al quedar pegada arriba, la clase
      is-stuck hace que la hoja de estilos oculte los chips inactivos (y todo

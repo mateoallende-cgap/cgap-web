@@ -1,48 +1,58 @@
-// Datos reales de CGAP (extraídos del proyecto original)
+﻿// Datos reales de CGAP (extraídos del proyecto original)
 window.PROFESIONALES = [
  {
   "nombre": "Julieta",
   "apellido": "Barrera",
+  "slug": "julieta-barrera",
   "especialidad": "adolescencia",
   "especialidadTexto": "Adolescencia",
-  "horario": "mañana",
+  "horario": "a confirmar",
   "destacado": true
  },
  {
   "nombre": "Marcela",
   "apellido": "Converso",
+  "slug": "marcela-converso",
   "especialidad": "adolescencia",
   "especialidadTexto": "Adolescencia",
-  "horario": "mañana",
+  "horario": "a confirmar",
   "destacado": true
  },
  {
   "nombre": "Angela Desiree",
-  "apellido": "Desiree",
+  "apellido": "Chesta",
+  "slug": "angela-desiree-chesta",
+  "matricula": "35428",
   "especialidad": "anatomia-patologica",
   "especialidadTexto": "Anatomía patológica",
-  "horario": "mañana",
+  "horario": "a confirmar",
   "destacado": false
  },
  {
   "nombre": "Pedro",
   "apellido": "Giraudo",
+  "slug": "pedro-giraudo",
+  "matricula": "28692",
   "especialidad": "anatomia-patologica",
   "especialidadTexto": "Anatomía patológica",
-  "horario": "mañana",
+  "horario": "a confirmar",
   "destacado": false
  },
  {
   "nombre": "Jorge",
   "apellido": "Flores",
+  "slug": "jorge-flores",
+  "matricula": "23915",
   "especialidad": "anatomia-patologica",
   "especialidadTexto": "Anatomía patológica",
-  "horario": "mañana",
+  "horario": "a confirmar",
   "destacado": false
  },
  {
   "nombre": "Fernando",
   "apellido": "Nole",
+  "slug": "fernando-nole",
+  "matricula": "28844",
   "especialidad": "cardiologia",
   "especialidadTexto": "Cardiología",
   "horario": "mañana",
@@ -51,70 +61,88 @@ window.PROFESIONALES = [
  {
   "nombre": "Ana María",
   "apellido": "Aguilo",
+  "slug": "ana-maria-aguilo",
+  "matricula": "16734",
   "especialidad": "clinica-medica",
   "especialidadTexto": "Clínica médica",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Laura Carolina",
   "apellido": "Hawryto",
+  "slug": "laura-carolina-hawryto",
+  "matricula": "33495",
   "especialidad": "dermatologia",
   "especialidadTexto": "Dermatología",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": true
  },
  {
   "nombre": "Macarena",
   "apellido": "Madrid",
+  "slug": "macarena-madrid",
+  "matricula": "29951",
   "especialidad": "dermatologia",
   "especialidadTexto": "Dermatología",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Carolina",
   "apellido": "Quiroga",
+  "slug": "carolina-quiroga",
+  "matricula": "39405",
   "especialidad": "dermatologia",
   "especialidadTexto": "Dermatología",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Carla",
   "apellido": "Romagnoli",
+  "slug": "carla-romagnoli",
+  "matricula": "41731",
   "especialidad": "dermatologia",
   "especialidadTexto": "Dermatología",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "María Eugenia",
   "apellido": "Soler",
+  "slug": "maria-eugenia-soler",
+  "matricula": "41235",
   "especialidad": "dermatologia",
   "especialidadTexto": "Dermatología",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Silvina Elizabeth",
   "apellido": "Chiabrando",
+  "slug": "silvina-elizabeth-chiabrando",
+  "matricula": "30426",
   "especialidad": "diagnostico-por-imagenes",
   "especialidadTexto": "Diagnóstico por imágenes",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": true
  },
  {
   "nombre": "Florencia",
   "apellido": "Della Maggiore",
+  "slug": "florencia-della-maggiore",
+  "matricula": "39786",
   "especialidad": "diagnostico-por-imagenes",
   "especialidadTexto": "Diagnóstico por imágenes",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Erika Mariel",
   "apellido": "Hernandez",
+  "slug": "erika-mariel-hernandez",
+  "matricula": "39859",
   "especialidad": "diagnostico-por-imagenes",
   "especialidadTexto": "Diagnóstico por imágenes",
   "horario": "mañana",
@@ -123,22 +151,28 @@ window.PROFESIONALES = [
  {
   "nombre": "María Lourdes",
   "apellido": "Mallo",
+  "slug": "maria-lourdes-mallo",
+  "matricula": "32759",
   "especialidad": "diagnostico-por-imagenes",
   "especialidadTexto": "Diagnóstico por imágenes",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Federico",
   "apellido": "Padilla",
+  "slug": "federico-padilla",
+  "matricula": "30544",
   "especialidad": "diagnostico-por-imagenes",
   "especialidadTexto": "Diagnóstico por imágenes",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Florencia",
   "apellido": "Salas",
+  "slug": "florencia-salas",
+  "matricula": "39646",
   "especialidad": "diagnostico-por-imagenes",
   "especialidadTexto": "Diagnóstico por imágenes",
   "horario": "mañana",
@@ -147,22 +181,28 @@ window.PROFESIONALES = [
  {
   "nombre": "Patricia",
   "apellido": "Salinas",
+  "slug": "patricia-salinas",
+  "matricula": "38827",
   "especialidad": "diagnostico-por-imagenes",
   "especialidadTexto": "Diagnóstico por imágenes",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Franco",
   "apellido": "Skoroplas",
+  "slug": "franco-skoroplas",
+  "matricula": "42584",
   "especialidad": "diagnostico-por-imagenes",
   "especialidadTexto": "Diagnóstico por imágenes",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Sebastian",
   "apellido": "Solano",
+  "slug": "sebastian-solano",
+  "matricula": "37004",
   "especialidad": "diagnostico-por-imagenes",
   "especialidadTexto": "Diagnóstico por imágenes",
   "horario": "mañana",
@@ -171,6 +211,8 @@ window.PROFESIONALES = [
  {
   "nombre": "Constanza Denise",
   "apellido": "Cabrera",
+  "slug": "constanza-denise-cabrera",
+  "matricula": "40954",
   "especialidad": "endocrinologia",
   "especialidadTexto": "Endocrinología",
   "horario": "mañana",
@@ -179,14 +221,18 @@ window.PROFESIONALES = [
  {
   "nombre": "Victoria Sofía",
   "apellido": "Gamba",
+  "slug": "victoria-sofia-gamba",
+  "matricula": "38777",
   "especialidad": "endocrinologia",
   "especialidadTexto": "Endocrinología",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Patricia",
   "apellido": "Rodolfi",
+  "slug": "patricia-rodolfi",
+  "matricula": "22512",
   "especialidad": "endocrinologia",
   "especialidadTexto": "Endocrinología",
   "horario": "mañana",
@@ -195,126 +241,158 @@ window.PROFESIONALES = [
  {
   "nombre": "Romina",
   "apellido": "Bongianino",
+  "slug": "romina-bongianino",
+  "matricula": "357041",
   "especialidad": "estetica",
   "especialidadTexto": "Estética",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "María Virginia",
   "apellido": "Franceschini",
+  "slug": "maria-virginia-franceschini",
+  "matricula": "35266",
   "especialidad": "estetica",
   "especialidadTexto": "Estética",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Macarena",
   "apellido": "Madrid",
+  "slug": "macarena-madrid-estetica",
+  "matricula": "29951",
   "especialidad": "estetica",
   "especialidadTexto": "Estética",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Milagro",
   "apellido": "Mercado",
+  "slug": "milagro-mercado",
+  "matricula": "14737",
   "especialidad": "estetica",
   "especialidadTexto": "Estética",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Ana Patricia",
   "apellido": "Patocchi",
+  "slug": "ana-patricia-patocchi",
+  "matricula": "26982",
   "especialidad": "estetica",
   "especialidadTexto": "Estética",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Natalia",
   "apellido": "Pekarek",
+  "slug": "natalia-pekarek",
+  "matricula": "7442",
   "especialidad": "estetica",
   "especialidadTexto": "Estética",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Carolina",
   "apellido": "Quiroga",
+  "slug": "carolina-quiroga-estetica",
+  "matricula": "39405",
   "especialidad": "estetica",
   "especialidadTexto": "Estética",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Carla",
   "apellido": "Romagnoli",
+  "slug": "carla-romagnoli-estetica",
+  "matricula": "41731",
   "especialidad": "estetica",
   "especialidadTexto": "Estética",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Valeria Soledad",
   "apellido": "Puri Magallan",
+  "slug": "valeria-soledad-puri-magallan",
+  "matricula": "35418",
   "especialidad": "flebologia",
   "especialidadTexto": "Flebología y vascular periférico",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Hector",
   "apellido": "Allende Pinto",
+  "slug": "hector-allende-pinto",
+  "matricula": "20924",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": true
  },
  {
   "nombre": "Luis Leandro",
   "apellido": "Cisneros",
+  "slug": "luis-leandro-cisneros",
+  "matricula": "41409",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Vanesa",
   "apellido": "Dallmann",
+  "slug": "vanesa-dallmann",
+  "matricula": "37341",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Constanza Ayelen",
   "apellido": "Davila",
+  "slug": "constanza-ayelen-davila",
+  "matricula": "38215",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "María de los Ángeles",
   "apellido": "Del Castillo",
+  "slug": "maria-de-los-angeles-del-castillo",
+  "matricula": "31631",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Anahí del Valle",
   "apellido": "Della Libera",
+  "slug": "anahi-del-valle-della-libera",
+  "matricula": "31504",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Ana Laura",
   "apellido": "Dominguez",
+  "slug": "ana-laura-dominguez",
+  "matricula": "33856",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
   "horario": "mañana",
@@ -323,14 +401,18 @@ window.PROFESIONALES = [
  {
   "nombre": "Agustina",
   "apellido": "Feryala",
+  "slug": "agustina-feryala",
+  "matricula": "43247",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Jesica Paola",
   "apellido": "Gabutti",
+  "slug": "jesica-paola-gabutti",
+  "matricula": "28651",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
   "horario": "mañana",
@@ -339,14 +421,18 @@ window.PROFESIONALES = [
  {
   "nombre": "Adelaida",
   "apellido": "Garcia",
+  "slug": "adelaida-garcia",
+  "matricula": "30680",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Candelaria",
   "apellido": "Garcia Astrada",
+  "slug": "candelaria-garcia-astrada",
+  "matricula": "40352",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
   "horario": "mañana",
@@ -355,22 +441,28 @@ window.PROFESIONALES = [
  {
   "nombre": "Luisina",
   "apellido": "Gorordo",
+  "slug": "luisina-gorordo",
+  "matricula": "42284",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "María Eugenia",
   "apellido": "Gutierrez",
+  "slug": "maria-eugenia-gutierrez",
+  "matricula": "39195",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Marysol",
   "apellido": "Luchino",
+  "slug": "marysol-luchino",
+  "matricula": "35915",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
   "horario": "mañana",
@@ -379,6 +471,8 @@ window.PROFESIONALES = [
  {
   "nombre": "Karina Andrea",
   "apellido": "Maero Baez",
+  "slug": "karina-andrea-maero-baez",
+  "matricula": "26282",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
   "horario": "mañana",
@@ -387,80 +481,119 @@ window.PROFESIONALES = [
  {
   "nombre": "Cintia Viviana",
   "apellido": "Molina",
+  "slug": "cintia-viviana-molina",
+  "matricula": "42518",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Flavia",
   "apellido": "Nicolodi",
+  "slug": "flavia-nicolodi",
+  "matricula": "37882",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Matias",
   "apellido": "Olivero",
+  "slug": "matias-olivero",
+  "matricula": "29765",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Evangelina",
   "apellido": "Quaranta",
+  "slug": "evangelina-quaranta",
+  "matricula": "32667",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Florencia",
   "apellido": "Rodriguez",
+  "slug": "florencia-rodriguez",
+  "matricula": "40249",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Juan Roberto",
   "apellido": "Rossetti",
+  "slug": "juan-roberto-rossetti",
+  "matricula": "12861",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "tarde",
   "destacado": false
  },
  {
   "nombre": "Ailin",
   "apellido": "Sequin",
+  "slug": "ailin-sequin",
+  "matricula": "41117",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Rosina Laura",
   "apellido": "Sfiligoy",
+  "slug": "rosina-laura-sfiligoy",
+  "matricula": "31595",
   "especialidad": "ginecologia",
   "especialidadTexto": "Ginecología y obstetricia",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": false
  },
  {
   "nombre": "Carla",
   "apellido": "Marcuzzi",
+  "slug": "carla-marcuzzi",
+  "matricula": "1647",
   "especialidad": "nutricion",
   "especialidadTexto": "Nutrición",
-  "horario": "mañana",
+  "horario": "mañana/tarde",
   "destacado": true
+ },
+ {
+  "nombre": "Luciana",
+  "apellido": "Salas Cosentino",
+  "slug": "luciana-salas-cosentino",
+  "matricula": "43733",
+  "especialidad": "ginecologia",
+  "especialidadTexto": "Ginecología y obstetricia",
+  "horario": "tarde",
+  "destacado": false
+ },
+ {
+  "nombre": "Luisina Beatriz",
+  "apellido": "Stradella",
+  "slug": "luisina-beatriz-stradella",
+  "matricula": "40066",
+  "especialidad": "ginecologia",
+  "especialidadTexto": "Ginecología y obstetricia",
+  "horario": "tarde",
+  "destacado": false
  }
 ];
 
 window.PRACTICAS = [
  {
   "nombre": "Consulta ginecológica",
+  "slug": "consulta-ginecologica",
   "descripcion": "Evaluación médica especializada orientada al control, diagnóstico y seguimiento de la salud ginecológica.",
   "especialidad": "ginecologia",
   "tipo": "consulta",
@@ -472,6 +605,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Consulta dermatológica",
+  "slug": "consulta-dermatologica",
   "descripcion": "Atención médica para evaluación, diagnóstico y tratamiento de afecciones de la piel.",
   "especialidad": "dermatologia",
   "tipo": "consulta",
@@ -483,6 +617,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Consulta médica",
+  "slug": "consulta-medica",
   "descripcion": "Consulta clínica general para orientación, evaluación y seguimiento médico.",
   "especialidad": "clinica-medica",
   "tipo": "consulta",
@@ -494,6 +629,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Consulta cardiológica",
+  "slug": "consulta-cardiologica",
   "descripcion": "Evaluación médica especializada para el control y seguimiento de la salud cardiovascular.",
   "especialidad": "cardiologia",
   "tipo": "consulta",
@@ -505,6 +641,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Consulta endocrinológica",
+  "slug": "consulta-endocrinologica",
   "descripcion": "Evaluación médica de alteraciones hormonales, metabólicas y endocrinas.",
   "especialidad": "endocrinologia",
   "tipo": "consulta",
@@ -516,6 +653,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Consulta oncológica",
+  "slug": "consulta-oncologica",
   "descripcion": "Consulta especializada para evaluación, control y seguimiento de pacientes oncológicos.",
   "especialidad": "oncologia",
   "tipo": "consulta",
@@ -527,6 +665,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Citología exfoliativa oncológica (PAP)",
+  "slug": "citologia-exfoliativa-oncologica-pap",
   "descripcion": "Estudio preventivo utilizado para detectar alteraciones celulares en el cuello uterino.",
   "especialidad": "ginecologia",
   "tipo": "diagnostico",
@@ -537,6 +676,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Ecografía mamaria",
+  "slug": "ecografia-mamaria",
   "descripcion": "Estudio por imágenes que permite evaluar el tejido mamario y complementar controles preventivos.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -548,6 +688,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Videocolposcopía",
+  "slug": "videocolposcopia",
   "descripcion": "Estudio ginecológico que permite observar el cuello uterino con aumento y registro de imágenes.",
   "especialidad": "ginecologia",
   "tipo": "diagnostico",
@@ -558,6 +699,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Ecografía transvaginal",
+  "slug": "ecografia-transvaginal",
   "descripcion": "Estudio ecográfico ginecológico para evaluar útero, ovarios y estructuras pélvicas.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -569,6 +711,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Colposcopía",
+  "slug": "colposcopia",
   "descripcion": "Estudio visual del cuello uterino, vagina y vulva para detectar posibles lesiones.",
   "especialidad": "ginecologia",
   "tipo": "diagnostico",
@@ -579,6 +722,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Biopsia por incisión o punción",
+  "slug": "biopsia-por-incision-o-puncion",
   "descripcion": "Procedimiento para obtener una muestra de tejido y enviarla a estudio anatomopatológico.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -589,6 +733,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Control nutricional",
+  "slug": "control-nutricional",
   "descripcion": "Seguimiento profesional para evaluación de hábitos alimentarios, objetivos y evolución nutricional.",
   "especialidad": "nutricion",
   "tipo": "control",
@@ -599,6 +744,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Ecografía abdominal completa",
+  "slug": "ecografia-abdominal-completa",
   "descripcion": "Estudio por imágenes para evaluar órganos abdominales como hígado, vesícula, páncreas, bazo y riñones.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -610,6 +756,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Ecografía tiroidea",
+  "slug": "ecografia-tiroidea",
   "descripcion": "Estudio por imágenes para evaluar la glándula tiroides y estructuras cercanas.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -621,6 +768,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Escisión local de lesión de cuello uterino",
+  "slug": "escision-local-de-lesion-de-cuello-uterino",
   "descripcion": "Procedimiento ginecológico para retirar una lesión localizada del cuello uterino.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -631,6 +779,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Electrocardiograma",
+  "slug": "electrocardiograma",
   "descripcion": "Estudio cardiológico simple que registra la actividad eléctrica del corazón.",
   "especialidad": "cardiologia",
   "tipo": "diagnostico",
@@ -641,6 +790,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Histeroscopía diagnóstica",
+  "slug": "histeroscopia-diagnostica",
   "descripcion": "Estudio que permite observar el interior del útero mediante una cámara fina.",
   "especialidad": "ginecologia",
   "tipo": "diagnostico",
@@ -651,6 +801,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Escisión local de lesión de piel",
+  "slug": "escision-local-de-lesion-de-piel",
   "descripcion": "Procedimiento para retirar una lesión cutánea localizada.",
   "especialidad": "dermatologia",
   "tipo": "procedimiento",
@@ -661,6 +812,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Vaporización de condilomas con láser",
+  "slug": "vaporizacion-de-condilomas-con-laser",
   "descripcion": "Procedimiento para tratar lesiones compatibles con condilomas mediante tecnología láser.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -671,6 +823,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Ecografía tocoginecológica",
+  "slug": "ecografia-tocoginecologica",
   "descripcion": "Estudio ecográfico orientado al control ginecológico u obstétrico según indicación.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -682,6 +835,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Metabolismo basal",
+  "slug": "metabolismo-basal",
   "descripcion": "Estudio utilizado para estimar el gasto energético basal del organismo.",
   "especialidad": "nutricion",
   "tipo": "diagnostico",
@@ -692,6 +846,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Colocación de DIU",
+  "slug": "colocacion-de-diu",
   "descripcion": "Procedimiento ginecológico para colocar un dispositivo intrauterino como método anticonceptivo.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -702,6 +857,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Ecografía de partes blandas",
+  "slug": "ecografia-de-partes-blandas",
   "descripcion": "Estudio ecográfico para evaluar tejidos superficiales, músculos, lesiones o zonas localizadas.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -713,6 +869,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Conización cervical por LEEP",
+  "slug": "conizacion-cervical-por-leep",
   "descripcion": "Procedimiento ginecológico para retirar una porción del cuello uterino mediante asa LEEP.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -723,6 +880,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Vulvoscopía",
+  "slug": "vulvoscopia",
   "descripcion": "Estudio visual ampliado de la vulva para evaluar lesiones o alteraciones.",
   "especialidad": "ginecologia",
   "tipo": "diagnostico",
@@ -733,6 +891,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Vaginoscopía y vulvoscopía",
+  "slug": "vaginoscopia-y-vulvoscopia",
   "descripcion": "Evaluación visual ampliada de vagina y vulva para detectar alteraciones o lesiones.",
   "especialidad": "ginecologia",
   "tipo": "diagnostico",
@@ -743,6 +902,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Ecografía renal bilateral",
+  "slug": "ecografia-renal-bilateral",
   "descripcion": "Estudio ecográfico para evaluar ambos riñones y estructuras relacionadas.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -754,6 +914,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Fotovaporización con láser CO2",
+  "slug": "fotovaporizacion-con-laser-co2",
   "descripcion": "Procedimiento con láser CO2 para tratamiento de lesiones indicadas por el profesional.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -764,6 +925,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Biopsia de piel",
+  "slug": "biopsia-de-piel",
   "descripcion": "Procedimiento para obtener una muestra de piel y analizarla en laboratorio.",
   "especialidad": "dermatologia",
   "tipo": "procedimiento",
@@ -774,6 +936,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Himenotomía y drenaje de glándula de Bartholino",
+  "slug": "himenotomia-y-drenaje-de-glandula-de-bartholino",
   "descripcion": "Procedimiento ginecológico indicado para resolver obstrucciones o lesiones específicas.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -784,6 +947,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Eco Doppler mamario",
+  "slug": "eco-doppler-mamario",
   "descripcion": "Estudio por imágenes que evalúa el tejido mamario y su vascularización.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -794,6 +958,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Colocación de DIU hormonal",
+  "slug": "colocacion-de-diu-hormonal",
   "descripcion": "Procedimiento ginecológico para colocar un dispositivo intrauterino hormonal.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -804,6 +969,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Biopsia de cuello uterino",
+  "slug": "biopsia-de-cuello-uterino",
   "descripcion": "Procedimiento para tomar una muestra del cuello uterino y enviarla a análisis.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -814,6 +980,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Eco Doppler ginecológico",
+  "slug": "eco-doppler-ginecologico",
   "descripcion": "Estudio ecográfico que evalúa estructuras ginecológicas y flujo vascular.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -824,6 +991,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Destrucción de lesiones de piel",
+  "slug": "destruccion-de-lesiones-de-piel",
   "descripcion": "Procedimiento dermatológico para tratar lesiones cutáneas indicadas por el profesional.",
   "especialidad": "dermatologia",
   "tipo": "procedimiento",
@@ -834,6 +1002,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Extirpación de lesión de piel",
+  "slug": "extirpacion-de-lesion-de-piel",
   "descripcion": "Procedimiento para retirar una lesión cutánea y, si corresponde, enviarla a análisis.",
   "especialidad": "dermatologia",
   "tipo": "procedimiento",
@@ -844,6 +1013,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Extracción de implante subdérmico",
+  "slug": "extraccion-de-implante-subdermico",
   "descripcion": "Procedimiento para retirar un implante anticonceptivo subdérmico.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -854,6 +1024,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Colocación de implante hormonal subdérmico",
+  "slug": "colocacion-de-implante-hormonal-subdermico",
   "descripcion": "Procedimiento para colocar un implante anticonceptivo hormonal debajo de la piel.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -864,6 +1035,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Citología exfoliativa de líquidos",
+  "slug": "citologia-exfoliativa-de-liquidos",
   "descripcion": "Estudio de células presentes en líquidos biológicos para evaluación diagnóstica.",
   "especialidad": "laboratorio",
   "tipo": "diagnostico",
@@ -874,6 +1046,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Eco Doppler periférico",
+  "slug": "eco-doppler-periferico",
   "descripcion": "Estudio para evaluar el flujo sanguíneo en vasos periféricos.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -884,6 +1057,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Punción biopsia mamaria bajo control ecográfico",
+  "slug": "puncion-biopsia-mamaria-bajo-control-ecografico",
   "descripcion": "Procedimiento guiado por ecografía para obtener una muestra de tejido mamario.",
   "especialidad": "ecografia",
   "tipo": "procedimiento",
@@ -895,6 +1069,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Ecografía vesical",
+  "slug": "ecografia-vesical",
   "descripcion": "Estudio ecográfico para evaluar la vejiga y estructuras relacionadas.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -906,6 +1081,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Ecografía obstétrica",
+  "slug": "ecografia-obstetrica",
   "descripcion": "Estudio por imágenes que permite evaluar el desarrollo y bienestar del embarazo, incluyendo la evolución fetal según la edad gestacional.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -916,6 +1092,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Ecografía testicular",
+  "slug": "ecografia-testicular",
   "descripcion": "Estudio por imágenes que permite evaluar la estructura de los testículos y el escroto, utilizado para el diagnóstico de nódulos, dolor, inflamación u otras alteraciones.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -927,6 +1104,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Eco Doppler de miembros inferiores",
+  "slug": "eco-doppler-de-miembros-inferiores",
   "descripcion": "Estudio para evaluar circulación arterial o venosa de las piernas.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -938,6 +1116,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Eco Doppler vasos de cuello",
+  "slug": "eco-doppler-vasos-de-cuello",
   "descripcion": "Estudio ecográfico para evaluar el flujo sanguíneo en vasos del cuello.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -948,6 +1127,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Holter cardíaco 24 hs",
+  "slug": "holter-cardiaco-24-hs",
   "descripcion": "Monitoreo continuo del ritmo cardíaco durante 24 horas.",
   "especialidad": "cardiologia",
   "tipo": "diagnostico",
@@ -958,6 +1138,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Punción guiada por ecografía",
+  "slug": "puncion-guiada-por-ecografia",
   "descripcion": "Procedimiento realizado bajo guía ecográfica para acceder a una lesión o colección.",
   "especialidad": "ecografia",
   "tipo": "procedimiento",
@@ -968,6 +1149,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Punción de quiste o nódulo mamario",
+  "slug": "puncion-de-quiste-o-nodulo-mamario",
   "descripcion": "Procedimiento para evaluar o drenar una lesión mamaria indicada por el profesional.",
   "especialidad": "ecografia",
   "tipo": "procedimiento",
@@ -978,6 +1160,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Eco Doppler tiroideo",
+  "slug": "eco-doppler-tiroideo",
   "descripcion": "Estudio ecográfico que evalúa la tiroides y su vascularización.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -989,6 +1172,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Punción con aguja fina bajo control ecográfico",
+  "slug": "puncion-con-aguja-fina-bajo-control-ecografico",
   "descripcion": "Procedimiento guiado por ecografía para obtener una muestra mediante aguja fina.",
   "especialidad": "ecografia",
   "tipo": "procedimiento",
@@ -999,6 +1183,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Vaporización con asa LEEP",
+  "slug": "vaporizacion-con-asa-leep",
   "descripcion": "Procedimiento ginecológico para tratar lesiones mediante asa LEEP.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -1009,6 +1194,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Punción biopsia bajo control ecográfico",
+  "slug": "puncion-biopsia-bajo-control-ecografico",
   "descripcion": "Procedimiento guiado por ecografía para obtener una muestra de tejido.",
   "especialidad": "ecografia",
   "tipo": "procedimiento",
@@ -1019,6 +1205,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Biopsia de vagina",
+  "slug": "biopsia-de-vagina",
   "descripcion": "Procedimiento para obtener una muestra de tejido vaginal y enviarla a estudio.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -1029,6 +1216,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Monitoreo ambulatorio de presión arterial (MAPA)",
+  "slug": "monitoreo-ambulatorio-de-presion-arterial-mapa",
   "descripcion": "Estudio que registra la presión arterial durante 24 horas en la actividad habitual.",
   "especialidad": "cardiologia",
   "tipo": "diagnostico",
@@ -1039,6 +1227,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Extirpación de lesión de piel de vulva",
+  "slug": "extirpacion-de-lesion-de-piel-de-vulva",
   "descripcion": "Evaluación o tratamiento de lesiones localizadas en la zona vulvar.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -1049,6 +1238,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Estudio anatomopatológico oncológico",
+  "slug": "estudio-anatomopatologico-oncologico",
   "descripcion": "Análisis especializado de muestras para diagnóstico y seguimiento oncológico.",
   "especialidad": "laboratorio",
   "tipo": "diagnostico",
@@ -1059,6 +1249,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Ecografía prostática transrectal",
+  "slug": "ecografia-prostatica-transrectal",
   "descripcion": "Estudio ecográfico para evaluar la próstata mediante abordaje transrectal.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -1069,6 +1260,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Ecografía endorrectal",
+  "slug": "ecografia-endorrectal",
   "descripcion": "Estudio ecográfico realizado por vía endorrectal para evaluación específica.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -1079,6 +1271,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Ecografía hepatobiliar y esplénica",
+  "slug": "ecografia-hepatobiliar-y-esplenica",
   "descripcion": "Estudio ecográfico para evaluar hígado, vesícula, vía biliar y bazo.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -1090,6 +1283,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Eco Doppler venoso",
+  "slug": "eco-doppler-venoso",
   "descripcion": "Estudio para evaluar la circulación venosa y detectar alteraciones del flujo.",
   "especialidad": "ecografia",
   "tipo": "diagnostico",
@@ -1100,6 +1294,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Uteroscopía con anestesia y video",
+  "slug": "uteroscopia-con-anestesia-y-video",
   "descripcion": "Procedimiento ginecológico con visualización por video y anestesia según indicación médica.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -1110,6 +1305,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Biopsia de vulva",
+  "slug": "biopsia-de-vulva",
   "descripcion": "Procedimiento para obtener una muestra de tejido vulvar y enviarla a análisis.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -1120,6 +1316,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Topicación ginecológica",
+  "slug": "topicacion-ginecologica",
   "descripcion": "Procedimiento local indicado para tratamiento o aplicación de medicación en zona ginecológica.",
   "especialidad": "ginecologia",
   "tipo": "procedimiento",
@@ -1130,6 +1327,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Circuito ginecológico completo",
+  "slug": "circuito-ginecologico-completo",
   "descripcion": "Control integral en una sola visita: consulta ginecológica, ecografía, PAP y solicitud de laboratorio.",
   "especialidad": "circuito",
   "tipo": "control",
@@ -1140,6 +1338,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Consulta ginecológica + PAP",
+  "slug": "consulta-ginecologica-pap",
   "descripcion": "Examen ginecológico completo con toma de PAP para detección temprana de lesiones cervicales.",
   "especialidad": "circuito",
   "tipo": "control",
@@ -1150,6 +1349,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Consulta ginecológica + ecografía",
+  "slug": "consulta-ginecologica-ecografia",
   "descripcion": "Evaluación ginecológica combinada con ecografía transvaginal o abdominal según indicación.",
   "especialidad": "circuito",
   "tipo": "control",
@@ -1160,6 +1360,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Control mamario + ecografía mamaria",
+  "slug": "control-mamario-ecografia-mamaria",
   "descripcion": "Examen clínico de mamas con ecografía para detección precoz de alteraciones mamarias.",
   "especialidad": "circuito",
   "tipo": "control",
@@ -1170,6 +1371,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Consulta en flebología",
+  "slug": "consulta-en-flebologia",
   "descripcion": "Evaluación médica especializada en enfermedades venosas: várices, insuficiencia venosa y trombosis.",
   "especialidad": "flebologia",
   "tipo": "consulta",
@@ -1181,6 +1383,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Eco-Doppler venoso de miembros inferiores",
+  "slug": "eco-doppler-venoso-de-miembros-inferiores",
   "descripcion": "Estudio por imágenes para evaluar el flujo venoso y detectar várices o trombosis en piernas.",
   "especialidad": "flebologia",
   "tipo": "diagnostico",
@@ -1191,6 +1394,7 @@ window.PRACTICAS = [
  },
  {
   "nombre": "Escleroterapia",
+  "slug": "escleroterapia",
   "descripcion": "Tratamiento mínimamente invasivo para eliminar várices y arañas vasculares mediante inyección.",
   "especialidad": "flebologia",
   "tipo": "procedimiento",

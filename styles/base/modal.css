@@ -12,7 +12,20 @@
 .modal-row a{color:var(--magenta);font-weight:700;text-decoration:underline}
 .modal-card .close{position:absolute;top:14px;right:18px;border:none;background:none;font-size:1.8rem;line-height:1;color:var(--muted);cursor:pointer}
 .modal-card .btn{margin-top:1.4rem;width:100%;justify-content:center}
+.modal-ficha-link{display:block;text-align:center;margin-top:.9rem;font-size:.85rem;color:var(--muted);text-decoration:underline}
+.modal-ficha-link:hover{color:var(--plum)}
 .modal-info{border-top:1px solid var(--line);padding-top:1rem}
 .modal-info p{color:var(--text);font-size:1.02rem;line-height:1.55;margin:0 0 .8rem}
 .modal-info a{color:var(--magenta);font-weight:700;text-decoration:underline}
 .modal-info b{color:var(--plum)}
+
+/* ficha de profesional dentro del modal: foto a la izquierda, datos a la derecha */
+.modal-doc-head{display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:.4rem}
+.modal-doc-photo{
+  flex:0 0 84px;width:84px;height:84px;border-radius:50%;
+  background:linear-gradient(160deg,var(--blush),#f7d4e8);
+  display:grid;place-items:center;
+}
+.modal-doc-photo span{font-family:'Fraunces',serif;font-size:1.6rem;color:var(--magenta);font-weight:600}
+.modal-doc-info{flex:1;min-width:0}
+.modal-doc-info h3{margin:0 0 .4rem}

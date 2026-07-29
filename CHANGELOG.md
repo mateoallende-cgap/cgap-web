@@ -161,3 +161,77 @@ v0.7
   como placeholder). Los links de Instagram del sitio (card de 
   contacto y CTA de Novedades) pasan a apuntar a la cuenta real 
   `@cgap.ginecoestetica`.
+v0.8
+### Agregado
+- **Buscador y filtros dinámicos en Prácticas:** la sección de 
+  prácticas pasó de un listado estático a un catálogo dinámico con 
+  buscador (por nombre, descripción, especialidad o tipo), chips de 
+  filtro por especialidad y por tipo de atención, y paginado 
+  "Ver más" (de a 12 resultados). La barra de buscador+filtros queda 
+  sticky debajo del navbar al scrollear, y el catálogo pasó a ocupar 
+  todo el ancho de pantalla (full-bleed) para aprovechar mejor el 
+  espacio en pantallas anchas.
+
+  Se agregó el flag `turnoWeb` a las prácticas reservables desde el 
+  Portal de Pacientes (20 de 72): el modal de detalle y el botón 
+  principal cambian según corresponda (portal vs. WhatsApp).
+
+  Motivo: facilitar que el paciente encuentre la práctica que 
+  necesita sin tener que scrollear un listado largo, y dejar 
+  preparado el catálogo para el trabajo de SEO que sigue.
+
+- **72 páginas propias de práctica (`pages/practica-<slug>.html`) y 
+  59 de profesional (`pages/profesional-<slug>.html`):** cada 
+  práctica y cada profesional del sitio pasó a tener una ficha 
+  estática propia, indexable individualmente por buscadores, con 
+  `<title>`/meta description específicos y datos estructurados 
+  JSON-LD (`MedicalProcedure` y `Physician` respectivamente).
+
+  Motivo: antes las prácticas y los profesionales solo existían como 
+  cards que abrían un modal generado por JavaScript — invisibles 
+  para crawlers sin JS, y sin URL propia para compartir o indexar. 
+  Cada card sigue abriendo el modal como antes (mejora progresiva: 
+  el link real a la ficha se intercepta con JS), pero ahora también 
+  existe una página real detrás de cada una.
+
+- **`sitemap.xml` y `robots.txt`:** se generaron desde cero, listando 
+  las 143 páginas del sitio (home + todo `pages/*.html`, incluidas 
+  las 72 fichas de práctica y las 59 de profesional).
+
+  Nota: usan `https://www.cgap.com.ar` como dominio de producción — 
+  es un supuesto, falta confirmar el dominio real antes de enviar el 
+  sitemap a Search Console.
+
+- **Matrícula y horario de atención en las fichas de profesionales:** 
+  se agregó el campo `matricula` (57 de 59 profesionales) y se 
+  completó `horario` (mañana / tarde / mañana-tarde / a confirmar) 
+  cruzando el listado real de horarios y prestadores de la clínica. 
+  Se sumaron 2 profesionales que faltaban en el listado y se 
+  excluyeron los que ya no están activos.
+
+  Motivo: dar información más completa y confiable al elegir 
+  profesional, y sumar contenido real (no genérico) a cada ficha 
+  para SEO.
+
+### Cambiado
+- **Página "Profesionales" eliminada:** ya no existe una página 
+  (ni una sección) dedicada a listar a todos los profesionales del 
+  centro. Cada profesional se descubre desde la ficha de su 
+  especialidad (`pages/especialidad-<nombre>.html`), que ya lista 
+  sus profesionales y prácticas filtrados dinámicamente, o desde su 
+  propia ficha indexable.
+
+  Motivo: evitar contenido duplicado entre una página "hub" de 
+  profesionales y las páginas de especialidad, y concentrar la 
+  autoridad de SEO en las páginas de especialidad y de ficha 
+  individual en vez de repartirla en un catálogo genérico.
+
+- **`pages/practicas.html` renombrada a `pages/especialidades.html`:** 
+  mismo contenido y comportamiento (cards de especialidades + 
+  buscador/catálogo de prácticas), con las rutas internas y los 
+  links del resto del sitio (navbar, footer, fichas de práctica y 
+  de profesional) actualizados para apuntar al nuevo nombre.
+
+  Motivo: el nombre "prácticas" ya no describía bien el contenido de 
+  la página una vez que también agrupa las especialidades del 
+  centro.
