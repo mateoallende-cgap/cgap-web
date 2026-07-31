@@ -18,6 +18,18 @@ document.querySelectorAll(".car-btn").forEach(btn => {
 const iniciales = n => n.split(" ").filter(Boolean).slice(0, 2).map(w => w[0]).join("").toUpperCase();
 const esc = s => (s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+/* ---------- Links "data-scroll-close": cierran cualquier modal abierto y
+   scrollean suave hasta el destino (usado en modales de prestaciones y de FAQ) ---------- */
+document.addEventListener("click", e => {
+  const link = e.target.closest("[data-scroll-close]");
+  if (!link) return;
+  e.preventDefault();
+  const target = document.querySelector(link.getAttribute("href"));
+  document.querySelectorAll(".modal.open").forEach(m => m.classList.remove("open"));
+  document.body.style.overflow = "";
+  if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
 /* ---------- Formulario de contacto: envío por AJAX, confirmación sin salir de la página,
    máximo 1 consulta por día por navegador (guardado en localStorage) ---------- */
 const contactoForm = document.getElementById("contactoForm");
@@ -427,14 +439,6 @@ if (revGoogleWriteBtn) {
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
     card.querySelector('.close').addEventListener('click', cerrar);
-    card.querySelectorAll('[data-scroll-close]').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        cerrar();
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
   }
 
   function cerrar() {

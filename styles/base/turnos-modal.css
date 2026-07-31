@@ -1,0 +1,27 @@
+/* ============================================================
+   CGAP · Modal "Turnos" (elegir WhatsApp: ginecología o estética)
+   Se abre desde el botón "Turnos" del navbar (.nav-cta-wa), presente
+   en las 143 páginas del sitio. La mecánica de apertura/cierre
+   (.turnos-modal/.turnos-modal-card/.close) está duplicada a propósito
+   de la de styles/base/modal.css: ese archivo solo se carga en un
+   puñado de páginas, y traerlo a las 143 solo para reusar diez líneas
+   no valía la pena. Ver js/global.js para la lógica de apertura.
+   ============================================================ */
+.turnos-modal{position:fixed;inset:0;z-index:110;background:rgba(58,31,48,.55);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:24px}
+.turnos-modal.open{display:flex}
+.turnos-modal-card{background:#fff;border-radius:22px;max-width:440px;width:100%;padding:2rem 2.2rem;position:relative;box-shadow:0 30px 70px -30px rgba(0,0,0,.5);animation:turnosPop .3s var(--ease)}
+@keyframes turnosPop{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.turnos-modal-card .close{position:absolute;top:14px;right:18px;border:none;background:none;font-size:1.8rem;line-height:1;color:var(--muted);cursor:pointer}
+.turnos-modal-card h3{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--plum);margin:0 0 .4rem;line-height:1.3}
+.turnos-modal-card .desc{color:var(--muted);font-size:.9rem;margin:0 0 1.4rem}
+.turnos-modal-options{display:flex;flex-direction:column;gap:12px}
+.turnos-modal-opt{
+  display:flex;align-items:center;gap:14px;
+  padding:16px 18px;border-radius:16px;border:1.5px solid var(--line);
+  text-decoration:none;transition:border-color .2s,background .2s,transform .2s;
+}
+.turnos-modal-opt:hover{border-color:var(--magenta);background:var(--blush-soft);transform:translateY(-2px)}
+.turnos-modal-opt-icon{font-size:1.6rem;flex-shrink:0;line-height:1}
+.turnos-modal-opt-text{display:flex;flex-direction:column;gap:2px}
+.turnos-modal-opt-label{font-weight:700;color:var(--plum);font-size:.98rem}
+.turnos-modal-opt-sub{font-size:.8rem;color:var(--muted)}
