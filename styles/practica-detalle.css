@@ -37,6 +37,8 @@
 .pd-ficha-intro{font-size:.92rem;color:var(--muted);line-height:1.7;margin:0 0 1.5rem}
 .pd-ficha-btns{display:flex;flex-direction:column;gap:.8rem}
 .pd-ficha-btns .btn{width:100%;justify-content:center}
+.pd-ficha-link{display:block;margin-top:1rem;font-size:.85rem;color:var(--muted);text-decoration:underline}
+.pd-ficha-link:hover{color:var(--plum)}
 /* Botón del portal: mismo magenta que el "Portal de Pacientes" del nav,
    pero con el efecto invertido (relleno por defecto, se vacía en hover). */
 .pd-btn-portal{

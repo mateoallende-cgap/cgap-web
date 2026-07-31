@@ -235,3 +235,52 @@ v0.8
   Motivo: el nombre "prácticas" ya no describía bien el contenido de 
   la página una vez que también agrupa las especialidades del 
   centro.
+v0.9
+### Cambiado
+- **Rediseño de `pages/circuito.html`:** la sección "¿Cómo funciona?" 
+  pasó de 4 pasos genéricos a un texto real del recorrido (recepción 
+  y admisión, ingreso al consultorio, ecografías, laboratorio), con 
+  la aclaración de que el circuito de la tarde reprograma el 
+  laboratorio para otro día de 07:00 a 11:00 hs.
+
+  Se agregó un efecto de scroll (`js/circuito.js`): al llegar a la 
+  sección, la grilla 2x2 de pasos pasa a mostrar cada paso de a uno 
+  en grande a medida que se scrollea (con una barra de progreso, un 
+  indicador de pasos conectados por una línea con efecto "líquido", 
+  y una barra de WhatsApp flotante), y se resuelve de nuevo en la 
+  grilla 2x2 al terminar. Todo el contenido vive en el HTML desde el 
+  arranque (no se inyecta por JS), así que sigue siendo indexable 
+  aunque el efecto no se ejecute.
+
+  El hero se simplificó: se sacó el label superior, el botón de 
+  turno por el portal (queda solo WhatsApp) y el dato de "los 
+  estudios pueden variar…", y el alto pasó del `min-height: 88vh` 
+  original a uno definido por el contenido, igual criterio que el 
+  hero del home.
+
+  La sección "¿Qué incluye?" pasa a mostrar las 5 cards siempre en 
+  una sola fila (antes eran una grilla fija de 5 columnas que 
+  truncaba los títulos más largos), a todo el ancho de pantalla, y 
+  se corrigieron dos íconos que no representaban el servicio 
+  (ginecología y ecografía).
+
+### Agregado
+- **SEO de `circuito.html`:** título y meta description se 
+  reescribieron para no competir por las mismas búsquedas que 
+  `practica-circuito-ginecologico-completo.html` (antes eran casi 
+  idénticos) — esta página apunta al "cómo funciona", la ficha de 
+  práctica a los datos puntuales (duración, preparación, orden 
+  médica) — y se cruzaron con un link en cada dirección. Se sumó 
+  además un bloque JSON-LD `Service` (la ficha de práctica ya tenía 
+  uno `MedicalProcedure`; se usó un tipo distinto a propósito, para 
+  no duplicar la misma entidad).
+
+- **`<link rel="canonical">` en las 143 páginas del sitio** (`index.html` 
+  más todo `pages/*.html`), cada una apuntando a su propia URL — no 
+  existía ninguno. De paso se detectó que `index.html` y 
+  `pages/nosotros.html` no tenían `<meta name="description">` y se 
+  les agregó uno.
+
+  Nota: tanto los canonical como el `sitemap.xml` ya existente usan 
+  `https://www.cgap.com.ar` como dominio de producción — sigue 
+  siendo un supuesto sin confirmar (ver nota en `CLAUDE.md`).
