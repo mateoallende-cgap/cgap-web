@@ -1,5 +1,21 @@
 /* ============================================================
    CGAP · Responsive Circuito Ginecológico (circuito.html)
    ============================================================ */
-@media(max-width:900px){.circ2-cards{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:580px){.circ2-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+  .circ2-steps{grid-template-columns:1fr}
+  .circ2-step{padding:24px 4px}
+}
+/* .circ2-cards fuerza las 5 en una sola fila (flex-wrap:nowrap) en
+   desktop; por debajo de este ancho ya no entran de forma legible, así
+   que se deja envolver de a 3/2/1 por fila, con el título liberado del
+   white-space:nowrap para que pueda volver a partirse en dos líneas. */
+@media(max-width:900px){
+  .circ2-cards{flex-wrap:wrap;justify-content:center}
+  .circ2-card{flex:1 1 220px;max-width:280px}
+  .circ2-card-icon{font-size:2rem;margin-bottom:14px}
+  .circ2-card h3{font-size:1rem;white-space:normal}
+  .circ2-card p{font-size:.83rem}
+}
+@media(max-width:560px){
+  .circ2-card{flex:1 1 100%;max-width:360px}
+}

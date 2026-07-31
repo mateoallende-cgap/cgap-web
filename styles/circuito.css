@@ -2,70 +2,299 @@
    CGAP · Circuito Ginecológico (circuito.html)
    ============================================================ */
 
-/* Hero */
+/* Hero — mismo criterio de tamaño que el hero del home (index.css
+   .hero-static): alto definido por el contenido + padding fijo, sin
+   min-height en vh (eso era lo que lo hacía ocupar casi toda la
+   pantalla en monitores altos, mucho más grande que el resto del
+   sitio). */
 .circ2-hero{
-  min-height:calc(88vh - 112px);
   background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%);
-  display:flex;align-items:center;padding:80px 24px;
+  padding:72px 24px;
 }
 .circ2-hero-inner{text-align:center;display:flex;flex-direction:column;align-items:center;gap:0}
-.circ2-hero-inner .eyebrow{margin-bottom:1.2rem}
 .circ2-hero-inner h1{font-size:clamp(2.4rem,6vw,5.5rem);line-height:1.05;letter-spacing:-.03em;color:var(--plum);margin:0 0 1.4rem}
 .circ2-hero-inner h1 em{color:var(--magenta);font-style:italic}
 .circ2-hero-sub{font-size:1.05rem;color:var(--muted);line-height:1.7;max-width:660px;margin:0 0 2rem}
 .circ2-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 .circ2-disclaimer{margin-top:1.6rem;font-size:.8rem;color:var(--muted);opacity:.75;max-width:520px;line-height:1.5}
-
-/* ghost button para circuito */
-.circ2-hero .btn-ghost,.circ2-cta-final .btn-ghost{
-  background:transparent;border:1.5px solid var(--magenta);color:var(--magenta);box-shadow:none;
-}
-.circ2-hero .btn-ghost:hover,.circ2-cta-final .btn-ghost:hover{background:rgba(173,30,119,.06)}
+.circ2-disclaimer strong{color:var(--plum);font-weight:700;opacity:1}
 
 /* Qué incluye */
 .circ2-include{background:#fff;padding:88px 24px}
+/* Las 5 en una sola fila (flex-wrap:nowrap), pero ahora full-bleed (todo
+   el ancho de la pantalla, no solo el .wrap de 1180px) para tener lugar
+   de sobra y poder usar tipografía de tamaño normal sin que el título
+   más largo ("PAP y videocolposcopía") fuerce a achicar todo el texto.
+   Padding fijo (no en vw) para no generar gutters gigantes en monitores
+   anchos — mismo criterio que el resto de los full-bleed del sitio. */
 .circ2-cards{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:48px;
+  display:flex;flex-wrap:nowrap;justify-content:center;gap:24px;margin-top:48px;
+  width:100vw;max-width:none;
+  margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+  padding:0 56px;box-sizing:border-box;
 }
 .circ2-card{
-  background:var(--blush-soft);border-radius:16px;padding:28px 20px 24px;
+  flex:1 1 0;min-width:0;max-width:230px;
+  background:var(--blush-soft);border-radius:16px;padding:44px 18px 40px;
   text-align:center;border:1px solid var(--line);
   transition:transform .25s ease,box-shadow .25s ease;
 }
 .circ2-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(173,30,119,.1)}
-.circ2-card-icon{font-size:2rem;margin-bottom:14px;line-height:1}
-.circ2-card h3{font-family:'Fraunces',serif;font-size:1rem;color:var(--plum);margin:0 0 8px;line-height:1.3}
-.circ2-card p{font-size:.83rem;color:var(--muted);line-height:1.6;margin:0}
+.circ2-card-icon{font-size:2.4rem;margin-bottom:16px;line-height:1}
+.circ2-card h3{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--plum);margin:0 0 10px;line-height:1.3;white-space:nowrap}
+.circ2-card p{font-size:.92rem;color:var(--muted);line-height:1.6;margin:0}
 
 /* Cómo funciona */
-.circ2-how{background:var(--cream);padding:88px 24px}
-.circ2-steps{display:flex;flex-direction:column;gap:0;max-width:680px;margin:48px auto 0}
-.circ2-step{display:flex;gap:24px;align-items:flex-start}
+/* Sin padding-bottom: la sección termina justo en .circ2-final-cta, que
+   ya tiene su propio fondo blanco + padding — así el blanco llega
+   continuo hasta el footer, sin que vuelva a asomar el cream. */
+.circ2-how{background:var(--cream);padding:88px 24px 0}
+.circ2-how .sec-head p strong{color:var(--magenta);font-weight:700}
+
+/* Grilla 2x2 sin cards ni borde exterior: el "grout" de 1px entre celdas
+   (gap + background del contenedor, tapado por el fondo de cada celda)
+   se ve como una cruz de líneas finas con degradé que se apaga hacia
+   las puntas, en vez de un borde sólido alrededor de todo el bloque. */
+.circ2-steps{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  max-width:1040px;margin:0 auto;
+  background:radial-gradient(circle at center,rgba(173,30,119,.55) 0%,rgba(173,30,119,.25) 45%,rgba(173,30,119,.06) 75%,transparent 100%);
+}
+.circ2-step{background:var(--cream);padding:38px 44px}
+.circ2-step-head{display:flex;align-items:center;gap:14px;margin-bottom:10px}
 .circ2-step-num{
-  flex-shrink:0;width:44px;height:44px;border-radius:50%;
+  flex-shrink:0;width:38px;height:38px;border-radius:50%;
   background:var(--magenta);color:#fff;
-  font-family:'Fraunces',serif;font-size:1.2rem;
+  font-family:'Fraunces',serif;font-size:1rem;
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 4px 12px rgba(173,30,119,.25);
 }
-.circ2-step-body{padding-top:8px}
-.circ2-step-body h3{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--plum);margin:0 0 6px}
-.circ2-step-body p{font-size:.9rem;color:var(--muted);line-height:1.7;margin:0}
-.circ2-step-divider{
-  width:2px;height:36px;
-  background:linear-gradient(to bottom,var(--magenta),rgba(173,30,119,.2));
-  margin:8px 0 8px 21px;
+.circ2-step-head h3{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--plum);margin:0;line-height:1.3}
+.circ2-step p{font-size:.96rem;color:var(--muted);line-height:1.6;margin:0}
+.circ2-step p strong,.circ2-steps-note strong{color:var(--plum);font-weight:700}
+
+/* Aclaración debajo de la grilla ya armada (mañana/tarde de laboratorio).
+   Solo tiene sentido junto a la 2x2 completa, así que se oculta en modo
+   "paso grande" (ver más abajo). */
+.circ2-steps-note{
+  font-size:.8rem;color:var(--muted);opacity:.8;text-align:center;
+  max-width:640px;margin:0 auto;line-height:1.5;
+}
+.circ2-scroll.is-stage .circ2-steps-note{display:none}
+
+/* ---- Efecto de scroll: paso a paso en grande, se resuelve en la 2x2 ----
+   js/circuito.js le da altura al wrapper (recorrido de scroll con un
+   colchón por paso) y fija .circ2-scroll-sticky mientras se recorre.
+   El título entra dentro del bloque sticky para que quede visible
+   durante todo el efecto. El alto del bloque NO se define acá en CSS:
+   lo calcula y lo fija js/circuito.js como "todo el espacio libre entre
+   el navbar y la barra de WhatsApp" (que es fixed y no ocupa lugar en
+   el documento), y usa ese mismo número tanto para la altura real del
+   bloque como para la cuenta de cuánto scroll hace falta — así nunca se
+   desincronizan. Sin JS (o con prefers-reduced-motion, o en pantallas
+   angostas donde el script no se activa), .circ2-scroll queda con su
+   alto automático y esto es un no-op: se ve el título y la grilla 2x2
+   estática de siempre, uno abajo del otro. */
+.circ2-scroll{position:relative}
+.circ2-scroll-sticky{position:static}
+.circ2-scroll.is-active .circ2-scroll-sticky{
+  position:sticky;top:100px;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:36px;
+  padding-top:32px;
+  /* el alto real lo fija js/circuito.js (viewport - navbar - barra de
+     WhatsApp). justify-content:flex-start (no center) para que el
+     título quede siempre pegado arriba y nunca se corte si el
+     contenido (grilla 2x2 + aclaración) termina siendo más alto que el
+     espacio disponible en pantallas bajas — ahí el sobrante simplemente
+     se extiende debajo del bloque (sin overflow:hidden, que era lo que
+     tapaba el título cuando el contenido no entraba). */
+}
+.circ2-scroll.is-active .sec-head{margin:0}
+.circ2-scroll.is-active .sec-head h2{font-size:2.6rem}
+.circ2-scroll.is-active .sec-head p{font-size:1rem;margin-top:.6rem}
+.circ2-scroll.is-active .circ2-steps{margin-top:56px}
+
+/* Crossfade al entrar/salir del modo "paso grande": la grilla no puede
+   pasar de 2 columnas a 1 de forma animada (grid-template-columns no
+   interpola con distinta cantidad de columnas), así que en vez de eso
+   se tapa el cambio con una breve caída de opacidad coordinada por JS
+   (agrega/saca .is-switching justo antes/después del toggle de clase),
+   para que el salto de layout no se sienta como un corte duro. */
+.circ2-steps{transition:opacity .22s ease}
+.circ2-steps.is-switching{opacity:0}
+
+/* Indicador de paso: círculos numerados en vez de puntos — mismo
+   patrón visual que .circ2-step-num, pero en gris oscuro (no magenta)
+   cuando no es el paso activo, para que se lean como "apagados".
+   Aparece/desaparece con opacity (no display) para poder animarlo.
+   position:relative porque además contiene la línea que conecta los
+   puntos y el "runner" que se desliza sobre ella (ver más abajo). */
+.circ2-scroll-dots{
+  position:relative;display:flex;align-items:center;gap:14px;
+  opacity:0;pointer-events:none;transition:opacity .3s ease;
+}
+.circ2-scroll.is-stage .circ2-scroll-dots{opacity:1;pointer-events:auto}
+/* :not(...) para que el runner (también un <span> dentro del mismo
+   contenedor) no herede este tamaño/color/posición — antes esta regla,
+   al ser más específica que .circ2-scroll-dots-runner (elemento+clase
+   contra una sola clase), le ganaba el pulseo a sus propios estilos. */
+.circ2-scroll-dots span:not(.circ2-scroll-dots-runner){
+  position:relative;z-index:1;
+  width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-size:.74rem;color:#fff;
+  background:#5c5c5c;
+  transition:background .3s,transform .3s;
+}
+.circ2-scroll-dots span.is-active{
+  background:var(--magenta);
+  animation:circLiquidDot 2.6s ease-in-out infinite;
 }
 
-/* Confianza */
-.circ2-trust{background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%);padding:88px 24px}
-.circ2-trust-inner{max-width:640px;margin:0 auto;text-align:center}
-.circ2-trust-icon{font-size:1.8rem;color:var(--magenta);margin-bottom:20px;display:block}
-.circ2-trust-inner h2{font-size:clamp(1.6rem,3.5vw,2.6rem);color:var(--plum);margin:0 0 1.2rem;line-height:1.2}
-.circ2-trust-inner p{font-size:.97rem;color:var(--muted);line-height:1.8;margin:0}
+/* Línea que conecta los 4 puntos: un track fijo y, encima, un tramo
+   relleno (magenta) que avanza con el scroll — mismo mecanismo de
+   scaleX que la barra de progreso del paso. Los 15px de margen son la
+   mitad del diámetro de un punto (30px), para que la línea arranque y
+   termine justo en el centro del primero y el último. */
+.circ2-scroll-dots::before,.circ2-scroll-dots::after{
+  content:"";position:absolute;top:50%;left:15px;right:15px;height:2px;
+  transform:translateY(-50%);z-index:0;
+}
+.circ2-scroll-dots::before{background:var(--line)}
+.circ2-scroll-dots::after{
+  background:var(--magenta);
+  transform:translateY(-50%) scaleX(var(--dots-progress,0));
+  transform-origin:left;
+  transition:transform .12s linear;
+}
 
-/* CTA final */
-.circ2-cta-final{background:#fff;padding:88px 24px;border-top:1px solid var(--line)}
-.circ2-cta-final-inner{max-width:580px;margin:0 auto;text-align:center}
-.circ2-cta-final-inner h2{font-size:clamp(1.6rem,3vw,2.4rem);color:var(--plum);margin:0 0 1rem;line-height:1.2}
-.circ2-cta-final-inner p{font-size:.95rem;color:var(--muted);line-height:1.7;margin:0 0 2rem}
+/* Runner: un punto chico que se desliza sobre la línea siguiendo el
+   scroll de forma continua (no salta de a uno como los círculos
+   numerados), con el mismo efecto "líquido" de fondo. Su posición
+   (translateX) la calcula js/circuito.js pisando el mismo transform vía
+   inline style — por eso su animación (circLiquidRunner) NO toca
+   transform, solo border-radius, para no pelearse con esa posición.
+   z-index:0, igual que la línea, para que quede detrás de los círculos
+   numerados y no les tape el número al pasar por encima. */
+.circ2-scroll-dots-runner{
+  position:absolute;top:50%;left:0;z-index:0;
+  width:12px;height:12px;margin-top:-6px;
+  border-radius:50%;background:var(--magenta);
+  box-shadow:0 0 0 5px rgba(173,30,119,.18);
+  pointer-events:none;
+  animation:circLiquidRunner 2.1s ease-in-out infinite;
+}
+
+/* Deformación bien marcada (no un simple redondeo sutil), para que el
+   efecto "líquido" se note a simple vista. La versión de los círculos
+   numerados (circLiquidDot) suma además un pulso de escala; la del
+   runner (circLiquidRunner) no toca transform — ver nota arriba. */
+@keyframes circLiquidDot{
+  0%,100%{border-radius:50%;transform:scale(1)}
+  25%{border-radius:34% 66% 72% 28% / 66% 32% 68% 34%;transform:scale(1.12)}
+  50%{border-radius:70% 30% 34% 66% / 28% 72% 28% 72%;transform:scale(.92)}
+  75%{border-radius:30% 70% 66% 34% / 70% 30% 72% 28%;transform:scale(1.1)}
+}
+@keyframes circLiquidRunner{
+  0%,100%{border-radius:50%}
+  25%{border-radius:34% 66% 72% 28% / 66% 32% 68% 34%}
+  50%{border-radius:70% 30% 34% 66% / 28% 72% 28% 72%}
+  75%{border-radius:30% 70% 66% 34% / 70% 30% 72% 28%}
+}
+
+/* CTA flotante (título + texto + botón de WhatsApp): barra fija al pie
+   de la PANTALLA (position:fixed, no sticky — un sticky independiente
+   del de .circ2-scroll-sticky terminaba solapándose con él, con rangos
+   de "pegado" que no coordinaban entre sí). Solo existe mientras dura
+   el paso a paso (.circ2-scroll.is-stage); el resto del tiempo —antes
+   de llegar, mientras se resuelve la grilla, y sin JS— queda oculta del
+   todo, porque para esos casos está .circ2-final-cta más abajo. */
+.circ2-scroll-cta{display:none}
+.circ2-scroll.is-active .circ2-scroll-cta{
+  display:block;
+  position:fixed;left:0;right:0;bottom:0;z-index:40;
+  background:#fff;border-top:1px solid var(--line);
+  opacity:0;transform:translateY(16px);
+  transition:opacity .3s ease,transform .3s ease;
+  pointer-events:none;
+}
+.circ2-scroll.is-stage .circ2-scroll-cta{
+  opacity:1;transform:translateY(0);
+  pointer-events:auto;
+}
+.circ2-scroll-cta-inner{max-width:640px;margin:0 auto;text-align:center;padding:20px 24px}
+.circ2-scroll-cta-inner h3{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--plum);margin:0 0 .3rem;line-height:1.25}
+.circ2-scroll-cta-inner p{font-size:.86rem;color:var(--muted);line-height:1.5;margin:0 0 14px}
+.circ2-scroll-cta-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.circ2-scroll-cta-btns .btn{font-size:.88rem;padding:.75rem 1.4rem}
+
+/* CTA final estática: la versión "en reposo" del bloque de arriba — se
+   ve sin JS (como cierre normal de la sección) y también con JS, una
+   vez que el recorrido del scroll termina y .circ2-scroll ya se dejó
+   atrás, justo entre la grilla 2x2 y el footer. Mismo fondo blanco a
+   todo el ancho que la barra flotante, para que no se sienta como que
+   "perdió" el fondo al terminar el slide. */
+.circ2-final-cta{
+  text-align:center;margin-top:56px;padding:44px 24px;
+  width:100vw;max-width:none;
+  margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+  background:#fff;border-top:1px solid var(--line);
+}
+.circ2-final-cta-inner{max-width:560px;margin:0 auto}
+.circ2-final-cta h3{font-family:'Fraunces',serif;font-size:1.6rem;color:var(--plum);margin:0 0 .5rem;line-height:1.25}
+.circ2-final-cta p{font-size:.95rem;color:var(--muted);line-height:1.6;margin:0 0 20px}
+/* Link a la ficha de la práctica (duración/preparación/orden médica),
+   que esta página no repite para no competir con ella por las mismas
+   keywords. */
+.circ2-ficha-link{display:block;margin-top:14px;font-size:.85rem;color:var(--muted);text-decoration:underline}
+.circ2-ficha-link:hover{color:var(--plum)}
+
+/* Modo "paso grande": los 4 pasos se apilan en la misma celda de grilla
+   (se superponen) y solo el que tiene .is-active queda visible — así se
+   pasa de uno a otro con un fade suave a medida que se scrollea. Acá el
+   contenido se agranda (es el foco de la pantalla mientras se scrollea);
+   la grilla 2x2 ya resuelta, en cambio, se compacta (ver reglas de
+   .circ2-step más arriba). El número y el título arrancan siempre a la
+   misma altura a la izquierda (justify-content:flex-start), sin importar
+   cuánto mida el título; el párrafo debajo queda centrado. */
+.circ2-scroll.is-stage .circ2-steps{
+  grid-template-columns:1fr;grid-template-rows:1fr;
+  gap:0;background:none;max-width:640px;
+}
+.circ2-scroll.is-stage .circ2-step{
+  grid-column:1;grid-row:1;
+  background:none;text-align:center;padding:0;
+  opacity:0;transform:translateY(18px) scale(.97);
+  transition:opacity .5s ease,transform .5s ease;
+  pointer-events:none;
+}
+.circ2-scroll.is-stage .circ2-step.is-active{
+  opacity:1;transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+.circ2-scroll.is-stage .circ2-step-head{
+  justify-content:flex-start;gap:18px;
+  padding-bottom:22px;margin-bottom:22px;
+  position:relative;
+}
+/* Línea divisoria entre el número/título y el texto: un "track" fijo
+   (::before) más una barra de progreso (::after) que se llena con
+   scaleX a medida que se avanza dentro del paso actual — mismo patrón
+   que la barra de progreso de scroll del navbar (.navbar::after). El
+   valor lo actualiza js/circuito.js en --step-progress en cada frame. */
+.circ2-scroll.is-stage .circ2-step-head::before{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:var(--line);
+}
+.circ2-scroll.is-stage .circ2-step-head::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:var(--magenta);
+  transform:scaleX(var(--step-progress,0));transform-origin:left;
+  transition:transform .1s linear;
+}
+.circ2-scroll.is-stage .circ2-step-num{
+  width:60px;height:60px;font-size:1.4rem;
+  animation:circLiquidRunner 2.6s ease-in-out infinite;
+}
+.circ2-scroll.is-stage .circ2-step-head h3{font-size:2rem}
+.circ2-scroll.is-stage .circ2-step p{font-size:1.15rem;line-height:1.7;max-width:560px;margin:0 auto}
