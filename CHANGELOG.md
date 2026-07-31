@@ -284,3 +284,81 @@ v0.9
   Nota: tanto los canonical como el `sitemap.xml` ya existente usan 
   `https://www.cgap.com.ar` como dominio de producción — sigue 
   siendo un supuesto sin confirmar (ver nota en `CLAUDE.md`).
+v0.10
+### Agregado
+- **Modal "Turnos" en el navbar:** el botón "Turnos" (presente en 
+  las 143 páginas) dejó de linkear directo al WhatsApp de 
+  ginecología y ahora abre un modal (`#turnosModal`, 
+  `styles/base/turnos-modal.css`) para elegir entre Ginecología y 
+  demás especialidades o Medicina estética, cada una a su número de 
+  WhatsApp correspondiente. El link directo se conserva como 
+  `href` del botón (mejora progresiva: funciona igual si el JS no 
+  corre).
+
+  De paso se corrigió el número de WhatsApp usado en las 9 páginas 
+  de estética (`medicina-estetica.html` y los 8 
+  `profesional-<slug>.html` con `especialidad: "estetica"` en 
+  `data.js`): su botón de turno propio y su pie de página ahora 
+  usan el número de estética en vez del general de ginecología.
+
+  Motivo: antes todas las consultas por WhatsApp —sin importar la 
+  especialidad— caían en el mismo número, mezclando turnos de 
+  estética con los del resto de las prácticas.
+
+- **Preguntas frecuentes completas (`js/faq-data.js`):** se 
+  reemplazaron los 12 placeholders `[completar...]` por información 
+  real del sitio (WhatsApp, teléfono, dirección y horario, obras 
+  sociales, formas de pago, accesibilidad, portal de pacientes, 
+  excepción de orden médica del circuito ginecológico). Las 3 
+  preguntas de diagnóstico por imágenes se reescribieron para 
+  dirigir al usuario a la sección "Diagnóstico por imágenes" de 
+  Servicios principales y a los canales de turno reales.
+
+  Todas las respuestas que mencionan WhatsApp o teléfono pasaron a 
+  ser links con mensaje de WhatsApp prearmado y texto tipo 
+  "comunicate por WhatsApp" (sin mostrar el número), con una clase 
+  visual propia (`.faq-link`) para que se distingan del texto 
+  plano. Se agregó además un handler global para links 
+  `data-scroll-close` dentro de las respuestas del FAQ, que cierran 
+  el modal y scrollean a la sección referenciada.
+
+  Motivo: el FAQ tenía datos de contacto sin completar desde su 
+  creación, y los links de WhatsApp existentes no tenían ninguna 
+  señal visual de que eran clickeables.
+
+- **Columna "Especialidades" en el footer:** se sumó una tercera 
+  columna con las 6 especialidades que tienen ficha propia 
+  (Ginecología, Ecografía, Dermatología, Endocrinología, Nutrición, 
+  Flebología), cada una linkeando a su `especialidad-<nombre>.html`, 
+  en las 143 páginas del sitio.
+
+### Cambiado
+- **Rediseño del footer:** el logo pasó a ocupar 2/6 del ancho 
+  (antes una fracción menor dentro de un layout flex) y se agrandó, 
+  ahora centrado dentro de su columna. La columna "Secciones" se 
+  reordenó a Inicio, Circuito, Especialidades, Medicina estética y 
+  Nosotros. El layout pasó de flex a CSS Grid para poder controlar 
+  las proporciones de columna con precisión.
+
+  De paso se corrigieron dos inconsistencias que quedaban del 
+  footer anterior: `pages/blog.html` tenía un 5° link 
+  ("Blog & Tips") apuntando a sí misma en vez del set estándar de 
+  Secciones, y `pages/circuito.html` tenía una clase `active` sin 
+  ningún efecto CSS en su propio link. Ambas quedaron alineadas al 
+  resto del sitio.
+
+- **Grid "Servicios principales" (home):** las 6 cards pasaron de 
+  una grilla de 4 columnas (con las 2 cards magenta ocupando una 
+  fila aparte) a 2 columnas independientes (`.prest-col`), cada una 
+  con sus 3 cards en flujo normal. Antes, al hacer hover sobre una 
+  card, la fila completa de la grilla se estiraba (CSS Grid iguala 
+  el alto de fila a la celda más alta) dejando un espacio vacío del 
+  lado sin mouse; ahora cada columna crece de forma independiente.
+
+- **Botón flotante de WhatsApp eliminado:** se sacó el botón 
+  `wa-float` (y su hoja `styles/base/wa-float.css`) de las 143 
+  páginas del sitio.
+
+  Motivo: quedaba redundante con el botón "Turnos" del navbar, que 
+  ahora además permite elegir la especialidad correcta en vez de 
+  mandar todo al WhatsApp general.

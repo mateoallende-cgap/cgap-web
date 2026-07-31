@@ -1,5 +1,5 @@
 /* ============================================================
-   CGAP · global.js (compartido por las 7 páginas)
+   CGAP · global.js (se carga en las 143 páginas del sitio)
    ============================================================ */
 
 /* ---------- Menú mobile ---------- */
@@ -40,6 +40,22 @@ if (navbar) {
   onNavScroll();
   window.addEventListener("scroll", onNavScroll, { passive: true });
   window.addEventListener("resize", onNavScroll);
+}
+
+/* ---------- Modal "Turnos": elegir WhatsApp (ginecología o estética) ----------
+   El botón conserva su href directo a WhatsApp de ginecología como
+   fallback (si este script no corre, sigue funcionando); acá se
+   intercepta el click para abrir el modal en su lugar. */
+const turnosBtn = document.querySelector(".nav-cta-wa");
+const turnosModal = document.getElementById("turnosModal");
+if (turnosBtn && turnosModal) {
+  const closeTurnosModal = () => turnosModal.classList.remove("open");
+  turnosBtn.addEventListener("click", e => {
+    e.preventDefault();
+    turnosModal.classList.add("open");
+  });
+  turnosModal.querySelector(".close")?.addEventListener("click", closeTurnosModal);
+  turnosModal.addEventListener("click", e => { if (e.target === turnosModal) closeTurnosModal(); });
 }
 
 /* ---------- Animación al hacer scroll ---------- */
