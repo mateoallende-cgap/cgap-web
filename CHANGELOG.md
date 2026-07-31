@@ -362,3 +362,37 @@ v0.10
   Motivo: quedaba redundante con el botón "Turnos" del navbar, que 
   ahora además permite elegir la especialidad correcta en vez de 
   mandar todo al WhatsApp general.
+v0.11
+### Cambiado
+- **Navbar responsive, de un solo corte a 980px a una reducción 
+  progresiva:** `.nav-links` dejó de centrarse con `position:absolute` 
+  sobre todo el ancho del navbar (lo que podía superponerse con el 
+  logo o los botones antes de llegar a los 980px) y pasó a ser un 
+  ítem flex (`flex:1` + `justify-content:center`) que se centra en el 
+  espacio real disponible entre logo y botones.
+
+  Se sumaron 4 escalones intermedios en `styles/responsive/base.css`, 
+  calibrados contra roturas reales encontradas con las devtools:
+  - `1600px` y `1300px`: se achican fuente y padding de los links y 
+    los botones del navbar grande (antes solo existían para el 
+    estado "scrolleado"; ahora ambos estados reducen igual).
+  - `980px` (colapso a menú hamburguesa): "Turnos" y "Portal de 
+    Pacientes" quedan visibles junto al logo y el botón de menú (antes 
+    "Portal de Pacientes" se ocultaba directamente).
+  - `560px`: el logo pierde su margen izquierdo y "Turnos" se achica 
+    más que el resto de los botones, para que los 2 botones sigan 
+    entrando junto al menú.
+  - `460px` (hasta 320px): el logo se achica más y "Portal de 
+    Pacientes" vuelve a ocultarse de la barra, quedando accesible solo 
+    dentro del menú hamburguesa desplegado — mismo mecanismo que ya 
+    existía, ahora reservado para el rango realmente angosto.
+
+- **Hero de home (`index.html`) en el corte de 980px:** en vez de solo 
+  apilar en columna, el párrafo descriptivo se oculta, el listado de 
+  estudios pasa a mostrarse antes que el link "Conocer más" 
+  (`order:-1`), y ambos bloques comparten un margen izquierdo fluido 
+  (`clamp(1rem,9vw,6rem)`) que se acerca a la mitad de la primera 
+  palabra del título en pantallas con espacio y se reduce a un margen 
+  chico en las angostas. También se sacó la altura fija de 220px de 
+  `.hero-static-row`/`.hero-static-col` (heredada del layout de 
+  escritorio en fila), que dejaba muy poco lugar al contenido apilado.

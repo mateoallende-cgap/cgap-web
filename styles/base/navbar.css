@@ -5,7 +5,7 @@
 .navbar .wrap{display:flex;align-items:center;gap:2rem;height:122px;max-width:100%;padding:0 32px;position:relative;transition:height .3s var(--ease)}
 .logo{display:flex;align-items:center;margin-left:50px}
 .logo img{height:80px;width:auto;display:block;transition:height .3s var(--ease)}
-.nav-links{display:flex;gap:.3rem;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-weight:700;font-size:1.1rem;transition:font-size .3s var(--ease)}
+.nav-links{flex:1;min-width:0;display:flex;justify-content:center;gap:.3rem;font-weight:700;font-size:1.1rem;transition:font-size .3s var(--ease)}
 .nav-links a{position:relative;color:var(--plum);padding:.5rem 1rem;border-radius:100px;transition:color .2s,background .2s}
 .nav-links a:hover{color:var(--magenta);background:var(--blush-soft)}
 .nav-links a.active{color:var(--magenta)}
@@ -16,7 +16,7 @@
 .navbar .btn{font-size:1.1rem;padding:.73rem 1.52rem;transition:font-size .3s var(--ease),padding .3s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease),background .25s}
 /* Portal de Pacientes: botón principal, se mantiene sólido y prominente */
 .nav-cta{font-weight:800}
-.burger{display:none;margin-left:auto;background:none;border:none;cursor:pointer;color:var(--magenta)}
+.burger{display:none;background:none;border:none;cursor:pointer;color:var(--magenta)}
 
 /* ===== navbar compacta al scrollear (-20% respecto al tamaño base de arriba) ===== */
 .navbar.scrolled .wrap{height:100px}

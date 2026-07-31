@@ -1,11 +1,16 @@
 /* ============================================================
    CGAP · Responsive Home (index.html)
    ============================================================ */
-@media(max-width:760px){.hero-static-row{flex-direction:column;gap:32px}.hero-static-divider{display:none}.hero-static-left,.hero-static-right{align-items:flex-start}}
 @media(max-width:900px){.hs-cards-bar-inner{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:500px){.hs-cards-bar-inner{grid-template-columns:1fr 1fr}}
 @media(max-width:400px){.hs-cards-bar-inner{grid-template-columns:1fr}}
 @media(max-width:980px){
+  .hero-static-row{flex-direction:column;height:auto;gap:24px}
+  .hero-static-col{max-height:none}
+  .hero-static-divider{display:none}
+  .hero-static-left p{display:none}
+  .hero-static-left,.hero-static-right{margin-left:clamp(1rem,9vw,6rem)}
+  .hero-static-right{order:-1}
   .prest-grid{grid-template-columns:1fr}
   .prest-full{flex-direction:column;text-align:center}
   .contacto-grid{
