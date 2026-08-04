@@ -396,3 +396,148 @@ v0.11
   chico en las angostas. También se sacó la altura fija de 220px de 
   `.hero-static-row`/`.hero-static-col` (heredada del layout de 
   escritorio en fila), que dejaba muy poco lugar al contenido apilado.
+v0.12
+### Cambiado
+- **"Servicios principales" (home) en desktop:** las 4 cards con foto
+  (arriba) bajaron de altura para no quedar desproporcionadas respecto
+  a las 2 cards magenta de abajo, recuperaron el efecto hover (foco al
+  pasar el mouse, igual que las de abajo) y las 2 cards magenta suman
+  un divisor fino entre el título y el texto.
+
+  Motivo: las cards de arriba ocupaban más alto del necesario para su
+  contenido, y habían perdido el hover en una iteración previa.
+
+- **FAQ, reseñas y formulario de contacto (home):** se sacó el tag
+  "Centro de ayuda" de la sección de preguntas frecuentes; la sección
+  de reseñas pasó a tener "Reseñas de pacientes" como título y "Lo que
+  dicen nuestras pacientes" como bajada (antes al revés); las cards de
+  reseña se achican en mobile; el formulario de contacto se oculta por
+  completo en mobile (≤770px) y se mantiene en tablets (771–1024px, el
+  corte "mobile" del sitio se extendió de 980 a 1024px para
+  incluirlas), con menos padding y un textarea más corto.
+
+  Motivo: prolijidad de jerarquía visual (título/subtítulo) y ahorro
+  de espacio en pantallas chicas, donde un formulario completo
+  compite mal con el resto del contenido.
+
+- **Sección de contacto (home) — rediseño completo:** se reemplazaron
+  las 6 cards con borde/sombra y el mapa embebido por una única "hoja
+  informativa" sin bordes ni cards (título "Medios de contacto" con
+  bajada propia), con el formulario a la derecha y los datos a la
+  izquierda. "Horarios" ahora linkea al perfil de Google Business y
+  "Ubicación" a Google Maps (antes texto/iframe estáticos), y se
+  sumaron los 2 números de WhatsApp (Gineco/Estética) debajo del de
+  contacto general, separados de los datos de atención (horario/
+  dirección).
+
+  Motivo: el mapa embebido pesaba y visualmente competía con la
+  info de al lado; separar "medios de contacto" (a quién escribirle)
+  de "atención" (cuándo/dónde) es más claro que mezclarlo todo en
+  cards sueltas, y que horario/ubicación abran directamente el perfil
+  de comercio de Google es más útil que un texto plano.
+
+- **Footer (las 143 páginas del sitio):** la columna "Atención" se
+  separó en dos: "Atención" (horario + dirección) y "Contacto"
+  (teléfono, WhatsApp Gineco, WhatsApp Estética, email), pasando el
+  footer de 3 a 4 columnas.
+
+  Motivo: el footer solo tenía cargado el WhatsApp "de turno" según
+  la página (gineco o estética) y no el teléfono/mail en todas
+  partes; ahora cualquier página expone los mismos 4 medios de
+  contacto completos.
+
+- **`pages/circuito.html` — responsive y bug de superposición:** el
+  corte a columna de "¿Qué incluye?" pasó de 900 a 1024px (mismo
+  criterio de "mobile hasta tablets" que el resto del sitio), y se
+  corrigió un bug real donde la barra de WhatsApp flotante (fija al
+  pie de pantalla durante el scroll-jacking de "¿Cómo funciona?")
+  quedaba superpuesta al contenido en resoluciones angostas o bajas.
+  `computeStickyH()` (`js/circuito.js`) ahora mide la altura natural
+  real de ambas variantes del bloque (paso grande y grilla 2x2
+  resuelta) y usa la más alta de las dos contra el espacio disponible,
+  en vez de calcular solo en base al espacio libre.
+
+  Motivo: el espacio disponible calculado (viewport − navbar − barra
+  de WhatsApp) podía ser menor al contenido real en pantallas cortas
+  o angostas, y como el `overflow:hidden` se había sacado antes para
+  no cortar títulos, el desborde tapaba visualmente la barra de
+  WhatsApp y el contenido de abajo.
+
+- **`pages/especialidades.html` — grillas responsive:** tanto la
+  grilla de "Nuestras especialidades" (`.prac2-esp-grid`) como el
+  catálogo de "Prácticas y estudios" (`.prac-grid`) pasaron de
+  `auto-fit` (que daba conteos de columna erráticos según el ancho) a
+  escalones fijos con `repeat(N, Xpx)` + `justify-content:center`,
+  sincronizados con la paginación de "Ver más" (`pageSize()` en
+  `js/practicas.js`, antes un valor fijo de 12): 2/3 columnas en
+  mobile y tablet, 4/5 en notebooks, 6 en desktop grande (≥1851px).
+  También se corrigió el corte de los botones del hero (se estiraban
+  de más por debajo de 780px) y se igualó el alto del hero al de
+  home, con el mismo tamaño de título en toda la página y "CGAP"
+  resaltado en magenta dentro del `<h1>`.
+
+  Motivo: `auto-fit` con cards de ancho fijo genera cualquier cantidad
+  de columnas según el ancho disponible (ej. 5+1 en vez de 3+3), lo
+  que se ve desprolijo y no coincide con la paginación de a "filas
+  completas" que espera el botón "Ver más". Fijar columnas por
+  escalón da control total sobre cuántas cards entran por fila en
+  cada rango.
+
+- **`pages/especialidad-*.html` (las 6 páginas por especialidad) —
+  rediseño y fix de resize:** se sacó el botón "Solicitar turno por
+  WhatsApp" de la banda superior (que quedó sin fondo, solo con el
+  link "← Todas las especialidades") y el título de la página se
+  reubicó a la izquierda, ahora dentro de un hero propio con degradé
+  suave, una etiqueta "Especialidad médica" arriba y el título en
+  magenta oscuro. Los títulos de listado dejaron de repetir el nombre
+  de la especialidad ("Profesionales de Ginecología" → "Profesionales")
+  y pasaron a estar centrados, igual que la fila de cards debajo. Se
+  sumó `styles/responsive/especialidad.css` para achicar
+  progresivamente esas cards en pantallas chicas. Además,
+  `limitarAUnaFila()` (`js/especialidad.js`) ahora vuelve a medir
+  cuántas cards entran por fila en cada resize (antes solo al cargar
+  la página, vía `requestAnimationFrame` una única vez), preservando
+  el estado expandido/colapsado del botón "Ver más" al hacerlo.
+
+  Motivo: al no remedir en resize, cards que habían quedado visibles
+  con el ancho de carga inicial pasaban a envolver en varias filas si
+  el usuario después achicaba la ventana, rompiendo la promesa de
+  "una sola fila + Ver más". El resto es una limpieza visual pedida
+  para que la página no dependiera de repetir el nombre de la
+  especialidad en cada título ni de un botón de WhatsApp redundante
+  (ya está la banda de cierre, ver abajo).
+
+- **Fichas de práctica (`pages/practica-*.html`) — carrusel en
+  mobile:** el carrusel de "Otras prácticas de [especialidad]" al pie
+  de cada ficha achica sus cards de 280px a 220px por debajo de
+  768px, con menos padding, texto más chico y flechas de navegación
+  más pequeñas.
+
+  Motivo: en celular, una card de 280px ocupa la enorme mayoría del
+  ancho de pantalla, dando una sensación de carrusel "roto" o
+  desproporcionado respecto al resto de la ficha.
+
+### Agregado
+- **SEO — home (`index.html`):** meta description (la página no tenía
+  ninguna) y JSON-LD `MedicalClinic` con dirección, geolocalización,
+  horario y redes.
+
+- **SEO — `pages/circuito.html`:** JSON-LD `HowTo` con los 4 pasos del
+  circuito (mismo texto que ya está en pantalla), sin tocar el
+  `Service` existente.
+
+- **SEO — `pages/especialidades.html`:** la meta description bajó de
+  184 a 154 caracteres (se cortaba en los resultados de búsqueda), y
+  se sumó JSON-LD `BreadcrumbList` (Inicio → Especialidades y
+  prácticas) — la única página principal que no tenía ningún dato
+  estructurado.
+
+- **`pages/especialidad-*.html`:** banda de cierre "¿Querés asistencia
+  para sacar tu turno?" (mismo componente `.prac2-nosabe` que ya
+  existía en `especialidades.html`, con el mismo `--plum` del footer)
+  con un link de WhatsApp cuyo mensaje pre-armado nombra la
+  especialidad de la página ("...mi turno de Ginecología.", etc.).
+
+  Motivo: cerrar cada página de especialidad con la misma invitación a
+  contacto que ya usa el catálogo general, en vez de dejarla terminar
+  abruptamente después del listado de prácticas.

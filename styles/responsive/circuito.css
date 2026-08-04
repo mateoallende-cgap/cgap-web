@@ -6,10 +6,12 @@
   .circ2-step{padding:24px 4px}
 }
 /* .circ2-cards fuerza las 5 en una sola fila (flex-wrap:nowrap) en
-   desktop; por debajo de este ancho ya no entran de forma legible, así
-   que se deja envolver de a 3/2/1 por fila, con el título liberado del
-   white-space:nowrap para que pueda volver a partirse en dos líneas. */
-@media(max-width:900px){
+   desktop; por debajo de este ancho (mismo corte "mobile" que el resto
+   del sitio, tablets incluidas hasta 1024px) ya no entran de forma
+   legible, así que se deja envolver de a 3/2/1 por fila, con el título
+   liberado del white-space:nowrap para que pueda volver a partirse en
+   dos líneas. */
+@media(max-width:1024px){
   .circ2-cards{flex-wrap:wrap;justify-content:center}
   .circ2-card{flex:1 1 220px;max-width:280px}
   .circ2-card-icon{font-size:2rem;margin-bottom:14px}

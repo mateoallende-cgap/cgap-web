@@ -58,6 +58,14 @@
 @media (max-width:768px){
   .pd-ficha-grid{flex-direction:column}
   .pd-ficha-divider{width:100%;height:1px}
+  .esp-section > .wrap{padding:0 20px}
+  .car-track{gap:14px}
+  .car-track .prac-card{flex:0 0 220px;padding:1.1rem 1.2rem}
+  .car-track .prac-card h3{font-size:1rem}
+  .car-track .prac-card p{font-size:.83rem}
+  .car-btn{width:38px;height:38px;font-size:1.2rem}
+  .car-btn.prev{left:-8px}
+  .car-btn.next{right:-8px}
 }
 
 /* Carrusel de "Otras prácticas" (mismo patrón que el carrusel de

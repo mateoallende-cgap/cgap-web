@@ -18,7 +18,7 @@
   if (!scroll || !sticky || !stepsEl || !steps.length) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduceMotion || window.innerWidth < 760) return;
+  if (reduceMotion || window.innerWidth <= 1024) return;
 
   const dotsWrap = scroll.querySelector(".circ2-scroll-dots");
   const dots = steps.map((_, i) => {
@@ -66,7 +66,23 @@
 
   function computeStickyH() {
     const ctaH = ctaBar ? ctaBar.offsetHeight : 0;
-    stickyH = Math.max(360, window.innerHeight - NAV_OFFSET - ctaH);
+    const available = Math.max(360, window.innerHeight - NAV_OFFSET - ctaH);
+    /* En pantallas bajas, tanto la grilla 2x2 resuelta como el modo
+       "paso grande" pueden necesitar más alto del que hay disponible.
+       Antes ese sobrante se desbordaba del bloque sticky y quedaba
+       pisando el contenido de más abajo o la barra de WhatsApp fija
+       (sin overflow:hidden a propósito, ver comentario más abajo sobre
+       por qué no se corta el título). Se mide el alto real de las dos
+       variantes (todos los .circ2-step conviven en la misma celda de
+       grilla en modo "paso grande", así que el más alto de los 4 ya
+       determina el alto de esa medición sin necesidad de marcar
+       ninguno .is-active) y se usa el mayor de los tres valores. */
+    sticky.style.height = "auto";
+    const naturalResolved = sticky.scrollHeight;
+    scroll.classList.add("is-stage");
+    const naturalStage = sticky.scrollHeight;
+    scroll.classList.remove("is-stage");
+    stickyH = Math.max(available, naturalResolved, naturalStage);
     sticky.style.height = stickyH + "px";
   }
 

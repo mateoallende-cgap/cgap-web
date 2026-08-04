@@ -19,9 +19,20 @@ if (pracGrid && window.PRACTICAS) {
   const verMasBtn = document.getElementById("pracVerMas");
   const searchFilterBar = document.querySelector(".prac2-search-filter");
   const STICKY_TOP = 100; /* debe coincidir con el "top" sticky de .prac2-search-filter en practicas.css */
-  const PAGE_SIZE = 12; /* ~2 filas de 6 columnas en desktop */
+  /* ~2 filas, pero de cuántas columnas depende del ancho — tiene que
+     coincidir con las columnas reales de .prac-grid en cada escalón de
+     styles/responsive/practicas.css (6 en desktop grande, 5 entre
+     1480-1900px, 4 entre 1181-1479px, 3 en notebooks chicas (≤1180),
+     2 en mobile/tablets chicas). */
+  function pageSize() {
+    if (window.matchMedia("(max-width:768px)").matches) return 4;
+    if (window.matchMedia("(max-width:1180px)").matches) return 6;
+    if (window.matchMedia("(max-width:1479px)").matches) return 8;
+    if (window.matchMedia("(max-width:1850px)").matches) return 10;
+    return 12;
+  }
   let fEsp = "", fTipo = "", q = "";
-  let resActual = [], visibleCount = PAGE_SIZE;
+  let resActual = [], visibleCount = pageSize();
 
   const espTexto = {
     circuito: "Circuito Ginecológico", ginecologia: "Ginecología", obstetricia: "Obstetricia", ecografia: "Ecografía",
@@ -51,11 +62,11 @@ if (pracGrid && window.PRACTICAS) {
     }
     count.textContent = `${res.length} práctica${res.length === 1 ? "" : "s"}`;
     resActual = res;
-    visibleCount = PAGE_SIZE;
+    visibleCount = pageSize();
     renderGrid();
   }
 
-  /* Muestra de a PAGE_SIZE resultados (~2 filas) con un botón "Ver más" para
+  /* Muestra de a pageSize() resultados (~2 filas) con un botón "Ver más" para
      no tirar todo el catálogo de una vez; se resetea en cada búsqueda/filtro
      nuevo desde render(). */
   function renderGrid() {
@@ -84,7 +95,7 @@ if (pracGrid && window.PRACTICAS) {
       if (quedan > 0) {
         verMasBtn.style.display = "inline-flex";
         verMasBtn.textContent = `Ver más (${quedan})`;
-      } else if (resActual.length > PAGE_SIZE) {
+      } else if (resActual.length > pageSize()) {
         verMasBtn.style.display = "inline-flex";
         verMasBtn.textContent = "Ver menos";
       } else {
@@ -156,11 +167,11 @@ if (pracGrid && window.PRACTICAS) {
 
   if (verMasBtn) verMasBtn.addEventListener("click", () => {
     if (visibleCount >= resActual.length) {
-      visibleCount = PAGE_SIZE;
+      visibleCount = pageSize();
       renderGrid();
       document.getElementById("catalogo")?.scrollIntoView({ behavior: "smooth", block: "start" });
     } else {
-      visibleCount += PAGE_SIZE;
+      visibleCount += pageSize();
       renderGrid();
     }
   });

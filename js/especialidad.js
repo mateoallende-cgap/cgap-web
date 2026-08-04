@@ -48,26 +48,41 @@
 
   /* Deja visible solo la primera fila de un grid (según su layout real, no
      una cantidad fija de items) y agrega un botón "Ver más" para el resto,
-     que al abrirlo pasa a "Ver menos" para volver a colapsar. */
+     que al abrirlo pasa a "Ver menos" para volver a colapsar. Se vuelve a
+     medir en cada resize (no solo al cargar): la cantidad de items por
+     fila cambia con el ancho, así que lo que antes entraba en una fila
+     puede dejar de entrar, y sin remedir quedaban varias filas sueltas
+     en vez de una sola + "Ver más". */
   function limitarAUnaFila(grid, btn) {
     if (!btn) return;
     const items = Array.from(grid.children);
     if (items.length < 2) { btn.style.display = "none"; return; }
-    requestAnimationFrame(() => {
+    let expandido = false;
+    let ocultos = [];
+
+    function medir() {
+      items.forEach(el => { el.style.display = ""; });
       const primerTop = items[0].offsetTop;
       const enPrimeraFila = items.filter(el => el.offsetTop === primerTop).length;
-      const ocultos = items.slice(enPrimeraFila);
+      ocultos = items.slice(enPrimeraFila);
       if (!ocultos.length) { btn.style.display = "none"; return; }
-      let expandido = false;
-      ocultos.forEach(el => el.style.display = "none");
       btn.style.display = "inline-flex";
-      btn.textContent = `Ver más (${ocultos.length})`;
-      btn.onclick = () => {
-        expandido = !expandido;
-        ocultos.forEach(el => el.style.display = expandido ? "" : "none");
-        btn.textContent = expandido ? "Ver menos" : `Ver más (${ocultos.length})`;
-        if (!expandido) grid.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      };
+      if (!expandido) ocultos.forEach(el => el.style.display = "none");
+      btn.textContent = expandido ? "Ver menos" : `Ver más (${ocultos.length})`;
+    }
+
+    btn.onclick = () => {
+      expandido = !expandido;
+      ocultos.forEach(el => el.style.display = expandido ? "" : "none");
+      btn.textContent = expandido ? "Ver menos" : `Ver más (${ocultos.length})`;
+      if (!expandido) grid.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    };
+
+    requestAnimationFrame(medir);
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(medir, 150);
     });
   }
 

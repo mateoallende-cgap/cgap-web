@@ -1,9 +1,63 @@
 /* ============================================================
    CGAP · Responsive Especialidades / Prácticas (practicas.html)
    ============================================================ */
+@media(max-width:780px){
+  /* align-items:center evita que los botones (antes lado a lado) se
+     estiren a todo el ancho del contenedor al apilarse en columna. */
+  .prac2-hero-btns{flex-direction:column;align-items:center}
+  .prac2-hero-btns .btn,.prac2-hero-btns .btn-outline-plum{width:auto;max-width:280px}
+}
 @media(max-width:768px){
-  .prac2-hero-btns{flex-direction:column}
   .prac2-nosabe-inner{flex-direction:column;text-align:center}
-  .prac2-esp-grid{grid-template-columns:1fr}
   .prac2-grid{grid-template-columns:1fr}
+}
+/* Catálogo de prácticas: en desktop grande .prac-grid arma sus columnas
+   solo (auto-fit con cards de 280px). En notebooks más chicas eso da
+   4-5 columnas —un número raro que no coincide con las "~2 filas" que
+   asume PAGE_SIZE en js/practicas.js—, así que acá se fuerza a un
+   número fijo de columnas por escalón (3, después 2 en mobile/tablets
+   chicas), y js/practicas.js reparte "Ver más" acorde en cada uno. */
+@media(max-width:1180px){
+  .prac-grid{grid-template-columns:repeat(3,1fr)}
+  .prac-card{max-width:280px;width:100%;margin:0 auto}
+}
+@media(max-width:768px){
+  .prac-grid{grid-template-columns:repeat(2,1fr)}
+}
+/* Entre 1181 y 1479px, un escalón más antes de las 5 columnas de
+   abajo: 4 columnas fijas (2 filas de 4). */
+@media(min-width:1181px) and (max-width:1479px){
+  .prac-grid{grid-template-columns:repeat(4,280px);justify-content:center}
+}
+/* Entre 1480 y 1850px el auto-fit de base ya arma 6 columnas, pero a
+   este ancho el catálogo completo (mostrado en "Más buscadas") no
+   entra en 2 filas limpias — se fuerza a 5 columnas fijas y
+   centradas en vez de dejarlo en manos del auto-fit. El límite superior
+   se deja en 1850 (no 1900) por el mismo desfase de scrollbar que en
+   .prac2-esp-grid más abajo: a un ancho nominal de 1920 el navegador
+   reporta menos, y sin este margen la resolución "1920" quedaba
+   atrapada en el escalón de 5 en vez de pasar a las 6 de abajo. */
+@media(min-width:1480px) and (max-width:1850px){
+  .prac-grid{grid-template-columns:repeat(5,280px);justify-content:center}
+}
+/* De 1851px en adelante (incluye 1920): 6 columnas fijas y centradas,
+   2 filas de a 6 con el resto detrás del "Ver más" — en vez de dejarlo
+   en manos del auto-fit de base / .prac2-grid, que no daba un
+   resultado confiable acá. */
+@media(min-width:1851px){
+  .prac-grid{grid-template-columns:repeat(6,280px);justify-content:center}
+}
+/* Grilla de "Nuestras especialidades": el auto-fit de base da 4 o 5
+   columnas en este rango (nunca las 6 cards parejas), dejando una
+   card sola en la segunda fila. Se fuerza a 3 columnas fijas —2
+   filas de 3, centradas— con las cards un poco más anchas que el
+   mínimo de base (260px). */
+@media(min-width:950px) and (max-width:1850px){
+  .prac2-esp-grid{grid-template-columns:repeat(3,300px);justify-content:center}
+}
+/* Por debajo de 950px, 2 columnas (3 filas de 2) en vez de 3 —ya no
+   entran cómodas—; en 1fr (no fijas) para que se achiquen sin
+   desbordar hasta en celulares angostos. */
+@media(max-width:949px){
+  .prac2-esp-grid{grid-template-columns:repeat(2,1fr)}
 }

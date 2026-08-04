@@ -4,9 +4,8 @@
    (base/doc-card.css); acá solo va el layout propio de esta página.
    ============================================================ */
 
-/* banda angosta con el degradé de marca, solo para el link de volver */
+/* banda angosta, solo el link de volver (sin fondo) */
 .esp-navband{
-  background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 55%,#f0d4f5 100%);
   padding:18px 24px;
 }
 .esp-navband .esp-back{margin-bottom:0}
@@ -20,35 +19,32 @@
 /* la flecha va sin subrayado, el texto conserva el suyo */
 .esp-back-arrow{text-decoration:none}
 
-/* título + botón en la misma línea, separados por una línea divisora;
-   fondo blanco, sin ícono, alineados a la izquierda y con poco alto, a
-   una altura similar a la de la banda de navegación */
+/* título + bajada de la especialidad, alineados a la izquierda */
 .esp-hero{
-  background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 55%,#f0d4f5 100%);
-  padding:24px 24px 32px;
+  background:linear-gradient(135deg, #F5D6E8 0%, #FBEFF6 100%);
+  padding:3rem 2rem; /* más aire vertical */
+  text-align:left;
 }
-.esp-hero-row{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap}
+.esp-hero-inner{max-width:620px}
+.esp-hero .eyebrow{background:#fff}
 .esp-hero-title{
   font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3rem);
-  color:var(--plum);margin:0;line-height:1.1;
+  color:var(--magenta-dark);margin:.7rem 0 0;line-height:1.1;
 }
-.esp-hero-sub{font-size:1rem;color:var(--muted);line-height:1.7;margin:1rem 0 2rem;max-width:560px}
-.esp-hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-start}
 
-.esp-section{background:#fff;padding:72px 0}
+.esp-section{background:#fff;padding:96px 0}
 .esp-section--alt{background:var(--cream)}
-/* títulos/textos de "Profesionales de X" y "Prácticas de X" a la izquierda
-   (el wrap ya es full-bleed con 40px de padding, así queda separado del
-   borde de la pantalla en vez de pegado) */
+/* títulos genéricos ("Profesionales"/"Prácticas", sin repetir el nombre
+   de la especialidad) centrados, igual que la fila de cards debajo */
 .esp-section .prac2-section-title,
 .esp-section .prac2-section-sub{
-  text-align:left;margin-left:0;margin-right:0;
+  text-align:center;margin-left:auto;margin-right:auto;
 }
 .esp-section .prac2-section-title{font-size:1.6rem}
-/* menos aire entre la fila de profesionales y el título de la sección
-   siguiente (prácticas), que quedan una debajo de la otra */
-.esp-section:has(+ .esp-section){padding-top:32px;padding-bottom:16px}
-.esp-section + .esp-section{padding-top:24px}
+/* algo más de aire entre la fila de profesionales y el título de la
+   sección siguiente (prácticas), que quedan una debajo de la otra */
+.esp-section:has(+ .esp-section){padding-top:44px;padding-bottom:28px}
+.esp-section + .esp-section{padding-top:36px}
 /* wrap full-bleed, mismo criterio que el resto de practicas.css */
 .esp-section > .wrap{
   width:100vw;max-width:none;
@@ -56,17 +52,14 @@
   padding:0 40px;box-sizing:border-box;
 }
 /* columnas de ancho fijo (no 1fr): cuando hay pocos profesionales no se
-   estiran para llenar el ancho; arrancan del borde izquierdo, igual que
-   el título de la sección */
+   estiran para llenar el ancho; centradas, igual que el título de la
+   sección */
 .esp-doc-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,220px));gap:18px;
-  justify-content:start;
+  justify-content:center;
 }
-/* el grid de prácticas (.prac-grid, de practicas.css) por defecto centra
-   las cards cuando sobra espacio; acá arranca del borde izquierdo, igual
-   que el título de la sección */
-.esp-section .prac-grid{justify-content:start}
+/* .prac-grid (de practicas.css) ya centra sus cards por defecto */
 .esp-empty{color:var(--muted)}
 .esp-vermas-wrap{display:flex;justify-content:center;margin-top:12px}
-.esp-vermas{padding:12px 28px;display:none;background:var(--plum);color:#fff}
-.esp-vermas:hover{background:transparent;color:var(--plum)}
+.esp-vermas{padding:12px 28px;display:none;background:#fff;color:var(--magenta);border-color:var(--magenta)}
+.esp-vermas:hover{background:var(--magenta);color:#fff}

@@ -47,7 +47,7 @@
 .prest-item{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.7rem;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .prest-item:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
 a.prest-item{cursor:pointer;display:flex;flex-direction:column}
-.prest-more{font-size:.82rem;font-weight:700;color:var(--magenta);margin-top:auto;padding-top:.8rem;display:inline-flex;align-items:center;gap:.3rem;transition:gap .25s}
+.prest-more{font-size:.82rem;font-weight:700;color:var(--magenta);text-decoration:underline;margin-top:auto;padding-top:.8rem;display:inline-flex;align-items:center;gap:.3rem;transition:gap .25s}
 a.prest-item:hover .prest-more{gap:.6rem}
 .prest-item .ico{width:50px;height:50px;border-radius:13px;background:var(--blush);color:var(--magenta);display:grid;place-items:center;margin-bottom:1rem}
 /* Card con foto de fondo: colapsada muestra imagen+ícono+título; al hover
@@ -56,14 +56,8 @@ a.prest-item:hover .prest-more{gap:.6rem}
    position:absolute), crecer empuja hacia abajo a la card que tiene
    debajo EN SU MISMA COLUMNA (por eso no se le superpone), pero no
    afecta en nada a la columna vecina (columnas independientes). */
-.prest-item--photo{padding:0;overflow:hidden;height:100px;display:flex;flex-direction:column;transition:height .8s var(--ease),box-shadow .3s var(--ease);animation:prestBreathe 6.4s ease-in-out infinite}
+.prest-item--photo{position:relative;padding:0;overflow:hidden;height:210px;display:flex;flex-direction:column;transition:height .8s var(--ease),box-shadow .3s var(--ease)}
 a.prest-item--photo:hover{height:210px;box-shadow:var(--shadow)}
-.prest-item--photo:hover{animation-play-state:paused}
-@keyframes prestBreathe{0%,19%,100%{transform:scale(1)}9%{transform:scale(1.045)}}
-.prest-col:nth-child(1) .prest-item--photo:nth-child(1){animation-delay:0s}
-.prest-col:nth-child(1) .prest-item--photo:nth-child(2){animation-delay:3.2s}
-.prest-col:nth-child(2) .prest-item--photo:nth-child(1){animation-delay:1.6s}
-.prest-col:nth-child(2) .prest-item--photo:nth-child(2){animation-delay:4.8s}
 .prest-img{position:relative;flex:none;height:100px;background-size:cover;background-position:center;display:flex;align-items:flex-start;padding:1.2rem}
 .prest-img::after{content:'';position:absolute;inset:0;background:rgba(10,6,15,.6);transition:background .35s var(--ease)}
 a.prest-item--photo:hover .prest-img::after{background:rgba(10,6,15,.78)}
@@ -79,6 +73,7 @@ a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(
 .prest-full .ico{flex:none;width:58px;height:58px;border-radius:15px;background:rgba(255,255,255,.16);color:#fff;display:grid;place-items:center}
 .prest-full .ico svg{width:30px;height:30px}
 .prest-full h3{color:#fff;font-size:1.25rem;margin-bottom:.2rem}
+.prest-full .prest-divider{display:block;width:140px;max-width:100%;height:1px;margin:.9rem 0 .5rem;background:linear-gradient(90deg,rgba(255,255,255,.85),transparent)}
 .prest-full p{color:rgba(255,255,255,.85);font-size:.95rem}
 .prest-full .prest-more{color:#fff}
 
@@ -128,19 +123,20 @@ a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(
 .nov-cta{text-align:center;margin-top:34px}
 
 /* ===== CONTACTO ===== */
-/* el mapa rompe el .wrap y ocupa todo el ancho de pantalla (full-bleed) */
-.contacto-map{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
-.contacto-map .map-wrapper{overflow:hidden;box-shadow:var(--shadow-sm);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:34px}
-.contacto-map iframe{width:100%;height:260px;border:0;display:block}
-/* grid: col izquierda (2 cards apiladas) | 2 cols del medio (cards en fila arriba, form abajo) | col derecha (2 cards apiladas) */
+/* Hoja de texto: sin bordes ni esquinas redondeadas propias, como un
+   bloque de contenido más en vez de una card aparte. Datos a la
+   izquierda en fila continua (separados por líneas), formulario a la
+   derecha. */
 .contacto-grid{
   display:grid;
-  grid-template-columns:1fr 1fr 1fr 1fr;
+  grid-template-columns:1.1fr 1fr;
   grid-template-areas:
-    "left1 midA midB right1"
-    "left2 form form right2";
-  gap:20px;
-  align-items:start;
+    "left1 form"
+    "left2 form"
+    "midA form"
+    "midB form"
+    "right1 form"
+    "right2 form";
 }
 .gc-left1{grid-area:left1}
 .gc-left2{grid-area:left2}
@@ -149,12 +145,12 @@ a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(
 .gc-right1{grid-area:right1}
 .gc-right2{grid-area:right2}
 .gc-form{grid-area:form}
-.form-box{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow-sm)}
+.form-box{background:var(--cream);border:none;border-left:1px solid var(--line);border-radius:0;padding:1.8rem;box-shadow:none}
 .form-box h3{font-size:1.5rem;margin-bottom:.3rem}
-.form-box>p{color:var(--muted);font-size:.95rem;margin-bottom:1.4rem}
-.fg{margin-bottom:1rem}
-.fg label{display:block;font-size:.82rem;font-weight:700;color:var(--plum);margin-bottom:.35rem}
-.fg input,.fg textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:.7rem .9rem;font-family:inherit;font-size:.95rem;color:var(--text);background:var(--cream);transition:border-color .2s,box-shadow .2s}
+.form-box>p{color:var(--muted);font-size:.95rem;margin-bottom:.9rem}
+.fg{margin-bottom:.65rem}
+.fg label{display:block;font-size:.82rem;font-weight:700;color:var(--plum);margin-bottom:.25rem}
+.fg input,.fg textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:.55rem .8rem;font-family:inherit;font-size:.95rem;color:var(--text);background:var(--white);transition:border-color .2s,box-shadow .2s}
 .fg input:focus,.fg textarea:focus{outline:none;border-color:var(--magenta);box-shadow:0 0 0 3px var(--blush)}
 .form-box button{width:100%;margin-top:.4rem}
 .form-msg{text-align:center;padding:1.4rem .5rem}
@@ -163,7 +159,8 @@ a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(
 .form-msg--err{padding:1rem;background:var(--blush);border-radius:var(--radius)}
 .form-msg--err p{color:var(--plum);font-size:.92rem}
 .form-msg--err a{color:var(--magenta);font-weight:700;text-decoration:underline}
-.info-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.3rem 1.5rem;box-shadow:var(--shadow-sm)}
+.info-card{background:none;border:none;box-shadow:none;border-radius:0;padding:1.15rem 1.8rem;border-bottom:1px solid var(--line)}
+.info-card:last-of-type{border-bottom:none}
 .info-card h3{display:flex;align-items:center;gap:.6rem;font-size:1.05rem;margin-bottom:.5rem}
 .info-card h3 svg{width:20px;height:20px;color:var(--magenta)}
 .info-card a,.info-card p{display:block;color:var(--muted);font-size:.94rem}

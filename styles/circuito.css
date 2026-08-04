@@ -9,10 +9,10 @@
    sitio). */
 .circ2-hero{
   background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 60%,#f0d4f5 100%);
-  padding:72px 24px;
+  padding:82px 24px;
 }
 .circ2-hero-inner{text-align:center;display:flex;flex-direction:column;align-items:center;gap:0}
-.circ2-hero-inner h1{font-size:clamp(2.4rem,6vw,5.5rem);line-height:1.05;letter-spacing:-.03em;color:var(--plum);margin:0 0 1.4rem}
+.circ2-hero-inner h1{font-size:clamp(2.9rem,5.6vw,4rem);line-height:1.05;letter-spacing:-.03em;color:var(--plum);margin:0 0 1.4rem}
 .circ2-hero-inner h1 em{color:var(--magenta);font-style:italic}
 .circ2-hero-sub{font-size:1.05rem;color:var(--muted);line-height:1.7;max-width:660px;margin:0 0 2rem}
 .circ2-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
@@ -101,13 +101,14 @@
   position:sticky;top:100px;
   display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:36px;
   padding-top:32px;
-  /* el alto real lo fija js/circuito.js (viewport - navbar - barra de
-     WhatsApp). justify-content:flex-start (no center) para que el
-     título quede siempre pegado arriba y nunca se corte si el
-     contenido (grilla 2x2 + aclaración) termina siendo más alto que el
-     espacio disponible en pantallas bajas — ahí el sobrante simplemente
-     se extiende debajo del bloque (sin overflow:hidden, que era lo que
-     tapaba el título cuando el contenido no entraba). */
+  /* el alto real lo fija js/circuito.js: el mayor entre el espacio
+     disponible (viewport - navbar - barra de WhatsApp) y lo que
+     realmente necesita el contenido, así en pantallas bajas el bloque
+     crece en vez de desbordarse. justify-content:flex-start (no
+     center) para que el título quede siempre pegado arriba. Sin
+     overflow:hidden a propósito: si algún caso igual llegara a no
+     entrar, se prefiere ver contenido de más abajo a que se corte el
+     título. */
 }
 .circ2-scroll.is-active .sec-head{margin:0}
 .circ2-scroll.is-active .sec-head h2{font-size:2.6rem}
