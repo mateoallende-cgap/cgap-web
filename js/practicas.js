@@ -31,8 +31,14 @@ if (pracGrid && window.PRACTICAS) {
     if (window.matchMedia("(max-width:1850px)").matches) return 10;
     return 12;
   }
+  const esMobile = () => window.matchMedia("(max-width:768px)").matches;
   let fEsp = "", fTipo = "", q = "";
   let resActual = [], visibleCount = pageSize();
+  /* en mobile el catálogo arranca como una fila swipeable (una sola
+     "columna" que se recorre arrastrando el dedo, ver .prac-grid.is-swipe
+     en practicas.css) en vez de la grilla envuelta habitual; "Ver más" ahí
+     no agrega más resultados, cambia a la grilla normal (ver renderGrid) */
+  let gridExpandido = false;
 
   const espTexto = {
     circuito: "Circuito Ginecológico", ginecologia: "Ginecología", obstetricia: "Obstetricia", ecografia: "Ecografía",
@@ -63,14 +69,21 @@ if (pracGrid && window.PRACTICAS) {
     count.textContent = `${res.length} práctica${res.length === 1 ? "" : "s"}`;
     resActual = res;
     visibleCount = pageSize();
+    gridExpandido = false;
     renderGrid();
   }
 
-  /* Muestra de a pageSize() resultados (~2 filas) con un botón "Ver más" para
-     no tirar todo el catálogo de una vez; se resetea en cada búsqueda/filtro
-     nuevo desde render(). */
+  /* Desktop/tablet: muestra de a pageSize() resultados (~2 filas) con un
+     botón "Ver más" para no tirar todo el catálogo de una vez. Mobile: por
+     defecto arranca en modo swipe con TODOS los resultados en una fila
+     horizontal (no hace falta paginar, el paciente los recorre arrastrando
+     el dedo); "Ver más" ahí no suma resultados, cambia a la grilla normal
+     envuelta en varias filas (gridExpandido). Se resetea en cada
+     búsqueda/filtro nuevo desde render(). */
   function renderGrid() {
-    const mostrar = resActual.slice(0, visibleCount);
+    const swipe = esMobile() && !gridExpandido;
+    const mostrar = swipe ? resActual : resActual.slice(0, visibleCount);
+    pracGrid.classList.toggle("is-swipe", swipe);
     /* Cada card es un <a> real a su página propia (practica-<slug>.html,
        indexable por buscadores); si hay JS, el click abre el modal en vez
        de navegar, para no perder la interacción rápida en el catálogo. */
@@ -91,15 +104,28 @@ if (pracGrid && window.PRACTICAS) {
     if (!resActual.length) pracGrid.innerHTML = `<p style="color:var(--muted)">No encontramos prácticas con esos criterios.</p>`;
 
     if (verMasBtn) {
-      const quedan = resActual.length - visibleCount;
-      if (quedan > 0) {
-        verMasBtn.style.display = "inline-flex";
-        verMasBtn.textContent = `Ver más (${quedan})`;
-      } else if (resActual.length > pageSize()) {
-        verMasBtn.style.display = "inline-flex";
-        verMasBtn.textContent = "Ver menos";
+      if (esMobile()) {
+        if (!gridExpandido) {
+          verMasBtn.style.display = resActual.length > 1 ? "inline-flex" : "none";
+          verMasBtn.textContent = "Ver en cuadrícula";
+        } else {
+          /* en cuadrícula, de a pageSize() (4 en mobile) por tap; "Ver
+             menos" solo cuando ya no queda nada más para mostrar */
+          const quedan = resActual.length - visibleCount;
+          verMasBtn.style.display = "inline-flex";
+          verMasBtn.textContent = quedan > 0 ? `Ver más (${quedan})` : "Ver menos";
+        }
       } else {
-        verMasBtn.style.display = "none";
+        const quedan = resActual.length - visibleCount;
+        if (quedan > 0) {
+          verMasBtn.style.display = "inline-flex";
+          verMasBtn.textContent = `Ver más (${quedan})`;
+        } else if (resActual.length > pageSize()) {
+          verMasBtn.style.display = "inline-flex";
+          verMasBtn.textContent = "Ver menos";
+        } else {
+          verMasBtn.style.display = "none";
+        }
       }
     }
   }
@@ -166,6 +192,27 @@ if (pracGrid && window.PRACTICAS) {
   clear.addEventListener("click", () => { buscar.value = ""; q = ""; clear.classList.remove("show"); render(); });
 
   if (verMasBtn) verMasBtn.addEventListener("click", () => {
+    if (esMobile()) {
+      if (!gridExpandido) {
+        /* pasa de la fila swipe a la cuadrícula, arrancando en la
+           primera página (4 cards) */
+        gridExpandido = true;
+        visibleCount = pageSize();
+        renderGrid();
+        return;
+      }
+      if (visibleCount >= resActual.length) {
+        /* ya no queda nada más para mostrar: vuelve a la fila swipe */
+        gridExpandido = false;
+        visibleCount = pageSize();
+        renderGrid();
+        document.getElementById("catalogo")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        visibleCount += pageSize();
+        renderGrid();
+      }
+      return;
+    }
     if (visibleCount >= resActual.length) {
       visibleCount = pageSize();
       renderGrid();
@@ -174,6 +221,13 @@ if (pracGrid && window.PRACTICAS) {
       visibleCount += pageSize();
       renderGrid();
     }
+  });
+  /* recalcula al cruzar el breakpoint mobile (rotar el dispositivo, o
+     redimensionar la ventana) */
+  let pracResizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(pracResizeTimer);
+    pracResizeTimer = setTimeout(renderGrid, 150);
   });
 
   /* Barra sticky de buscador+filtros: al quedar pegada arriba, la clase

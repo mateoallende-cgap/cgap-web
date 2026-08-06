@@ -1,0 +1,301 @@
+/* ============================================================
+   CGAP · Ficha combinada de depilación definitiva
+   (pages/tratamiento-depilacion-definitiva.html)
+   Única página para las 57 zonas de depilación (34 femeninas + 23
+   masculinas) — a diferencia del resto de tratamientos estéticos, que
+   tienen una ficha individual por tratamiento, acá todas las zonas
+   comparten esta misma página. No usa .pd-ficha de practica-detalle.css
+   (se sacó: la info general + CTA a WhatsApp que daba quedó reemplazada
+   por el catálogo interactivo + el CTA final de esta misma hoja); sí
+   reutiliza .pd-navband/.pd-equipo de ahí.
+   ============================================================ */
+/* Hero: mismo alto/tamaño de título que el resto de los heros del sitio
+   (index/circuito/especialidades — ver prac2-hero/circ2-hero). Padding
+   superior más chico que el resto a propósito: acá el hero va pegado a
+   .pd-navband (que ya suma su propio alto arriba), así que con el mismo
+   padding que un hero "solo" quedaba demasiado aire entre el link
+   "← Tratamientos estéticos" y el título. */
+.pd-depi-hero{
+  background:linear-gradient(135deg,#fce4f4 0%,#f5cde8 55%,#f0d4f5 100%);
+  /* fixed (no scroll) para que el degradé se calcule contra el viewport
+     en vez de contra la caja de este section: .pd-navband usa el mismo
+     gradiente pero es mucho más bajo, y con attachment normal cada caja
+     recorre el 0%-100% del degradé en su propio alto — se nota como un
+     salto de color en la unión. Con "fixed" ambas cajas muestrean el
+     mismo plano de fondo y quedan visualmente continuas. */
+  background-attachment:fixed;
+  padding:32px 24px 56px;text-align:center;
+  transition:background .35s;
+}
+.pd-depi-hero-inner{max-width:620px;margin:0 auto}
+.pd-depi-hero h1{
+  font-family:'Fraunces',serif;font-size:clamp(2.9rem,5.6vw,4rem);
+  color:var(--magenta-dark);margin:0 0 3.8rem;line-height:1.1;
+  white-space:nowrap;transition:color .35s;
+}
+.pd-depi-hero-inner p{color:var(--text);font-size:1.05rem;line-height:1.65;margin:0 0 2.4rem}
+@media(max-width:560px){
+  .pd-depi-hero h1{font-size:1.9rem}
+}
+@media(max-width:400px){
+  .pd-depi-hero h1{font-size:1.55rem}
+}
+
+/* Link "Ver zonas" del hero: baja hasta el mapa corporal/buscador (ver
+   scroll-margin-top en #depiSelector, más abajo) — funciona sin JS gracias
+   a html{scroll-behavior:smooth} de variables.css. */
+.pd-depi-scroll-link{
+  /* display:flex (no inline-flex) para que sea de bloque y quede siempre
+     debajo del switch en su propia línea, en vez de flotar al lado si
+     entra en el mismo renglón */
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  margin:2.2rem auto 0;color:var(--magenta-dark);font-weight:700;font-size:.92rem;
+  text-decoration:none;transition:color .2s;
+}
+.pd-depi-scroll-link span{text-decoration:underline;text-underline-offset:3px}
+.pd-depi-scroll-link svg{width:18px;height:18px}
+
+/* Ticker de nombres de depilación (mismo componente que ticker.css, ver
+   especialidades.html) justo debajo del hero, con transición de color al
+   cambiar de tema y un poco más lento que el resto de los tickers del
+   sitio (32s por defecto) */
+.pd-depi-ticker{transition:background .35s}
+.pd-depi-ticker .ticker-track{animation-duration:44s}
+.pd-depi-ticker .ticker-track span{transition:color .35s}
+
+/* Switch único femenina/masculina (en vez de 2 botones sueltos): una
+   píldora con las dos etiquetas adentro y un fondo que se desliza entre
+   ambas — el mismo click que cambia la data también dispara el cambio de
+   paleta rosa/celeste vía body.tema-masculino (ver más abajo). */
+.pd-depi-switch{
+  position:relative;display:inline-flex;
+  background:#fff;border:2px solid var(--magenta);border-radius:100px;
+  padding:0;overflow:hidden;transition:border-color .35s;
+}
+.pd-depi-switch-thumb{
+  /* left/width los fija tratamiento-depilacion.js en px exactos (medidos
+     de cada botón), no 50%/translateX(100%): con porcentajes el redondeo
+     de subpíxeles del navegador podía dejar una línea blanca de 1px entre
+     el relleno y el borde al deslizarse. Redondeado en sus 4 esquinas
+     (cápsula); el overflow:hidden del contenedor recorta el borde externo
+     contra el borde de la píldora como resguardo extra. */
+  position:absolute;top:0;bottom:0;left:0;width:50%;
+  background:var(--magenta);border-radius:100px;
+  transition:left .3s var(--ease),width .3s var(--ease),background .35s;
+}
+.pd-depi-switch-opt{
+  position:relative;z-index:1;
+  padding:1.05rem 2.2rem;border:none;background:none;
+  font-weight:700;font-size:1.02rem;color:var(--magenta);
+  cursor:pointer;border-radius:100px;transition:color .3s;
+  white-space:nowrap;
+}
+.pd-depi-switch-opt.active{color:#fff}
+
+/* Mapa corporal + buscador: a diferencia del resto de la página (que usa
+   .wrap, tope 1180px), esta sección ocupa todo el ancho disponible — la
+   silueta queda fija angosta cerca del borde izquierdo y la columna del
+   buscador/catálogo se lleva el resto del espacio. El padding lateral de
+   la sección (24px) es el único margen contra el borde. */
+.pd-depi-selector{background:#fff;padding:56px 24px 24px}
+.pd-depi-selector-title{
+  font-family:'Fraunces',serif;font-size:1.8rem;color:var(--plum);
+  text-align:center;margin:0 0 32px;transition:color .35s;
+}
+.pd-depi-selector-grid{
+  display:grid;grid-template-columns:280px 1fr;gap:48px;
+  align-items:start;margin-bottom:40px;
+}
+/* compensa la navbar sticky (alto completo ~122px) cuando se llega acá
+   por el link "Ver zonas" del hero */
+#depiSelector{scroll-margin-top:130px}
+.pd-depi-silueta{text-align:center;position:sticky;top:100px}
+.pd-depi-silueta svg{width:100%;max-width:260px;height:auto;shape-rendering:geometricPrecision}
+/* stroke-width en unidades internas del viewBox (~615 de ancho para ~260px
+   mostrados, ratio ~2.36): con 1.5 el trazo mostrado quedaba por debajo de
+   1px físico y el antialiasing de las curvas lo rompía en puntitos sueltos
+   en pantallas grandes/no-HiDPI (se resolvía "solo" al hacer zoom porque
+   eso agranda el trazo renderizado). 3.5 lo deja siempre por encima de 1px. */
+.pd-depi-zona{fill:#fff;stroke:var(--magenta);stroke-width:3.5;cursor:pointer;transition:fill .2s}
+.pd-depi-zona:hover{fill:#f3c3e2}
+.pd-depi-zona.is-active{fill:var(--magenta);stroke:var(--magenta-dark)}
+.pd-depi-silueta-hint{font-size:.8rem;color:var(--muted);margin:0 0 .8rem}
+.pd-depi-buscador{padding-top:8px}
+.pd-depi-buscador .prac2-search-box{max-width:none;margin:0 0 16px}
+.pd-depi-buscador .prac2-filters{justify-content:flex-start}
+/* barra de búsqueda + filtros: pegada arriba igual que la silueta (mismo
+   top:100px), con fondo sólido para tapar las cards que pasan por detrás
+   al scrollear */
+.pd-depi-busqueda-sticky{position:sticky;top:100px;background:#fff;z-index:5;padding-bottom:8px}
+.pd-depi-buscador .prac2-catalog-header{margin-top:24px}
+/* catálogo: 2 filas de cards (columnas adaptativas de .prac-grid, según
+   cuántas entren en el ancho real de la columna) + botón "Ver más" para
+   el resto, medido/controlado por js/tratamiento-depilacion.js */
+.pd-depi-buscador .prac2-vermas-wrap{display:flex;justify-content:center;margin-top:28px}
+/* la card ahora es un <div> (no un <a>: necesita un botón propio adentro
+   para expandir la descripción sin disparar el link de WhatsApp), así
+   que el link de WhatsApp pierde el reset de .prac-card{text-decoration}
+   que tenía cuando el link ERA la card entera */
+.pd-depi-buscador .prac-card .ver{text-decoration:none;display:inline-block}
+.pd-depi-buscador .prac-card .ver:hover{text-decoration:underline}
+/* Descripción truncada a 4 líneas (line-height:1.5 × 4 = 6em, en la
+   unidad de la propia card, que ya define font-size:.9rem) con un
+   degradé hacia el blanco de la card si sobra texto — el paciente elige
+   si expandirla con el botón "Ver más"/"Ver menos" de abajo (ver
+   detectarTruncado()/click delegado en tratamiento-depilacion.js). Sin
+   texto de sobra, ni el degradé ni el botón se muestran. */
+.pd-depi-card-desc{
+  line-height:1.5;max-height:6em;overflow:hidden;position:relative;
+  transition:max-height .25s ease;
+}
+.pd-depi-card-desc.is-truncado::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:1.5em;
+  background:linear-gradient(rgba(255,255,255,0),#fff);
+}
+.pd-depi-card-desc.is-expanded{max-height:60em}
+.pd-depi-card-desc.is-expanded::after{display:none}
+.pd-depi-card-toggle{
+  align-self:flex-start;background:none;border:none;padding:0;
+  margin-top:-.3rem;font-size:.78rem;font-weight:700;color:var(--magenta);
+  cursor:pointer;text-decoration:underline;
+}
+
+/* Debajo de 990px la silueta se oculta directamente (no solo se apila):
+   a ese ancho el SVG ya queda chico para tocar zonas con el dedo con
+   precisión, y los chips del buscador cubren el mismo filtro por zona
+   sin necesitarla. Con la silueta afuera, el buscador pasa a ocupar toda
+   la columna sola. */
+@media(max-width:990px){
+  .pd-depi-selector-grid{grid-template-columns:1fr;justify-items:center}
+  .pd-depi-silueta{display:none}
+  .pd-depi-busqueda-sticky{position:static}
+  .pd-depi-buscador{width:100%}
+  .pd-depi-buscador .prac2-filters{justify-content:center}
+}
+@media(max-width:540px){
+  .pd-depi-switch-opt{padding:.85rem 1.4rem;font-size:.92rem}
+}
+/* Celulares: cards más chicas y en 2 columnas fijas (no las 280px fijas
+   de .prac-grid base, que en una pantalla angosta rendían 1 sola columna
+   —cards grandes— y, combinado con medirVerMas() de JS, terminaban
+   mostrando de más si la primera medición corría antes de que las
+   fuentes web terminaran de cargar). Con 2 columnas fijas el catálogo
+   siempre entra en 4 cards (2 filas × 2 columnas) de entrada. */
+@media(max-width:600px){
+  .pd-depi-buscador .prac-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .pd-depi-buscador .prac-card{padding:.9rem 1rem;gap:.4rem}
+  .pd-depi-buscador .prac-card .tag{font-size:.62rem;padding:.2rem .5rem}
+  .pd-depi-buscador .prac-card h3{font-size:.95rem}
+  .pd-depi-card-desc{font-size:.78rem;max-height:5.4em}
+  .pd-depi-buscador .prac-card .ver{font-size:.74rem}
+}
+
+/* Título propio arriba de la card de "Equipo utilizado" (.pd-equipo-grid
+   de practica-detalle.css ya trae su propio h2 pegado a la foto, pero
+   funciona como copy del párrafo, no como título de la sección) */
+.pd-equipo-title{
+  font-family:'Fraunces',serif;font-size:1.8rem;color:var(--plum);
+  text-align:center;margin:0 0 32px;
+}
+/* .pd-equipo-grid es compartida con las otras 63 fichas de tratamiento
+   (practica-detalle.css: fondo blanco, esquinas redondeadas, sombra
+   chica); acá se pisa solo en esta página para que la card quede a
+   esquina viva y con una sombra más amplia que la integre con el resto
+   de la página en vez de leerse como un recuadro suelto. */
+.pd-equipo-grid{border-radius:0;box-shadow:var(--shadow)}
+
+/* CTA final antes del footer: misma paleta rosa/celeste que el resto de
+   la página (ver tema masculino más abajo), igual que la banda "¿No
+   sabés qué turno sacar?" de especialidades.html pero con los colores de
+   esta página. */
+.pd-depi-cta{background:var(--magenta-dark);padding:52px 24px;transition:background .35s}
+.pd-depi-cta-inner{
+  max-width:860px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:32px;flex-wrap:wrap;
+}
+.pd-depi-cta-title{
+  font-family:'Fraunces',serif;font-size:clamp(1.4rem,3vw,2rem);
+  color:#fff;margin:0 0 8px;
+}
+.pd-depi-cta-sub{font-size:.92rem;color:rgba(255,255,255,.75);line-height:1.6;margin:0}
+.pd-depi-cta-btn{
+  flex-shrink:0;background:#fff;color:var(--magenta-dark);
+  border-radius:100px;padding:14px 28px;
+  font-weight:700;font-size:.9rem;text-decoration:none;
+  transition:all .2s;white-space:nowrap;box-shadow:none;
+}
+.pd-depi-cta-btn:hover{background:var(--blush);color:var(--magenta-dark);transform:translateY(-2px)}
+.pd-depi-cta-btn svg{fill:currentColor}
+
+/* ================================================
+   TEMA MASCULINO (celeste): el switch del hero agrega esta clase al
+   <body> cuando se elige "Masculina", reemplazando los rosados/magenta
+   de esta página por una paleta azul marino/celeste — siempre sobre
+   fondo blanco. Solo pisa los colores propios de esta página (hero,
+   switch, silueta, tags y chips del catálogo); el resto del sitio
+   (navbar, footer, botones base) no se ve afectado porque la clase solo
+   existe en el <body> de esta página.
+   ================================================ */
+/* transición suave del degradé de la banda "← Tratamientos estéticos"
+   al cambiar de tema — solo en esta página, practica-detalle.css (que
+   define .pd-navband para las otras 63 fichas) no se toca. El mismo
+   background-attachment:fixed que .pd-depi-hero, para que ambas cajas
+   muestreen el mismo degradé y no se note el salto de color entre ellas
+   (ver comentario largo en .pd-depi-hero). */
+.pd-navband{transition:background .35s;background-attachment:fixed}
+
+/* navbar del sitio (logo/links/Turnos/Portal) y banda "← Tratamientos
+   estéticos": mismo criterio, se reskinean solo mientras esta página
+   tiene la clase en el body. */
+body.tema-masculino .navbar::after{background:#1b4b73}
+body.tema-masculino .nav-links a:hover{color:#1b4b73}
+body.tema-masculino .nav-links a.active{color:#1b4b73}
+body.tema-masculino .nav-links a.active::after{background:#1b4b73}
+body.tema-masculino .burger{color:#1b4b73}
+body.tema-masculino .nav-cta-wa{color:#1b4b73;border-color:#1b4b73}
+body.tema-masculino .nav-cta-wa:hover{background:#dceaf5;color:#123552;border-color:#123552}
+body.tema-masculino .nav-cta{background:#1b4b73}
+body.tema-masculino .nav-cta:hover{background:#123552}
+
+body.tema-masculino .pd-navband{
+  /* el shorthand "background" resetea background-attachment a su valor
+     inicial (scroll) si no se lo repite acá */
+  background:linear-gradient(135deg,#dbe9f5 0%,#c7dcee 55%,#d0e3f2 100%);
+  background-attachment:fixed;
+}
+body.tema-masculino .pd-navband .esp-back{color:#123552}
+body.tema-masculino .pd-navband .esp-back:hover{color:#1b4b73}
+
+body.tema-masculino .pd-depi-hero{
+  background:linear-gradient(135deg,#dbe9f5 0%,#c7dcee 55%,#d0e3f2 100%);
+  background-attachment:fixed;
+}
+body.tema-masculino .pd-depi-hero h1{color:#123552}
+body.tema-masculino .pd-depi-selector-title{color:#123552}
+body.tema-masculino .pd-depi-ticker{background:#dceaf5}
+body.tema-masculino .pd-depi-ticker .ticker-track span{color:#123552}
+body.tema-masculino .pd-depi-ticker .ticker-dot{color:#1b4b73 !important}
+body.tema-masculino .pd-depi-scroll-link{color:#123552}
+body.tema-masculino .pd-depi-scroll-link:hover{color:#1b4b73}
+body.tema-masculino .pd-depi-switch{border-color:#1b4b73}
+body.tema-masculino .pd-depi-switch-thumb{background:#1b4b73}
+body.tema-masculino .pd-depi-switch-opt{color:#1b4b73}
+/* la regla de arriba (mismo nivel de especificidad que .active de la base)
+   ganaba por orden de cascada y tapaba el texto en blanco del botón
+   activo, dejando texto azul sobre relleno azul */
+body.tema-masculino .pd-depi-switch-opt.active{color:#fff}
+body.tema-masculino .pd-depi-zona{fill:#fff;stroke:#1b4b73}
+body.tema-masculino .pd-depi-zona:hover{fill:#b8d4ea}
+body.tema-masculino .pd-depi-zona.is-active{fill:#1b4b73;stroke:#123552}
+body.tema-masculino #depiFiltrosZona .chip:hover{border-color:#1b4b73;color:#1b4b73}
+body.tema-masculino #depiFiltrosZona .chip.active{background:#1b4b73;border-color:#1b4b73;color:#fff}
+body.tema-masculino #depiGrid .tag{color:#1b4b73;background:#dceaf5}
+body.tema-masculino #depiGrid .ver{color:#1b4b73}
+body.tema-masculino .pd-depi-card-toggle{color:#1b4b73}
+body.tema-masculino .pd-depi-busqueda-sticky{background:#fff}
+body.tema-masculino #depiVerMas{color:#1b4b73;border-color:#1b4b73}
+body.tema-masculino #depiVerMas:hover{background:#1b4b73;color:#fff}
+body.tema-masculino .pd-depi-cta{background:#123552}
+body.tema-masculino .pd-depi-cta-btn{color:#123552}
+body.tema-masculino .pd-depi-cta-btn:hover{color:#123552}

@@ -15,12 +15,18 @@
 <link rel="stylesheet" href="../styles/base/footer.css">
 <link rel="stylesheet" href="../styles/base/turnos-modal.css?v=1">
 <link rel="stylesheet" href="../styles/base/ticker.css">
-<link rel="stylesheet" href="../styles/medicina-estetica.css">
+<link rel="stylesheet" href="../styles/base/search-box.css">
+<link rel="stylesheet" href="../styles/base/filtros.css">
+<link rel="stylesheet" href="../styles/base/modal.css?v=5">
+<link rel="stylesheet" href="../styles/practicas.css?v=33">
+<link rel="stylesheet" href="../styles/medicina-estetica.css?v=2">
 <link rel="stylesheet" href="../styles/responsive/base.css">
+<link rel="stylesheet" href="../styles/responsive/practicas.css">
 <link rel="stylesheet" href="../styles/responsive/medicina-estetica.css">
 </head>
 <body>
 <div class="turnos-modal" id="turnosModal"><div class="turnos-modal-card"><button class="close" aria-label="Cerrar">×</button><h3>¿Con qué especialidad querés coordinar tu turno?</h3><p class="desc">Elegí el WhatsApp según lo que necesites.</p><div class="turnos-modal-options"><a class="turnos-modal-opt" href="https://wa.me/5493515079642" target="_blank" rel="noopener"><span class="turnos-modal-opt-icon">🩺</span><span class="turnos-modal-opt-text"><span class="turnos-modal-opt-label">Ginecología y demás especialidades</span><span class="turnos-modal-opt-sub">Consultas, ecografías, laboratorio y más</span></span></a><a class="turnos-modal-opt" href="https://wa.me/5493515079519" target="_blank" rel="noopener"><span class="turnos-modal-opt-icon">✨</span><span class="turnos-modal-opt-text"><span class="turnos-modal-opt-label">Medicina estética</span><span class="turnos-modal-opt-sub">Tratamientos faciales y corporales</span></span></a></div></div></div>
+<div id="estModal" class="modal"><div class="modal-card"></div></div>
 
 <header class="navbar">
   <div class="wrap">
@@ -44,12 +50,11 @@
 <!-- HERO -->
 <section class="est-hero">
   <div class="est-hero-inner">
-    <span class="eyebrow">Medicina Estética · CGAP</span>
     <h1>Cuidarte<br>es un <em>arte.</em></h1>
     <p class="est-hero-rotating" aria-live="polite">Tratamientos estéticos con aparatología de última tecnología, evaluación profesional y planes personalizados según tu piel y tus objetivos.</p>
     <div class="est-hero-btns">
-      <a class="btn" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">Quiero una evaluación estética</a>
-      <a class="est-hero-wa" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      <a class="btn" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      <a class="est-hero-wa" href="#tratamientos-estetica">Tratamientos Estéticos</a>
     </div>
   </div>
 </section>
@@ -75,44 +80,6 @@
     <span>Peeling</span><span class="ticker-dot">✦</span>
   </div>
 </div>
-<!-- ¿QUÉ QUERÉS MEJORAR? -->
-<section class="est2-mejorar">
-  <div class="wrap">
-    <h2 class="est2-mejorar-title">¿Qué querés mejorar?</h2>
-    <p class="est2-mejorar-sub">Elegí lo que más se acerca a lo que estás buscando y te orientamos sobre las opciones disponibles.</p>
-    <div class="est2-mejorar-grid">
-      <a class="est2-mejorar-card" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">
-        <span class="est2-mejorar-icon">🌟</span>
-        <span>Manchas o rojeces</span>
-      </a>
-      <a class="est2-mejorar-card" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">
-        <span class="est2-mejorar-icon">✨</span>
-        <span>Textura, poros o cicatrices</span>
-      </a>
-      <a class="est2-mejorar-card" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">
-        <span class="est2-mejorar-icon">💆</span>
-        <span>Rejuvenecimiento facial</span>
-      </a>
-      <a class="est2-mejorar-card" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">
-        <span class="est2-mejorar-icon">🪄</span>
-        <span>Vello no deseado</span>
-      </a>
-      <a class="est2-mejorar-card" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">
-        <span class="est2-mejorar-icon">🌸</span>
-        <span>Flacidez</span>
-      </a>
-      <a class="est2-mejorar-card" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">
-        <span class="est2-mejorar-icon">💎</span>
-        <span>Calidad de piel</span>
-      </a>
-      <a class="est2-mejorar-card est2-mejorar-card--wide" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">
-        <span class="est2-mejorar-icon">💬</span>
-        <span>No sé qué tratamiento elegir</span>
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- TRATAMIENTOS DESTACADOS -->
 <section class="est2-destacados">
   <div class="wrap">
@@ -172,49 +139,42 @@
   </div>
 </section>
 
-<!-- TAMBIÉN PODÉS CONSULTAR -->
-<section class="est-list-section">
+<!-- TRATAMIENTOS ESTÉTICOS (catálogo) -->
+<section class="prac2-practicas-intro" id="tratamientos-estetica">
   <div class="wrap">
-    <div class="sec-head reveal"><h2>También podés consultar por</h2></div>
-    <div class="est-treat-list reveal">
-      <div class="est-treat-group">
-        <h3>Cosmiatría</h3>
-        <ul>
-          <li>Higiene facial profunda</li>
-          <li>Peeling facial cosmetológico</li>
-          <li>Dermapen</li>
-          <li>Dermaplaning</li>
-          <li>Radiofrecuencia</li>
-          <li>Lifting de pestañas</li>
-          <li>Perfilado / Laminado de cejas</li>
-          <li>Microblading / micropigmentación</li>
-          <li>Drenaje linfático facial</li>
-        </ul>
-      </div>
-      <div class="est-treat-group">
-        <h3>Medicina estética</h3>
-        <ul>
-          <li>Ácido hialurónico</li>
-          <li>Bótox / Baby bótox</li>
-          <li>Bioestimuladores</li>
-          <li>Profhilo</li>
-          <li>Cellbooster Shape</li>
-          <li>HIFU facial</li>
-          <li>Mesoterapia</li>
-          <li>Plasma rico en plaquetas / PRP</li>
-        </ul>
-      </div>
-      <div class="est-treat-group">
-        <h3>Otros tratamientos estéticos</h3>
-        <ul>
-          <li>Láser Spectra para remoción de tatuajes</li>
-          <li>Consulta estética personalizada</li>
-        </ul>
+    <h2 class="prac2-section-title">Tratamientos estéticos</h2>
+    <p class="prac2-section-sub">Filtrá por área o buscá el tratamiento que estás buscando.</p>
+  </div>
+</section>
+
+<section class="prac2-search-filter" id="buscador">
+  <div class="wrap">
+    <div class="search-box prac2-search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="estBuscar" placeholder="Buscá un tratamiento…" aria-label="Buscar tratamiento">
+      <button class="clear" id="estClear" type="button" aria-label="Limpiar">×</button>
+    </div>
+    <div id="estFiltros" class="prac2-filter-wrap">
+      <div class="prac2-filters">
+        <button class="chip prac2-chip" data-grupo="categoria" data-filter="corporal">Corporales</button>
+        <button class="chip prac2-chip" data-grupo="categoria" data-filter="medico">Tratamientos médicos</button>
+        <button class="chip prac2-chip" data-grupo="categoria" data-filter="cosmetologico">Cosmetología</button>
+        <button class="chip prac2-chip" data-grupo="categoria" data-filter="depilacion-femenina">Depilación femenina</button>
+        <button class="chip prac2-chip" data-grupo="categoria" data-filter="depilacion-masculina">Depilación masculina</button>
       </div>
     </div>
-    <div style="text-align:center;margin-top:56px">
-      <p style="font-size:1.05rem;margin-bottom:24px;color:var(--plum)">Si no sabés qué tratamiento es el indicado para vos, podemos orientarte en una consulta estética personalizada.</p>
-      <a class="btn" href="https://api.whatsapp.com/message/W6ZS5FUMO4O4F1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener">Quiero que me orienten</a>
+  </div>
+</section>
+
+<section class="prac2-catalog" id="catalogo">
+  <div class="wrap">
+    <div class="prac2-catalog-header">
+      <h3 id="estTitulo" class="prac2-catalog-title">Todos los tratamientos</h3>
+      <span class="prac2-catalog-count" id="estCount"></span>
+    </div>
+    <div class="prac-grid" id="estGrid"></div>
+    <div class="prac2-vermas-wrap">
+      <button class="btn-outline-plum prac2-vermas" id="estVerMas" type="button" style="display:none">Ver más</button>
     </div>
   </div>
 </section>
@@ -255,5 +215,8 @@
 </footer>
 <script src="../js/global.js"></script>
 <script src="../js/medicina-estetica.js"></script>
+<script src="../js/estetica-data.js"></script>
+<script src="../js/estetica-catalogo.js"></script>
+<script src="../js/ticker.js"></script>
 </body>
 </html>

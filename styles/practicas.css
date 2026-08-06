@@ -15,6 +15,25 @@
 .prac-card p{font-size:.9rem;color:var(--muted);flex:1}
 .prac-card .ver{font-size:.82rem;font-weight:700;color:var(--magenta)}
 
+/* Modo "swipe" en mobile (especialidades.html #pracGrid, medicina-estetica.html
+   #estGrid, tratamiento-depilacion-definitiva.html #depiGrid): en vez de la
+   grilla envuelta en varias filas, el catálogo arranca como una sola fila
+   horizontal que se recorre arrastrando el dedo (scroll nativo con snap, sin
+   botones de flecha). El botón "Ver más"/"Ver en cuadrícula" de cada catálogo
+   saca esta clase y vuelve a .prac-grid normal (ver practicas.js /
+   estetica-catalogo.js / tratamiento-depilacion.js). */
+@media(max-width:768px){
+  .prac-grid.is-swipe{
+    display:flex;flex-wrap:nowrap;overflow-x:auto;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    gap:14px;padding-bottom:6px;scrollbar-width:none;
+  }
+  .prac-grid.is-swipe::-webkit-scrollbar{display:none}
+  .prac-grid.is-swipe .prac-card{
+    scroll-snap-align:start;flex:0 0 78vw;max-width:300px;width:78vw;
+  }
+}
+
 /* ================================================
    PRÁCTICAS v2 (prac2-*)
    ================================================ */

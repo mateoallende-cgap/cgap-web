@@ -541,3 +541,88 @@ v0.12
   Motivo: cerrar cada página de especialidad con la misma invitación a
   contacto que ya usa el catálogo general, en vez de dejarla terminar
   abruptamente después del listado de prácticas.
+v0.13
+### Agregado
+- **`pages/medicina-estetica.html` — catálogo dinámico de
+  tratamientos:** nuevo hero (sin eyebrow, botón "Consultar por
+  WhatsApp" como principal y "Tratamientos Estéticos" como secundario)
+  y una sección "Tratamientos estéticos" con buscador + filtros por
+  categoría (sticky) y catálogo paginado de los 120 tratamientos de
+  `js/estetica-data.js`, con modal de detalle — mismo patrón que el
+  catálogo de `especialidades.html`.
+
+  Motivo: reemplazar el bloque estático "También podés consultar por"
+  por un catálogo real, filtrable y con ficha propia por tratamiento.
+
+- **63 fichas individuales `pages/tratamiento-<slug>.html`:** una
+  página estática por cada tratamiento estético (excepto depilación,
+  ver abajo), con descripción, beneficios, foto del equipo cuando hay
+  una disponible y carrusel de "otros tratamientos" de la misma
+  categoría.
+
+  Motivo: igual que `practica-*.html`/`profesional-<slug>.html`, para
+  que cada tratamiento sea indexable individualmente en vez de existir
+  solo como card+modal generado por JS.
+
+- **`pages/tratamiento-depilacion-definitiva.html` — página combinada
+  interactiva:** hero con switch femenina/masculina (repinta toda la
+  página de rosa a celeste), un mapa de cuerpo en SVG armado a mano a
+  partir de piezas reales (cabeza/torso/cadera/piernas/pies/brazos) con
+  6 zonas clickeables, ticker con los nombres de las 57 zonas del
+  género elegido, buscador + filtros + catálogo de cards (con
+  descripción truncada a 4 líneas con degradé y "Ver más" propio de
+  cada card) y un CTA final a WhatsApp.
+
+  Motivo: reunir las 57 zonas de depilación (34 femeninas + 23
+  masculinas) en una sola experiencia navegable en vez de una lista
+  plana, ya que no tienen ficha individual propia (ver siguiente
+  punto).
+
+- **57 fichas SEO-only `pages/tratamiento-depilacion-<femenina|
+  masculina>-<zona>.html`:** una página estática por zona de
+  depilación, cada una con su propio título/meta description/H1/
+  JSON-LD `MedicalProcedure`, pensadas para indexación en buscadores.
+  A propósito no están linkeadas desde ningún lugar del sitio (las
+  cards de la página combinada van directo a WhatsApp, y el catálogo
+  de medicina estética sigue mandando todo lo de depilación a la
+  página combinada); solo `sitemap.xml` las referencia.
+
+  Motivo: las 57 zonas solo existían como cards generadas por JS sin
+  URL/título propios, así que ninguna búsqueda específica por zona
+  ("depilación axilas Córdoba", etc.) tenía una página del sitio para
+  matchear. Se mantienen fuera de la navegación a pedido explícito,
+  para no competir con la página combinada ni saturar el menú.
+
+- **Modo "swipe" en mobile para los catálogos con buscador
+  (`especialidades.html`, `medicina-estetica.html`,
+  `tratamiento-depilacion-definitiva.html`):** por debajo de 768px el
+  catálogo arranca como una sola fila horizontal que se recorre
+  arrastrando el dedo (scroll nativo con snap), en vez de la grilla
+  envuelta de varias filas. El botón "Ver más" pasa a "Ver en
+  cuadrícula"; una vez en cuadrícula pagina de a 4 y solo ofrece "Ver
+  menos" cuando ya no queda nada más para mostrar, y en ese caso vuelve
+  al modo swipe.
+
+  Motivo: en pantallas angostas, la grilla envuelta podía mostrar más
+  de las 2 filas esperadas según cuántas columnas entraran; el modo
+  swipe además es una interacción más natural en celular que tocar
+  flechas.
+
+- **`js/ticker.js`:** refuerzo compartido para el loop infinito de
+  `.ticker-track` (usado en home, especialidades, medicina estética,
+  circuito y depilación): si el contenido no llega a cubrir 2 veces el
+  ancho visible (listas cortas o pantallas muy anchas), duplica el
+  bloque completo las veces que hagan falta.
+
+  Motivo: con listas cortas o monitores grandes, la animación dejaba
+  un tramo en blanco al final de cada vuelta en vez de texto
+  continuo.
+
+### Cambiado
+- **Botones del hero de `pages/medicina-estetica.html`:** "Consultar
+  por WhatsApp" y "Tratamientos Estéticos" quedaban corridos a la
+  izquierda en vez de centrados debajo del título (`.est-hero-btns`
+  tenía `justify-content:flex-start`).
+
+  Motivo: fix visual — no había razón funcional para el desalineo, era
+  una regla de CSS mal seteada.

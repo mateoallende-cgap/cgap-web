@@ -55,6 +55,39 @@
   padding-top:1rem;border-top:1px solid var(--line);
 }
 
+/* Lista de beneficios (fichas de tratamiento estético, pages/tratamiento-*.html):
+   debajo de los puntos de la ficha, mismo marcador ✦ que .est-list en
+   medicina-estetica.css, duplicado acá para no depender de esa hoja en una
+   página que no es medicina-estetica.html. */
+.pd-beneficios-title{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--plum);margin:1.6rem 0 .8rem}
+.pd-beneficios{list-style:none;margin:0;padding:0}
+.pd-beneficios li{font-size:.92rem;color:var(--text);font-weight:600;padding:.4rem 0 .4rem 1.4rem;position:relative;line-height:1.5}
+.pd-beneficios li::before{content:'✦';position:absolute;left:0;color:var(--magenta);font-size:.6rem;top:.65rem}
+
+/* Equipo utilizado (solo en las fichas donde hay foto disponible del
+   dispositivo): fila con el texto a la izquierda y la foto a la derecha,
+   que se funde con el fondo mediante un degradé en su borde izquierdo para
+   integrarse con la columna de texto en vez de cortar en seco. */
+.pd-equipo{background:var(--cream);padding:64px 24px}
+.pd-equipo-grid{
+  display:flex;align-items:stretch;
+  max-width:var(--maxw);margin:0 auto;
+  background:#fff;border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+.pd-equipo-body{flex:1.1;min-width:0;padding:40px 48px;display:flex;flex-direction:column;justify-content:center}
+.pd-equipo-body h2{font-family:'Fraunces',serif;font-size:1.6rem;color:var(--plum);margin:0 0 .8rem}
+.pd-equipo-body p{color:var(--muted);font-size:.95rem;line-height:1.75;margin:0}
+.pd-equipo-img{
+  flex:1;min-width:0;min-height:280px;
+  background-size:cover;background-position:center;
+  position:relative;
+}
+.pd-equipo-img::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,0) 25%);
+}
+
 @media (max-width:768px){
   .pd-ficha-grid{flex-direction:column}
   .pd-ficha-divider{width:100%;height:1px}
@@ -66,6 +99,10 @@
   .car-btn{width:38px;height:38px;font-size:1.2rem}
   .car-btn.prev{left:-8px}
   .car-btn.next{right:-8px}
+  .pd-equipo-grid{flex-direction:column}
+  .pd-equipo-img{order:-1;min-height:220px}
+  .pd-equipo-img::before{background:none}
+  .pd-equipo-body{padding:28px 24px}
 }
 
 /* Carrusel de "Otras prácticas" (mismo patrón que el carrusel de
