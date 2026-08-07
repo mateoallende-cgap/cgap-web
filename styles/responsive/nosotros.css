@@ -15,7 +15,6 @@
     border-radius:16px;
   }
   .nos2-hero-btns{flex-direction:column}
-  .nos2-quienes-inner{grid-template-columns:1fr;gap:16px}
   .nos2-historia-inner{flex-direction:column;gap:12px}
 }
 @media(max-width:480px){

@@ -626,3 +626,85 @@ v0.13
 
   Motivo: fix visual — no había razón funcional para el desalineo, era
   una regla de CSS mal seteada.
+v0.14
+### Agregado
+- **Modo "swipe" en mobile, con paginación de a 4 en cuadrícula
+  (especialidades, medicina estética, depilación):** el botón "Ver
+  más" de la fila swipe pasó a "Ver en cuadrícula"; una vez en
+  cuadrícula, cada tap suma 4 resultados más y solo ofrece "Ver menos"
+  cuando ya no queda nada por mostrar (antes de esto, entrar a
+  cuadrícula mostraba todos los resultados de una sola vez).
+
+  Motivo: mostrar de a poco es más manejable que tirar el catálogo
+  completo apenas se sale del modo swipe, sobre todo en depilación
+  (57 zonas).
+
+- **`pages/tratamiento-depilacion-definitiva.html` — el mapa de
+  cuerpo se oculta por debajo de 990px** (antes solo se apilaba arriba
+  del buscador a partir de 860px, pero seguía presente en mobile). Los
+  chips de filtro por zona cubren el mismo filtro sin necesitar el
+  SVG, que en una pantalla angosta queda demasiado chico para tocar
+  con precisión.
+
+- **20 fichas `pages/blog-<slug>.html` + sección "Blog & tips" en
+  `pages/nosotros.html`:** el contenido de la ex `pages/blog.html`
+  (que había quedado aislada — ningún link del sitio apuntaba a
+  ella) se movió a una sección dentro de "Nosotros" (mismo diseño y
+  clases `blog2-*`/`js/blog.js` de origen, con filtros por categoría),
+  y cada uno de los 20 tips sumó su propia ficha individual con
+  título/meta description/JSON-LD `Article` propios, con un carrusel
+  de "Otros tips de [categoría]" al pie. `pages/blog.html` se borró.
+
+  Motivo: indexabilidad — los 20 tips no tenían URL ni título propios
+  (vivían solo como texto dentro de una página que además nadie
+  enlazaba), y de paso se resolvió que "Blog" quedara sin ningún punto
+  de entrada real en el sitio.
+
+- **SEO — `pages/nosotros.html`:** meta description (no tenía
+  ninguna) y JSON-LD `AboutPage` con un `MedicalClinic` anidado (mismo
+  dato de la organización que ya usa `index.html`).
+v0.15
+### Cambiado
+- **`pages/nosotros.html` — eyebrows rotas en "Quiénes somos" y "Blog
+  & tips":** la etiqueta tipo píldora (`.eyebrow`) se estiraba a todo
+  el ancho de su columna en vez de ajustarse al texto, porque
+  `.nos2-quienes-label{display:flex;flex-direction:column}` estira a
+  sus hijos por default (`align-items:stretch`). Se sacó la eyebrow y
+  la línea vertical de esas dos secciones (queda solo la del hero) y
+  el título+texto pasaron a un bloque centrado simple, sin la grilla
+  de dos columnas que las contenía.
+
+- **Sección "Blog & tips" — rediseño:** se sacó el bloque separado
+  "Más consultado por nuestras pacientes" (con su propio título y
+  estilo de card distinto) y los 5 bloques por categoría (uno debajo
+  del otro). Ahora los filtros van pegados debajo del texto de
+  intro, y debajo de los filtros hay una única fila de cards
+  (`.carousel`/`.car-track`, se recorre con los botones ‹› o
+  arrastrando el dedo) armada por `js/blog.js` a partir de
+  `js/blog-data.js`: "Todos" muestra los tips más consultados (antes
+  eran cards con otro estilo aparte; ahora son las mismas cards que
+  el resto, sin título de sección) y cada categoría arma su propia
+  fila.
+
+  Motivo: pedido explícito de simplificar la sección a "filtros +
+  una sola fila de cards" en vez de una página de blog completa
+  embebida con múltiples bloques.
+
+- **Botón "Solicitar turno" de las cards del blog:** tenía la clase
+  `btn-outline`, que no está definida en ningún `.css` del sitio —
+  salía como texto plano sin ningún estilo de botón. Ahora es una
+  píldora sólida magenta con hover.
+
+- **Carrusel del blog — mobile y overlap de flechas:** por debajo de
+  768px las cards se achican (78vw, tope 260px, tipografía más chica)
+  y las flechas ‹› se ocultan por completo en dispositivos táctiles
+  (`hover:none` + `pointer:coarse`, ya que el track se recorre
+  arrastrando el dedo). Además, en desktop, las flechas quedaban
+  superpuestas sobre la primera/última card en resoluciones de
+  notebook comunes (1280-1366px): estaban ancladas por fuera del
+  `.carousel` (`left/right:-14px`) confiando en que sobrara margen
+  afuera del `.wrap` (tope 1180px), margen que a esos anchos no
+  alcanzaba. Se le agregó padding lateral propio al `.wrap` de esta
+  sección (`.nos2-blog-catalog`, 80px en vez de los 24px de base) y
+  las flechas ahora flotan dentro de ese padding (`-56px`), sin
+  depender del margen externo del `.wrap`.

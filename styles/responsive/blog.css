@@ -1,8 +1,26 @@
 /* ============================================================
-   CGAP · Responsive Blog & Tips (blog.html)
+   CGAP · Responsive Blog & Tips (sección "Blog & tips" de nosotros.html)
    ============================================================ */
 @media(max-width:768px){
-  .blog2-featured-grid{grid-template-columns:1fr}
-  .blog2-cta-mid-inner{flex-direction:column;text-align:center}
-  .blog2-inst-inner{flex-direction:column;gap:12px}
+  .nos2-blog-catalog{padding-left:24px;padding-right:24px}
+  .nos2-blog .car-track{gap:12px}
+  .nos2-blog .car-track .blog2-card{
+    flex:0 0 78vw;max-width:260px;
+    padding:1rem 1.1rem;gap:8px;
+  }
+  .nos2-blog .car-track .blog2-card-title{font-size:.92rem}
+  .nos2-blog .car-track .blog2-card-what,
+  .nos2-blog .car-track .blog2-card-quick{font-size:.78rem}
+  .nos2-blog .car-track .blog2-card-btn{font-size:.78rem;padding:8px 16px}
+  .nos2-blog .car-btn{width:38px;height:38px;font-size:1.2rem}
+  .nos2-blog .car-btn.prev{left:-8px}
+  .nos2-blog .car-btn.next{right:-8px}
+}
+
+/* Táctil: el track ya se recorre arrastrando el dedo (scroll nativo con
+   snap, ver .car-track en blog.css) — las flechas quedan redundantes y
+   se sacan. (hover:none)+(pointer:coarse) detecta touch de forma más
+   confiable que un ancho de pantalla fijo (cubre notebooks táctiles). */
+@media (hover:none) and (pointer:coarse){
+  .nos2-blog .car-btn{display:none}
 }

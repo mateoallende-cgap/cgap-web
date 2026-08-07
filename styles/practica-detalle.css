@@ -64,6 +64,12 @@
 .pd-beneficios li{font-size:.92rem;color:var(--text);font-weight:600;padding:.4rem 0 .4rem 1.4rem;position:relative;line-height:1.5}
 .pd-beneficios li::before{content:'✦';position:absolute;left:0;color:var(--magenta);font-size:.6rem;top:.65rem}
 
+/* Cuerpo de artículo (fichas de blog, pages/blog-<slug>.html): un párrafo
+   de desarrollo debajo de "En detalle" (reusa .pd-beneficios-title como
+   encabezado) y una nota de aviso chica al pie de la columna izquierda. */
+.pd-ficha-detail{font-size:.92rem;color:var(--text);line-height:1.75;margin:0}
+.pd-ficha-disclaimer{font-size:.8rem;color:var(--muted);line-height:1.6;margin:1.6rem 0 0;padding-top:1rem;border-top:1px solid var(--line)}
+
 /* Equipo utilizado (solo en las fichas donde hay foto disponible del
    dispositivo): fila con el texto a la izquierda y la foto a la derecha,
    que se funde con el fondo mediante un degradé en su borde izquierdo para
