@@ -100,8 +100,8 @@
 }
 /* los títulos de card ahora son <a> (antes texto plano, sin ficha propia
    a la que linkear) — mismo color que el resto del título, sin subrayado */
-.blog2-fcard-title a,.blog2-card-title a{color:inherit;text-decoration:none}
-.blog2-fcard-title a:hover,.blog2-card-title a:hover{color:var(--magenta)}
+.blog2-card-title a{color:inherit;text-decoration:none}
+.blog2-card-title a:hover{color:var(--magenta)}
 
 /* CTA final */
 .nos2-cta{background:var(--blush-soft);border-top:1px solid var(--line);padding:80px 24px;text-align:center}

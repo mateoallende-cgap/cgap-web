@@ -5,4 +5,3 @@
 .chip:hover{border-color:var(--magenta);color:var(--magenta)}
 .chip.active{background:var(--magenta);border-color:var(--magenta);color:#fff}
 
-.result-count{font-size:.9rem;color:var(--muted);margin:18px 0}

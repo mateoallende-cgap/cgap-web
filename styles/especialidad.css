@@ -59,7 +59,6 @@
   justify-content:center;
 }
 /* .prac-grid (de practicas.css) ya centra sus cards por defecto */
-.esp-empty{color:var(--muted)}
 .esp-vermas-wrap{display:flex;justify-content:center;margin-top:12px}
 .esp-vermas{padding:12px 28px;display:none;background:#fff;color:var(--magenta);border-color:var(--magenta)}
 .esp-vermas:hover{background:var(--magenta);color:#fff}

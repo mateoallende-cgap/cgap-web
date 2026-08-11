@@ -140,7 +140,7 @@ window.PROFESIONALES = [
  },
  {
   "nombre": "Erika Mariel",
-  "apellido": "Hernandez",
+  "apellido": "Hernández",
   "slug": "erika-mariel-hernandez",
   "matricula": "39859",
   "especialidad": "diagnostico-por-imagenes",
@@ -199,7 +199,7 @@ window.PROFESIONALES = [
   "destacado": false
  },
  {
-  "nombre": "Sebastian",
+  "nombre": "Sebastián",
   "apellido": "Solano",
   "slug": "sebastian-solano",
   "matricula": "37004",
@@ -329,7 +329,7 @@ window.PROFESIONALES = [
   "destacado": false
  },
  {
-  "nombre": "Hector",
+  "nombre": "Héctor",
   "apellido": "Allende Pinto",
   "slug": "hector-allende-pinto",
   "matricula": "20924",
@@ -390,7 +390,7 @@ window.PROFESIONALES = [
  },
  {
   "nombre": "Ana Laura",
-  "apellido": "Dominguez",
+  "apellido": "Domínguez",
   "slug": "ana-laura-dominguez",
   "matricula": "33856",
   "especialidad": "ginecologia",
@@ -420,7 +420,7 @@ window.PROFESIONALES = [
  },
  {
   "nombre": "Adelaida",
-  "apellido": "Garcia",
+  "apellido": "García",
   "slug": "adelaida-garcia",
   "matricula": "30680",
   "especialidad": "ginecologia",
@@ -430,7 +430,7 @@ window.PROFESIONALES = [
  },
  {
   "nombre": "Candelaria",
-  "apellido": "Garcia Astrada",
+  "apellido": "García Astrada",
   "slug": "candelaria-garcia-astrada",
   "matricula": "40352",
   "especialidad": "ginecologia",
@@ -450,7 +450,7 @@ window.PROFESIONALES = [
  },
  {
   "nombre": "María Eugenia",
-  "apellido": "Gutierrez",
+  "apellido": "Gutiérrez",
   "slug": "maria-eugenia-gutierrez",
   "matricula": "39195",
   "especialidad": "ginecologia",
@@ -499,7 +499,7 @@ window.PROFESIONALES = [
   "destacado": false
  },
  {
-  "nombre": "Matias",
+  "nombre": "Matías",
   "apellido": "Olivero",
   "slug": "matias-olivero",
   "matricula": "29765",
@@ -520,7 +520,7 @@ window.PROFESIONALES = [
  },
  {
   "nombre": "Florencia",
-  "apellido": "Rodriguez",
+  "apellido": "Rodríguez",
   "slug": "florencia-rodriguez",
   "matricula": "40249",
   "especialidad": "ginecologia",
@@ -1382,7 +1382,7 @@ window.PRACTICAS = [
   "duracion": "Duración aproximada de 30 minutos."
  },
  {
-  "nombre": "Eco-Doppler venoso de miembros inferiores",
+  "nombre": "Eco Doppler venoso de miembros inferiores",
   "slug": "eco-doppler-venoso-de-miembros-inferiores",
   "descripcion": "Estudio por imágenes para evaluar el flujo venoso y detectar várices o trombosis en piernas.",
   "especialidad": "flebologia",

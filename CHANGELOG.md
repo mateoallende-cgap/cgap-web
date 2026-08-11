@@ -708,3 +708,72 @@ v0.15
   sección (`.nos2-blog-catalog`, 80px en vez de los 24px de base) y
   las flechas ahora flotan dentro de ese padding (`-56px`), sin
   depender del margen externo del `.wrap`.
+v0.16
+### Agregado
+- **`pages/obras-sociales.html`:** página portada desde `main` al
+  reconciliar esa rama con `feature/seo-optimization` (`main` había
+  seguido evolucionando por su cuenta, con 95 commits que la rama de
+  SEO nunca vio — ver Motivo). Lista las obras sociales y prepagas
+  reales con las que trabaja CGAP (19 coberturas, con sus logos),
+  pasada al patrón de diseño actual (navbar/footer/turnos-modal,
+  `styles/obras-sociales.css` propio, JSON-LD `WebPage`). Sumada al
+  nav y al footer de **las 283 páginas del sitio**, y a `sitemap.xml`.
+
+  Motivo: al ir a mergear `feature/seo-optimization` en `main` para
+  publicar, se encontró que `main` no era un ancestro directo — había
+  evolucionado en paralelo (95 commits, 2026-07-02 a 07-07) sin que
+  esta rama lo supiera, con `obras-sociales.html` como el único
+  contenido realmente nuevo y no reemplazado por el rediseño de esta
+  rama (el resto — un header de dos niveles, ajustes de color, fixes
+  de mobile — quedó superado por el trabajo mucho más extenso hecho
+  acá sobre esas mismas páginas).
+
+- **Favicon (`assets/favicon.png`) en las 283 páginas del sitio:**
+  tampoco existía en `feature/seo-optimization`; se portó de `main`
+  junto con `obras-sociales.html`.
+
+- **SEO — JSON-LD faltante:** `pages/medicina-estetica.html`
+  (`MedicalBusiness`) y las 6 `pages/especialidad-<slug>.html`
+  (`MedicalWebPage`, con `specialty` cuando existe un valor de la
+  enumeración de schema.org que corresponde) no tenían ningún dato
+  estructurado — el único hueco que quedaba entre las páginas
+  principales del sitio.
+
+### Cambiado
+- **Meta descriptions largas:** las 6 páginas armadas a mano
+  (`index.html`, `nosotros.html`, `medicina-estetica.html`,
+  `circuito.html`, `tratamiento-depilacion-definitiva.html`,
+  `especialidades.html`) tenían descriptions de 163 a 213 caracteres
+  — se cortaban en los resultados de búsqueda. Se acortaron todas a
+  ~130-155.
+
+- **Ortografía:** nombres sin tilde en `data.js` (Sebastián, Héctor
+  Allende Pinto, Matías Olivero, y los apellidos Hernández, Domínguez,
+  García, García Astrada, Gutiérrez, Rodríguez), propagado a los
+  `profesional-<slug>.html` afectados y a los carruseles de "otros
+  profesionales" que los mencionan en páginas hermanas. "Eco-Doppler"
+  vs "Eco Doppler" (7 prácticas ya usaban la forma sin guion, una
+  quedó con guion) unificado sin guion. "Tiro de cola" → "tira de
+  cola" en las dos zonas de depilación masculina que lo tenían mal
+  escrito — esto incluyó renombrar los dos archivos
+  `tratamiento-depilacion-masculina-<genitales->tiro-de-cola.html`
+  a `tira-de-cola`, actualizar `sitemap.xml`, el mapa
+  `ZONA_POR_SLUG` de `js/tratamiento-depilacion.js` y los carruseles
+  de las 21 fichas hermanas que enlazaban al nombre viejo. Una
+  redundancia en `medicina-estetica.html` ("el tratamiento que estás
+  buscando" después de "buscá") se reformuló.
+
+### Quitado
+- **Código muerto:** `js/estetica-faq-data.js` (`window.FAQ_ESTETICA`,
+  nunca se cargaba desde ningún HTML) y `styles/base/page-banner.css`
+  (no lo enlazaba ninguna página) se borraron. Selectores sin uso:
+  `.blog2-fcard-title` (nosotros.css, quedó suelto después del
+  rediseño de la sección Blog & tips), `.esp-empty` (especialidad.css)
+  y `.result-count` (filtros.css).
+
+- **Versiones `?v=N` de cache desincronizadas:** `practica-detalle.css`
+  circulaba como `?v=6/7/8` según qué tanda de páginas se hubiera
+  generado, `especialidad.css` como `?v=4/15/26` y `practicas.css`
+  como `?v=32/33` — todas unificadas a su versión más nueva en las
+  283 páginas, para que una futura edición de esos archivos
+  invalide la caché de verdad en todos lados.
