@@ -1,0 +1,6 @@
+# Oculta del acceso web archivos internos del repositorio (control de versiones
+# y documentación de proceso) que no forman parte del sitio publicado.
+RedirectMatch 404 /\.git($|/)
+RedirectMatch 404 /\.gitignore$
+RedirectMatch 404 /\.DS_Store$
+RedirectMatch 404 /(CLAUDE|CHANGELOG)\.md$
