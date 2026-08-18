@@ -46,12 +46,12 @@
 <link rel="stylesheet" href="../styles/base/ticker.css">
 <link rel="stylesheet" href="../styles/base/search-box.css">
 <link rel="stylesheet" href="../styles/base/filtros.css">
-<link rel="stylesheet" href="../styles/base/modal.css?v=5">
-<link rel="stylesheet" href="../styles/practicas.css?v=33">
-<link rel="stylesheet" href="../styles/medicina-estetica.css?v=2">
+<link rel="stylesheet" href="../styles/base/modal.css?v=7">
+<link rel="stylesheet" href="../styles/practicas.css?v=48">
+<link rel="stylesheet" href="../styles/medicina-estetica.css?v=3">
 <link rel="stylesheet" href="../styles/responsive/base.css">
 <link rel="stylesheet" href="../styles/responsive/practicas.css">
-<link rel="stylesheet" href="../styles/responsive/medicina-estetica.css">
+<link rel="stylesheet" href="../styles/responsive/medicina-estetica.css?v=1">
 </head>
 <body>
 <div class="turnos-modal" id="turnosModal"><div class="turnos-modal-card"><button class="close" aria-label="Cerrar">×</button><h3>¿Con qué especialidad querés coordinar tu turno?</h3><p class="desc">Elegí el WhatsApp según lo que necesites.</p><div class="turnos-modal-options"><a class="turnos-modal-opt" href="https://wa.me/5493515079642" target="_blank" rel="noopener"><span class="turnos-modal-opt-icon">🩺</span><span class="turnos-modal-opt-text"><span class="turnos-modal-opt-label">Ginecología y demás especialidades</span><span class="turnos-modal-opt-sub">Consultas, ecografías, laboratorio y más</span></span></a><a class="turnos-modal-opt" href="https://wa.me/5493515079519" target="_blank" rel="noopener"><span class="turnos-modal-opt-icon">✨</span><span class="turnos-modal-opt-text"><span class="turnos-modal-opt-label">Medicina estética</span><span class="turnos-modal-opt-sub">Tratamientos faciales y corporales</span></span></a></div></div></div>
@@ -110,6 +110,9 @@
   </div>
 </div>
 <!-- TRATAMIENTOS DESTACADOS -->
+<div class="sec-blobs-band">
+  <div class="sec-blob sec-blob-a"></div>
+  <div class="sec-blob sec-blob-b"></div>
 <section class="est2-destacados">
   <div class="wrap">
     <div class="est2-destacados-header">
@@ -175,13 +178,20 @@
     <p class="prac2-section-sub">Filtrá por área o buscá el tratamiento que necesitás.</p>
   </div>
 </section>
+</div>
 
 <section class="prac2-search-filter" id="buscador">
   <div class="wrap">
-    <div class="search-box prac2-search-box">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input type="text" id="estBuscar" placeholder="Buscá un tratamiento…" aria-label="Buscar tratamiento">
-      <button class="clear" id="estClear" type="button" aria-label="Limpiar">×</button>
+    <div class="prac2-search-row">
+      <div class="search-box prac2-search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="estBuscar" placeholder="Buscá un tratamiento…" aria-label="Buscar tratamiento">
+        <button class="clear" id="estClear" type="button" aria-label="Limpiar">×</button>
+      </div>
+      <button class="prac2-filter-toggle" id="estFiltroToggle" type="button" aria-expanded="false" aria-controls="estFiltros">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+        Filtros
+      </button>
     </div>
     <div id="estFiltros" class="prac2-filter-wrap">
       <div class="prac2-filters">
@@ -195,25 +205,35 @@
   </div>
 </section>
 
+<div class="sec-blobs-band">
+  <div class="sec-blob sec-blob-c"></div>
+  <div class="sec-blob sec-blob-d"></div>
 <section class="prac2-catalog" id="catalogo">
   <div class="wrap">
     <div class="prac2-catalog-header">
       <h3 id="estTitulo" class="prac2-catalog-title">Todos los tratamientos</h3>
       <span class="prac2-catalog-count" id="estCount"></span>
     </div>
-    <div class="prac-grid" id="estGrid"></div>
+    <div class="prac-grid-wrap">
+      <div class="prac-grid" id="estGrid"></div>
+      <span class="prac-swipe-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></span>
+    </div>
     <div class="prac2-vermas-wrap">
       <button class="btn-outline-plum prac2-vermas" id="estVerMas" type="button" style="display:none">Ver más</button>
+      <button class="prac2-vermas-collapse" id="estVerMasCollapse" type="button" style="display:none" aria-label="Volver a la fila">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 15l-6-6-6 6"/></svg>
+      </button>
     </div>
   </div>
 </section>
+</div>
 
 <!-- CONFIANZA -->
 <section class="est2-confianza">
   <div class="wrap est2-confianza-inner">
     <div class="est2-confianza-icon">🩺</div>
     <div>
-      <h2 class="est2-confianza-title">Evaluación profesional antes de indicar un tratamiento</h2>
+      <h2 class="est2-confianza-title">Evaluación profesional</h2>
       <p class="est2-confianza-text">Cada piel, cada objetivo y cada necesidad son distintos. Por eso, antes de comenzar, evaluamos tu caso para recomendar una opción segura, adecuada y personalizada.</p>
     </div>
   </div>
@@ -245,7 +265,7 @@
 <script src="../js/global.js"></script>
 <script src="../js/medicina-estetica.js"></script>
 <script src="../js/estetica-data.js"></script>
-<script src="../js/estetica-catalogo.js"></script>
+<script src="../js/estetica-catalogo.js?v=7"></script>
 <script src="../js/ticker.js"></script>
 </body>
 </html>

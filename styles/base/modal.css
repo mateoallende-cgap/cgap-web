@@ -1,7 +1,29 @@
 /* ===== MODAL ===== */
-.modal{position:fixed;inset:0;z-index:100;background:rgba(58,31,48,.55);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:24px}
+/* align-items:center en un contenedor con overflow es una trampa
+   clásica: si el hijo centrado es más alto que el contenedor, el
+   excedente "de arriba" queda matemáticamente fuera de cualquier zona
+   scrolleable (el scroll solo se extiende hacia abajo desde el origen,
+   nunca hacia atrás) — por eso el título/botón de cerrar quedaban
+   cortados arriba sin ninguna forma de alcanzarlos. "safe center" es el
+   valor pensado exactamente para esto: centra cuando el contenido entra,
+   y si no entra cae a alinear arriba (start) en vez de recortar. Se
+   declara "flex-start" antes como respaldo por si el navegador no
+   soporta la keyword "safe" (la ignora entera y se queda con la
+   declaración previa). overflow-y:auto en el propio .modal queda como
+   red de seguridad adicional para el caso extremo de una card que ni
+   arrancando arriba entra en el alto disponible. */
+.modal{
+  position:fixed;inset:0;z-index:100;background:rgba(58,31,48,.55);backdrop-filter:blur(3px);
+  display:none;align-items:flex-start;align-items:safe center;justify-content:center;
+  padding:24px;overflow-y:auto;
+}
 .modal.open{display:flex}
-.modal-card{background:#fff;border-radius:22px;max-width:520px;width:100%;max-height:85vh;padding:2rem 2.2rem;position:relative;box-shadow:0 30px 70px -30px rgba(0,0,0,.5);animation:pop .3s var(--ease);overflow-y:auto}
+.modal-card{
+  background:#fff;border-radius:22px;max-width:520px;width:100%;
+  max-height:85vh;max-height:85dvh;
+  padding:2rem 2.2rem;position:relative;box-shadow:0 30px 70px -30px rgba(0,0,0,.5);
+  animation:pop .3s var(--ease);overflow-y:auto;
+}
 @keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
 .modal-card .tag{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--magenta);background:var(--blush);padding:.25rem .7rem;border-radius:100px;margin-bottom:.7rem}
 .modal-card h3{font-size:1.5rem;margin-bottom:.5rem}
@@ -10,7 +32,26 @@
 .modal-row b{color:var(--plum);min-width:120px;font-weight:700}
 .modal-row span{font-weight:700;color:var(--text)}
 .modal-row a{color:var(--magenta);font-weight:700;text-decoration:underline}
-.modal-card .close{position:absolute;top:14px;right:18px;border:none;background:none;font-size:1.8rem;line-height:1;color:var(--muted);cursor:pointer}
+/* sticky (no absolute): .modal-card es el mismo elemento que hace scroll
+   cuando el contenido no entra en max-height:85vh — con position:absolute
+   el botón queda anclado a las coordenadas internas del contenido, así
+   que al scrollear se iba de la vista junto con el resto. Sticky lo
+   mantiene siempre visible arriba del área visible mientras se scrollea.
+   display:block + margin-left:auto lo alinean a la derecha (ocupa una
+   línea propia arriba de todo, en vez de superponerse sin espacio). */
+.modal-card .close{
+  border:none;background:none;font-size:1.8rem;line-height:1;color:var(--muted);cursor:pointer;
+  z-index:5;
+}
+/* .modal-card--wide (modal de categoría del FAQ) es distinto: ese .close
+   ya vive afuera de .faq-cat-body, que es el único elemento que scrollea
+   ahí adentro — no necesita sticky, con position:absolute de toda la
+   vida alcanza y sin el margen negativo (que en esta variante empujaba
+   el <h3> de al lado y lo hacía superponerse). */
+.modal-card--wide .close{position:absolute;top:14px;right:18px}
+.modal-card:not(.modal-card--wide) .close{
+  position:sticky;top:10px;display:block;margin:-10px -4px -1.8rem auto;
+}
 .modal-card .btn{margin-top:1.4rem;width:100%;justify-content:center}
 .modal-ficha-link{display:block;text-align:center;margin-top:.9rem;font-size:.85rem;color:var(--muted);text-decoration:underline}
 .modal-ficha-link:hover{color:var(--plum)}

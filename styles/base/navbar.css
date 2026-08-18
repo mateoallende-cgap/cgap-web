@@ -17,6 +17,15 @@
 /* Portal de Pacientes: botón principal, se mantiene sólido y prominente */
 .nav-cta{font-weight:800}
 .burger{display:none;background:none;border:none;cursor:pointer;color:var(--magenta)}
+/* Anima las 3 rayas a una X cuando el menú está abierto. Se targetea por
+   ".nav-links.open ~ .burger" (sibling general, no adjacente: entre
+   medio están los botones de Turnos/Portal) en vez de sumar una clase
+   propia por JS — así no hace falta tocar global.js, ya alcanza con el
+   toggle de "open" que ya existe sobre .nav-links. */
+.burger svg line{transition:transform .3s var(--ease),opacity .2s var(--ease);transform-box:fill-box;transform-origin:center}
+.nav-links.open ~ .burger svg line:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-links.open ~ .burger svg line:nth-child(2){opacity:0}
+.nav-links.open ~ .burger svg line:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
 /* ===== navbar compacta al scrollear (-20% respecto al tamaño base de arriba) ===== */
 .navbar.scrolled .wrap{height:100px}

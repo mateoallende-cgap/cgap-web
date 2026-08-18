@@ -12,13 +12,7 @@
   .hero-static-left p{display:none}
   .hero-static-left,.hero-static-right{margin-left:clamp(1rem,9vw,6rem)}
   .hero-static-right{order:-1}
-  /* El espacio de imagen+título se achica, pero el recorte se le saca
-     entero a la card (no se lo queda el texto de abajo). */
-  .prest-item--photo,a.prest-item--photo:hover{height:180px}
-  .prest-img{height:70px}
-  .prest-item--photo .ico{width:38px;height:38px}
-  .prest-item--photo .ico svg{width:20px;height:20px}
-  .prest-item--photo h3{top:1rem;left:calc(1rem + 38px + .6rem);right:1rem;min-height:38px;font-size:.92rem}
+  .prest-item--photo h3{font-size:.92rem}
   .prest-item--photo p{font-size:.85rem}
   .prest-more{font-size:.75rem}
   /* Ícono y título en la misma fila; texto y link abajo, en columna,
@@ -66,10 +60,6 @@
   .prest-full{align-self:stretch}
 }
 @media(max-width:770px){
-  /* Con las cards más angostas (2 por fila) el texto ocupa más líneas
-     y el link quedaba fuera de la card (cortado por overflow:hidden).
-     Se le da más alto a la card para que todo el contenido entre. */
-  .prest-item--photo,a.prest-item--photo:hover{height:210px}
   /* En celulares (no en tablets) se saca el formulario de contacto
      por tema de espacio; en tablet se conserva. */
   .gc-form{display:none}
@@ -80,12 +70,71 @@
   }
 }
 @media(max-width:610px){
-  /* Se saca el ícono de al lado del título en todas las cards, y el
+  /* Se saca el ícono de al lado del título en las cards magenta, y el
      título pasa a ocupar todo el ancho de la fila. */
   .prest-full .ico{display:none}
   .prest-full{grid-template-columns:1fr;grid-template-areas:"title" "divider" "text" "link"}
-  .prest-item--photo .ico{display:none}
-  .prest-item--photo h3{left:1rem}
+}
+@media(max-width:580px){
+  /* Por debajo de 580px se abandona el formato "card" (foto+overlay o
+     bloque magenta) por un listado simple e integrado al fondo de la
+     sección (sin caja blanca ni sombra propia): un ítem por fila, ícono
+     sin fondo pegado al título en la misma línea, separados por líneas
+     finas con los bordes degradados. Sigue siendo el mismo <a>/<button>
+     de siempre (mismo data-modal), así que el click sigue abriendo el
+     modal de detalle. Ícono y título un poco más grandes que antes para
+     aprovechar el ancho completo de la fila (ya no compiten con el resto
+     de la card) y no verse tan chicos/pegados contra el borde izquierdo. */
+  .prest-grid{
+    display:flex;flex-direction:column;background:none;border-radius:0;box-shadow:none;
+    width:100vw;max-width:none;
+    margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+  }
+  .prest-col{display:contents}
+  .prest-item--photo,.prest-full{
+    display:flex!important;flex-direction:row!important;align-items:center!important;
+    gap:.8rem;background:none;border:none;border-radius:0;box-shadow:none;
+    padding:1rem 1.2rem;width:100%;height:auto!important;overflow:visible;text-align:left;
+    border-bottom:1px solid transparent;
+    border-image:linear-gradient(90deg,transparent,var(--line) 12%,var(--line) 88%,transparent) 1;
+  }
+  /* [data-modal="recetas"] en vez de :last-child a propósito: "estudios" y
+     "recetas" son cada una el último hijo DOM de su .prest-col original
+     (aunque .prest-col ya sea display:contents), así que :last-child
+     matcheaba a las dos — le sacaba el divisor a "estudios" también,
+     cuando en la fila visual (reordenada con `order`) la única que va
+     al final de todo el listado es "recetas". */
+  .prest-full[data-modal="recetas"]{border-bottom:none;border-image:none}
+  a.prest-item--photo:hover,a.prest-full:hover{transform:none!important;box-shadow:none}
+  /* Se evita display:contents (da problemas de renderizado mezclado con
+     flex en algunos navegadores): .prest-body se deja como caja real,
+     chata, dentro de la fila flex de .prest-item--photo. */
+  .prest-item--photo .prest-body{
+    display:block!important;flex:1!important;padding:0!important;background:none!important;
+  }
+  .prest-item--photo h3{
+    position:static!important;color:var(--plum);font-size:1.05rem;min-height:0!important;
+    margin:0!important;display:block!important;
+  }
+  .prest-item--photo p,.prest-item--photo .prest-divider,
+  .prest-full .prest-divider,.prest-full p,.prest-more{display:none!important}
+  .prest-item--photo .ico,.prest-full .ico{
+    display:grid!important;place-items:center;width:28px;height:28px;border-radius:0;
+    background:none!important;color:var(--magenta)!important;flex-shrink:0;margin:0!important;
+  }
+  .prest-item--photo .ico svg,.prest-full .ico svg{width:26px;height:26px}
+  .prest-full h3{color:var(--plum);font-size:1.05rem;margin:0;flex:1!important}
+  /* Flechita al final de cada fila: como se sacó el texto/link visible,
+     esto es lo que le indica al paciente que el ítem entero es
+     clickeable (abre el modal con el detalle completo). Mismo efecto de
+     nudge al tocar/hacer hover en los 6 ítems (misma transición que ya
+     usa .prest-more en el resto del sitio). */
+  .prest-item--photo::after,.prest-full::after{
+    content:"›";flex-shrink:0;font-size:1.6rem;font-weight:700;
+    color:var(--magenta);line-height:1;margin-left:.4rem;
+    transition:transform .25s var(--ease);
+  }
+  a.prest-item--photo:hover::after,a.prest-full:hover::after{transform:translateX(4px)}
 }
 @media(min-width:1201px){
   /* Desktop/notebook: sin hover en las 4 cards con foto (quedan siempre
@@ -98,7 +147,7 @@
     gap:24px;
     width:100vw;max-width:none;
     margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
-    padding:0 180px;
+    padding:0 100px;
   }
   .prest-col{display:contents}
   .prest-item--photo[data-modal="gineco"]{order:1}
@@ -108,17 +157,10 @@
   .prest-full[data-modal="estudios"]{order:5;grid-column:span 2}
   .prest-full[data-modal="recetas"]{order:6;grid-column:span 2}
 
-  .prest-item--photo{height:188px}
-  a.prest-item--photo:hover{height:188px;box-shadow:var(--shadow);transform:translateY(-4px)}
-  a.prest-item--photo:hover .prest-img::after{background:rgba(10,6,15,.6)}
-  .prest-img{height:68px;padding:1.1rem}
-  .prest-item--photo .ico{width:42px;height:42px}
-  .prest-item--photo h3{top:1.1rem;left:calc(1.1rem + 42px + .6rem);right:1.1rem;min-height:42px;font-size:1.1rem}
-  .prest-body{padding:1.2rem 1.4rem .8rem;justify-content:flex-start}
+  .prest-item--photo{padding:2.2rem;min-height:172px}
+  .prest-item--photo h3{font-size:1.1rem}
   .prest-item--photo p{font-size:.88rem}
   .prest-item--photo .prest-more{margin-top:auto}
-  .prest-item--photo[data-modal="labo"] .prest-img{background-position:center 80%}
-  .prest-item--photo[data-modal="eco"] .prest-img{background-position:center 100%}
 
   .prest-full{width:88%;max-width:554px;min-height:150px;align-self:stretch;justify-self:center;gap:1.16rem;padding:1.27rem 1.85rem}
   .prest-full .ico{width:48px;height:48px}
@@ -134,10 +176,26 @@
   /* Entre 1201 y 1560px las 4 cards son mas angostas y el titulo mas
      largo ("Consultas y estudios ginecológicos") pasa a 2 líneas.
      Se le da mas ancho a la grilla (menos padding lateral) y se achica
-     un poco el título — el alto de la card (215px) no se toca. */
-  .prest-grid{padding:0 80px}
-  .prest-item--photo h3{left:calc(1.1rem + 42px + .5rem);font-size:.92rem}
+     un poco el título. */
+  .prest-grid{padding:0 40px}
+  .prest-item--photo{padding:1.8rem;min-height:158px}
+  .prest-item--photo h3{font-size:.92rem}
 }
 @media(max-width:600px){.faq-q>span:first-child{font-size:.94rem}.modal-card--wide{padding:1.6rem}}
-@media(max-width:700px){.faq-tiles{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:420px){.faq-tiles{grid-template-columns:1fr}}
+@media(max-width:700px){
+  /* En pantallas chicas los mosaicos ocupaban demasiado alto (ícono
+     arriba + texto abajo, uno por fila) y dificultaban la navegación.
+     Pasan a 2 por fila siempre (nunca caen a 1 sola columna) con el
+     ícono más chico al lado del texto en vez de arriba, ambos a la
+     misma altura. */
+  .faq-tiles{grid-template-columns:repeat(2,1fr);gap:10px}
+  .faq-tile{flex-direction:row;align-items:center;justify-content:flex-start;text-align:left;gap:.6rem;padding:.85rem .8rem;font-size:.86rem}
+  .faq-tile .ico{width:34px;height:34px;border-radius:10px;flex-shrink:0}
+  .faq-tile .ico svg{width:18px;height:18px}
+}
+@media (hover:none) and (pointer:coarse){
+  /* En dispositivos táctiles (reseñas, novedades) las flechas solo
+     estorban: el track ya se recorre arrastrando el dedo. Mismo criterio
+     que ya se usa en el carrusel de blog de nosotros.html. */
+  .car-btn{display:none}
+}

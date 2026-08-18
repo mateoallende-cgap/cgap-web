@@ -31,14 +31,25 @@
   .nav-cta,.navbar.scrolled .nav-cta{font-size:.72rem;padding:.35rem .6rem;margin-left:.3rem}
   .foot-cols{grid-template-columns:1fr;gap:28px}
 }
-@media(max-width:460px){
-  /* Pantallas muy chicas (hasta 320px): el logo se achica y "Portal de
-     Pacientes" vuelve a vivir solo dentro del menú hamburguesa para que
-     "Turnos" (más chico todavía) y el menú entren siempre en la barra. */
+@media(max-width:470px){
+  /* Pantallas muy chicas: el logo se achica y "Portal de Pacientes" vuelve
+     a vivir solo dentro del menú hamburguesa, así "Turnos" queda como
+     único botón en la barra y puede mostrarse más grande. Se targetea con
+     ".navbar .nav-cta-wa" (no solo ".nav-cta-wa") a propósito: la regla
+     genérica ".navbar .btn"/".navbar.scrolled .btn" de los breakpoints de
+     arriba (1300px) tiene más especificidad que una clase sola, así que
+     sin el prefijo ".navbar" ganaba ella y el botón terminaba viéndose
+     más grande sin scrollear que scrolleado (el achique real solo se
+     notaba al hacer scroll, en vez de mantenerse estable). Mismo tamaño
+     en ambos estados: no tiene que achicarse más al scrollear.  */
   .navbar .wrap{padding:0 28px 0 16px;gap:.4rem}
   .logo img,.navbar.scrolled .logo img{height:52px}
-  .nav-cta-wa,.navbar.scrolled .nav-cta-wa{font-size:.65rem;padding:.3rem .45rem}
-  .nav-cta-wa svg{width:14px;height:14px}
+  /* Con "Portal de Pacientes" escondido, "Turnos" queda pegado al burger
+     usando solo el gap general de la barra — se le suma un margen propio
+     para que no se vean los dos apretados. */
+  .burger{margin-left:.7rem}
+  .navbar .nav-cta-wa,.navbar.scrolled .nav-cta-wa{font-size:.76rem;padding:.46rem .78rem}
+  .nav-cta-wa svg{width:15px;height:15px}
   .nav-cta{display:none}
   .nav-links.open .nav-portal-m{display:inline-flex;align-items:center;justify-content:center;background:var(--magenta);color:#fff;padding:.75rem 1.3rem;border-radius:100px;margin-top:.4rem;box-shadow:var(--shadow-sm)}
   .nav-links.open .nav-portal-m::after{display:none}

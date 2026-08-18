@@ -26,10 +26,10 @@
 <link rel="stylesheet" href="../styles/base/search-box.css">
 <link rel="stylesheet" href="../styles/base/filtros.css">
 <link rel="stylesheet" href="../styles/base/ticker.css">
-<link rel="stylesheet" href="../styles/practicas.css?v=33">
+<link rel="stylesheet" href="../styles/practicas.css?v=48">
 <link rel="stylesheet" href="../styles/especialidad.css?v=26">
 <link rel="stylesheet" href="../styles/practica-detalle.css?v=8">
-<link rel="stylesheet" href="../styles/tratamiento-depilacion.css?v=21">
+<link rel="stylesheet" href="../styles/tratamiento-depilacion.css?v=23">
 <link rel="stylesheet" href="../styles/responsive/base.css">
 <script type="application/ld+json">
 {
@@ -129,25 +129,36 @@
       </div>
       <div class="pd-depi-buscador">
         <div class="pd-depi-busqueda-sticky">
-          <div class="search-box prac2-search-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-            <input type="text" id="depiBuscar" placeholder="Buscá tu zona…" aria-label="Buscar zona de depilación">
-            <button class="clear" id="depiClear" type="button" aria-label="Limpiar">×</button>
+          <div class="prac2-search-row">
+            <div class="search-box prac2-search-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              <input type="text" id="depiBuscar" placeholder="Buscá tu zona…" aria-label="Buscar zona de depilación">
+              <button class="clear" id="depiClear" type="button" aria-label="Limpiar">×</button>
+            </div>
+            <button class="prac2-filter-toggle" id="depiFiltroToggle" type="button" aria-expanded="false" aria-controls="depiFiltrosZona">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+              Filtros
+            </button>
           </div>
-          <div class="prac2-filters" id="depiFiltrosZona">
-            <button class="chip prac2-chip" data-zona="cabeza">Cabeza</button>
-            <button class="chip prac2-chip" data-zona="pecho">Pecho</button>
-            <button class="chip prac2-chip" data-zona="hombros-brazos">Hombros / Brazos</button>
-            <button class="chip prac2-chip" data-zona="cadera">Cadera</button>
-            <button class="chip prac2-chip" data-zona="piernas">Piernas</button>
-            <button class="chip prac2-chip" data-zona="pies">Pies</button>
+          <div class="prac2-filter-wrap" id="depiFiltrosZonaWrap">
+            <div class="prac2-filters" id="depiFiltrosZona">
+              <button class="chip prac2-chip" data-zona="cabeza">Cabeza</button>
+              <button class="chip prac2-chip" data-zona="pecho">Pecho</button>
+              <button class="chip prac2-chip" data-zona="hombros-brazos">Hombros / Brazos</button>
+              <button class="chip prac2-chip" data-zona="cadera">Cadera</button>
+              <button class="chip prac2-chip" data-zona="piernas">Piernas</button>
+              <button class="chip prac2-chip" data-zona="pies">Pies</button>
+            </div>
           </div>
         </div>
         <div class="prac2-catalog-header">
           <h3 id="depiTitulo" class="prac2-catalog-title">Todas las zonas</h3>
           <span class="prac2-catalog-count" id="depiCount"></span>
         </div>
-        <div class="prac-grid" id="depiGrid"></div>
+        <div class="prac-grid-wrap">
+          <div class="prac-grid" id="depiGrid"></div>
+          <span class="prac-swipe-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></span>
+        </div>
         <div class="prac2-vermas-wrap">
           <button class="btn-outline-plum prac2-vermas" id="depiVerMas" type="button" style="display:none">Ver más</button>
         </div>
@@ -156,6 +167,9 @@
   </section>
 
   <!-- ====== EQUIPO UTILIZADO ====== -->
+  <div class="sec-blobs-band">
+    <div class="sec-blob sec-blob-a"></div>
+    <div class="sec-blob sec-blob-b"></div>
   <section class="pd-equipo">
     <div class="wrap"><h2 class="pd-equipo-title">Equipo utilizado</h2></div>
     <div class="pd-equipo-grid">
@@ -166,6 +180,7 @@
       <div class="pd-equipo-img" style="background-image:url('../assets/depi.png')"></div>
     </div>
   </section>
+  </div>
 
   <!-- ====== CTA FINAL ====== -->
   <section class="pd-depi-cta">
@@ -191,7 +206,7 @@
 </footer>
 <script src="../js/global.js"></script>
 <script src="../js/estetica-data.js"></script>
-<script src="../js/tratamiento-depilacion.js"></script>
+<script src="../js/tratamiento-depilacion.js?v=1"></script>
 <script src="../js/ticker.js"></script>
 </body>
 </html>

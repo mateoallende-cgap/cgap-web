@@ -777,3 +777,99 @@ v0.16
   como `?v=32/33` — todas unificadas a su versión más nueva en las
   283 páginas, para que una futura edición de esos archivos
   invalide la caché de verdad en todos lados.
+v0.17
+### Cambiado
+- **Navbar:** el ícono de hamburguesa ahora se anima a una "X" al abrir
+  el menú mobile (mismo toggle existente, sin JS nuevo). Se corrigió un
+  bug de especificidad CSS que impedía que el botón "Turnos" redujera su
+  tamaño por debajo de 470px (`.navbar .btn` tapaba a `.nav-cta-wa`), y
+  se ajustó el espaciado del botón de menú cuando "Portal de Pacientes"
+  queda oculto.
+
+- **Modales del sitio (`styles/base/modal.css`, compartido por todas las
+  páginas que usan `.modal`):** en viewports chicos, el contenido de un
+  modal más alto que la pantalla quedaba parcialmente inalcanzable por
+  scroll — `align-items:center` combinado con overflow centra el
+  desborde en vez de dejarlo scrolleable desde el inicio. Se corrigió
+  con `align-items:safe center` + `overflow-y:auto` de respaldo, y el
+  botón de cierre ("×") pasó a quedar sticky arriba del modal en vez de
+  `float:right` (que rompía el contenido siguiente en algunos modales).
+
+- **Buscadores con filtros (`especialidades.html`, `medicina-
+  estetica.html`, `tratamiento-depilacion-definitiva.html`):** la barra
+  sticky de buscador+filtros ya no "salta" al aparecer/desaparecer al
+  scrollear (antes tenía un único umbral de activación que generaba un
+  loop con su propia animación de alto; ahora usa umbrales de entrada/
+  salida separados, mismo mecanismo que ya usaba el navbar). Los filtros
+  pasaron de chips sueltos (visibles siempre en desktop, colapsados solo
+  en mobile) a un único botón "Filtros" con panel desplegable, igual en
+  todas las resoluciones y en los 3 buscadores del sitio — esto además
+  corrigió un bug real en `medicina-estetica.html`, donde los filtros
+  quedaban completamente invisibles por debajo de 580px porque la
+  página nunca tuvo el botón que los mostraba.
+
+- **Catálogos con modo swipe en mobile:** se corrigió un bug donde la
+  fila horizontal de cards arrancaba scrolleada a la mitad y no se podía
+  volver al principio, mostrando en los hechos solo la mitad del
+  catálogo (`justify-content:center`, heredado de la grilla base,
+  centraba el contenido que desbordaba en vez de alinearlo al inicio en
+  modo fila). Se restauraron la flecha animada y el degradé de borde que
+  indican que se puede scrollear, ahora con sus estilos base fuera de
+  cualquier `@media` (antes solo existían dentro de la media query
+  mobile, así que en pantallas anchas el ícono sin estilos aplicables se
+  renderizaba gigante). Por debajo de 580px el botón pasó de "Ver en
+  cuadrícula" a "Ver en fila" (2 columnas rompían el layout en pantallas
+  angostas) y se sumó un botón para volver de fila/cuadrícula a la vista
+  swipe.
+
+- **`pages/especialidades.html`:** las cards de "Nuestras
+  especialidades" pasan de link directo a abrir un modal de elección
+  (consultar por WhatsApp o ver médicos y prácticas de esa
+  especialidad); se corrigió el ícono de ecografía (🔬→🩻); el título
+  del hero se acortó de "Especialidades médicas y prácticas en CGAP" (2
+  líneas) a "Especialidades y prácticas" (una línea, más corto en
+  mobile).
+
+- **`pages/circuito.html`:** el hero se acortó a "Control ginecológico
+  en un solo lugar"; "¿Qué incluye?" ensanchó el corte a lista vertical
+  de 580 a 768px (evitaba una zona de wrap desprolija entre ambos
+  anchos) y se corrigió un borde con degradé que aparecía por error en
+  el borde derecho de la grilla.
+
+- **`pages/medicina-estetica.html`:** la frase rotativa del hero
+  (`js/medicina-estetica.js`) reserva ahora una altura fija para que los
+  botones de abajo no salten al cambiar de frase, y se redujo el padding
+  del hero en mobile. La sección "Evaluación profesional" pasó a fondo
+  blanco, título más corto ("Evaluación profesional", sin "antes de
+  indicar un tratamiento") y el ícono queda siempre al lado del título
+  (antes se apilaba arriba en mobile).
+
+- **`pages/nosotros.html`:** se sacó el eyebrow del hero; se sacó el
+  ícono de "Nuestra historia" (el 📍 original no representaba el
+  contenido); "Lo que nos define" pasó de 4 cards con fondo/borde a una
+  lista vertical sobria (filas separadas por una línea fina, ícono chico
+  a la izquierda).
+
+- **`index.html` — "Servicios principales":** las cards perdieron la
+  foto de fondo y pasaron a un layout de ícono + título + divisor +
+  texto; se corrigieron dos bugs de especificidad CSS que forzaban el
+  layout a columna en vez de fila, y las cards de una misma fila ahora
+  igualan su alto (`align-items:stretch`, antes `start`, un resabio de
+  un layout anterior que ya no aplicaba). El mosaico de FAQ pasó al
+  mismo patrón de ícono + texto en fila.
+
+### Agregado
+- **Fondo continuo con manchas difuminadas** (`.sec-blobs-band`, antes
+  exclusivo de `index.html`) aplicado a las secciones principales de
+  `circuito.html`, `especialidades.html`, `medicina-estetica.html`,
+  `nosotros.html`, `obras-sociales.html` y (solo la sección "Equipo
+  utilizado") `tratamiento-depilacion-definitiva.html`. Se dejaron
+  afuera a propósito las secciones con buscador sticky, las franjas de
+  color sólido (CTAs, estadísticas) y el bloque de scroll-jacking de
+  circuito, para no romper su posicionamiento ni su diseño propio. La
+  regla se movió a `styles/base/variables.css` (compartida por las 284
+  páginas) para no duplicar el CSS en cada hoja de página.
+
+Motivo general de esta tanda: lista de ajustes visuales y de UX
+relevados por el cliente en la primera semana post-lanzamiento del
+sitio, trabajados página por página en la rama `hotfix/post-launch`.

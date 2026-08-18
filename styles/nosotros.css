@@ -28,7 +28,7 @@
 }
 
 /* Quiénes somos */
-.nos2-quienes{background:#fff;padding:72px 24px}
+.nos2-quienes{padding:72px 24px}
 .nos2-quienes-inner{max-width:700px;margin:0 auto;text-align:center}
 .nos2-quienes-title{
   font-family:'Fraunces',serif;font-size:clamp(1.4rem,3vw,2rem);
@@ -50,7 +50,7 @@
 .nos2-stat-label{font-size:.82rem;color:rgba(255,255,255,.7);font-weight:500}
 
 /* Historia */
-.nos2-historia{background:var(--cream);padding:72px 24px}
+.nos2-historia{padding:72px 24px}
 .nos2-historia-inner{
   max-width:740px;margin:0 auto;
   display:flex;gap:24px;align-items:flex-start;
@@ -62,23 +62,35 @@
 }
 .nos2-historia-text{font-size:.95rem;color:var(--muted);line-height:1.75;margin:0}
 
-/* Lo que nos define */
-.nos2-valores{background:#fff;padding:72px 24px}
+/* Lo que nos define: lista sobria (antes 4 cards con fondo/borde) —
+   filas separadas por una línea fina, ícono a la izquierda ocupando las
+   2 filas de su texto vía grid (sin tocar el orden de icono/h3/p en el
+   HTML: icono en columna 1 abarcando ambas filas, título y párrafo en
+   columna 2, cada uno en su propia fila). */
+.nos2-valores{padding:72px 24px}
 .nos2-valores-title{
   font-family:'Fraunces',serif;font-size:clamp(1.5rem,3vw,2.2rem);
-  color:var(--plum);text-align:center;margin:0 0 40px;
+  color:var(--plum);text-align:center;margin:0 0 32px;
 }
 .nos2-valores-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:20px;max-width:1040px;margin:0 auto;
+  display:flex;flex-direction:column;
+  max-width:720px;margin:0 auto;
 }
 .nos2-val{
-  background:var(--blush-soft);border:1px solid var(--line);
-  border-radius:18px;padding:28px 22px;
+  display:grid;grid-template-columns:44px 1fr;
+  column-gap:20px;row-gap:6px;
+  padding:26px 0;border-bottom:1px solid var(--line);
 }
-.nos2-val-icon{font-size:1.6rem;margin-bottom:14px}
-.nos2-val h3{font-family:'Fraunces',serif;font-size:1rem;color:var(--plum);margin:0 0 8px}
-.nos2-val p{font-size:.83rem;color:var(--muted);line-height:1.65;margin:0}
+.nos2-val:last-child{border-bottom:none}
+.nos2-val-icon{
+  grid-column:1;grid-row:1 / 3;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--blush-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.25rem;
+}
+.nos2-val h3{grid-column:2;grid-row:1;font-family:'Fraunces',serif;font-size:1.05rem;color:var(--plum);margin:0}
+.nos2-val p{grid-column:2;grid-row:2;font-size:.87rem;color:var(--muted);line-height:1.65;margin:0}
 
 /* Blog & tips (contenido migrado de la ex pages/blog.html, que quedaba
    aislada sin link desde ningún lado del sitio — ver CHANGELOG). Reusa
@@ -86,7 +98,7 @@
    categoría/cards), solo se agrega el envoltorio propio de esta página y
    el link de cada título de card hacia su ficha individual
    (pages/blog-<slug>.html, generadas para SEO). */
-.nos2-blog{background:var(--cream);padding:72px 0 80px}
+.nos2-blog{padding:72px 0 80px}
 .nos2-blog-intro{max-width:700px;margin:0 auto 56px;padding:0 24px;text-align:center}
 .nos2-blog-title{
   font-family:'Fraunces',serif;font-size:clamp(1.4rem,3vw,2rem);

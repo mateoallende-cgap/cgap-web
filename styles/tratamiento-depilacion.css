@@ -168,7 +168,10 @@
 @media(max-width:990px){
   .pd-depi-selector-grid{grid-template-columns:1fr;justify-items:center}
   .pd-depi-silueta{display:none}
-  .pd-depi-busqueda-sticky{position:static}
+  /* position:relative (no static): sigue sin ser sticky a este ancho,
+     pero mantiene el ancla de posicionamiento que necesita
+     .prac2-filter-wrap (position:absolute) para el panel de "Filtros". */
+  .pd-depi-busqueda-sticky{position:relative}
   .pd-depi-buscador{width:100%}
   .pd-depi-buscador .prac2-filters{justify-content:center}
 }
@@ -189,6 +192,13 @@
   .pd-depi-card-desc{font-size:.78rem;max-height:5.4em}
   .pd-depi-buscador .prac-card .ver{font-size:.74rem}
 }
+
+/* Fondo continuo con manchas difuminadas (mismo patrón que el resto de
+   páginas principales, ver .sec-blobs-band en variables.css): .pd-equipo
+   viene con background:var(--cream) de practica-detalle.css (compartida
+   con las otras 63 fichas de tratamiento, no se toca ahí); acá se pisa
+   solo para esta página, que sí envuelve la sección en .sec-blobs-band. */
+.pd-equipo{background:transparent}
 
 /* Título propio arriba de la card de "Equipo utilizado" (.pd-equipo-grid
    de practica-detalle.css ya trae su propio h2 pegado a la foto, pero

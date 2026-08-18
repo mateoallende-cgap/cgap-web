@@ -24,6 +24,14 @@
 @media(max-width:768px){
   .prac-grid{grid-template-columns:repeat(2,1fr)}
 }
+/* Por debajo de 580px, 2 columnas ya no entran (rompían el ancho de la
+   página y dejaban muy poco lugar para leer cada card) — la cuadrícula
+   expandida pasa a 1 sola columna, en fila. js/practicas.js le cambia
+   el texto al botón a "Ver en fila" en este rango, en vez de
+   "Ver en cuadrícula". */
+@media(max-width:580px){
+  .prac-grid:not(.is-swipe){grid-template-columns:1fr}
+}
 /* Entre 1181 y 1479px, un escalón más antes de las 5 columnas de
    abajo: 4 columnas fijas (2 filas de 4). */
 @media(min-width:1181px) and (max-width:1479px){
@@ -61,3 +69,41 @@
 @media(max-width:949px){
   .prac2-esp-grid{grid-template-columns:repeat(2,1fr)}
 }
+/* En celulares angostos, 2 columnas ya no entran cómodas (quedaban
+   ~137px por card, apretando todo) — 1 columna, y se le achica casi
+   todo el padding lateral que separa la grilla de los bordes de
+   pantalla (era el mismo 40px fijo que en desktop). El ícono se acerca
+   al título en vez de irse al extremo derecho (era justify-content:
+   space-between). */
+@media(max-width:580px){
+  /* Mismo patrón de listado que "Servicios principales" en el home:
+     ícono + título en una fila, sin descripción ni botón — se
+     reemplaza por una flecha al final que indica que se puede tocar
+     para ir a la especialidad. */
+  .prac2-esp > .wrap{padding:0 28px}
+  .prac2-esp-grid{grid-template-columns:1fr;gap:0}
+  .prac2-esp-card{
+    flex-direction:row;align-items:center;gap:.7rem;
+    background:none;border:none;border-radius:0;box-shadow:none;
+    padding:1.1rem 0 1.1rem 16px;
+    border-bottom:1px solid transparent;
+    border-image:linear-gradient(90deg,transparent,var(--line) 12%,var(--line) 88%,transparent) 1;
+  }
+  .prac2-esp-card:last-child{border-bottom:none;border-image:none}
+  .prac2-esp-card:hover{transform:none;box-shadow:none}
+  .prac2-esp-head{flex:1;justify-content:flex-start;gap:.7rem}
+  .prac2-esp-icon{font-size:1.7rem}
+  .prac2-esp-card h3{font-size:1.15rem}
+  .prac2-esp-card p{display:none}
+  .prac2-esp-btns{margin:0;flex:none}
+  .prac2-esp-btn-ver{
+    font-size:0;padding:0;border:none;background:none;
+    width:1.6rem;height:1.6rem;display:inline-flex;align-items:center;justify-content:center;
+  }
+  .prac2-esp-btn-ver::after{content:"›";font-size:1.6rem;font-weight:700;color:var(--magenta);line-height:1}
+  .prac2-esp-btn-ver:hover{background:none}
+}
+/* El botón "Filtros" + panel desplegable (con acordeón por grupo) ya
+   es el comportamiento único a cualquier ancho — ver styles/practicas.css
+   (base), que aplica también en la página de depilación, sin depender
+   de este archivo responsive. */

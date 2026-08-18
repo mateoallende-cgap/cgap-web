@@ -17,6 +17,7 @@ if (pracGrid && window.PRACTICAS) {
   const chips = document.querySelectorAll("#pracFiltros .chip");
   const modal = document.getElementById("pracModal");
   const verMasBtn = document.getElementById("pracVerMas");
+  const verMasCollapseBtn = document.getElementById("pracVerMasCollapse");
   const searchFilterBar = document.querySelector(".prac2-search-filter");
   const STICKY_TOP = 100; /* debe coincidir con el "top" sticky de .prac2-search-filter en practicas.css */
   /* ~2 filas, pero de cuántas columnas depende del ancho — tiene que
@@ -107,15 +108,23 @@ if (pracGrid && window.PRACTICAS) {
       if (esMobile()) {
         if (!gridExpandido) {
           verMasBtn.style.display = resActual.length > 1 ? "inline-flex" : "none";
-          verMasBtn.textContent = "Ver en cuadrícula";
+          /* <580px: 2 columnas ya no entran (rompían el ancho de la
+             página), así que ahí se expande en una sola columna — "fila"
+             en vez de "cuadrícula" para que el texto sea preciso. */
+          verMasBtn.textContent = window.matchMedia("(max-width:580px)").matches ? "Ver en fila" : "Ver en cuadrícula";
+          if (verMasCollapseBtn) verMasCollapseBtn.style.display = "none";
         } else {
-          /* en cuadrícula, de a pageSize() (4 en mobile) por tap; "Ver
-             menos" solo cuando ya no queda nada más para mostrar */
+          /* en cuadrícula/fila, de a pageSize() (4 en mobile) por tap;
+             "Ver menos" solo cuando ya no queda nada más para mostrar */
           const quedan = resActual.length - visibleCount;
           verMasBtn.style.display = "inline-flex";
           verMasBtn.textContent = quedan > 0 ? `Ver más (${quedan})` : "Ver menos";
+          /* flecha para volver un paso (a la fila swipe) sin tener que
+             seguir tocando "Ver más" hasta llegar a "Ver menos" */
+          if (verMasCollapseBtn) verMasCollapseBtn.style.display = "grid";
         }
       } else {
+        if (verMasCollapseBtn) verMasCollapseBtn.style.display = "none";
         const quedan = resActual.length - visibleCount;
         if (quedan > 0) {
           verMasBtn.style.display = "inline-flex";
@@ -163,7 +172,44 @@ if (pracGrid && window.PRACTICAS) {
     if (!active) { ch.classList.add("active"); if (grupo === "especialidad") fEsp = val; else fTipo = val; }
     else { if (grupo === "especialidad") fEsp = ""; else fTipo = ""; }
     render();
+    if (filtroToggle) cerrarFiltros();
   }));
+
+  /* Botón "Filtros" (solo visible <580px, ver practicas.css): en vez de
+     la fila de chips siempre visible —que en celulares angostos se
+     rompía en una lista larguísima—, en mobile queda oculta por
+     default y este botón la despliega como panel, con las 2 listas
+     (Especialidad/Tipo) ya agrupadas en el propio HTML. */
+  const filtroToggle = document.getElementById("pracFiltroToggle");
+  const pracFiltrosEl = document.getElementById("pracFiltros");
+  function cerrarFiltros() {
+    if (!filtroToggle || !pracFiltrosEl) return;
+    pracFiltrosEl.classList.remove("open");
+    filtroToggle.setAttribute("aria-expanded", "false");
+  }
+  if (filtroToggle && pracFiltrosEl) {
+    filtroToggle.addEventListener("click", () => {
+      const open = pracFiltrosEl.classList.toggle("open");
+      filtroToggle.setAttribute("aria-expanded", String(open));
+    });
+    document.addEventListener("click", e => {
+      if (pracFiltrosEl.contains(e.target) || filtroToggle.contains(e.target)) return;
+      cerrarFiltros();
+    });
+  }
+
+  /* Dentro del panel, "Especialidad" y "Tipo de estudio" son acordeones
+     independientes: arrancan cerrados y el paciente los abre/cierra a
+     mano, en vez de ver las 15 opciones juntas de entrada. */
+  document.querySelectorAll(".prac2-filter-group-toggle").forEach(toggle => {
+    const lista = toggle.nextElementSibling;
+    if (!lista) return;
+    toggle.addEventListener("click", () => {
+      const open = !lista.classList.contains("open");
+      lista.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+  });
   /* al escribir en el buscador, baja la pantalla hasta los resultados para
      que el paciente vea los estudios que va encontrando el filtro. El
      destino se calcula para que el título quede pegado justo debajo de la
@@ -222,6 +268,14 @@ if (pracGrid && window.PRACTICAS) {
       renderGrid();
     }
   });
+  /* flecha junto a "Ver más": vuelve directo a la fila swipe sin tener
+     que seguir tocando "Ver más" hasta que no quede nada más. */
+  if (verMasCollapseBtn) verMasCollapseBtn.addEventListener("click", () => {
+    gridExpandido = false;
+    visibleCount = pageSize();
+    renderGrid();
+    document.getElementById("catalogo")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
   /* recalcula al cruzar el breakpoint mobile (rotar el dispositivo, o
      redimensionar la ventana) */
   let pracResizeTimer;
@@ -231,12 +285,22 @@ if (pracGrid && window.PRACTICAS) {
   });
 
   /* Barra sticky de buscador+filtros: al quedar pegada arriba, la clase
-     is-stuck hace que la hoja de estilos oculte los chips inactivos (y todo
-     el bloque de filtros si no hay ninguno activo), para que el buscador
-     siempre esté visible sin que la barra ocupe demasiado alto. */
+     is-stuck hace que la hoja de estilos colapse los chips inactivos (y
+     todo el bloque de filtros si no hay ninguno activo), para que el
+     buscador siempre esté visible sin que la barra ocupe demasiado alto.
+     Umbrales separados para entrar/salir (histéresis), mismo criterio que
+     el navbar compacto en global.js: con un solo umbral, el propio
+     colapso de los chips cambia el alto de la barra, lo que puede mover
+     su posición justo alrededor de ese umbral y generar un ciclo de
+     "se pega → se despega → se pega" (se sentía como que la barra
+     bajaba/subía de golpe al scrollear). */
   if (searchFilterBar) {
+    const STICKY_ENTER = STICKY_TOP + 1, STICKY_EXIT = STICKY_TOP + 24;
+    let stuck = false;
     const actualizarSticky = () => {
-      const stuck = searchFilterBar.getBoundingClientRect().top <= STICKY_TOP + 1;
+      const top = searchFilterBar.getBoundingClientRect().top;
+      if (!stuck && top <= STICKY_ENTER) stuck = true;
+      else if (stuck && top > STICKY_EXIT) stuck = false;
       searchFilterBar.classList.toggle("is-stuck", stuck);
     };
     window.addEventListener("scroll", actualizarSticky, { passive: true });
@@ -264,4 +328,35 @@ if (pracGrid && window.PRACTICAS) {
       }
     });
   });
+})();
+
+/* ---------- "Nuestras especialidades": modal de elección ----------
+   Cada card ya no linkea directo a la página de la especialidad — al
+   tocarla abre un modal preguntando si el paciente quiere consultar
+   turno por WhatsApp para esa especialidad, o ver el listado de
+   médicos y prácticas (eso sí navega a especialidad-<slug>.html). */
+(function () {
+  const modal = document.getElementById("espChoiceModal");
+  const card = modal ? modal.querySelector(".modal-card") : null;
+  if (!modal || !card) return;
+  const WA_ICON = `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1.1 2.7s1.9 2.9 4.6 4c1.7.7 2.3.8 3.1.7.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1z"/></svg>`;
+
+  document.querySelectorAll(".prac2-esp-card").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const nombre = btn.dataset.espNombre;
+      const slug = btn.dataset.espSlug;
+      const href = btn.dataset.espHref;
+      const waText = encodeURIComponent(`Hola, buen día. Quería consultar un turno de ${nombre}, ¿me darían información?`);
+      const waHref = `https://wa.me/5493515079642?text=${waText}`;
+      card.innerHTML = `
+        <button class="close" aria-label="Cerrar">×</button>
+        <h3>${nombre}</h3>
+        <p class="desc">¿Qué te gustaría hacer?</p>
+        <a class="btn btn-whatsapp" target="_blank" rel="noopener" href="${waHref}">${WA_ICON}Consultar turno por WhatsApp</a>
+        <a class="btn-outline-plum" href="${href}" style="display:flex;justify-content:center;margin-top:.7rem">Ver médicos y prácticas</a>`;
+      card.querySelector(".close").addEventListener("click", () => modal.classList.remove("open"));
+      modal.classList.add("open");
+    });
+  });
+  modal.addEventListener("click", e => { if (e.target === modal) modal.classList.remove("open"); });
 })();

@@ -38,3 +38,25 @@ section{padding:80px 0}
 /* ===== reveal (animación al hacer scroll) ===== */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .reveal.in{opacity:1;transform:none}
+
+/* ===== Fondo con manchas difuminadas =====
+   .sec-blobs-band envuelve todas las secciones "de contenido" de una
+   página entre el hero (fondo sólido propio) y contacto/footer/navbar
+   (estilos predefinidos propios), en un único contenedor con un solo
+   fondo continuo — para que las manchas fluyan de punta a punta de esa
+   franja en vez de repetirse (y notarse el corte) en cada sección por
+   separado. Las secciones de adentro no llevan background propio: dejan
+   ver este. Compartido acá (no en cada hoja de página) porque hoy lo
+   usan index.html, circuito.html, especialidades.html,
+   medicina-estetica.html, nosotros.html, obras-sociales.html y
+   tratamiento-depilacion-definitiva.html.
+   Las manchas van con z-index:-1 (y el contenedor fija su propio
+   stacking context con z-index:0) para quedar SIEMPRE detrás del
+   contenido, nunca tapando ni restando legibilidad al texto. */
+.sec-blobs-band{position:relative;z-index:0;overflow:hidden;background:var(--cream)}
+.sec-blob{position:absolute;z-index:-1;border-radius:50%;pointer-events:none}
+.sec-blob-a{width:520px;height:520px;top:-8%;right:-160px;background:radial-gradient(circle at 40% 40%,#f7d4e8,transparent 65%)}
+.sec-blob-b{width:360px;height:360px;top:10%;left:-140px;background:radial-gradient(circle at 50% 50%,#f0e2d6,transparent 65%)}
+.sec-blob-c{width:480px;height:480px;top:40%;right:-180px;background:radial-gradient(circle at 40% 40%,#e6d9f2,transparent 65%)}
+.sec-blob-d{width:400px;height:400px;top:66%;left:-150px;background:radial-gradient(circle at 50% 50%,#f7d4e8,transparent 65%)}
+.sec-blob-e{width:440px;height:440px;top:92%;right:-160px;background:radial-gradient(circle at 40% 40%,#f0e2d6,transparent 65%)}
