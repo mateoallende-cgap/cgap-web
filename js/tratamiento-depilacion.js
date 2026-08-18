@@ -295,7 +295,27 @@
     render();
   }
   siluetaZonas.forEach(g => g.addEventListener("click", () => setZona(g.dataset.zona)));
-  chips.forEach(c => c.addEventListener("click", () => setZona(c.dataset.zona)));
+  chips.forEach(c => c.addEventListener("click", () => { setZona(c.dataset.zona); if (filtroToggle) cerrarFiltros(); }));
+
+  /* Botón "Filtros": los chips de zona viven colapsados detrás, igual
+     que en especialidades/medicina estética (ver practicas.css). */
+  const filtroToggle = document.getElementById("depiFiltroToggle");
+  const depiFiltrosWrap = document.getElementById("depiFiltrosZonaWrap");
+  function cerrarFiltros() {
+    if (!filtroToggle || !depiFiltrosWrap) return;
+    depiFiltrosWrap.classList.remove("open");
+    filtroToggle.setAttribute("aria-expanded", "false");
+  }
+  if (filtroToggle && depiFiltrosWrap) {
+    filtroToggle.addEventListener("click", () => {
+      const open = depiFiltrosWrap.classList.toggle("open");
+      filtroToggle.setAttribute("aria-expanded", String(open));
+    });
+    document.addEventListener("click", e => {
+      if (depiFiltrosWrap.contains(e.target) || filtroToggle.contains(e.target)) return;
+      cerrarFiltros();
+    });
+  }
 
   if (buscar) buscar.addEventListener("input", () => {
     q = norm(buscar.value);

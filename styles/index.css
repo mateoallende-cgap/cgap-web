@@ -38,11 +38,11 @@
 .hs-card:hover .hs-card-arr{opacity:1;transform:translateX(0)}
 
 /* prestaciones */
-.prestaciones{background:var(--blush-soft)}
-/* 2 columnas: cada una (.prest-col) es una pila vertical independiente
-   de 2 cards. align-items:start para que ninguna columna se estire
-   para igualar el alto de la otra. */
-.prest-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;align-items:start}
+/* .prest-col queda como display:contents en todos los breakpoints reales
+   (ver responsive/index.css) — las cards son ítems directos de este
+   grid, así que align-items:stretch iguala el alto de las que caen en
+   la misma fila, sea de a 2 o de a 4. */
+.prest-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;align-items:stretch}
 .prest-col{display:flex;flex-direction:column;gap:18px}
 .prest-item{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.7rem;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .prest-item:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
@@ -50,23 +50,35 @@ a.prest-item{cursor:pointer;display:flex;flex-direction:column}
 .prest-more{font-size:.82rem;font-weight:700;color:var(--magenta);text-decoration:underline;margin-top:auto;padding-top:.8rem;display:inline-flex;align-items:center;gap:.3rem;transition:gap .25s}
 a.prest-item:hover .prest-more{gap:.6rem}
 .prest-item .ico{width:50px;height:50px;border-radius:13px;background:var(--blush);color:var(--magenta);display:grid;place-items:center;margin-bottom:1rem}
-/* Card con foto de fondo: colapsada muestra imagen+ícono+título; al hover
-   crece en alto y revela abajo, con fondo distinto, la descripción
-   completa. Al ser un ítem de flujo normal dentro de .prest-col (no
-   position:absolute), crecer empuja hacia abajo a la card que tiene
-   debajo EN SU MISMA COLUMNA (por eso no se le superpone), pero no
-   afecta en nada a la columna vecina (columnas independientes). */
-.prest-item--photo{position:relative;padding:0;overflow:hidden;height:210px;display:flex;flex-direction:column;transition:height .8s var(--ease),box-shadow .3s var(--ease)}
-a.prest-item--photo:hover{height:210px;box-shadow:var(--shadow)}
-.prest-img{position:relative;flex:none;height:100px;background-size:cover;background-position:center;display:flex;align-items:flex-start;padding:1.2rem}
-.prest-img::after{content:'';position:absolute;inset:0;background:rgba(10,6,15,.6);transition:background .35s var(--ease)}
-a.prest-item--photo:hover .prest-img::after{background:rgba(10,6,15,.78)}
-.prest-img .ico{position:relative;z-index:1;background:rgba(255,255,255,.22);color:#fff;flex-shrink:0}
+/* Card sin foto: mismo patrón que usa .prest-full en su versión
+   compacta (ver más abajo) — ícono+título comparten la fila de arriba
+   (el ícono no ocupa toda la altura de la card), y el divisor, el texto
+   y el link van cada uno en su propia fila, usando todo el ancho de la
+   card. .prest-body deja de ser una caja (display:contents) para que
+   sus hijos (h3/divider/p/more) entren directo como áreas del grid. */
+.prest-item--photo,a.prest-item--photo{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  grid-template-rows:auto auto 1fr auto;
+  grid-template-areas:
+    "icon title"
+    "icon divider"
+    "text text"
+    "link link";
+  align-items:start;
+  column-gap:.6rem;row-gap:.3rem;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+}
 .prest-item .ico svg{width:26px;height:26px}
-.prest-item--photo h3{position:absolute;z-index:2;top:1.2rem;left:calc(1.2rem + 50px + .7rem);right:1.2rem;display:flex;align-items:center;min-height:50px;color:#fff;font-size:1.4rem;margin:0}
-.prest-body{flex:1;display:flex;flex-direction:column;justify-content:center;background:var(--white);padding:.9rem 1.7rem}
-.prest-item--photo p{font-size:1rem;font-weight:500;color:var(--muted);margin:0;line-height:1.4}
-.prest-item--photo .prest-more{margin-top:.5rem}
+.prest-item--photo .ico{
+  grid-area:icon;align-self:center;width:24px;height:24px;background:none;border-radius:0;margin:0;flex-shrink:0;
+}
+.prest-item--photo .ico svg{width:22px;height:22px}
+.prest-body{display:contents}
+.prest-item--photo h3{grid-area:title;color:var(--magenta);font-size:1.1rem;margin:0;line-height:1.3}
+.prest-item--photo .prest-divider{grid-area:divider;display:block;width:60px;height:1px;margin:.1rem 0 0;background:linear-gradient(90deg,var(--magenta),transparent)}
+.prest-item--photo p{grid-area:text;font-size:1rem;font-weight:500;color:var(--muted);margin:.3rem 0 0;line-height:1.4}
+.prest-item--photo .prest-more{grid-area:link;margin-top:.5rem}
 .prest-full{display:flex;align-items:center;gap:1.4rem;background:linear-gradient(120deg,var(--magenta),var(--magenta-dark));color:#fff;border-radius:var(--radius);padding:1.8rem 2.2rem;box-shadow:var(--shadow)}
 a.prest-full{transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(133,20,91,.6)}
@@ -87,7 +99,6 @@ a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(
 .car-btn.next{right:-14px}
 
 /* ===== RESEÑAS ===== */
-.resenas{background:var(--blush-soft)}
 /* el título, el carrusel y el track de reseñas rompen el .wrap y ocupan todo el ancho de pantalla;
    el padding del track mantiene un respiro para que las cards no queden pegadas al borde */
 .resenas .sec-head{max-width:100vw;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:0 24px;box-sizing:border-box}
@@ -112,7 +123,6 @@ a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(
 .rev-google-btn:hover{background:var(--white);color:var(--magenta-dark);box-shadow:0 26px 54px -24px rgba(133,20,91,.6);transform:translateY(-3px)}
 
 /* novedades */
-.novedades{background:var(--blush-soft)}
 .nov-card{scroll-snap-align:start;flex:0 0 280px;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .nov-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
 .nov-img{height:180px;background:linear-gradient(150deg,var(--magenta),var(--magenta-dark));display:grid;place-items:center;color:#fff}
@@ -167,16 +177,13 @@ a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(
 .info-card a:hover{color:var(--magenta)}
 
 /* ===== OBRAS SOCIALES ===== */
-.obras{background:var(--blush-soft);scroll-margin-top:140px}
+.obras{scroll-margin-top:140px}
 .os-grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:0 auto}
 .os-chip{background:#fff;border:1px solid var(--line);color:var(--plum);font-weight:600;font-size:.95rem;padding:.6rem 1.2rem;border-radius:100px;box-shadow:var(--shadow-sm);transition:transform .2s,border-color .2s,color .2s}
 .os-chip:hover{transform:translateY(-2px);border-color:var(--magenta);color:var(--magenta)}
 
+
 /* ===== FAQ ===== */
-#faq{background:var(--cream);position:relative;overflow:hidden}
-.faq-blob{position:absolute;border-radius:50%;pointer-events:none}
-.faq-blob-a{width:520px;height:520px;top:-160px;right:-160px;background:radial-gradient(circle at 40% 40%,#f7d4e8,transparent 65%)}
-.faq-blob-b{width:360px;height:360px;bottom:-100px;left:-100px;background:radial-gradient(circle at 50% 50%,#f0e2d6,transparent 65%)}
 .faq-search-wrap{position:relative;max-width:560px;margin:0 auto}
 .faq-search-wrap .search-box{max-width:none;margin-top:0}
 .faq-search-results{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:6;background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);max-height:320px;overflow-y:auto;display:none}
@@ -191,7 +198,7 @@ a.prest-full:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(
 .faq-tile:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--magenta)}
 .faq-tile .ico{width:48px;height:48px;border-radius:13px;background:var(--blush);color:var(--magenta);display:grid;place-items:center}
 .faq-tile .ico svg{width:24px;height:24px}
-.modal-card--wide{max-width:720px;max-height:85vh;display:flex;flex-direction:column;overflow:hidden}
+.modal-card--wide{max-width:720px;max-height:85vh;max-height:85dvh;display:flex;flex-direction:column;overflow:hidden}
 .modal-card--wide>h3{flex:none;font-size:1.4rem;margin-bottom:.8rem}
 .faq-cat-body{flex:1;min-height:0;overflow-y:auto;padding-right:4px;padding-bottom:2.2rem}
 .faq-cat-body .search-box{max-width:none;margin-top:0;margin-bottom:1.2rem}

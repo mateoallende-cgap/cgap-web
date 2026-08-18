@@ -33,17 +33,18 @@
 <link rel="stylesheet" href="../styles/base/navbar.css">
 <link rel="stylesheet" href="../styles/base/footer.css">
 <link rel="stylesheet" href="../styles/base/turnos-modal.css?v=1">
-<link rel="stylesheet" href="../styles/base/modal.css?v=5">
+<link rel="stylesheet" href="../styles/base/modal.css?v=7">
 <link rel="stylesheet" href="../styles/base/filtros.css">
 <link rel="stylesheet" href="../styles/base/search-box.css">
 <link rel="stylesheet" href="../styles/base/ticker.css">
-<link rel="stylesheet" href="../styles/practicas.css?v=33">
+<link rel="stylesheet" href="../styles/practicas.css?v=48">
 <link rel="stylesheet" href="../styles/responsive/base.css">
 <link rel="stylesheet" href="../styles/responsive/practicas.css">
 </head>
 <body>
 <div class="turnos-modal" id="turnosModal"><div class="turnos-modal-card"><button class="close" aria-label="Cerrar">×</button><h3>¿Con qué especialidad querés coordinar tu turno?</h3><p class="desc">Elegí el WhatsApp según lo que necesites.</p><div class="turnos-modal-options"><a class="turnos-modal-opt" href="https://wa.me/5493515079642" target="_blank" rel="noopener"><span class="turnos-modal-opt-icon">🩺</span><span class="turnos-modal-opt-text"><span class="turnos-modal-opt-label">Ginecología y demás especialidades</span><span class="turnos-modal-opt-sub">Consultas, ecografías, laboratorio y más</span></span></a><a class="turnos-modal-opt" href="https://wa.me/5493515079519" target="_blank" rel="noopener"><span class="turnos-modal-opt-icon">✨</span><span class="turnos-modal-opt-text"><span class="turnos-modal-opt-label">Medicina estética</span><span class="turnos-modal-opt-sub">Tratamientos faciales y corporales</span></span></a></div></div></div>
 <div id="pracModal" class="modal"><div class="modal-card"></div></div>
+<div id="espChoiceModal" class="modal"><div class="modal-card"></div></div>
 
 <header class="navbar">
   <div class="wrap">
@@ -69,7 +70,7 @@
   <section class="prac2-hero">
     <div class="wrap prac2-hero-inner">
       <div class="prac2-hero-text">
-        <h1 class="prac2-hero-title">Especialidades médicas<br>y prácticas en <em>CGAP</em></h1>
+        <h1 class="prac2-hero-title"><em>Especialidades</em> y prácticas</h1>
         <p class="prac2-hero-sub">Navegá entre nuestras distintas especialidades y consultá nuestro catálogo de prácticas y estudios disponibles en CGAP.</p>
         <div class="prac2-hero-btns">
           <a class="btn" href="#especialidades">Ver especialidades</a>
@@ -108,77 +109,80 @@
   </div>
 
   <!-- ====== NUESTRAS ESPECIALIDADES ====== -->
+  <div class="sec-blobs-band">
+    <div class="sec-blob sec-blob-a"></div>
+    <div class="sec-blob sec-blob-b"></div>
   <section class="prac2-esp" id="especialidades">
     <div class="wrap">
       <h2 class="prac2-section-title">Nuestras especialidades</h2>
       <p class="prac2-section-sub">Seleccioná la especialidad que necesitás y solicitá tu turno.</p>
       <div class="prac2-esp-grid">
 
-        <div class="prac2-esp-card">
+        <button type="button" class="prac2-esp-card" data-esp-slug="ginecologia" data-esp-nombre="Ginecología" data-esp-href="especialidad-ginecologia.html">
           <div class="prac2-esp-head">
             <h3>Ginecología</h3>
             <span class="prac2-esp-icon">🩺</span>
           </div>
           <p>Controles ginecológicos, anticoncepción, PAP, videocolposcopía, dolor pélvico, flujo, infecciones y seguimiento de salud femenina.</p>
           <div class="prac2-esp-btns">
-            <a class="btn-outline-plum prac2-esp-btn-ver" href="especialidad-ginecologia.html">Ver especialidad</a>
+            <span class="btn-outline-plum prac2-esp-btn-ver">Ver especialidad</span>
           </div>
-        </div>
+        </button>
 
-        <div class="prac2-esp-card">
+        <button type="button" class="prac2-esp-card" data-esp-slug="ecografia" data-esp-nombre="Ecografía" data-esp-href="especialidad-ecografia.html">
           <div class="prac2-esp-head">
             <h3>Ecografía</h3>
-            <span class="prac2-esp-icon">🔬</span>
+            <span class="prac2-esp-icon">🩻</span>
           </div>
           <p>Estudios por imágenes ginecológicos, mamarios, obstétricos y otros según indicación médica.</p>
           <div class="prac2-esp-btns">
-            <a class="btn-outline-plum prac2-esp-btn-ver" href="especialidad-ecografia.html">Ver especialidad</a>
+            <span class="btn-outline-plum prac2-esp-btn-ver">Ver especialidad</span>
           </div>
-        </div>
+        </button>
 
-        <div class="prac2-esp-card">
+        <button type="button" class="prac2-esp-card" data-esp-slug="dermatologia" data-esp-nombre="Dermatología" data-esp-href="especialidad-dermatologia.html">
           <div class="prac2-esp-head">
             <h3>Dermatología</h3>
             <span class="prac2-esp-icon">✨</span>
           </div>
           <p>Evaluación de manchas, lunares, acné, rosácea, lesiones de piel y controles dermatológicos.</p>
           <div class="prac2-esp-btns">
-            <a class="btn-outline-plum prac2-esp-btn-ver" href="especialidad-dermatologia.html">Ver especialidad</a>
+            <span class="btn-outline-plum prac2-esp-btn-ver">Ver especialidad</span>
           </div>
-        </div>
+        </button>
 
-        <div class="prac2-esp-card">
+        <button type="button" class="prac2-esp-card" data-esp-slug="endocrinologia" data-esp-nombre="Endocrinología" data-esp-href="especialidad-endocrinologia.html">
           <div class="prac2-esp-head">
             <h3>Endocrinología</h3>
             <span class="prac2-esp-icon">⚗️</span>
           </div>
           <p>Consultas por tiroides, hormonas, metabolismo, resistencia a la insulina, alteraciones del ciclo o cambios de peso.</p>
           <div class="prac2-esp-btns">
-            <a class="btn-outline-plum prac2-esp-btn-ver" href="especialidad-endocrinologia.html">Ver especialidad</a>
+            <span class="btn-outline-plum prac2-esp-btn-ver">Ver especialidad</span>
           </div>
-        </div>
+        </button>
 
-        <div class="prac2-esp-card">
+        <button type="button" class="prac2-esp-card" data-esp-slug="nutricion" data-esp-nombre="Nutrición" data-esp-href="especialidad-nutricion.html">
           <div class="prac2-esp-head">
             <h3>Nutrición</h3>
             <span class="prac2-esp-icon">🥗</span>
           </div>
           <p>Acompañamiento nutricional para mejorar hábitos, peso, energía, salud hormonal y bienestar general.</p>
           <div class="prac2-esp-btns">
-            <a class="btn-outline-plum prac2-esp-btn-ver" href="especialidad-nutricion.html">Ver especialidad</a>
+            <span class="btn-outline-plum prac2-esp-btn-ver">Ver especialidad</span>
           </div>
-        </div>
+        </button>
 
-        <div class="prac2-esp-card">
+        <button type="button" class="prac2-esp-card" data-esp-slug="flebologia" data-esp-nombre="Flebología" data-esp-href="especialidad-flebologia.html">
           <div class="prac2-esp-head">
             <h3>Flebología</h3>
             <span class="prac2-esp-icon">🦵</span>
           </div>
           <p>Consultas por várices, arañitas, pesadez, dolor o hinchazón en piernas.</p>
           <div class="prac2-esp-btns">
-            <a class="btn-outline-plum prac2-esp-btn-ver" href="especialidad-flebologia.html">Ver especialidad</a>
+            <span class="btn-outline-plum prac2-esp-btn-ver">Ver especialidad</span>
           </div>
-        </div>
+        </button>
 
       </div>
     </div>
@@ -191,50 +195,83 @@
       <p class="prac2-section-sub">Filtrá por especialidad o tipo de atención para encontrar lo que necesitás.</p>
     </div>
   </section>
+  </div>
 
   <!-- ====== BUSCADOR + FILTROS ====== -->
   <section class="prac2-search-filter" id="buscador">
     <div class="wrap">
-      <div class="search-box prac2-search-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="text" id="pracBuscar" placeholder="Buscá por especialidad, práctica o síntoma…" aria-label="Buscar práctica">
-        <button class="clear" id="pracClear" type="button" aria-label="Limpiar">×</button>
+      <div class="prac2-search-row">
+        <div class="search-box prac2-search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="text" id="pracBuscar" placeholder="Buscá por especialidad, práctica o síntoma…" aria-label="Buscar práctica">
+          <button class="clear" id="pracClear" type="button" aria-label="Limpiar">×</button>
+        </div>
+        <button class="prac2-filter-toggle" id="pracFiltroToggle" type="button" aria-expanded="false" aria-controls="pracFiltros">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+          Filtros
+        </button>
       </div>
       <div id="pracFiltros" class="prac2-filter-wrap">
         <div class="prac2-filters">
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="circuito">Circuito</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="ginecologia">Ginecología</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="ecografia">Ecografías</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="dermatologia">Dermatología</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="endocrinologia">Endocrinología</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="nutricion">Nutrición</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="laboratorio">Laboratorio</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="flebologia">Flebología</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="cardiologia">Cardiología</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="clinica-medica">Clínica médica</button>
-          <button class="chip prac2-chip" data-grupo="especialidad" data-filter="oncologia">Oncología</button>
-          <button class="chip prac2-chip" data-grupo="tipo" data-filter="consulta">Consultas</button>
-          <button class="chip prac2-chip" data-grupo="tipo" data-filter="diagnostico">Diagnóstico</button>
-          <button class="chip prac2-chip" data-grupo="tipo" data-filter="control">Control</button>
-          <button class="chip prac2-chip" data-grupo="tipo" data-filter="procedimiento">Procedimientos</button>
+          <div class="prac2-filter-group">
+            <button type="button" class="prac2-filter-group-toggle" aria-expanded="false">
+              Especialidad
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="prac2-filter-group-list">
+              <button class="chip prac2-chip" data-grupo="especialidad" data-filter="circuito">Circuito</button>
+              <button class="chip prac2-chip" data-grupo="especialidad" data-filter="ginecologia">Ginecología</button>
+              <button class="chip prac2-chip" data-grupo="especialidad" data-filter="ecografia">Ecografías</button>
+              <button class="chip prac2-chip" data-grupo="especialidad" data-filter="dermatologia">Dermatología</button>
+              <button class="chip prac2-chip" data-grupo="especialidad" data-filter="endocrinologia">Endocrinología</button>
+              <button class="chip prac2-chip" data-grupo="especialidad" data-filter="nutricion">Nutrición</button>
+              <button class="chip prac2-chip" data-grupo="especialidad" data-filter="laboratorio">Laboratorio</button>
+              <button class="chip prac2-chip" data-grupo="especialidad" data-filter="flebologia">Flebología</button>
+              <button class="chip prac2-chip" data-grupo="especialidad" data-filter="cardiologia">Cardiología</button>
+              <button class="chip prac2-chip" data-grupo="especialidad" data-filter="clinica-medica">Clínica médica</button>
+              <button class="chip prac2-chip" data-grupo="especialidad" data-filter="oncologia">Oncología</button>
+            </div>
+          </div>
+          <div class="prac2-filter-group">
+            <button type="button" class="prac2-filter-group-toggle" aria-expanded="false">
+              Tipo de estudio
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="prac2-filter-group-list">
+              <button class="chip prac2-chip" data-grupo="tipo" data-filter="consulta">Consultas</button>
+              <button class="chip prac2-chip" data-grupo="tipo" data-filter="diagnostico">Diagnóstico</button>
+              <button class="chip prac2-chip" data-grupo="tipo" data-filter="control">Control</button>
+              <button class="chip prac2-chip" data-grupo="tipo" data-filter="procedimiento">Procedimientos</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ====== CATÁLOGO DINÁMICO ====== -->
+  <div class="sec-blobs-band">
+    <div class="sec-blob sec-blob-c"></div>
+    <div class="sec-blob sec-blob-d"></div>
   <section class="prac2-catalog" id="catalogo">
     <div class="wrap">
       <div class="prac2-catalog-header">
         <h3 id="pracTitulo" class="prac2-catalog-title">Más buscadas</h3>
         <span class="prac2-catalog-count" id="pracCount"></span>
       </div>
-      <div class="prac-grid prac2-grid" id="pracGrid"></div>
+      <div class="prac-grid-wrap">
+        <div class="prac-grid prac2-grid" id="pracGrid"></div>
+        <span class="prac-swipe-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></span>
+      </div>
       <div class="prac2-vermas-wrap">
         <button class="btn-outline-plum prac2-vermas" id="pracVerMas" type="button" style="display:none">Ver más</button>
+        <button class="prac2-vermas-collapse" id="pracVerMasCollapse" type="button" style="display:none" aria-label="Volver a la fila">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 15l-6-6-6 6"/></svg>
+        </button>
       </div>
     </div>
   </section>
+  </div>
 
   <!-- ====== ¿NO SABÉS? (mid) ====== -->
   <section class="prac2-nosabe">
@@ -260,7 +297,7 @@
 </footer>
 <script src="../data.js?v=9"></script>
 <script src="../js/global.js"></script>
-<script src="../js/practicas.js?v=14"></script>
+<script src="../js/practicas.js?v=23"></script>
 <script src="../js/ticker.js"></script>
 
 </body>

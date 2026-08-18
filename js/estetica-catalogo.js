@@ -23,6 +23,7 @@
   const chips = document.querySelectorAll("#estFiltros .chip");
   const modal = document.getElementById("estModal");
   const verMasBtn = document.getElementById("estVerMas");
+  const verMasCollapseBtn = document.getElementById("estVerMasCollapse");
   const searchFilterBar = document.querySelector(".prac2-search-filter");
   const STICKY_TOP = 100; /* debe coincidir con el "top" sticky de .prac2-search-filter en practicas.css */
 
@@ -106,15 +107,23 @@
       if (esMobile()) {
         if (!gridExpandido) {
           verMasBtn.style.display = resActual.length > 1 ? "inline-flex" : "none";
-          verMasBtn.textContent = "Ver en cuadrícula";
+          /* <580px: 2 columnas ya no entran (rompían el ancho de la
+             página), así que ahí se expande en una sola columna — "fila"
+             en vez de "cuadrícula" para que el texto sea preciso. */
+          verMasBtn.textContent = window.matchMedia("(max-width:580px)").matches ? "Ver en fila" : "Ver en cuadrícula";
+          if (verMasCollapseBtn) verMasCollapseBtn.style.display = "none";
         } else {
-          /* en cuadrícula, de a pageSize() (4 en mobile) por tap; "Ver
-             menos" solo cuando ya no queda nada más para mostrar */
+          /* en cuadrícula/fila, de a pageSize() (4 en mobile) por tap;
+             "Ver menos" solo cuando ya no queda nada más para mostrar */
           const quedan = resActual.length - visibleCount;
           verMasBtn.style.display = "inline-flex";
           verMasBtn.textContent = quedan > 0 ? `Ver más (${quedan})` : "Ver menos";
+          /* flecha para volver un paso (a la fila swipe) sin tener que
+             seguir tocando "Ver más" hasta llegar a "Ver menos" */
+          if (verMasCollapseBtn) verMasCollapseBtn.style.display = "grid";
         }
       } else {
+        if (verMasCollapseBtn) verMasCollapseBtn.style.display = "none";
         const quedan = resActual.length - visibleCount;
         if (quedan > 0) {
           verMasBtn.style.display = "inline-flex";
@@ -179,7 +188,30 @@
     fCategoria = active ? "" : ch.dataset.filter;
     if (!active) ch.classList.add("active");
     render();
+    if (filtroToggle) cerrarFiltros();
   }));
+
+  /* Botón "Filtros" (solo visible <580px, ver practicas.css): sin esto,
+     el panel de chips queda oculto por CSS a ese ancho (pensado para
+     desplegarse con este botón) y no había forma de volver a mostrarlo
+     en esta página. */
+  const filtroToggle = document.getElementById("estFiltroToggle");
+  const estFiltrosEl = document.getElementById("estFiltros");
+  function cerrarFiltros() {
+    if (!filtroToggle || !estFiltrosEl) return;
+    estFiltrosEl.classList.remove("open");
+    filtroToggle.setAttribute("aria-expanded", "false");
+  }
+  if (filtroToggle && estFiltrosEl) {
+    filtroToggle.addEventListener("click", () => {
+      const open = estFiltrosEl.classList.toggle("open");
+      filtroToggle.setAttribute("aria-expanded", String(open));
+    });
+    document.addEventListener("click", e => {
+      if (estFiltrosEl.contains(e.target) || filtroToggle.contains(e.target)) return;
+      cerrarFiltros();
+    });
+  }
 
   let scrollBusquedaTimer;
   function bajarAResultados() {
@@ -233,10 +265,28 @@
       renderGrid();
     }
   });
+  /* flecha junto a "Ver más": vuelve directo a la fila swipe sin tener
+     que seguir tocando "Ver más" hasta que no quede nada más. */
+  if (verMasCollapseBtn) verMasCollapseBtn.addEventListener("click", () => {
+    gridExpandido = false;
+    visibleCount = pageSize();
+    renderGrid();
+    document.getElementById("catalogo")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 
+  /* Umbrales separados para entrar/salir (histéresis): con uno solo, el
+     propio colapso de los chips al pegarse cambia el alto de la barra,
+     lo que puede mover su posición justo alrededor del umbral y generar
+     un ciclo de "se pega → se despega → se pega" (se sentía como que la
+     barra bajaba/subía de golpe al scrollear). Mismo criterio que
+     practicas.js y que el navbar compacto en global.js. */
   if (searchFilterBar) {
+    const STICKY_ENTER = STICKY_TOP + 1, STICKY_EXIT = STICKY_TOP + 24;
+    let stuck = false;
     const actualizarSticky = () => {
-      const stuck = searchFilterBar.getBoundingClientRect().top <= STICKY_TOP + 1;
+      const top = searchFilterBar.getBoundingClientRect().top;
+      if (!stuck && top <= STICKY_ENTER) stuck = true;
+      else if (stuck && top > STICKY_EXIT) stuck = false;
       searchFilterBar.classList.toggle("is-stuck", stuck);
     };
     window.addEventListener("scroll", actualizarSticky, { passive: true });

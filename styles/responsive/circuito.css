@@ -2,8 +2,20 @@
    CGAP · Responsive Circuito Ginecológico (circuito.html)
    ============================================================ */
 @media(max-width:640px){
-  .circ2-steps{grid-template-columns:1fr}
   .circ2-step{padding:24px 4px}
+  /* La "cruz" de líneas degradadas (gap de 1px revelando el fondo
+     radial de .circ2-steps) es un truco pensado para la grilla 2x2 de
+     escritorio. Al colapsar a 1 columna acá abajo se saca ese mecanismo
+     entero (fondo del contenedor a "none") y cada paso pone su propio
+     borde inferior — así queda solo la línea de abajo entre pasos, sin
+     el trazo vertical al costado derecho que dejaba el gap horizontal
+     del grid en algunos anchos. */
+  .circ2-steps{grid-template-columns:1fr;gap:0;background:none}
+  .circ2-step{
+    border-bottom:1px solid transparent;
+    border-image:linear-gradient(90deg,transparent,var(--line) 12%,var(--line) 88%,transparent) 1;
+  }
+  .circ2-step:last-child{border-bottom:none;border-image:none}
 }
 /* .circ2-cards fuerza las 5 en una sola fila (flex-wrap:nowrap) en
    desktop; por debajo de este ancho (mismo corte "mobile" que el resto
@@ -18,6 +30,33 @@
   .circ2-card h3{font-size:1rem;white-space:normal}
   .circ2-card p{font-size:.83rem}
 }
-@media(max-width:560px){
-  .circ2-card{flex:1 1 100%;max-width:360px}
+@media(max-width:768px){
+  /* Entre 580 y 1024px las 5 cards envolvían en filas de a 3/2/1 según
+     el ancho exacto — con 5 elementos eso da combinaciones dispares
+     (3+2, 2+2+1) que se veían rotas. Se extiende el modo lista (antes
+     solo <580) hasta acá, cubriendo todo el rango tablet/mobile con el
+     mismo layout prolijo: se saca el look de "card" (fondo, borde,
+     sombra) y la descripción — queda una lista simple de check + ícono
+     + título. */
+  .circ2-cards{
+    flex-direction:column;gap:0;
+    width:100%;max-width:420px;
+    margin:0 auto;padding:0 24px;
+  }
+  .circ2-card{
+    max-width:none;flex:none;width:100%;min-width:0;
+    display:flex;align-items:center;gap:.8rem;
+    background:none;border:none;border-radius:0;border-bottom:1px solid var(--line);
+    padding:14px 4px;text-align:left;box-sizing:border-box;
+  }
+  .circ2-card:last-child{border-bottom:none}
+  .circ2-card:hover{transform:none;box-shadow:none}
+  .circ2-card::before{
+    content:"✓";flex-shrink:0;width:22px;height:22px;border-radius:50%;
+    background:var(--magenta);color:#fff;font-size:.72rem;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .circ2-card-icon{font-size:1.4rem;margin-bottom:0;flex-shrink:0}
+  .circ2-card h3{font-size:.95rem;margin:0;white-space:normal;min-width:0;overflow-wrap:break-word}
+  .circ2-card p{display:none}
 }

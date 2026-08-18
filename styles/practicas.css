@@ -15,6 +15,33 @@
 .prac-card p{font-size:.9rem;color:var(--muted);flex:1}
 .prac-card .ver{font-size:.82rem;font-weight:700;color:var(--magenta)}
 
+/* .prac-grid-wrap/.prac-swipe-hint: contenedor + flechita de "podés
+   seguir arrastrando" del modo swipe (ver más abajo). Ocultos/sin
+   tamaño de sobra por default a CUALQUIER ancho — si esto viviera solo
+   dentro del media query de mobile, en desktop el <span>/<svg> queda
+   sin ningún estilo (ni display:none, ni tamaño) y el navegador lo
+   renderiza a su tamaño por default, que es enorme, empujado además en
+   el flujo normal del documento en vez de quedar fuera de flujo. */
+.prac-grid-wrap{position:relative}
+.prac-swipe-hint{
+  display:none;position:absolute;top:50%;right:6px;z-index:3;
+  transform:translateY(-50%);
+  width:34px;height:34px;border-radius:50%;
+  background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow);
+  color:var(--magenta);align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;
+}
+.prac-swipe-hint svg{width:17px;height:17px}
+/* Difuminado del borde derecho: degradé decorativo APARTE (::after de
+   .prac-grid-wrap), no un mask-image sobre el propio elemento que hace
+   scroll — evita cualquier riesgo de que el masking interfiera con la
+   detección del gesto de arrastre en algún navegador. */
+.prac-grid-wrap::after{
+  content:"";position:absolute;top:0;right:0;bottom:6px;width:32px;
+  background:linear-gradient(to right,rgba(253,250,247,0),var(--cream));
+  pointer-events:none;z-index:2;display:none;
+}
+
 /* Modo "swipe" en mobile (especialidades.html #pracGrid, medicina-estetica.html
    #estGrid, tratamiento-depilacion-definitiva.html #depiGrid): en vez de la
    grilla envuelta en varias filas, el catálogo arranca como una sola fila
@@ -27,10 +54,34 @@
     display:flex;flex-wrap:nowrap;overflow-x:auto;
     scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
     gap:14px;padding-bottom:6px;scrollbar-width:none;
+    /* .prac-grid (base, pensada para el modo grilla) trae
+       justify-content:center para centrar la grilla de escritorio
+       cuando hay pocos resultados. En un flex con overflow-x:auto ese
+       centrado hace que el contenido que no entra arranque centrado
+       -mitad "de más" para cada lado-, así que el scroll empezaba a la
+       mitad de la fila y no dejaba volver del todo a la primera card.
+       Se pisa acá a flex-start, que es lo que corresponde en modo fila. */
+    justify-content:flex-start;
   }
   .prac-grid.is-swipe::-webkit-scrollbar{display:none}
   .prac-grid.is-swipe .prac-card{
     scroll-snap-align:start;flex:0 0 78vw;max-width:300px;width:78vw;
+  }
+  /* difumina el borde derecho para dar la pista de que hay más cards
+     arrastrando el dedo (::after de .prac-grid-wrap, ver arriba). */
+  .prac-grid-wrap:has(.prac-grid.is-swipe)::after{display:block}
+  /* Flechita sombreada que aparece cada tanto (no fija) para reforzar,
+     además del difuminado, que la fila se recorre arrastrando el dedo
+     — se prende por CSS (sibling selector) solo mientras la grilla
+     está en modo swipe, sin que JS tenga que tocarla. */
+  .prac-grid.is-swipe ~ .prac-swipe-hint{display:flex;animation:pracSwipeHint 3.2s ease-in-out infinite}
+  @keyframes pracSwipeHint{
+    0%,55%,100%{opacity:0;transform:translateY(-50%) translateX(0)}
+    72%{opacity:1;transform:translateY(-50%) translateX(0)}
+    88%{opacity:1;transform:translateY(-50%) translateX(7px)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .prac-swipe-hint{animation:none;opacity:.9}
   }
 }
 
@@ -55,7 +106,7 @@
 
 /* Título de la sección "Prácticas y estudios" (va antes del buscador, que es
    sticky, para que el título no quede pegado también al scrollear) */
-.prac2-practicas-intro{background:var(--cream);padding:56px 24px 0}
+.prac2-practicas-intro{padding:56px 24px 0}
 
 /* Buscador + filtros (debajo del hero)
    Queda pegado (sticky) justo debajo del navbar compacto (100px) al scrollear,
@@ -71,6 +122,18 @@
 .prac2-search-box{max-width:640px;margin:0 auto 18px;padding:.95rem 1.5rem}
 .prac2-search-box svg{width:24px;height:24px}
 .prac2-search-box input{font-size:1.08rem}
+@media(max-width:580px){
+  /* El buscador heredaba el padding/tamaño de escritorio (se veía
+     grande) y quedaba muy separado del título/bajada de la sección de
+     arriba. En base (no en responsive/practicas.css) para que aplique
+     también en la página de depilación, que no carga ese archivo. */
+  .prac2-practicas-intro{padding:28px 20px 0}
+  .prac2-section-sub{margin-bottom:0}
+  .prac2-search-filter{padding:14px 16px 10px}
+  .prac2-search-box{padding:.55rem .9rem}
+  .prac2-search-box svg{width:18px;height:18px}
+  .prac2-search-box input{font-size:.88rem}
+}
 
 /* Sección genérica */
 .prac2-section-title{
@@ -112,7 +175,7 @@
    para aprovechar todo el ancho de pantalla; el grid usa auto-fill así que
    ya se acomoda solo en distintos anchos (el detalle fino de breakpoints
    queda para cuando trabajemos el responsive). */
-.prac2-esp{background:#fff;padding:72px 0}
+.prac2-esp{padding:72px 0}
 .prac2-esp > .wrap{
   width:100vw;
   max-width:none;
@@ -134,6 +197,11 @@
   border-radius:18px;padding:20px 20px 18px;
   display:flex;flex-direction:column;gap:8px;
   transition:box-shadow .2s,transform .2s;
+  text-decoration:none;color:inherit;
+  /* es un <button> (abre el modal de elección): resets de estilos que
+     el navegador le pone por defecto y que .prac2-esp-card no cubría
+     cuando era un <div>/<a>. */
+  width:100%;font-family:inherit;text-align:left;cursor:pointer;
 }
 .prac2-esp-card:hover{box-shadow:0 6px 20px rgba(173,30,119,.09);transform:translateY(-2px)}
 /* icono y título en la misma línea para que la card no crezca tanto en alto */
@@ -149,7 +217,7 @@
 .prac2-esp-btn-ver:hover{background:var(--magenta-dark);border-color:var(--magenta-dark);color:#fff}
 
 /* Catálogo dinámico */
-.prac2-catalog{background:var(--cream);padding:28px 0 72px}
+.prac2-catalog{padding:28px 0 72px}
 /* el título, el header "Más buscadas" y el grid comparten el mismo ancho
    full-bleed y el mismo padding lateral, así quedan alineados entre sí */
 .prac2-catalog > .wrap{
@@ -160,18 +228,64 @@
   padding:0 40px;
   box-sizing:border-box;
 }
-.prac2-filter-wrap{margin-bottom:0}
-.prac2-filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+/* wrapper del buscador + botón "Filtros". Los filtros viven SIEMPRE
+   colapsados detrás de este botón (nunca como fila de chips suelta al
+   lado del buscador) — mismo comportamiento a cualquier ancho de
+   pantalla, en vez de "fila fija en desktop, botón solo en mobile". */
+.prac2-search-row{display:flex;gap:10px;align-items:center;justify-content:center;max-width:640px;margin:0 auto}
+.prac2-search-row .prac2-search-box{margin:0;flex:1}
+.prac2-filter-toggle{
+  display:inline-flex;flex:none;align-items:center;gap:.4rem;
+  padding:.8rem 1rem;border-radius:100px;border:1.5px solid var(--line);
+  background:#fff;color:var(--plum);font-family:inherit;font-weight:700;font-size:.85rem;
+  cursor:pointer;
+}
+.prac2-filter-toggle svg{width:18px;height:18px}
+.prac2-filter-toggle[aria-expanded="true"]{border-color:var(--magenta);color:var(--magenta)}
+
+/* Panel desplegable: oculto por default, .open lo despliega (JS, al
+   clickear el botón). Ancho acotado y centrado bajo la fila de
+   buscador+botón en vez de estirarse a todo el ancho de la sección. */
+.prac2-filter-wrap{
+  max-height:0;opacity:0;overflow:hidden;
+  position:absolute;left:14px;right:14px;margin-top:8px;
+  max-width:420px;margin-left:auto;margin-right:auto;
+  background:#fff;border:1px solid var(--line);border-radius:16px;
+  box-shadow:var(--shadow);z-index:5;
+  transition:max-height .3s var(--ease),opacity .25s var(--ease);
+}
+.prac2-filter-wrap.open{max-height:70vh;opacity:1;overflow-y:auto}
+.prac2-filters{display:block;padding:8px 14px}
+/* Cada grupo (ej. Especialidad / Tipo de estudio) es un acordeón
+   propio: arranca cerrado, se abre/cierra a mano tocando su título —
+   nunca se muestran todas las opciones juntas de una. Páginas con un
+   solo grupo de chips (sin este wrapper en el HTML) simplemente no
+   usan esto y sus chips quedan siempre visibles dentro del panel. */
+.prac2-filter-group{display:block;border-bottom:1px solid var(--line)}
+.prac2-filter-group:last-child{border-bottom:none}
+.prac2-filter-group-toggle{
+  display:flex;align-items:center;justify-content:space-between;width:100%;
+  background:none;border:none;padding:12px 2px;font-family:inherit;
+  font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+  color:var(--muted);cursor:pointer;
+}
+.prac2-filter-group-toggle .chev{width:16px;height:16px;flex:none;transition:transform .25s var(--ease)}
+.prac2-filter-group-toggle[aria-expanded="true"]{color:var(--magenta)}
+.prac2-filter-group-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.prac2-filter-group-list{
+  display:flex;flex-wrap:wrap;gap:6px;
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .3s var(--ease),opacity .25s var(--ease);
+}
+.prac2-filter-group-list.open{max-height:600px;opacity:1;padding-bottom:10px}
+
 .prac2-chip{
   padding:9px 20px;border-radius:100px;
   border:1.5px solid var(--line);background:#fff;
   font-size:.83rem;font-weight:600;color:var(--muted);
-  cursor:pointer;transition:all .18s;
+  cursor:pointer;text-align:left;
+  transition:border-color .18s,color .18s,background .18s;
 }
-/* Al quedar pegada (sticky), la barra solo muestra los chips activos —así
-   el buscador siempre queda visible sin que los filtros ocupen alto extra. */
-.prac2-search-filter.is-stuck .prac2-chip:not(.active){display:none}
-.prac2-search-filter.is-stuck .prac2-filter-wrap:not(:has(.prac2-chip.active)){display:none}
 .prac2-chip:hover{border-color:var(--magenta);color:var(--magenta)}
 .prac2-chip.active{background:var(--magenta);color:#fff;border-color:var(--magenta)}
 .prac2-catalog-header{
@@ -185,6 +299,16 @@
   grid-template-columns:repeat(6,1fr);
   gap:18px;
 }
-.prac2-vermas-wrap{display:flex;justify-content:center;margin-top:32px}
+.prac2-vermas-wrap{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:32px}
 .prac2-vermas{padding:12px 28px;background:#fff;color:var(--magenta);border-color:var(--magenta)}
 .prac2-vermas:hover{background:var(--magenta);color:#fff}
+/* Flecha para volver un paso (a la fila swipe) sin tener que seguir
+   tocando "Ver más" hasta llegar a "Ver menos" — solo mobile, al lado
+   del botón principal. */
+.prac2-vermas-collapse{
+  flex:none;width:44px;height:44px;border-radius:50%;
+  border:1.5px solid var(--magenta);background:#fff;color:var(--magenta);
+  display:grid;place-items:center;cursor:pointer;transition:background .2s,color .2s;
+}
+.prac2-vermas-collapse svg{width:20px;height:20px}
+.prac2-vermas-collapse:hover{background:var(--magenta);color:#fff}

@@ -20,7 +20,7 @@
 .circ2-disclaimer strong{color:var(--plum);font-weight:700;opacity:1}
 
 /* Qué incluye */
-.circ2-include{background:#fff;padding:88px 24px}
+.circ2-include{padding:88px 24px}
 /* Las 5 en una sola fila (flex-wrap:nowrap), pero ahora full-bleed (todo
    el ancho de la pantalla, no solo el .wrap de 1180px) para tener lugar
    de sobra y poder usar tipografía de tamaño normal sin que el título

@@ -12,8 +12,14 @@
 @media(max-width:540px){
   .est-hero h1{font-size:clamp(3rem,12vw,4rem)}
   .est-treat-body{padding:36px 24px}
+  /* menos aire arriba/abajo del hero en mobile (antes 80px, quedaba muy
+     largo antes de llegar al resto de la página) */
+  .est-hero{padding:48px 24px}
+  /* a este ancho el texto rotativo entra en más líneas (ver min-height
+     base en medicina-estetica.css): se reserva más alto para que la frase
+     más larga no siga empujando los botones al rotar */
+  .est-hero-rotating{min-height:6.6em}
 }
 @media(max-width:768px){
   .est-hero-btns{flex-direction:column;align-items:flex-start}
-  .est2-confianza-inner{flex-direction:column;gap:14px}
 }
